@@ -15,7 +15,7 @@ const stats = [
 export default function Dashboard() {
   return (
     <AppLayout>
-      <div className="space-y-6 animate-fade-in">
+      <div className="space-y-6 animate-fade-in dashboard-page">
         {/* Quick Actions */}
         <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
           <div>

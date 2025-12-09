@@ -15,7 +15,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen bg-background flex login-page">
       {/* Left Panel - Branding */}
       <div className="hidden lg:flex lg:w-1/2 bg-foreground text-background p-12 flex-col justify-between relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
