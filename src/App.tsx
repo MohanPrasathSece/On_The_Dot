@@ -8,6 +8,8 @@ import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 
 import Index from "./pages/Index";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
 import Invoices from "./pages/Invoices";
 import InvoiceBuilder from "./pages/InvoiceBuilder";
@@ -24,11 +26,11 @@ const queryClient = new QueryClient();
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth();
-  
+
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
-  
+
   return <>{children}</>;
 }
 
@@ -39,7 +41,10 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Index />} />
       <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
-      
+      <Route path="/signup" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Signup />} />
+
+      <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
+
       <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       <Route path="/invoices" element={<ProtectedRoute><Invoices /></ProtectedRoute>} />
       <Route path="/invoices/new" element={<ProtectedRoute><InvoiceBuilder /></ProtectedRoute>} />
@@ -51,7 +56,7 @@ function AppRoutes() {
       <Route path="/team" element={<ProtectedRoute><Team /></ProtectedRoute>} />
       <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
       <Route path="/support" element={<ProtectedRoute><Support /></ProtectedRoute>} />
-      
+
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

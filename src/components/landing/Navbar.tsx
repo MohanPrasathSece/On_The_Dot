@@ -73,8 +73,8 @@ export function Navbar() {
             <Button variant="ghost" className="text-sm font-medium" asChild>
               <Link to="/login">Log in</Link>
             </Button>
-            <Button className="text-sm font-medium rounded-full px-6" asChild>
-              <Link to="/login">Get Started</Link>
+            <Button className="text-sm font-medium rounded-full px-6 btn-primary-gradient border-none font-semibold text-white hover:text-white" asChild>
+              <Link to="/signup">Get Started</Link>
             </Button>
           </div>
 
@@ -118,7 +118,7 @@ export function Navbar() {
                   <Link to="/login">Log in</Link>
                 </Button>
                 <Button className="rounded-full" asChild>
-                  <Link to="/login">Get Started</Link>
+                  <Link to="/signup">Get Started</Link>
                 </Button>
               </div>
             </div>

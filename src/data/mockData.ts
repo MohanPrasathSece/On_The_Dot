@@ -27,6 +27,10 @@ export interface Client {
   totalPaid: number;
   totalOutstanding: number;
   invoiceCount: number;
+  tags: string[];
+  notes?: string;
+  taxId?: string;
+  currency?: "USD" | "EUR" | "GBP" | "INR";
 }
 
 export interface Reminder {
@@ -59,11 +63,11 @@ export interface Activity {
 }
 
 export const mockClients: Client[] = [
-  { id: "c1", name: "Sarah Johnson", email: "sarah@techcorp.com", company: "TechCorp Inc.", phone: "+1 555-0101", totalPaid: 15400, totalOutstanding: 3500, invoiceCount: 8 },
-  { id: "c2", name: "Michael Chen", email: "m.chen@designlab.io", company: "Design Lab", phone: "+1 555-0102", totalPaid: 28900, totalOutstanding: 0, invoiceCount: 12 },
-  { id: "c3", name: "Emma Williams", email: "emma@startup.co", company: "Startup Co", phone: "+1 555-0103", totalPaid: 8200, totalOutstanding: 4200, invoiceCount: 5 },
-  { id: "c4", name: "James Rodriguez", email: "james@agency.com", company: "Creative Agency", phone: "+1 555-0104", totalPaid: 45000, totalOutstanding: 7800, invoiceCount: 18 },
-  { id: "c5", name: "Lisa Park", email: "lisa@ventures.io", company: "Park Ventures", phone: "+1 555-0105", totalPaid: 12300, totalOutstanding: 2100, invoiceCount: 6 },
+  { id: "c1", name: "Sarah Johnson", email: "sarah@techcorp.com", company: "TechCorp Inc.", phone: "+1 555-0101", totalPaid: 15400, totalOutstanding: 3500, invoiceCount: 8, tags: ["VIP", "Tech"], taxId: "US-12345", currency: "USD", notes: "Prefers email invoices." },
+  { id: "c2", name: "Michael Chen", email: "m.chen@designlab.io", company: "Design Lab", phone: "+1 555-0102", totalPaid: 28900, totalOutstanding: 0, invoiceCount: 12, tags: ["Agency"], taxId: "CA-67890", currency: "USD", notes: "Always pays early." },
+  { id: "c3", name: "Emma Williams", email: "emma@startup.co", company: "Startup Co", phone: "+1 555-0103", totalPaid: 8200, totalOutstanding: 4200, invoiceCount: 5, tags: ["Startup"], currency: "EUR" },
+  { id: "c4", name: "James Rodriguez", email: "james@agency.com", company: "Creative Agency", phone: "+1 555-0104", totalPaid: 45000, totalOutstanding: 7800, invoiceCount: 18, tags: ["Enterprise", "High Value"], taxId: "EU-54321", currency: "GBP" },
+  { id: "c5", name: "Lisa Park", email: "lisa@ventures.io", company: "Park Ventures", phone: "+1 555-0105", totalPaid: 12300, totalOutstanding: 2100, invoiceCount: 6, tags: ["VC"], currency: "USD" },
 ];
 
 export const mockInvoices: Invoice[] = [

@@ -16,6 +16,7 @@ interface Integration {
 }
 
 const initialIntegrations: Integration[] = [
+  { id: "razorpay", name: "Razorpay", description: "Accept payments in India & globally", icon: "🇮🇳", connected: false, autoSync: false },
   { id: "stripe", name: "Stripe", description: "Accept credit card payments globally", icon: "💳", connected: true, autoSync: true, lastSync: "2 min ago" },
   { id: "paypal", name: "PayPal", description: "Accept PayPal and Venmo payments", icon: "🅿️", connected: true, autoSync: false, lastSync: "1 hour ago" },
   { id: "plaid", name: "Plaid", description: "Connect bank accounts for ACH transfers", icon: "🏦", connected: false, autoSync: false },
@@ -23,14 +24,24 @@ const initialIntegrations: Integration[] = [
   { id: "xero", name: "Xero", description: "Two-way sync with Xero accounting", icon: "📈", connected: false, autoSync: false },
   { id: "slack", name: "Slack", description: "Get payment notifications in Slack", icon: "💬", connected: true, autoSync: true, lastSync: "Just now" },
   { id: "zapier", name: "Zapier", description: "Connect to 5000+ apps", icon: "⚡", connected: false, autoSync: false },
+  { id: "make", name: "Make.com", description: "Visual automation workflows", icon: "🟣", connected: false, autoSync: false },
+  { id: "webhooks", name: "Webhooks", description: "Custom HTTP callbacks", icon: "🪝", connected: false, autoSync: false },
   { id: "gmail", name: "Gmail", description: "Send invoices from your email", icon: "✉️", connected: false, autoSync: false },
+];
+
+const mockSyncLogs = [
+  { id: 1, integration: "Stripe", status: "success", message: " synced 14 payments", time: "2 min ago" },
+  { id: 2, integration: "Slack", status: "success", message: " sent 3 notifications", time: "5 min ago" },
+  { id: 3, integration: "PayPal", status: "success", message: " synced 2 transactions", time: "1 hour ago" },
+  { id: 4, integration: "Stripe", status: "failed", message: " connection timeout", time: "4 hours ago" },
+  { id: 5, integration: "QuickBooks", status: "success", message: " export completed", time: "Yesterday" },
 ];
 
 export default function Integrations() {
   const [integrations, setIntegrations] = useState<Integration[]>(initialIntegrations);
 
   const handleConnect = (id: string) => {
-    setIntegrations(integrations.map(int => 
+    setIntegrations(integrations.map(int =>
       int.id === id ? { ...int, connected: true, lastSync: "Just now" } : int
     ));
     const integration = integrations.find(i => i.id === id);
@@ -38,7 +49,7 @@ export default function Integrations() {
   };
 
   const handleDisconnect = (id: string) => {
-    setIntegrations(integrations.map(int => 
+    setIntegrations(integrations.map(int =>
       int.id === id ? { ...int, connected: false, autoSync: false, lastSync: undefined } : int
     ));
     const integration = integrations.find(i => i.id === id);
@@ -46,13 +57,13 @@ export default function Integrations() {
   };
 
   const handleAutoSync = (id: string, enabled: boolean) => {
-    setIntegrations(integrations.map(int => 
+    setIntegrations(integrations.map(int =>
       int.id === id ? { ...int, autoSync: enabled } : int
     ));
   };
 
   const handleSync = (id: string) => {
-    setIntegrations(integrations.map(int => 
+    setIntegrations(integrations.map(int =>
       int.id === id ? { ...int, lastSync: "Just now" } : int
     ));
     const integration = integrations.find(i => i.id === id);
@@ -80,8 +91,8 @@ export default function Integrations() {
         <div>
           <h3 className="font-semibold mb-4">Payment Gateways</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {integrations.filter(i => ["stripe", "paypal", "plaid"].includes(i.id)).map((integration) => (
-              <IntegrationCard 
+            {integrations.filter(i => ["razorpay", "stripe", "paypal", "plaid"].includes(i.id)).map((integration) => (
+              <IntegrationCard
                 key={integration.id}
                 integration={integration}
                 onConnect={handleConnect}
@@ -98,7 +109,7 @@ export default function Integrations() {
           <h3 className="font-semibold mb-4">Accounting & Finance</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {integrations.filter(i => ["quickbooks", "xero"].includes(i.id)).map((integration) => (
-              <IntegrationCard 
+              <IntegrationCard
                 key={integration.id}
                 integration={integration}
                 onConnect={handleConnect}
@@ -114,8 +125,8 @@ export default function Integrations() {
         <div>
           <h3 className="font-semibold mb-4">Productivity & Automation</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {integrations.filter(i => ["slack", "zapier", "gmail"].includes(i.id)).map((integration) => (
-              <IntegrationCard 
+            {integrations.filter(i => ["slack", "zapier", "make", "webhooks", "gmail"].includes(i.id)).map((integration) => (
+              <IntegrationCard
                 key={integration.id}
                 integration={integration}
                 onConnect={handleConnect}
@@ -126,18 +137,40 @@ export default function Integrations() {
             ))}
           </div>
         </div>
+
+        {/* Sync Logs */}
+        <div className="glass rounded-xl p-5">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="font-semibold">Sync Logs</h3>
+            <Button variant="ghost" size="sm" className="text-xs">View All</Button>
+          </div>
+          <div className="space-y-0">
+            {mockSyncLogs.map((log) => (
+              <div key={log.id} className="flex items-center justify-between py-3 border-b border-border/50 last:border-0 last:pb-0">
+                <div className="flex items-center gap-3">
+                  <div className={`w-2 h-2 rounded-full ${log.status === 'success' ? 'bg-success' : 'bg-destructive'}`} />
+                  <p className="text-sm">
+                    <span className="font-medium">{log.integration}</span>
+                    {log.message}
+                  </p>
+                </div>
+                <span className="text-xs text-muted-foreground">{log.time}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </AppLayout>
   );
 }
 
-function IntegrationCard({ 
-  integration, 
-  onConnect, 
-  onDisconnect, 
-  onAutoSync, 
-  onSync 
-}: { 
+function IntegrationCard({
+  integration,
+  onConnect,
+  onDisconnect,
+  onAutoSync,
+  onSync
+}: {
   integration: Integration;
   onConnect: (id: string) => void;
   onDisconnect: (id: string) => void;
@@ -170,9 +203,9 @@ function IntegrationCard({
 
           <div className="flex items-center justify-between">
             <span className="text-sm text-muted-foreground">Auto-sync</span>
-            <Switch 
-              checked={integration.autoSync} 
-              onCheckedChange={(checked) => onAutoSync(integration.id, checked)} 
+            <Switch
+              checked={integration.autoSync}
+              onCheckedChange={(checked) => onAutoSync(integration.id, checked)}
             />
           </div>
 

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { Plus, Send, TrendingUp, Clock, AlertCircle, CheckCircle, ArrowUpRight } from "lucide-react";
+import { Plus, Send, TrendingUp, Clock, AlertCircle, CheckCircle, ArrowUpRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AppLayout } from "@/components/app/AppLayout";
-import { mockInvoices, mockActivities, monthlyRevenue } from "@/data/mockData";
+import { mockInvoices, mockActivities, monthlyRevenue, mockReminders } from "@/data/mockData";
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
 const stats = [
@@ -59,6 +59,43 @@ export default function Dashboard() {
           ))}
         </div>
 
+        {/* AI Smart Suggestions */}
+        {mockInvoices.some(i => i.status === 'overdue') && (
+          <div className="glass rounded-xl p-5 border-l-4 border-l-primary/70 animate-fade-in-up animation-delay-200">
+            <div className="flex items-start gap-4">
+              <div className="p-2 bg-primary/10 rounded-full text-primary mt-1">
+                <Sparkles className="h-5 w-5" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg flex items-center gap-2">
+                  AI Smart Suggestions
+                  <span className="text-xs font-normal text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">Beta</span>
+                </h3>
+                <div className="space-y-3 mt-3">
+                  {mockInvoices
+                    .filter(i => i.status === 'overdue')
+                    .slice(0, 3)
+                    .map(i => (
+                      <div key={i.id} className="flex flex-col sm:flex-row sm:items-center justify-between bg-background/40 p-3 rounded-lg border border-border/50 gap-3">
+                        <p className="text-sm">
+                          <span className="font-medium text-foreground">Insight:</span> You should follow up with <span className="font-medium">{i.client.name}</span> regarding overdue invoice <span className="font-medium">{i.number}</span> (${i.amount.toLocaleString()}).
+                        </p>
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          className="text-primary hover:text-primary hover:bg-primary/10 whitespace-nowrap shrink-0"
+                          onClick={() => toast({ title: "Reminder Sent", description: `Reminder sent to ${i.client.name}` })}
+                        >
+                          Send Reminder
+                        </Button>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Charts and Activity */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Revenue Chart */}
@@ -79,48 +116,73 @@ export default function Dashboard() {
                     </linearGradient>
                   </defs>
                   <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
-                  <YAxis axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} tickFormatter={(v) => `$${v/1000}k`} />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: 'hsl(var(--card))', 
+                  <YAxis axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} tickFormatter={(v) => `$${v / 1000}k`} />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: 'hsl(var(--card))',
                       border: '1px solid hsl(var(--border))',
                       borderRadius: '8px',
                       boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
                     }}
                     formatter={(value: number) => [`$${value.toLocaleString()}`, 'Revenue']}
                   />
-                  <Area 
-                    type="monotone" 
-                    dataKey="revenue" 
-                    stroke="hsl(var(--foreground))" 
+                  <Area
+                    type="monotone"
+                    dataKey="revenue"
+                    stroke="hsl(var(--foreground))"
                     strokeWidth={2}
-                    fill="url(#colorRevenue)" 
+                    fill="url(#colorRevenue)"
                   />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
           </div>
 
-          {/* Recent Activity */}
-          <div className="glass rounded-xl p-5">
-            <h3 className="font-semibold mb-4">Recent Activity</h3>
-            <div className="space-y-4">
-              {mockActivities.slice(0, 5).map((activity) => (
-                <div key={activity.id} className="flex gap-3">
-                  <div className="w-2 h-2 rounded-full bg-foreground/50 mt-2 flex-shrink-0" />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm">{activity.description}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">
-                      {new Date(activity.timestamp).toLocaleDateString('en-US', { 
-                        month: 'short', 
-                        day: 'numeric',
-                        hour: '2-digit',
-                        minute: '2-digit'
-                      })}
-                    </p>
+          <div className="space-y-6">
+            {/* Recent Activity */}
+            <div className="glass rounded-xl p-5">
+              <h3 className="font-semibold mb-4">Recent Activity</h3>
+              <div className="space-y-4">
+                {mockActivities.slice(0, 5).map((activity) => (
+                  <div key={activity.id} className="flex gap-3">
+                    <div className="w-2 h-2 rounded-full bg-foreground/50 mt-2 flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm">{activity.description}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">
+                        {new Date(activity.timestamp).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit'
+                        })}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+
+            {/* Upcoming Reminders */}
+            <div className="glass rounded-xl p-5">
+              <h3 className="font-semibold mb-4">Upcoming Reminders</h3>
+              <div className="space-y-3">
+                {mockReminders.slice(0, 3).map((reminder) => (
+                  <div key={reminder.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/30">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-full bg-background">
+                        <Clock className="h-4 w-4 text-muted-foreground" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-sm">{reminder.client}</p>
+                        <p className="text-xs text-muted-foreground">Due: {new Date(reminder.scheduledDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+                <Button variant="outline" className="w-full text-xs" size="sm" asChild>
+                  <Link to="/reminders">View All</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -160,13 +222,12 @@ export default function Dashboard() {
                     </td>
                     <td className="px-5 py-4 font-medium">${invoice.amount.toLocaleString()}</td>
                     <td className="px-5 py-4">
-                      <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
-                        invoice.status === 'paid' ? 'bg-foreground/10 text-foreground' :
+                      <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${invoice.status === 'paid' ? 'bg-foreground/10 text-foreground' :
                         invoice.status === 'overdue' ? 'bg-foreground/5 text-foreground/70' :
-                        invoice.status === 'sent' ? 'bg-muted text-muted-foreground' :
-                        invoice.status === 'viewed' ? 'bg-muted text-foreground' :
-                        'bg-muted/50 text-muted-foreground'
-                      }`}>
+                          invoice.status === 'sent' ? 'bg-muted text-muted-foreground' :
+                            invoice.status === 'viewed' ? 'bg-muted text-foreground' :
+                              'bg-muted/50 text-muted-foreground'
+                        }`}>
                         {invoice.status}
                       </span>
                     </td>

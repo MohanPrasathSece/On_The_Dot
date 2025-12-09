@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { 
+import {
   AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer,
   BarChart, Bar, PieChart, Pie, Cell
 } from "recharts";
@@ -78,9 +78,8 @@ export default function Reports() {
                 <div className="p-2 rounded-lg bg-foreground/5">
                   <stat.icon className="h-5 w-5" />
                 </div>
-                <span className={`text-xs font-medium px-2 py-1 rounded-full flex items-center gap-1 ${
-                  stat.trend === 'up' ? 'bg-foreground/10 text-foreground' : 'bg-muted text-muted-foreground'
-                }`}>
+                <span className={`text-xs font-medium px-2 py-1 rounded-full flex items-center gap-1 ${stat.trend === 'up' ? 'bg-foreground/10 text-foreground' : 'bg-muted text-muted-foreground'
+                  }`}>
                   {stat.trend === 'up' ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />}
                   {stat.change}
                 </span>
@@ -106,10 +105,10 @@ export default function Reports() {
                     </linearGradient>
                   </defs>
                   <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
-                  <YAxis axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} tickFormatter={(v) => `$${v/1000}k`} />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: 'hsl(var(--card))', 
+                  <YAxis axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} tickFormatter={(v) => `$${v / 1000}k`} />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: 'hsl(var(--card))',
                       border: '1px solid hsl(var(--border))',
                       borderRadius: '8px'
                     }}
@@ -129,9 +128,9 @@ export default function Reports() {
                 <BarChart data={monthlyRevenue}>
                   <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
                   <YAxis axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: 'hsl(var(--card))', 
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: 'hsl(var(--card))',
                       border: '1px solid hsl(var(--border))',
                       borderRadius: '8px'
                     }}
@@ -161,9 +160,9 @@ export default function Reports() {
                       <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
                   </Pie>
-                  <Tooltip 
-                    contentStyle={{ 
-                      backgroundColor: 'hsl(var(--card))', 
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: 'hsl(var(--card))',
                       border: '1px solid hsl(var(--border))',
                       borderRadius: '8px'
                     }}
@@ -180,47 +179,125 @@ export default function Reports() {
               ))}
             </div>
           </div>
+        </div>
 
-          {/* Quick Stats */}
-          <div className="glass rounded-xl p-5">
-            <h3 className="font-semibold mb-6">Quick Insights</h3>
-            <div className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-muted-foreground">Payment Rate</p>
-                  <p className="text-2xl font-semibold">{Math.round((paidInvoices / totalInvoices) * 100)}%</p>
-                </div>
-                <div className="w-32 h-2 bg-muted rounded-full overflow-hidden">
-                  <div 
-                    className="h-full bg-foreground rounded-full" 
-                    style={{ width: `${(paidInvoices / totalInvoices) * 100}%` }} 
-                  />
-                </div>
-              </div>
+        {/* Cash Flow Forecast */}
+        <div className="glass rounded-xl p-5 lg:col-span-2">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h3 className="font-semibold">Cash Flow Forecast</h3>
+              <p className="text-sm text-muted-foreground">Projected revenue vs expenses (AI-based)</p>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-1"><div className="w-3 h-3 bg-foreground/80 rounded-full"></div> In</div>
+              <div className="flex items-center gap-1"><div className="w-3 h-3 bg-muted-foreground/30 rounded-full"></div> Out</div>
+            </div>
+          </div>
+          <div className="h-72">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={[
+                { month: "Jul", in: 12400, out: 8200 },
+                { month: "Aug", in: 18200, out: 9100 },
+                { month: "Sep", in: 15800, out: 8800 },
+                { month: "Oct", in: 22100, out: 12400 },
+                { month: "Nov", in: 28400, out: 14500 },
+                { month: "Dec", in: 19800, out: 11200 },
+                { month: "Jan (Est)", in: 24500, out: 13000, projected: true },
+                { month: "Feb (Est)", in: 26800, out: 13500, projected: true },
+              ]}>
+                <defs>
+                  <linearGradient id="colorIn" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="hsl(var(--foreground))" stopOpacity={0.2} />
+                    <stop offset="95%" stopColor="hsl(var(--foreground))" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
+                <YAxis axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} tickFormatter={(v) => `$${v / 1000}k`} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: 'hsl(var(--card))',
+                    border: '1px solid hsl(var(--border))',
+                    borderRadius: '8px'
+                  }}
+                  formatter={(value: number) => [`$${value.toLocaleString()}`, '']}
+                />
+                <Area type="monotone" dataKey="in" stroke="hsl(var(--foreground))" strokeWidth={2} fill="url(#colorIn)" fillOpacity={1} />
+                <Area type="monotone" dataKey="out" stroke="hsl(var(--muted-foreground))" strokeDasharray="5 5" strokeWidth={2} fill="transparent" />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
 
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-muted-foreground">Overdue Amount</p>
-                  <p className="text-2xl font-semibold">${overdueAmount.toLocaleString()}</p>
-                </div>
-                <Button variant="outline" size="sm">Send Reminders</Button>
+        {/* Tax Summary */}
+        <div className="glass rounded-xl p-5">
+          <h3 className="font-semibold mb-6">Est. Tax Liability</h3>
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground">Taxable Income</p>
+                <p className="text-2xl font-semibold">$97,000</p>
               </div>
+              <div className="text-right">
+                <p className="text-sm text-muted-foreground">Est. Tax (20%)</p>
+                <p className="text-xl font-medium text-destructive">$19,400</p>
+              </div>
+            </div>
+            <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+              <div className="h-full bg-foreground w-[75%]"></div>
+            </div>
+            <div className="flex gap-4">
+              <div className="flex-1 p-3 bg-muted/50 rounded-lg">
+                <p className="text-xs text-muted-foreground">Next Payment</p>
+                <p className="font-medium mt-1">Jan 15</p>
+              </div>
+              <div className="flex-1 p-3 bg-muted/50 rounded-lg">
+                <p className="text-xs text-muted-foreground">Deductions</p>
+                <p className="font-medium mt-1">$4,300</p>
+              </div>
+            </div>
+            <Button variant="outline" className="w-full">Download Tax Report</Button>
+          </div>
+        </div>
 
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-muted-foreground">Top Client</p>
-                  <p className="text-lg font-semibold">Creative Agency</p>
-                </div>
-                <span className="text-sm text-muted-foreground">$45,000 total</span>
+        {/* Quick Stats */}
+        <div className="glass rounded-xl p-5">
+          <h3 className="font-semibold mb-6">Quick Insights</h3>
+          <div className="space-y-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground">Payment Rate</p>
+                <p className="text-2xl font-semibold">{Math.round((paidInvoices / totalInvoices) * 100)}%</p>
               </div>
+              <div className="w-32 h-2 bg-muted rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-foreground rounded-full"
+                  style={{ width: `${(paidInvoices / totalInvoices) * 100}%` }}
+                />
+              </div>
+            </div>
 
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-muted-foreground">Recurring Revenue</p>
-                  <p className="text-2xl font-semibold">$8,400/mo</p>
-                </div>
-                <span className="text-xs bg-foreground/10 text-foreground px-2 py-1 rounded-full">4 clients</span>
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground">Overdue Amount</p>
+                <p className="text-2xl font-semibold">${overdueAmount.toLocaleString()}</p>
               </div>
+              <Button variant="outline" size="sm">Send Reminders</Button>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground">Top Client</p>
+                <p className="text-lg font-semibold">Creative Agency</p>
+              </div>
+              <span className="text-sm text-muted-foreground">$45,000 total</span>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground">Recurring Revenue</p>
+                <p className="text-2xl font-semibold">$8,400/mo</p>
+              </div>
+              <span className="text-xs bg-foreground/10 text-foreground px-2 py-1 rounded-full">4 clients</span>
             </div>
           </div>
         </div>

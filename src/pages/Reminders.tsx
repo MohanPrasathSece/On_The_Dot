@@ -131,8 +131,8 @@ export default function Reminders() {
                   </div>
                   <div>
                     <Label>Schedule Date</Label>
-                    <Input 
-                      type="date" 
+                    <Input
+                      type="date"
                       value={newReminder.scheduledDate}
                       onChange={(e) => setNewReminder({ ...newReminder, scheduledDate: e.target.value })}
                     />
@@ -154,7 +154,7 @@ export default function Reminders() {
                       </Button>
                     </div>
                   </div>
-                  <Textarea 
+                  <Textarea
                     value={newReminder.message}
                     onChange={(e) => setNewReminder({ ...newReminder, message: e.target.value })}
                     placeholder="Enter reminder message..."
@@ -162,9 +162,9 @@ export default function Reminders() {
                   />
                 </div>
 
-                <Button 
-                  onClick={handleAddReminder} 
-                  className="w-full" 
+                <Button
+                  onClick={handleAddReminder}
+                  className="w-full"
                   disabled={!newReminder.invoiceId || !newReminder.scheduledDate}
                 >
                   Schedule Reminder
@@ -174,13 +174,47 @@ export default function Reminders() {
           </Dialog>
         </div>
 
-        {/* Auto Reminders Toggle */}
-        <div className="glass rounded-xl p-5 flex items-center justify-between">
-          <div>
-            <h3 className="font-semibold">Smart Auto-Reminders</h3>
-            <p className="text-sm text-muted-foreground">Automatically send reminders for overdue invoices</p>
+        {/* Auto Reminders Toggle & Configuration */}
+        <div className="glass rounded-xl p-5 space-y-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="font-semibold flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-primary" />
+                Smart Auto-Reminders
+              </h3>
+              <p className="text-sm text-muted-foreground">Automatically send reminders based on a set cadence.</p>
+            </div>
+            <Switch checked={autoReminders} onCheckedChange={setAutoReminders} />
           </div>
-          <Switch checked={autoReminders} onCheckedChange={setAutoReminders} />
+
+          {autoReminders && (
+            <div className="border-t border-border/50 pt-4 animate-fade-in">
+              <h4 className="text-sm font-medium mb-3">Reminder Cadence</h4>
+              <div className="space-y-3">
+                {[
+                  { id: 1, when: "3 days before due date", channel: "Email", icon: Mail },
+                  { id: 2, when: "On due date", channel: "Email & SMS", icon: MessageSquare },
+                  { id: 3, when: "7 days after due date", channel: "Email", icon: Mail },
+                ].map((rule) => (
+                  <div key={rule.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/30 border border-border/50">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-full bg-background">
+                        <Clock className="h-4 w-4 text-muted-foreground" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium">{rule.when}</p>
+                        <p className="text-xs text-muted-foreground">Via {rule.channel}</p>
+                      </div>
+                    </div>
+                    <Button variant="ghost" size="sm">Edit</Button>
+                  </div>
+                ))}
+                <Button variant="outline" className="w-full text-xs border-dashed">
+                  <Plus className="h-3 w-3 mr-1" /> Add Cadence Rule
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Reminders Tabs */}
@@ -206,8 +240,8 @@ export default function Reminders() {
                     <div>
                       <p className="font-medium">{reminder.invoiceNumber} - {reminder.client}</p>
                       <p className="text-sm text-muted-foreground">
-                        {new Date(reminder.scheduledDate).toLocaleDateString('en-US', { 
-                          month: 'short', day: 'numeric', year: 'numeric' 
+                        {new Date(reminder.scheduledDate).toLocaleDateString('en-US', {
+                          month: 'short', day: 'numeric', year: 'numeric'
                         })} • {reminder.tone} tone
                       </p>
                     </div>
@@ -228,8 +262,8 @@ export default function Reminders() {
                   <div>
                     <p className="font-medium">{reminder.invoiceNumber} - {reminder.client}</p>
                     <p className="text-sm text-muted-foreground">
-                      Sent on {new Date(reminder.scheduledDate).toLocaleDateString('en-US', { 
-                        month: 'short', day: 'numeric', year: 'numeric' 
+                      Sent on {new Date(reminder.scheduledDate).toLocaleDateString('en-US', {
+                        month: 'short', day: 'numeric', year: 'numeric'
                       })}
                     </p>
                   </div>

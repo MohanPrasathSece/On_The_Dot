@@ -18,9 +18,25 @@ export function Footer() {
               </div>
               <span className="font-display text-lg font-semibold">OnTheDot</span>
             </a>
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="text-sm text-muted-foreground mb-6">
               The modern invoicing platform for freelancers and agencies.
             </p>
+
+            {/* Newsletter */}
+            <div className="mb-8">
+              <h5 className="font-semibold text-sm mb-2">Stay up to date</h5>
+              <div className="flex gap-2 max-w-sm">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 h-9 rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                />
+                <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+
             <div className="flex items-center gap-3">
               {["X", "LI", "GH"].map((social) => (
                 <a

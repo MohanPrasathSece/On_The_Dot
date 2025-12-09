@@ -1,5 +1,7 @@
-import { ArrowRight, Play, Star } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 export function Hero() {
   return (
@@ -35,20 +37,36 @@ export function Hero() {
 
           {/* Subheadline */}
           <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in-up animation-delay-200">
-            The modern invoicing platform for freelancers and agencies. 
+            The modern invoicing platform for freelancers and agencies.
             Create beautiful invoices, automate reminders, and get paid faster.
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in-up animation-delay-400">
-            <Button size="lg" className="rounded-full px-8 h-12 text-base group">
-              Start Free Trial
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button variant="outline" size="lg" className="rounded-full px-8 h-12 text-base group">
-              <Play className="mr-2 h-4 w-4" />
-              Watch Video
-            </Button>
+            <Link to="/signup">
+              <Button size="lg" className="rounded-full px-8 h-12 text-base group btn-primary-gradient border-none">
+                Start Free Trial
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" size="lg" className="rounded-full px-8 h-12 text-base group backdrop-blur-sm bg-background/50">
+                  <Play className="mr-2 h-4 w-4 fill-current" />
+                  Watch Video
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[800px] p-0 overflow-hidden bg-black border-none">
+                <div className="aspect-video w-full bg-black flex items-center justify-center">
+                  <div className="text-center text-white/50">
+                    <Play className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                    <p>Demo Video Placeholder</p>
+                    <p className="text-sm">(Would embed YouTube/Vimeo here)</p>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
 
           {/* Social Proof */}
@@ -118,11 +136,10 @@ export function Hero() {
                           </div>
                           <div className="flex items-center gap-4">
                             <span className="text-sm font-medium">{invoice.amount}</span>
-                            <span className={`text-xs px-2 py-1 rounded-full ${
-                              invoice.status === "Paid" ? "bg-foreground/10 text-foreground" :
-                              invoice.status === "Pending" ? "bg-muted text-muted-foreground" :
-                              "bg-foreground/5 text-foreground/70"
-                            }`}>
+                            <span className={`text-xs px-2 py-1 rounded-full ${invoice.status === "Paid" ? "bg-foreground/10 text-foreground" :
+                                invoice.status === "Pending" ? "bg-muted text-muted-foreground" :
+                                  "bg-foreground/5 text-foreground/70"
+                              }`}>
                               {invoice.status}
                             </span>
                           </div>
@@ -133,7 +150,7 @@ export function Hero() {
                 </div>
               </div>
             </div>
-            
+
             {/* Decorative elements */}
             <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-foreground/5 blur-2xl" />
             <div className="absolute -bottom-4 -left-4 w-32 h-32 rounded-full bg-foreground/5 blur-2xl" />

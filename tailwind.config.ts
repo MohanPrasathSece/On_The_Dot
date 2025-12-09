@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["DM Sans", "system-ui", "sans-serif"],
-        display: ["DM Serif Display", "Georgia", "serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        display: ["Spectral", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -43,6 +43,11 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        tertiary: {
+          DEFAULT: "hsl(var(--tertiary))",
+          foreground: "hsl(var(--tertiary-foreground))",
+        },
+        info: "hsl(var(--info))",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -63,6 +68,8 @@ export default {
         },
         success: "hsl(var(--success))",
         warning: "hsl(var(--warning))",
+        "glass-bg": "hsl(var(--glass-bg))",
+        "glass-border": "hsl(var(--glass-border))",
       },
       borderRadius: {
         lg: "var(--radius)",
