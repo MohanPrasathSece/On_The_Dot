@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { User, Building, FileText, Bell, CreditCard, Palette, Upload } from "lucide-react";
+import { User, Building, FileText, Bell, CreditCard, Palette, Upload, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -74,6 +74,9 @@ export default function Settings() {
             <TabsTrigger value="billing" className="gap-2">
               <CreditCard className="h-4 w-4" /> Billing
             </TabsTrigger>
+            <TabsTrigger value="localization" className="gap-2">
+              <Globe className="h-4 w-4" /> Localization
+            </TabsTrigger>
           </TabsList>
 
           {/* Profile Settings */}
@@ -95,23 +98,23 @@ export default function Settings() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label>Full Name</Label>
-                  <Input 
-                    value={profile.name} 
+                  <Input
+                    value={profile.name}
                     onChange={(e) => setProfile({ ...profile, name: e.target.value })}
                   />
                 </div>
                 <div>
                   <Label>Email</Label>
-                  <Input 
+                  <Input
                     type="email"
-                    value={profile.email} 
+                    value={profile.email}
                     onChange={(e) => setProfile({ ...profile, email: e.target.value })}
                   />
                 </div>
                 <div>
                   <Label>Phone</Label>
-                  <Input 
-                    value={profile.phone} 
+                  <Input
+                    value={profile.phone}
                     onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
                   />
                 </div>
@@ -140,30 +143,30 @@ export default function Settings() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label>Company Name</Label>
-                  <Input 
-                    value={company.name} 
+                  <Input
+                    value={company.name}
                     onChange={(e) => setCompany({ ...company, name: e.target.value })}
                   />
                 </div>
                 <div>
                   <Label>Website</Label>
-                  <Input 
-                    value={company.website} 
+                  <Input
+                    value={company.website}
                     onChange={(e) => setCompany({ ...company, website: e.target.value })}
                   />
                 </div>
                 <div className="md:col-span-2">
                   <Label>Address</Label>
-                  <Textarea 
-                    value={company.address} 
+                  <Textarea
+                    value={company.address}
                     onChange={(e) => setCompany({ ...company, address: e.target.value })}
                     rows={2}
                   />
                 </div>
                 <div>
                   <Label>Tax ID</Label>
-                  <Input 
-                    value={company.taxId} 
+                  <Input
+                    value={company.taxId}
                     onChange={(e) => setCompany({ ...company, taxId: e.target.value })}
                   />
                 </div>
@@ -207,16 +210,16 @@ export default function Settings() {
                 </div>
                 <div>
                   <Label>Default Tax Rate (%)</Label>
-                  <Input 
+                  <Input
                     type="number"
-                    value={invoiceDefaults.taxRate} 
+                    value={invoiceDefaults.taxRate}
                     onChange={(e) => setInvoiceDefaults({ ...invoiceDefaults, taxRate: e.target.value })}
                   />
                 </div>
                 <div className="md:col-span-2">
                   <Label>Default Notes</Label>
-                  <Textarea 
-                    value={invoiceDefaults.notes} 
+                  <Textarea
+                    value={invoiceDefaults.notes}
                     onChange={(e) => setInvoiceDefaults({ ...invoiceDefaults, notes: e.target.value })}
                     rows={3}
                   />
@@ -243,8 +246,8 @@ export default function Settings() {
                         {key === "marketingEmails" && "Receive product updates and tips"}
                       </p>
                     </div>
-                    <Switch 
-                      checked={value} 
+                    <Switch
+                      checked={value}
                       onCheckedChange={(checked) => setNotifications({ ...notifications, [key]: checked })}
                     />
                   </div>
@@ -308,8 +311,59 @@ export default function Settings() {
               </div>
             </div>
           </TabsContent>
+
+
+          {/* Localization Settings */}
+          <TabsContent value="localization">
+            <div className="glass rounded-xl p-6 space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label>Language</Label>
+                  <Select defaultValue="en">
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="en">English (US)</SelectItem>
+                      <SelectItem value="es">Spanish</SelectItem>
+                      <SelectItem value="fr">French</SelectItem>
+                      <SelectItem value="de">German</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label>Timezone</Label>
+                  <Select defaultValue="utc">
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="utc">UTC</SelectItem>
+                      <SelectItem value="est">EST (UTC-5)</SelectItem>
+                      <SelectItem value="pst">PST (UTC-8)</SelectItem>
+                      <SelectItem value="ist">IST (UTC+5:30)</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label>Date Format</Label>
+                  <Select defaultValue="mdy">
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="mdy">MM/DD/YYYY</SelectItem>
+                      <SelectItem value="dmy">DD/MM/YYYY</SelectItem>
+                      <SelectItem value="ymd">YYYY-MM-DD</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <Button onClick={() => handleSave("Localization")}>Save Changes</Button>
+            </div>
+          </TabsContent>
         </Tabs>
       </div>
-    </AppLayout>
+    </AppLayout >
   );
 }

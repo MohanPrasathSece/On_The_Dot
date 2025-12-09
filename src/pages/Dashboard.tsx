@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Plus, Send, TrendingUp, Clock, AlertCircle, CheckCircle, ArrowUpRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AppLayout } from "@/components/app/AppLayout";
-import { mockInvoices, mockActivities, monthlyRevenue, mockReminders } from "@/data/mockData";
+import { mockInvoices, mockActivities, monthlyRevenue, mockReminders, mockSuggestions } from "@/data/mockData";
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
 const stats = [
@@ -29,9 +29,19 @@ export default function Dashboard() {
                 New Invoice
               </Link>
             </Button>
-            <Button variant="outline">
-              <Send className="h-4 w-4 mr-2" />
-              Send Reminder
+            <Button variant="outline" asChild>
+              <Link to="/reminders">
+                <Send className="h-4 w-4 mr-2" />
+                Send Reminder
+              </Link>
+            </Button>
+            <Button variant="outline" asChild>
+              <Link to="/clients">
+                <div className="flex items-center">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Add Client
+                </div>
+              </Link>
             </Button>
           </div>
         </div>
@@ -60,41 +70,35 @@ export default function Dashboard() {
         </div>
 
         {/* AI Smart Suggestions */}
-        {mockInvoices.some(i => i.status === 'overdue') && (
-          <div className="glass rounded-xl p-5 border-l-4 border-l-primary/70 animate-fade-in-up animation-delay-200">
-            <div className="flex items-start gap-4">
-              <div className="p-2 bg-primary/10 rounded-full text-primary mt-1">
-                <Sparkles className="h-5 w-5" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-lg flex items-center gap-2">
-                  AI Smart Suggestions
-                  <span className="text-xs font-normal text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">Beta</span>
-                </h3>
-                <div className="space-y-3 mt-3">
-                  {mockInvoices
-                    .filter(i => i.status === 'overdue')
-                    .slice(0, 3)
-                    .map(i => (
-                      <div key={i.id} className="flex flex-col sm:flex-row sm:items-center justify-between bg-background/40 p-3 rounded-lg border border-border/50 gap-3">
-                        <p className="text-sm">
-                          <span className="font-medium text-foreground">Insight:</span> You should follow up with <span className="font-medium">{i.client.name}</span> regarding overdue invoice <span className="font-medium">{i.number}</span> (${i.amount.toLocaleString()}).
-                        </p>
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          className="text-primary hover:text-primary hover:bg-primary/10 whitespace-nowrap shrink-0"
-                          onClick={() => toast({ title: "Reminder Sent", description: `Reminder sent to ${i.client.name}` })}
-                        >
-                          Send Reminder
-                        </Button>
-                      </div>
-                    ))}
-                </div>
+        <div className="glass rounded-xl p-5 border-l-4 border-l-primary/70 animate-fade-in-up animation-delay-200">
+          <div className="flex items-start gap-4">
+            <div className="p-2 bg-primary/10 rounded-full text-primary mt-1">
+              <Sparkles className="h-5 w-5" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-lg flex items-center gap-2">
+                AI Smart Suggestions
+                <span className="text-xs font-normal text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">Beta</span>
+              </h3>
+              <div className="space-y-3 mt-3">
+                {mockSuggestions.map((suggestion) => (
+                  <div key={suggestion.id} className="flex flex-col sm:flex-row sm:items-center justify-between bg-background/40 p-3 rounded-lg border border-border/50 gap-3">
+                    <p className="text-sm">
+                      <span className="font-medium text-foreground">Insight:</span> {suggestion.message}
+                    </p>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="text-primary hover:text-primary hover:bg-primary/10 whitespace-nowrap shrink-0"
+                    >
+                      {suggestion.action}
+                    </Button>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        )}
+        </div>
 
         {/* Charts and Activity */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -204,6 +208,7 @@ export default function Dashboard() {
                   <th className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3">Amount</th>
                   <th className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3">Status</th>
                   <th className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3">Due Date</th>
+                  <th className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3">Urgency</th>
                 </tr>
               </thead>
               <tbody>
@@ -234,6 +239,18 @@ export default function Dashboard() {
                     <td className="px-5 py-4 text-muted-foreground">
                       {new Date(invoice.dueDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                     </td>
+                    <td className="px-5 py-4">
+                      {invoice.status === 'overdue' && (
+                        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
+                          Urgent
+                        </span>
+                      )}
+                      {invoice.status !== 'overdue' && invoice.status !== 'paid' && new Date(invoice.dueDate) < new Date(Date.now() + 3 * 86400000) && (
+                        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
+                          Due Soon
+                        </span>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -241,6 +258,6 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-    </AppLayout>
+    </AppLayout >
   );
 }

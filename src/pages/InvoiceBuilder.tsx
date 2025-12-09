@@ -40,6 +40,8 @@ export default function InvoiceBuilder() {
   const [taxRate, setTaxRate] = useState(0);
   const [isRecurring, setIsRecurring] = useState(false);
   const [recurringInterval, setRecurringInterval] = useState("monthly");
+  const [language, setLanguage] = useState("English");
+  const [lateFee, setLateFee] = useState(0);
   const [notes, setNotes] = useState("");
   const [items, setItems] = useState<LineItem[]>([
     { id: "1", description: "", quantity: 1, rate: 0 }
@@ -204,6 +206,36 @@ export default function InvoiceBuilder() {
                   </div>
                 </div>
 
+                <div className="flex items-center justify-between pt-4 border-t border-border/50">
+                  <div className="flex items-center gap-2">
+                    <Label>Language</Label>
+                    <Select value={language} onValueChange={setLanguage}>
+                      <SelectTrigger className="w-32">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="English">English</SelectItem>
+                        <SelectItem value="Spanish">Spanish</SelectItem>
+                        <SelectItem value="French">French</SelectItem>
+                        <SelectItem value="German">German</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Label>Late Fee</Label>
+                    <div className="relative w-32">
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
+                      <Input
+                        type="number"
+                        value={lateFee}
+                        onChange={(e) => setLateFee(Number(e.target.value))}
+                        className="pl-8"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+
                 {/* Line Items */}
                 <div className="glass rounded-xl p-6 space-y-4">
                   <h3 className="font-semibold">Line Items</h3>
@@ -365,22 +397,29 @@ export default function InvoiceBuilder() {
                   <span className="text-muted-foreground">Tax ({taxRate}%)</span>
                   <span>${tax.toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between pt-2 border-t border-border/50 text-lg font-semibold">
-                  <span>Total</span>
-                  <span>${total.toLocaleString()}</span>
+              </div>
+              {lateFee > 0 && (
+                <div className="flex justify-between text-muted-foreground">
+                  <span>Late Fee</span>
+                  <span>${lateFee.toLocaleString()}</span>
                 </div>
+              )}
+              <div className="flex justify-between pt-2 border-t border-border/50 text-lg font-semibold">
+                <span>Total</span>
+                <span>${(total + lateFee).toLocaleString()}</span>
               </div>
+            </div>
 
-              <div className="pt-4 space-y-2">
-                <Button variant="outline" className="w-full">
-                  <FileDown className="h-4 w-4 mr-2" />
-                  Export as PDF
-                </Button>
-              </div>
+            <div className="pt-4 space-y-2">
+              <Button variant="outline" className="w-full">
+                <FileDown className="h-4 w-4 mr-2" />
+                Export as PDF
+              </Button>
             </div>
           </div>
         </div>
       </div>
-    </AppLayout>
+
+    </AppLayout >
   );
 }

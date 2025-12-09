@@ -3,7 +3,7 @@ import { Plus, Search, MoreHorizontal, Mail, FileText, Bell, Edit, Trash2, Copy,
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AppLayout } from "@/components/app/AppLayout";
-import { mockClients, Client } from "@/data/mockData";
+import { mockClients, Client, mockInvoices, mockReminders } from "@/data/mockData";
 import {
   Dialog,
   DialogContent,
@@ -203,7 +203,7 @@ export default function Clients() {
         </div>
 
         <Sheet open={!!selectedClient} onOpenChange={(open) => !open && setSelectedClient(null)}>
-          <SheetContent className="w-[400px] sm:w-[540px] overflow-y-auto">
+          <SheetContent className="w-full sm:max-w-[540px] overflow-y-auto">
             <SheetHeader className="mb-6">
               <SheetTitle>Client Details</SheetTitle>
               <SheetDescription>View and manage client information.</SheetDescription>
@@ -269,36 +269,40 @@ export default function Clients() {
                   <TabsContent value="history" className="space-y-4">
                     <h4 className="text-sm font-medium text-muted-foreground">Recent Invoices</h4>
                     <div className="space-y-2">
-                      {/* Filtering mockInvoices for demo. In real app, fetch by client ID */}
-                      {[1, 2, 3].map(i => (
-                        <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-muted/30">
-                          <div className="flex items-center gap-3">
-                            <FileText className="h-4 w-4 text-muted-foreground" />
-                            <div>
-                              <p className="text-sm font-medium">INV-00{i}</p>
-                              <p className="text-xs text-muted-foreground">Oct {10 + i}, 2024</p>
+                      {mockInvoices.filter(inv => inv.client.id === selectedClient.id).length === 0 ? (
+                        <p className="text-sm text-muted-foreground">No invoices found for this client.</p>
+                      ) : (
+                        mockInvoices.filter(inv => inv.client.id === selectedClient.id).map(inv => (
+                          <div key={inv.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/30">
+                            <div className="flex items-center gap-3">
+                              <FileText className="h-4 w-4 text-muted-foreground" />
+                              <div>
+                                <p className="text-sm font-medium">{inv.number}</p>
+                                <p className="text-xs text-muted-foreground">{new Date(inv.createdAt).toLocaleDateString()}</p>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-sm font-medium">${inv.amount.toLocaleString()}</p>
+                              <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${inv.status === 'paid' ? 'bg-green-500/10 text-green-600' : 'bg-yellow-500/10 text-yellow-600'}`}>
+                                {inv.status}
+                              </span>
                             </div>
                           </div>
-                          <div className="text-right">
-                            <p className="text-sm font-medium">$1,2{i}0.00</p>
-                            <span className="text-[10px] bg-green-500/10 text-green-600 px-1.5 py-0.5 rounded-full">Paid</span>
-                          </div>
-                        </div>
-                      ))}
+                        )))}
                     </div>
 
                     <h4 className="text-sm font-medium text-muted-foreground mt-6">Reminder History</h4>
                     <div className="pl-4 border-l-2 border-border/50 space-y-6">
-                      <div className="relative">
-                        <div className="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-border" />
-                        <p className="text-sm">Reminder Email Sent</p>
-                        <p className="text-xs text-muted-foreground">Yesterday, 2:30 PM</p>
-                      </div>
-                      <div className="relative">
-                        <div className="absolute -left-[21px] top-1 w-3 h-3 rounded-full bg-border" />
-                        <p className="text-sm">Invoice Viewed</p>
-                        <p className="text-xs text-muted-foreground">Oct 24, 9:15 AM</p>
-                      </div>
+                      {mockReminders.filter(r => r.client === selectedClient.name).length === 0 ? (
+                        <p className="text-sm text-muted-foreground">No reminders sent.</p>
+                      ) : (
+                        mockReminders.filter(r => r.client === selectedClient.name).map(reminder => (
+                          <div key={reminder.id} className="relative">
+                            <div className={`absolute -left-[21px] top-1 w-3 h-3 rounded-full ${reminder.status === 'delivered' ? 'bg-green-500' : 'bg-border'}`} />
+                            <p className="text-sm">Reminder {reminder.type === 'email' ? 'Email' : 'SMS'} {reminder.status}</p>
+                            <p className="text-xs text-muted-foreground">{new Date(reminder.scheduledDate).toLocaleDateString()} • {reminder.tone} tone</p>
+                          </div>
+                        )))}
                     </div>
                   </TabsContent>
 

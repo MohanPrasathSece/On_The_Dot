@@ -8,6 +8,9 @@ export interface Invoice {
   createdAt: string;
   items: InvoiceItem[];
   currency: string;
+  language: string;
+  lateFee: number;
+  timeline: Activity[];
 }
 
 export interface InvoiceItem {
@@ -31,6 +34,32 @@ export interface Client {
   notes?: string;
   taxId?: string;
   currency?: "USD" | "EUR" | "GBP" | "INR";
+  paymentHistory?: PaymentRecord[];
+  reminderHistory?: Reminder[];
+}
+
+export interface PaymentRecord {
+  id: string;
+  invoiceId: string;
+  amount: number;
+  date: string;
+  method: "credit_card" | "bank_transfer" | "paypal";
+}
+
+export interface SmartSuggestion {
+  id: string;
+  type: "follow_up" | "cash_flow" | "anomaly";
+  message: string;
+  action: string;
+  priority: "high" | "medium" | "low";
+}
+
+export interface Integration {
+  id: string;
+  name: string;
+  status: "connected" | "disconnected" | "error";
+  lastSync: string;
+  icon: string;
 }
 
 export interface Reminder {
@@ -60,6 +89,7 @@ export interface Activity {
   description: string;
   timestamp: string;
   user: string;
+  metadata?: any;
 }
 
 export const mockClients: Client[] = [
@@ -71,11 +101,11 @@ export const mockClients: Client[] = [
 ];
 
 export const mockInvoices: Invoice[] = [
-  { id: "inv1", number: "INV-001", client: mockClients[0], amount: 3500, status: "overdue", dueDate: "2024-12-01", createdAt: "2024-11-15", items: [{ id: "i1", description: "Website Redesign", quantity: 1, rate: 3500 }], currency: "USD" },
-  { id: "inv2", number: "INV-002", client: mockClients[1], amount: 2800, status: "paid", dueDate: "2024-12-10", createdAt: "2024-11-20", items: [{ id: "i2", description: "Brand Identity Package", quantity: 1, rate: 2800 }], currency: "USD" },
-  { id: "inv3", number: "INV-003", client: mockClients[2], amount: 4200, status: "sent", dueDate: "2024-12-15", createdAt: "2024-11-25", items: [{ id: "i3", description: "Mobile App UI Design", quantity: 1, rate: 4200 }], currency: "USD" },
-  { id: "inv4", number: "INV-004", client: mockClients[3], amount: 7800, status: "viewed", dueDate: "2024-12-20", createdAt: "2024-12-01", items: [{ id: "i4", description: "Marketing Campaign", quantity: 1, rate: 7800 }], currency: "USD" },
-  { id: "inv5", number: "INV-005", client: mockClients[4], amount: 2100, status: "draft", dueDate: "2024-12-25", createdAt: "2024-12-05", items: [{ id: "i5", description: "Consulting Services", quantity: 7, rate: 300 }], currency: "USD" },
+  { id: "inv1", number: "INV-001", client: mockClients[0], amount: 3500, status: "overdue", dueDate: "2024-12-01", createdAt: "2024-11-15", items: [{ id: "i1", description: "Website Redesign", quantity: 1, rate: 3500 }], currency: "USD", language: "English", lateFee: 50, timeline: [] },
+  { id: "inv2", number: "INV-002", client: mockClients[1], amount: 2800, status: "paid", dueDate: "2024-12-10", createdAt: "2024-11-20", items: [{ id: "i2", description: "Brand Identity Package", quantity: 1, rate: 2800 }], currency: "USD", language: "English", lateFee: 0, timeline: [] },
+  { id: "inv3", number: "INV-003", client: mockClients[2], amount: 4200, status: "sent", dueDate: "2024-12-15", createdAt: "2024-11-25", items: [{ id: "i3", description: "Mobile App UI Design", quantity: 1, rate: 4200 }], currency: "USD", language: "Spanish", lateFee: 0, timeline: [] },
+  { id: "inv4", number: "INV-004", client: mockClients[3], amount: 7800, status: "viewed", dueDate: "2024-12-20", createdAt: "2024-12-01", items: [{ id: "i4", description: "Marketing Campaign", quantity: 1, rate: 7800 }], currency: "USD", language: "English", lateFee: 0, timeline: [] },
+  { id: "inv5", number: "INV-005", client: mockClients[4], amount: 2100, status: "draft", dueDate: "2024-12-25", createdAt: "2024-12-05", items: [{ id: "i5", description: "Consulting Services", quantity: 7, rate: 300 }], currency: "USD", language: "English", lateFee: 0, timeline: [] },
 ];
 
 export const mockReminders: Reminder[] = [
@@ -113,4 +143,17 @@ export const invoiceStatusData = [
   { name: "Pending", value: 30, color: "hsl(var(--muted-foreground))" },
   { name: "Overdue", value: 15, color: "hsl(var(--foreground) / 0.5)" },
   { name: "Draft", value: 10, color: "hsl(var(--muted))" },
+];
+
+export const mockIntegrations: Integration[] = [
+  { id: "stripe", name: "Stripe", status: "connected", lastSync: "2 min ago", icon: "stripe" },
+  { id: "paypal", name: "PayPal", status: "disconnected", lastSync: "Never", icon: "paypal" },
+  { id: "zapier", name: "Zapier", status: "connected", lastSync: "1 hour ago", icon: "zapier" },
+  { id: "plaid", name: "Plaid", status: "error", lastSync: "Yesterday", icon: "plaid" },
+];
+
+export const mockSuggestions: SmartSuggestion[] = [
+  { id: "s1", type: "follow_up", message: "You should follow up with Sarah Johnson regarding overdue invoice INV-001", action: "Send Reminder", priority: "high" },
+  { id: "s2", type: "cash_flow", message: "Your cash flow next month may drop by 23%", action: "View Report", priority: "medium" },
+  { id: "s3", type: "anomaly", message: "Unusual expense detected in Marketing category", action: "Review", priority: "low" },
 ];

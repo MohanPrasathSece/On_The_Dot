@@ -90,9 +90,9 @@ export default function Team() {
               <div className="space-y-4 py-4">
                 <div>
                   <Label>Email Address</Label>
-                  <Input 
+                  <Input
                     type="email"
-                    value={inviteEmail} 
+                    value={inviteEmail}
                     onChange={(e) => setInviteEmail(e.target.value)}
                     placeholder="colleague@company.com"
                   />
@@ -144,8 +144,13 @@ export default function Team() {
                         <tr key={member.id} className="table-row">
                           <td className="px-5 py-4">
                             <div className="flex items-center gap-3">
-                              <div className="w-9 h-9 rounded-full bg-foreground/10 flex items-center justify-center text-sm font-medium">
-                                {member.name.split(' ').map(n => n[0]).join('')}
+                              <div className="relative w-9 h-9">
+                                <div className="w-9 h-9 rounded-full bg-foreground/10 flex items-center justify-center text-sm font-medium">
+                                  {member.name.split(' ').map(n => n[0]).join('')}
+                                </div>
+                                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-background flex items-center justify-center">
+                                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                </div>
                               </div>
                               <div>
                                 <p className="font-medium">{member.name}</p>
@@ -156,8 +161,8 @@ export default function Team() {
                           <td className="px-5 py-4">
                             <div className="flex items-center gap-2">
                               <RoleIcon className="h-4 w-4 text-muted-foreground" />
-                              <Select 
-                                value={member.role} 
+                              <Select
+                                value={member.role}
                                 onValueChange={(v: "admin" | "editor" | "viewer") => handleRoleChange(member.id, v)}
                               >
                                 <SelectTrigger className="w-28 h-8">
@@ -172,8 +177,8 @@ export default function Team() {
                             </div>
                           </td>
                           <td className="px-5 py-4 text-muted-foreground">
-                            {new Date(member.joinedAt).toLocaleDateString('en-US', { 
-                              month: 'short', day: 'numeric', year: 'numeric' 
+                            {new Date(member.joinedAt).toLocaleDateString('en-US', {
+                              month: 'short', day: 'numeric', year: 'numeric'
                             })}
                           </td>
                           <td className="px-5 py-4 text-right">
@@ -188,8 +193,8 @@ export default function Team() {
                                   <Mail className="h-4 w-4 mr-2" /> Send Email
                                 </DropdownMenuItem>
                                 <DropdownMenuSeparator />
-                                <DropdownMenuItem 
-                                  onClick={() => handleRemove(member.id)} 
+                                <DropdownMenuItem
+                                  onClick={() => handleRemove(member.id)}
                                   className="text-destructive"
                                   disabled={member.role === "admin" && team.filter(t => t.role === "admin").length === 1}
                                 >
@@ -219,7 +224,7 @@ export default function Team() {
                         <span className="text-xs text-muted-foreground">{activity.user}</span>
                         <span className="text-xs text-muted-foreground">•</span>
                         <span className="text-xs text-muted-foreground">
-                          {new Date(activity.timestamp).toLocaleDateString('en-US', { 
+                          {new Date(activity.timestamp).toLocaleDateString('en-US', {
                             month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
                           })}
                         </span>

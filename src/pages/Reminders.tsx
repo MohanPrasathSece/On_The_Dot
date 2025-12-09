@@ -119,16 +119,23 @@ export default function Reminders() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <Label>Type</Label>
-                    <Select value={newReminder.type} onValueChange={(v: "email" | "sms") => setNewReminder({ ...newReminder, type: v })}>
+                    <Select value={newReminder.type} onValueChange={(v: "email" | "sms" | "whatsapp") => setNewReminder({ ...newReminder, type: v as any })}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="email">Email</SelectItem>
                         <SelectItem value="sms">SMS</SelectItem>
+                        <SelectItem value="whatsapp">WhatsApp</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
+                  <div className="flex items-center gap-2 pt-8">
+                    <Switch id="ab-test" />
+                    <Label htmlFor="ab-test">A/B Test Message</Label>
+                  </div>
+
+
                   <div>
                     <Label>Schedule Date</Label>
                     <Input
@@ -253,6 +260,20 @@ export default function Reminders() {
           </TabsContent>
 
           <TabsContent value="sent" className="space-y-4">
+            <div className="grid grid-cols-3 gap-4 mb-4">
+              <div className="p-4 rounded-xl bg-muted/30 text-center">
+                <p className="text-sm text-muted-foreground">Open Rate</p>
+                <p className="text-2xl font-semibold">68%</p>
+              </div>
+              <div className="p-4 rounded-xl bg-muted/30 text-center">
+                <p className="text-sm text-muted-foreground">Click Rate</p>
+                <p className="text-2xl font-semibold">24%</p>
+              </div>
+              <div className="p-4 rounded-xl bg-muted/30 text-center">
+                <p className="text-sm text-muted-foreground">Delivered</p>
+                <p className="text-2xl font-semibold">98%</p>
+              </div>
+            </div>
             {sentReminders.map((reminder) => (
               <div key={reminder.id} className="glass rounded-xl p-5 flex items-center justify-between">
                 <div className="flex items-center gap-4">
