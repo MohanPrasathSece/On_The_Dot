@@ -1,0 +1,76 @@
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { AuthProvider, useAuth } from "@/contexts/AuthContext";
+
+import Index from "./pages/Index";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Invoices from "./pages/Invoices";
+import InvoiceBuilder from "./pages/InvoiceBuilder";
+import Clients from "./pages/Clients";
+import Reminders from "./pages/Reminders";
+import Reports from "./pages/Reports";
+import Integrations from "./pages/Integrations";
+import Team from "./pages/Team";
+import Settings from "./pages/Settings";
+import Support from "./pages/Support";
+import NotFound from "./pages/NotFound";
+
+const queryClient = new QueryClient();
+
+function ProtectedRoute({ children }: { children: React.ReactNode }) {
+  const { isAuthenticated } = useAuth();
+  
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+  
+  return <>{children}</>;
+}
+
+function AppRoutes() {
+  const { isAuthenticated } = useAuth();
+
+  return (
+    <Routes>
+      <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Index />} />
+      <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
+      
+      <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+      <Route path="/invoices" element={<ProtectedRoute><Invoices /></ProtectedRoute>} />
+      <Route path="/invoices/new" element={<ProtectedRoute><InvoiceBuilder /></ProtectedRoute>} />
+      <Route path="/invoices/:id" element={<ProtectedRoute><Invoices /></ProtectedRoute>} />
+      <Route path="/clients" element={<ProtectedRoute><Clients /></ProtectedRoute>} />
+      <Route path="/reminders" element={<ProtectedRoute><Reminders /></ProtectedRoute>} />
+      <Route path="/reports" element={<ProtectedRoute><Reports /></ProtectedRoute>} />
+      <Route path="/integrations" element={<ProtectedRoute><Integrations /></ProtectedRoute>} />
+      <Route path="/team" element={<ProtectedRoute><Team /></ProtectedRoute>} />
+      <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
+      <Route path="/support" element={<ProtectedRoute><Support /></ProtectedRoute>} />
+      
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+}
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <ThemeProvider defaultTheme="light" storageKey="onthedot-theme">
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
+    </ThemeProvider>
+  </QueryClientProvider>
+);
+
+export default App;
