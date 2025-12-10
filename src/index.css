@@ -53,21 +53,21 @@
     --radius: 0.5rem;
 
     /* Sidebar - Project Brand (Deep Cobalt) */
-    /* Sidebar - Luxurious Gold & Black */
-    --sidebar-background: 0 0% 5%;
-    /* Very Dark Black */
-    --sidebar-foreground: 45 30% 90%;
-    /* Pale Gold/White text */
-    --sidebar-primary: 45 93% 50%;
-    /* Vibrant Gold for active items */
-    --sidebar-primary-foreground: 0 0% 0%;
-    /* Black text on Gold */
-    --sidebar-accent: 45 20% 15%;
-    /* Dark Golden Brown hover */
-    --sidebar-accent-foreground: 45 93% 50%;
-    /* Gold text on hover */
-    --sidebar-border: 45 20% 15%;
-    --sidebar-ring: 45 93% 50%;
+    /* Sidebar - Luxurious Gold & White (Light Mode) */
+    --sidebar-background: 0 0% 100%;
+    /* White */
+    --sidebar-foreground: 30 6% 10%;
+    /* Dark text */
+    --sidebar-primary: 45 93% 47%;
+    /* Vibrant Gold */
+    --sidebar-primary-foreground: 30 6% 10%;
+    /* Dark text on Gold */
+    --sidebar-accent: 45 30% 95%;
+    /* Pale Gold hover */
+    --sidebar-accent-foreground: 45 93% 40%;
+    /* Darker Gold text on hover */
+    --sidebar-border: 45 20% 90%;
+    --sidebar-ring: 45 93% 47%;
   }
 
   .dark {

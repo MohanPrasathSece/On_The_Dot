@@ -24,7 +24,7 @@ const initialIntegrations: Integration[] = [
   { id: "xero", name: "Xero", description: "Two-way sync with Xero accounting", icon: "📈", connected: false, autoSync: false },
   { id: "slack", name: "Slack", description: "Get payment notifications in Slack", icon: "💬", connected: true, autoSync: true, lastSync: "Just now" },
   { id: "zapier", name: "Zapier", description: "Connect to 5000+ apps", icon: "⚡", connected: false, autoSync: false },
-  { id: "make", name: "Make.com", description: "Visual automation workflows", icon: "🟣", connected: false, autoSync: false },
+  { id: "make", name: "Make.com", description: "Visual automation workflows", icon: "⚡", connected: false, autoSync: false },
   { id: "webhooks", name: "Webhooks", description: "Custom HTTP callbacks", icon: "🪝", connected: false, autoSync: false },
   { id: "gmail", name: "Gmail", description: "Send invoices from your email", icon: "✉️", connected: false, autoSync: false },
 ];
@@ -220,7 +220,7 @@ function IntegrationCard({
           </div>
         </div>
       ) : (
-        <Button className="w-full bg-[#4A154B] hover:bg-[#4A154B]/90 text-white" onClick={() => onConnect(integration.id)}>
+        <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => onConnect(integration.id)}>
           Connect
           <ExternalLink className="h-3 w-3 ml-1" />
         </Button>

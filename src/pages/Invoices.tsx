@@ -123,7 +123,7 @@ export default function Invoices() {
       <div className="group flex gap-3 py-2 px-2 hover:bg-muted/40 -mx-2 rounded-lg transition-colors relative">
         {/* Avatar */}
         <div className="flex-shrink-0 mt-1">
-          <div className="w-9 h-9 rounded bg-[#4A154B] flex items-center justify-center font-bold text-white text-sm cursor-pointer hover:opacity-80">
+          <div className="w-9 h-9 rounded bg-primary flex items-center justify-center font-bold text-primary-foreground text-sm cursor-pointer hover:opacity-80">
             {invoice.avatar}
           </div>
         </div>

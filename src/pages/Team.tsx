@@ -145,7 +145,7 @@ export default function Team() {
                           <td className="px-5 py-3">
                             <div className="flex items-center gap-3">
                               <div className="relative w-8 h-8">
-                                <div className="w-8 h-8 rounded-md bg-[#4A154B] flex items-center justify-center text-sm font-bold text-white">
+                                <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center text-sm font-bold text-primary-foreground">
                                   {member.name.split(' ').map(n => n[0]).join('')}
                                 </div>
                                 <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-background flex items-center justify-center">

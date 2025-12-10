@@ -23,109 +23,109 @@ export function Resources() {
                     {/* Resource Library */}
                     <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
                         <div className="flex items-center gap-4 mb-4">
-                            <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600">
+                            <div className="p-2 rounded-lg bg-primary/10 text-primary">
                                 <Book className="w-5 h-5" />
                             </div>
                             <h3 className="font-bold text-lg">Resource Library</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Detailed guides, FAQs, and knowledge base.</p>
-                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">Browse Library →</a>
+                        <a href="#" className="text-sm font-semibold text-primary hover:underline">Browse Library →</a>
                     </div>
 
                     {/* What's New */}
                     <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
                         <div className="flex items-center gap-4 mb-4">
-                            <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600">
+                            <div className="p-2 rounded-lg bg-primary/10 text-primary">
                                 <Sparkles className="w-5 h-5" />
                             </div>
                             <h3 className="font-bold text-lg">What's New</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Latest product updates and feature releases.</p>
-                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">View Changelog →</a>
+                        <a href="#" className="text-sm font-semibold text-primary hover:underline">View Changelog →</a>
                     </div>
 
                     {/* Product Tour */}
                     <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
                         <div className="flex items-center gap-4 mb-4">
-                            <div className="p-2 rounded-lg bg-pink-100 dark:bg-pink-900/30 text-pink-600">
+                            <div className="p-2 rounded-lg bg-primary/10 text-primary">
                                 <PlayCircle className="w-5 h-5" />
                             </div>
                             <h3 className="font-bold text-lg">Product Tour</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Interactive walkthrough of the app.</p>
-                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">Start Tour →</a>
+                        <a href="#" className="text-sm font-semibold text-primary hover:underline">Start Tour →</a>
                     </div>
 
                     {/* Events */}
                     <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
                         <div className="flex items-center gap-4 mb-4">
-                            <div className="p-2 rounded-lg bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600">
+                            <div className="p-2 rounded-lg bg-primary/10 text-primary">
                                 <Calendar className="w-5 h-5" />
                             </div>
                             <h3 className="font-bold text-lg">Events</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Webinars, workshops, and product demos.</p>
-                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">See Schedule →</a>
+                        <a href="#" className="text-sm font-semibold text-primary hover:underline">See Schedule →</a>
                     </div>
 
                     {/* Developers */}
                     <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
                         <div className="flex items-center gap-4 mb-4">
-                            <div className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600">
+                            <div className="p-2 rounded-lg bg-primary/10 text-primary">
                                 <Code2 className="w-5 h-5" />
                             </div>
                             <h3 className="font-bold text-lg">Developers</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">API documentation, SDKs, and integrations.</p>
-                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">View Docs →</a>
+                        <a href="#" className="text-sm font-semibold text-primary hover:underline">View Docs →</a>
                     </div>
 
                     {/* Customer Stories */}
                     <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
                         <div className="flex items-center gap-4 mb-4">
-                            <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600">
+                            <div className="p-2 rounded-lg bg-primary/10 text-primary">
                                 <FileText className="w-5 h-5" />
                             </div>
                             <h3 className="font-bold text-lg">Customer Stories</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Case studies and testimonials from users.</p>
-                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">Read Stories →</a>
+                        <a href="#" className="text-sm font-semibold text-primary hover:underline">Read Stories →</a>
                     </div>
 
                     {/* Community */}
                     <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
                         <div className="flex items-center gap-4 mb-4">
-                            <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600">
+                            <div className="p-2 rounded-lg bg-primary/10 text-primary">
                                 <Users className="w-5 h-5" />
                             </div>
                             <h3 className="font-bold text-lg">Community</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Join our Slack/Discord channels and user groups.</p>
-                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">Join Now →</a>
+                        <a href="#" className="text-sm font-semibold text-primary hover:underline">Join Now →</a>
                     </div>
 
                     {/* Certification */}
                     <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
                         <div className="flex items-center gap-4 mb-4">
-                            <div className="p-2 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-600">
+                            <div className="p-2 rounded-lg bg-primary/10 text-primary">
                                 <GraduationCap className="w-5 h-5" />
                             </div>
                             <h3 className="font-bold text-lg">OnTheDot Certified</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Certification program for power users.</p>
-                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">Get Certified →</a>
+                        <a href="#" className="text-sm font-semibold text-primary hover:underline">Get Certified →</a>
                     </div>
 
                     {/* Marketplace */}
                     <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
                         <div className="flex items-center gap-4 mb-4">
-                            <div className="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600">
+                            <div className="p-2 rounded-lg bg-primary/10 text-primary">
                                 <ShoppingBag className="w-5 h-5" />
                             </div>
                             <h3 className="font-bold text-lg">Marketplace</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Third-party integrations and add-ons.</p>
-                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">Browse Apps →</a>
+                        <a href="#" className="text-sm font-semibold text-primary hover:underline">Browse Apps →</a>
                     </div>
                 </div>
             </div>

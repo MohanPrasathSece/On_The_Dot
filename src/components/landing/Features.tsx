@@ -17,7 +17,7 @@ export function Features() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* 2-Click Invoices */}
           <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
-            <div className="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/30 text-amber-600 flex items-center justify-center mb-6">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
               <FileText className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold mb-3">2-Click Branded Invoices</h3>
@@ -25,18 +25,18 @@ export function Features() {
             <ul className="space-y-2 mb-6">
               {["Custom logo upload", "Brand color themes", "Professional templates", "PDF export"].map(f => (
                 <li key={f} className="text-xs font-medium text-muted-foreground flex items-center gap-2">
-                  <div className="w-1 h-1 rounded-full bg-amber-500" /> {f}
+                  <div className="w-1 h-1 rounded-full bg-primary" /> {f}
                 </li>
               ))}
             </ul>
-            <Button variant="link" className="p-0 text-amber-600 h-auto font-semibold group-hover:gap-2 transition-all">
+            <Button variant="link" className="p-0 text-primary h-auto font-semibold group-hover:gap-2 transition-all">
               Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
             </Button>
           </div>
 
           {/* Smart Reminders */}
           <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
-            <div className="w-12 h-12 rounded-xl bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 flex items-center justify-center mb-6">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
               <Bell className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold mb-3">Smart Reminder Cadence</h3>
@@ -44,18 +44,18 @@ export function Features() {
             <ul className="space-y-2 mb-6">
               {["Email & SMS reminders", "Intelligent timing", "Customizable tones", "Delivery tracking"].map(f => (
                 <li key={f} className="text-xs font-medium text-muted-foreground flex items-center gap-2">
-                  <div className="w-1 h-1 rounded-full bg-yellow-500" /> {f}
+                  <div className="w-1 h-1 rounded-full bg-primary" /> {f}
                 </li>
               ))}
             </ul>
-            <Button variant="link" className="p-0 text-yellow-600 h-auto font-semibold group-hover:gap-2 transition-all">
+            <Button variant="link" className="p-0 text-primary h-auto font-semibold group-hover:gap-2 transition-all">
               Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
             </Button>
           </div>
 
           {/* Overdue Dashboard */}
           <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
-            <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-600 flex items-center justify-center mb-6">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
               <BarChart3 className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold mb-3">Overdue Dashboard</h3>
@@ -63,18 +63,18 @@ export function Features() {
             <ul className="space-y-2 mb-6">
               {["Visual dashboard", "Urgency indicators", "Payment tracking", "Quick actions"].map(f => (
                 <li key={f} className="text-xs font-medium text-muted-foreground flex items-center gap-2">
-                  <div className="w-1 h-1 rounded-full bg-orange-500" /> {f}
+                  <div className="w-1 h-1 rounded-full bg-primary" /> {f}
                 </li>
               ))}
             </ul>
-            <Button variant="link" className="p-0 text-orange-600 h-auto font-semibold group-hover:gap-2 transition-all">
+            <Button variant="link" className="p-0 text-primary h-auto font-semibold group-hover:gap-2 transition-all">
               Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
             </Button>
           </div>
 
           {/* Recurring Invoices */}
           <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
-            <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-600 flex items-center justify-center mb-6">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
               <Repeat className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold mb-3">Recurring Invoices</h3>
@@ -82,7 +82,7 @@ export function Features() {
             <ul className="space-y-2 mb-6">
               {["Auto-recurring", "Flexible schedules", "Subscription management", "Payment automation"].map(f => (
                 <li key={f} className="text-xs font-medium text-muted-foreground flex items-center gap-2">
-                  <div className="w-1 h-1 rounded-full bg-orange-500" /> {f}
+                  <div className="w-1 h-1 rounded-full bg-primary" /> {f}
                 </li>
               ))}
             </ul>
@@ -90,7 +90,7 @@ export function Features() {
 
           {/* Payment Integration */}
           <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
-            <div className="w-12 h-12 rounded-xl bg-lime-100 dark:bg-lime-900/30 text-lime-600 flex items-center justify-center mb-6">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
               <CreditCard className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold mb-3">Payment Integration</h3>
@@ -98,7 +98,7 @@ export function Features() {
             <ul className="space-y-2 mb-6">
               {["Multiple processors", "Instant payments", "Bank connections", "Transaction fees"].map(f => (
                 <li key={f} className="text-xs font-medium text-muted-foreground flex items-center gap-2">
-                  <div className="w-1 h-1 rounded-full bg-lime-500" /> {f}
+                  <div className="w-1 h-1 rounded-full bg-primary" /> {f}
                 </li>
               ))}
             </ul>
@@ -106,7 +106,7 @@ export function Features() {
 
           {/* AI Writer */}
           <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
-            <div className="w-12 h-12 rounded-xl bg-amber-200 dark:bg-amber-800/30 text-amber-700 flex items-center justify-center mb-6">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
               <Sparkles className="w-6 h-6" />
             </div>
             <h3 className="text-xl font-bold mb-3">AI Writing Assistant</h3>
@@ -114,7 +114,7 @@ export function Features() {
             <ul className="space-y-2 mb-6">
               {["AI-powered writing", "Professional tone", "Multiple templates", "Custom messaging"].map(f => (
                 <li key={f} className="text-xs font-medium text-muted-foreground flex items-center gap-2">
-                  <div className="w-1 h-1 rounded-full bg-amber-600" /> {f}
+                  <div className="w-1 h-1 rounded-full bg-primary" /> {f}
                 </li>
               ))}
             </ul>

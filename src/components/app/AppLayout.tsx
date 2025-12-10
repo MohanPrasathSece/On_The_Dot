@@ -94,11 +94,11 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex h-screen overflow-hidden bg-background text-foreground">
       {/* 1. WORKSPACE SWITCHER (Left Rail) */}
-      <div className="w-[70px] bg-sidebar flex flex-col items-center py-3 space-y-4 z-20 flex-shrink-0 border-r border-white/10">
-        <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center cursor-pointer hover:bg-white/20 transition-all border-2 border-transparent hover:border-white/50">
-          <span className="font-bold text-white text-lg">OTD</span>
+      <div className="w-[70px] bg-sidebar flex flex-col items-center py-3 space-y-4 z-20 flex-shrink-0 border-r border-sidebar-border">
+        <div className="w-10 h-10 rounded-xl bg-sidebar-accent flex items-center justify-center cursor-pointer hover:bg-sidebar-accent/80 transition-all border-2 border-transparent hover:border-sidebar-primary/20">
+          <span className="font-bold text-sidebar-primary text-lg">OTD</span>
         </div>
-        <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center cursor-pointer hover:bg-white/10 transition-all text-white">
+        <div className="w-10 h-10 rounded-xl bg-transparent border border-sidebar-border flex items-center justify-center cursor-pointer hover:bg-sidebar-accent transition-all text-sidebar-foreground">
           <Plus className="w-5 h-5" />
         </div>
         <div className="flex-1" />
@@ -116,12 +116,12 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         mobileMenuOpen ? "translate-x-[70px]" : "-translate-x-full md:translate-x-0 md:left-0"
       )}>
         {/* Sidebar Header */}
-        <div className="h-12 flex items-center justify-between px-4 border-b border-white/10 hover:bg-white/5 cursor-pointer transition-colors text-sidebar-foreground">
+        <div className="h-12 flex items-center justify-between px-4 border-b border-sidebar-border hover:bg-sidebar-accent/50 cursor-pointer transition-colors text-sidebar-foreground">
           <div className="flex items-center gap-2 font-bold truncate">
             <span className="truncate">OnTheDot HQ</span>
             <ChevronDown className="w-3 h-3 opacity-70" />
           </div>
-          <div className="w-8 h-8 rounded-full bg-white text-sidebar flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-sidebar-accent text-sidebar-primary flex items-center justify-center">
             <Plus className="w-4 h-4" />
           </div>
         </div>
@@ -132,7 +132,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             {mainNav.map((section, idx) => (
               <div key={idx}>
                 {section.title && (
-                  <div className="flex items-center justify-between group px-3 mb-1 text-sidebar-foreground/70 hover:text-white cursor-pointer">
+                  <div className="flex items-center justify-between group px-3 mb-1 text-sidebar-foreground/70 hover:text-sidebar-foreground cursor-pointer">
                     <span className="text-xs font-medium uppercase tracking-wider">{section.title}</span>
                     <Plus className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
@@ -148,8 +148,8 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                         className={cn(
                           "flex items-center gap-2 px-3 py-1.5 rounded transition-all group relative",
                           isActive
-                            ? "bg-white/10 text-white"
-                            : "text-sidebar-foreground/80 hover:bg-white/5 hover:text-white"
+                            ? "bg-sidebar-accent text-sidebar-primary font-bold"
+                            : "text-sidebar-foreground/80 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
                         )}
                       >
                         {item.variant === 'channel' && <Hash className="w-4 h-4 opacity-70" />}

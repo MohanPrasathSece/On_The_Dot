@@ -4,14 +4,15 @@ import { Moon, Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/ThemeProvider";
 import { cn } from "@/lib/utils";
+import { NavbarMegaMenu } from "./NavbarMegaMenu";
 
-const navLinks = [
+/* const navLinks = [
   { name: "About", href: "#why" },
   { name: "Features", href: "#features" },
   { name: "Testimonials", href: "#testimonials" },
   { name: "Pricing", href: "#pricing" },
   { name: "FAQ", href: "#faq" },
-];
+]; */
 
 export function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -46,16 +47,14 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
+          <div className="hidden lg:flex items-center gap-6">
+            <NavbarMegaMenu />
+            <Link to="/features/enterprise" className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors">
+              Enterprise
+            </Link>
+            <Link to="/pricing" className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors">
+              Pricing
+            </Link>
           </div>
 
           {/* Actions */}
@@ -107,16 +106,11 @@ export function Navbar() {
         {isMobileMenuOpen && (
           <div className="lg:hidden py-4 animate-fade-in border-t border-border/50 h-screen bg-background">
             <div className="flex flex-col gap-6 px-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-lg font-medium text-foreground/80 hover:text-foreground transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
-              ))}
+              <Link to="/features/features" className="text-lg font-medium text-foreground/80 hover:text-foreground">Features</Link>
+              <Link to="/features/solutions" className="text-lg font-medium text-foreground/80 hover:text-foreground">Solutions</Link>
+              <Link to="/features/enterprise" className="text-lg font-medium text-foreground/80 hover:text-foreground">Enterprise</Link>
+              <Link to="/features/resources-library" className="text-lg font-medium text-foreground/80 hover:text-foreground">Resources</Link>
+              <Link to="/pricing" className="text-lg font-medium text-foreground/80 hover:text-foreground">Pricing</Link>
               <div className="flex flex-col gap-4 pt-6 border-t border-border/50">
                 <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
                   <Button variant="outline" className="w-full h-12 text-lg">Log In</Button>

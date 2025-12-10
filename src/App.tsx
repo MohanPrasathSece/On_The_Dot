@@ -20,6 +20,7 @@ import Integrations from "./pages/Integrations";
 import Team from "./pages/Team";
 import Settings from "./pages/Settings";
 import Support from "./pages/Support";
+import GenericFeaturePage from "./pages/features/GenericFeaturePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ function AppRoutes() {
       <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Index />} />
       <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
       <Route path="/signup" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Signup />} />
+      <Route path="/features/:featureId" element={<GenericFeaturePage />} />
 
       <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
 

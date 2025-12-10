@@ -11,7 +11,7 @@ import { Footer } from "@/components/landing/Footer";
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground selection:bg-[#4A154B]/20">
+    <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20">
       <Navbar />
       <Hero />
       <div id="why">

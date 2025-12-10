@@ -16,7 +16,7 @@ export function Solutions() {
 
                 {/* By Department */}
                 <div className="mb-24">
-                    <h3 className="text-2xl font-bold mb-10 border-l-4 border-[#4A154B] pl-4">By Department</h3>
+                    <h3 className="text-2xl font-bold mb-10 border-l-4 border-primary pl-4">By Department</h3>
                     <div className="grid md:grid-cols-3 gap-6">
                         {[
                             { title: "Freelancers", desc: "Automate admin, focus on work." },
@@ -26,7 +26,7 @@ export function Solutions() {
                             { title: "Client Managers", desc: "Review client history before calls." },
                             { title: "Business Owners", desc: "Bird's eye view of cash flow." }
                         ].map((item, i) => (
-                            <div key={i} className="bg-background p-6 rounded-xl border border-border/50 hover:border-[#4A154B]/30 transition-all">
+                            <div key={i} className="bg-background p-6 rounded-xl border border-border/50 hover:border-primary/30 transition-all">
                                 <h4 className="font-semibold text-lg mb-2 text-foreground">{item.title}</h4>
                                 <p className="text-sm text-muted-foreground">{item.desc}</p>
                             </div>
@@ -36,7 +36,7 @@ export function Solutions() {
 
                 {/* By Industry */}
                 <div>
-                    <h3 className="text-2xl font-bold mb-10 border-l-4 border-[#4A154B] pl-4">By Industry</h3>
+                    <h3 className="text-2xl font-bold mb-10 border-l-4 border-primary pl-4">By Industry</h3>
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {[
                             { icon: Palette, title: "Creative & Design", desc: "Content Creators, Designers" },
@@ -49,7 +49,7 @@ export function Solutions() {
                             { icon: Briefcase, title: "Small Business", desc: "Services, Trades" }
                         ].map((item, i) => (
                             <div key={i} className="flex items-start gap-4 bg-background p-5 rounded-xl border border-border/50 hover:shadow-md transition-all">
-                                <div className="p-2 rounded-lg bg-[#4A154B]/5 text-[#4A154B]">
+                                <div className="p-2 rounded-lg bg-primary/10 text-primary">
                                     <item.icon className="w-5 h-5" />
                                 </div>
                                 <div>
