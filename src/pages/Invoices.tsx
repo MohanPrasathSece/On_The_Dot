@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Plus, Search, Filter, Download, MoreHorizontal, Eye, Edit, Trash2, Send, Copy, CheckSquare, Archive, Check } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Plus, Search, Filter, MoreHorizontal, Download, Send,
+  Eye, Edit, Trash2, Copy, CheckCircle, Clock, AlertCircle,
+  DollarSign, Calendar, User, Mail, Phone, Star, Pin, ArrowUpRight
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AppLayout } from "@/components/app/AppLayout";
-import { mockInvoices, Invoice } from "@/data/mockData";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,294 +15,246 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { toast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
+
+// Dummy Invoice Data
+const invoices = [
+  {
+    id: "INV-1250",
+    client: "Acme Corporation",
+    clientEmail: "billing@acme.com",
+    amount: "$5,200",
+    status: "paid",
+    dueDate: "2024-01-15",
+    issueDate: "2024-01-01",
+    items: 3,
+    avatar: "A",
+    isPinned: true,
+  },
+  {
+    id: "INV-1249",
+    client: "TechStart Inc",
+    clientEmail: "accounts@techstart.io",
+    amount: "$3,800",
+    status: "pending",
+    dueDate: "2024-01-20",
+    issueDate: "2024-01-05",
+    items: 2,
+    avatar: "T",
+    isPinned: false,
+  },
+  {
+    id: "INV-1248",
+    client: "Creative Studios",
+    clientEmail: "finance@creative.com",
+    amount: "$2,100",
+    status: "pending",
+    dueDate: "2024-01-18",
+    issueDate: "2024-01-03",
+    items: 4,
+    avatar: "C",
+    isPinned: false,
+  },
+  {
+    id: "INV-1247",
+    client: "Digital Dynamics",
+    clientEmail: "payments@digitald.com",
+    amount: "$4,500",
+    status: "paid",
+    dueDate: "2024-01-12",
+    issueDate: "2023-12-28",
+    items: 5,
+    avatar: "D",
+    isPinned: false,
+  },
+  {
+    id: "INV-1246",
+    client: "Startup Labs",
+    clientEmail: "admin@startuplabs.co",
+    amount: "$3,500",
+    status: "overdue",
+    dueDate: "2024-01-10",
+    issueDate: "2023-12-25",
+    items: 3,
+    avatar: "S",
+    isPinned: true,
+  },
+  {
+    id: "INV-1245",
+    client: "Innovation Hub",
+    clientEmail: "billing@innovhub.com",
+    amount: "$6,200",
+    status: "draft",
+    dueDate: "2024-01-25",
+    issueDate: "2024-01-08",
+    items: 6,
+    avatar: "I",
+    isPinned: false,
+  },
+];
+
+const statusConfig = {
+  paid: { color: "bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400", icon: CheckCircle },
+  pending: { color: "bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400", icon: Clock },
+  overdue: { color: "bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-400", icon: AlertCircle },
+  draft: { color: "bg-gray-100 text-gray-700 dark:bg-gray-900/20 dark:text-gray-400", icon: Edit },
+};
 
 export default function Invoices() {
-  const [invoices, setInvoices] = useState<Invoice[]>(mockInvoices);
-  const [search, setSearch] = useState("");
-  const [statusFilter, setStatusFilter] = useState<string>("all");
-  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [selectedStatus, setSelectedStatus] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [viewMode, setViewMode] = useState<"list" | "cards">("list");
 
-  const [sortConfig, setSortConfig] = useState<{ key: string, direction: 'asc' | 'desc' } | null>(null);
-
-  const handleSort = (key: string) => {
-    let direction: 'asc' | 'desc' = 'asc';
-    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'asc') {
-      direction = 'desc';
-    }
-    setSortConfig({ key, direction });
-  };
-
-  const filteredInvoices = invoices.filter((inv) => {
-    const matchesSearch = inv.number.toLowerCase().includes(search.toLowerCase()) ||
-      inv.client.name.toLowerCase().includes(search.toLowerCase());
-    const matchesStatus = statusFilter === "all" || inv.status === statusFilter;
+  const filteredInvoices = invoices.filter(invoice => {
+    const matchesSearch = invoice.client.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      invoice.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      invoice.clientEmail.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesStatus = selectedStatus === "all" || invoice.status === selectedStatus;
     return matchesSearch && matchesStatus;
-  }).sort((a, b) => {
-    if (!sortConfig) return 0;
-    const { key, direction } = sortConfig;
-
-    let aValue: any = a[key as keyof Invoice];
-    let bValue: any = b[key as keyof Invoice];
-
-    // Handle nested properties if needed (e.g., client.name)
-    if (key === 'client') {
-      aValue = a.client.name;
-      bValue = b.client.name;
-    }
-
-    if (aValue < bValue) return direction === 'asc' ? -1 : 1;
-    if (aValue > bValue) return direction === 'asc' ? 1 : -1;
-    return 0;
   });
 
-  const handleDelete = (id: string) => {
-    setInvoices(invoices.filter(inv => inv.id !== id));
-    toast({ title: "Invoice deleted", description: "The invoice has been moved to trash." });
-  };
+  const pinnedInvoices = filteredInvoices.filter(inv => inv.isPinned);
+  const regularInvoices = filteredInvoices.filter(inv => !inv.isPinned);
 
-  const handleDuplicate = (invoice: Invoice) => {
-    const newInvoice = {
-      ...invoice,
-      id: `inv${Date.now()}`,
-      number: `INV-${String(invoices.length + 1).padStart(3, '0')}`,
-      status: "draft" as const,
-      createdAt: new Date().toISOString().split('T')[0],
-    };
-    setInvoices([newInvoice, ...invoices]);
-    toast({ title: "Invoice duplicated", description: `Created ${newInvoice.number}` });
-  };
+  const InvoiceCard = ({ invoice }: { invoice: typeof invoices[0] }) => {
+    const StatusIcon = statusConfig[invoice.status as keyof typeof statusConfig].icon;
 
-  const handleSend = (invoice: Invoice) => {
-    setInvoices(invoices.map(inv =>
-      inv.id === invoice.id ? { ...inv, status: "sent" as const } : inv
-    ));
-    toast({ title: "Invoice sent", description: `${invoice.number} sent to ${invoice.client.email}` });
-  };
+    return (
+      <div className="group flex gap-3 py-2 px-2 hover:bg-muted/40 -mx-2 rounded-lg transition-colors relative">
+        {/* Avatar */}
+        <div className="flex-shrink-0 mt-1">
+          <div className="w-9 h-9 rounded bg-[#4A154B] flex items-center justify-center font-bold text-white text-sm cursor-pointer hover:opacity-80">
+            {invoice.avatar}
+          </div>
+        </div>
 
-  const toggleSelectAll = () => {
-    if (selectedIds.length === filteredInvoices.length) {
-      setSelectedIds([]);
-    } else {
-      setSelectedIds(filteredInvoices.map(i => i.id));
-    }
-  };
+        {/* Content */}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-baseline gap-2">
+            <span className="font-bold text-[15px] cursor-pointer hover:underline">{invoice.client}</span>
+            <span className="text-xs text-muted-foreground">at {invoice.issueDate}</span>
+          </div>
 
-  const toggleSelect = (id: string) => {
-    if (selectedIds.includes(id)) {
-      setSelectedIds(selectedIds.filter(i => i !== id));
-    } else {
-      setSelectedIds([...selectedIds, id]);
-    }
-  };
+          <div className="text-[15px] text-foreground/90 mt-0.5">
+            <div className="flex items-center gap-2">
+              Created invoice <span className="font-semibold hover:underline text-[#1264A3] cursor-pointer">{invoice.id}</span>
+              for <span className="font-bold">{invoice.amount}</span>
+              <span className={cn(
+                "px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border",
+                statusConfig[invoice.status as keyof typeof statusConfig].color.replace("bg-", "border-").replace("text-", "text-")
+              )}>
+                {invoice.status}
+              </span>
+            </div>
 
-  const handleBulkAction = (action: 'send' | 'paid' | 'archive') => {
-    if (action === 'archive') {
-      // For mock purposes, we'll just filter them out as "Archived" isn't a status type yet
-      setInvoices(invoices.filter(inv => !selectedIds.includes(inv.id)));
-    } else {
-      const newStatus = action === 'send' ? 'sent' : 'paid';
-      setInvoices(invoices.map(inv =>
-        selectedIds.includes(inv.id) ? { ...inv, status: newStatus as any } : inv // keeping as any to bypass strict literal check for now if needed, though 'sent'|'paid' matches.
-      ));
-    }
+            <div className="flex items-center gap-4 mt-1 text-sm text-muted-foreground">
+              <span className="flex items-center gap-1"><Mail className="w-3 h-3" /> {invoice.clientEmail}</span>
+              <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> Due {invoice.dueDate}</span>
+              <span>• {invoice.items} items</span>
+            </div>
+          </div>
 
-    toast({
-      title: "Bulk Action Applied",
-      description: `${action === 'send' ? 'Sent' : action === 'paid' ? 'Marked as paid' : 'Archived'} ${selectedIds.length} invoices.`
-    });
-    setSelectedIds([]);
+          {/* Hover Actions */}
+          <div className="absolute right-4 top-2 opacity-0 group-hover:opacity-100 bg-background border shadow-sm rounded-md flex items-center p-0.5 transition-opacity">
+            <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-muted text-muted-foreground" title="View Details">
+              <Eye className="w-4 h-4" />
+            </Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-muted text-muted-foreground" title="Send Email">
+              <Send className="w-4 h-4" />
+            </Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-muted text-muted-foreground" title="Download PDF">
+              <Download className="w-4 h-4" />
+            </Button>
+            <div className="w-[1px] h-4 bg-border mx-1" />
+            <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-muted text-muted-foreground">
+              <MoreHorizontal className="w-4 h-4" />
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
   };
 
   return (
     <AppLayout>
-      <div className="space-y-6 animate-fade-in">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
-          <div>
-            <h2 className="text-2xl font-display font-semibold">Invoices</h2>
-            <p className="text-muted-foreground">Manage and track all your invoices.</p>
-          </div>
-          <Button asChild>
-            <Link to="/invoices/new">
-              <Plus className="h-4 w-4 mr-2" />
-              New Invoice
-            </Link>
+      {/* Channel Header / Filter Bar */}
+      <div className="flex items-center justify-between py-2 border-b sticky top-0 bg-background/95 backdrop-blur z-10 px-6 -mx-6 mb-4">
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-medium text-muted-foreground mr-2">Sort by:</span>
+          <Button variant="ghost" size="sm" className="h-7 text-xs font-medium">Date <ArrowUpRight className="w-3 h-3 ml-1" /></Button>
+          <div className="h-4 w-[1px] bg-border mx-1" />
+          <Button
+            variant={selectedStatus === "all" ? "secondary" : "ghost"}
+            size="sm"
+            className="h-7 text-xs"
+            onClick={() => setSelectedStatus("all")}
+          >
+            All
+          </Button>
+          <Button
+            variant={selectedStatus === "unpaid" ? "secondary" : "ghost"}
+            size="sm"
+            className="h-7 text-xs"
+            onClick={() => setSelectedStatus("pending")}
+          >
+            Unpaid
           </Button>
         </div>
-
-        {/* Filters & Bulk Actions */}
-        {selectedIds.length > 0 ? (
-          <div className="flex items-center justify-between bg-primary/5 p-4 rounded-lg border border-primary/20 animate-fade-in">
-            <div className="flex items-center gap-2">
-              <span className="font-medium text-primary">{selectedIds.length} selected</span>
-            </div>
-            <div className="flex gap-2">
-              <Button size="sm" variant="outline" onClick={() => handleBulkAction('send')} className="bg-background">
-                <Send className="h-4 w-4 mr-2" /> Send
-              </Button>
-              <Button size="sm" variant="outline" onClick={() => handleBulkAction('paid')} className="bg-background">
-                <Check className="h-4 w-4 mr-2" /> Mark Paid
-              </Button>
-              <Button size="sm" variant="outline" onClick={() => handleBulkAction('archive')} className="bg-background text-destructive hover:text-destructive">
-                <Archive className="h-4 w-4 mr-2" /> Archive
-              </Button>
-            </div>
+        <div className="flex items-center gap-2">
+          <div className="relative">
+            <Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3 w-3 text-muted-foreground" />
+            <Input
+              placeholder="Search invoices..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="h-7 w-48 pl-8 text-xs bg-muted/50 border-transparent focus:bg-background transition-all"
+            />
           </div>
-        ) : (
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="Search invoices..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-            <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-full sm:w-40">
-                <Filter className="h-4 w-4 mr-2" />
-                <SelectValue placeholder="Filter by status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Status</SelectItem>
-                <SelectItem value="draft">Draft</SelectItem>
-                <SelectItem value="sent">Sent</SelectItem>
-                <SelectItem value="viewed">Viewed</SelectItem>
-                <SelectItem value="paid">Paid</SelectItem>
-                <SelectItem value="overdue">Overdue</SelectItem>
-              </SelectContent>
-            </Select>
-            <Button variant="outline">
-              <Download className="h-4 w-4 mr-2" />
-              Export
+          <Link to="/invoices/new">
+            <Button size="sm" className="h-7 bg-[#007a5a] hover:bg-[#007a5a]/90 text-white text-xs px-3">
+              <Plus className="h-3 w-3 mr-1" />
+              New Invoice
             </Button>
+          </Link>
+        </div>
+      </div>
+
+      {/* Invoice Feed (Slack Style) */}
+      <div className="space-y-6 pb-20">
+
+        {/* Pinned Section */}
+        {pinnedInvoices.length > 0 && (
+          <div className="mb-8 bg-[#FFF8E1] border border-[#FFECB3] rounded-md p-4 dark:bg-yellow-900/10 dark:border-yellow-900/30">
+            <div className="flex items-center gap-2 text-xs font-bold text-yellow-700 dark:text-yellow-500 mb-3 uppercase tracking-wide">
+              <Pin className="h-3 w-3 fill-current" />
+              Pinned Items
+            </div>
+            <div className="space-y-4">
+              {pinnedInvoices.map(invoice => <InvoiceCard key={invoice.id} invoice={invoice} />)}
+            </div>
           </div>
         )}
 
-        {/* Table */}
-        <div className="glass rounded-xl overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-border/50 bg-muted/30">
-                  <th className="px-5 py-3 w-[50px]">
-                    <Checkbox
-                      checked={selectedIds.length === filteredInvoices.length && filteredInvoices.length > 0}
-                      onCheckedChange={toggleSelectAll}
-                    />
-                  </th>
-                  <th className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3 cursor-pointer hover:bg-muted/50" onClick={() => handleSort('number')}>
-                    Invoice {sortConfig?.key === 'number' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
-                  </th>
-                  <th className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3 cursor-pointer hover:bg-muted/50" onClick={() => handleSort('client')}>
-                    Client {sortConfig?.key === 'client' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
-                  </th>
-                  <th className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3 cursor-pointer hover:bg-muted/50" onClick={() => handleSort('amount')}>
-                    Amount {sortConfig?.key === 'amount' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
-                  </th>
-                  <th className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3 cursor-pointer hover:bg-muted/50" onClick={() => handleSort('status')}>
-                    Status {sortConfig?.key === 'status' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
-                  </th>
-                  <th className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3 cursor-pointer hover:bg-muted/50" onClick={() => handleSort('dueDate')}>
-                    Due Date {sortConfig?.key === 'dueDate' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
-                  </th>
-                  <th className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3 cursor-pointer hover:bg-muted/50" onClick={() => handleSort('createdAt')}>
-                    Created {sortConfig?.key === 'createdAt' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
-                  </th>
-                  <th className="text-right text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredInvoices.map((invoice) => (
-                  <tr key={invoice.id} className={`table-row ${selectedIds.includes(invoice.id) ? 'bg-primary/5' : ''}`}>
-                    <td className="px-5 py-4">
-                      <Checkbox
-                        checked={selectedIds.includes(invoice.id)}
-                        onCheckedChange={() => toggleSelect(invoice.id)}
-                      />
-                    </td>
-                    <td className="px-5 py-4">
-                      <Link to={`/invoices/${invoice.id}`} className="font-medium hover:underline">
-                        {invoice.number}
-                      </Link>
-                    </td>
-                    <td className="px-5 py-4">
-                      <div>
-                        <p className="font-medium">{invoice.client.name}</p>
-                        <p className="text-sm text-muted-foreground">{invoice.client.company}</p>
-                      </div>
-                    </td>
-                    <td className="px-5 py-4 font-medium">${invoice.amount.toLocaleString()}</td>
-                    <td className="px-5 py-4">
-                      <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${invoice.status === 'paid' ? 'bg-foreground/10 text-foreground' :
-                        invoice.status === 'overdue' ? 'bg-foreground/5 text-foreground/70' :
-                          invoice.status === 'sent' ? 'bg-muted text-muted-foreground' :
-                            invoice.status === 'viewed' ? 'bg-muted text-foreground' :
-                              'bg-muted/50 text-muted-foreground'
-                        }`}>
-                        {invoice.status}
-                      </span>
-                    </td>
-                    <td className="px-5 py-4 text-muted-foreground">
-                      {new Date(invoice.dueDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                    </td>
-                    <td className="px-5 py-4 text-muted-foreground">
-                      {new Date(invoice.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                    </td>
-                    <td className="px-5 py-4 text-right">
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="icon">
-                            <MoreHorizontal className="h-4 w-4" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuItem asChild>
-                            <Link to={`/invoices/${invoice.id}`}>
-                              <Eye className="h-4 w-4 mr-2" /> View
-                            </Link>
-                          </DropdownMenuItem>
-                          <DropdownMenuItem asChild>
-                            <Link to={`/invoices/${invoice.id}/edit`}>
-                              <Edit className="h-4 w-4 mr-2" /> Edit
-                            </Link>
-                          </DropdownMenuItem>
-                          <DropdownMenuItem onClick={() => handleDuplicate(invoice)}>
-                            <Copy className="h-4 w-4 mr-2" /> Duplicate
-                          </DropdownMenuItem>
-                          {invoice.status === 'draft' && (
-                            <DropdownMenuItem onClick={() => handleSend(invoice)}>
-                              <Send className="h-4 w-4 mr-2" /> Send
-                            </DropdownMenuItem>
-                          )}
-                          <DropdownMenuSeparator />
-                          <DropdownMenuItem onClick={() => handleDelete(invoice.id)} className="text-destructive">
-                            <Trash2 className="h-4 w-4 mr-2" /> Delete
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        {/* Date Divider - Today */}
+        <div className="relative flex items-center justify-center py-4">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t border-border/60" />
           </div>
-
-          {filteredInvoices.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">No invoices found</p>
-            </div>
-          )}
+          <div className="relative flex justify-center text-xs font-bold text-muted-foreground">
+            <span className="bg-background px-4 border rounded-full py-0.5 shadow-sm">Today</span>
+          </div>
         </div>
+
+        {/* Regular Invoices */}
+        <div className="space-y-1">
+          {regularInvoices.map(invoice => <InvoiceCard key={invoice.id} invoice={invoice} />)}
+        </div>
+
+        {regularInvoices.length === 0 && pinnedInvoices.length === 0 && (
+          <div className="text-center py-20 text-muted-foreground">
+            <p>No invoices found matching your filters.</p>
+          </div>
+        )}
       </div>
     </AppLayout>
   );

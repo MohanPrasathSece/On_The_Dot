@@ -81,7 +81,7 @@ export default function Settings() {
 
           {/* Profile Settings */}
           <TabsContent value="profile">
-            <div className="glass rounded-xl p-6 space-y-6">
+            <div className="border shadow-sm bg-card rounded-xl p-6 space-y-6">
               <div className="flex items-center gap-4">
                 <div className="w-20 h-20 rounded-full bg-foreground/10 flex items-center justify-center text-2xl font-medium">
                   {profile.name.split(' ').map(n => n[0]).join('')}
@@ -126,7 +126,7 @@ export default function Settings() {
 
           {/* Company Settings */}
           <TabsContent value="company">
-            <div className="glass rounded-xl p-6 space-y-6">
+            <div className="border shadow-sm bg-card rounded-xl p-6 space-y-6">
               <div className="flex items-center gap-4">
                 <div className="w-20 h-20 rounded-xl bg-foreground/10 flex items-center justify-center border-2 border-dashed border-border">
                   <Palette className="h-8 w-8 text-muted-foreground" />
@@ -178,7 +178,7 @@ export default function Settings() {
 
           {/* Invoice Defaults */}
           <TabsContent value="invoices">
-            <div className="glass rounded-xl p-6 space-y-6">
+            <div className="border shadow-sm bg-card rounded-xl p-6 space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label>Default Currency</Label>
@@ -232,7 +232,7 @@ export default function Settings() {
 
           {/* Notifications */}
           <TabsContent value="notifications">
-            <div className="glass rounded-xl p-6 space-y-6">
+            <div className="border shadow-sm bg-card rounded-xl p-6 space-y-6">
               <div className="space-y-4">
                 {Object.entries(notifications).map(([key, value]) => (
                   <div key={key} className="flex items-center justify-between py-2">
@@ -261,7 +261,7 @@ export default function Settings() {
           {/* Billing */}
           <TabsContent value="billing">
             <div className="space-y-6">
-              <div className="glass rounded-xl p-6">
+              <div className="border shadow-sm bg-card rounded-xl p-6">
                 <h3 className="font-semibold mb-4">Current Plan</h3>
                 <div className="flex items-center justify-between">
                   <div>
@@ -272,7 +272,7 @@ export default function Settings() {
                 </div>
               </div>
 
-              <div className="glass rounded-xl p-6">
+              <div className="border shadow-sm bg-card rounded-xl p-6">
                 <h3 className="font-semibold mb-4">Payment Method</h3>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -288,7 +288,7 @@ export default function Settings() {
                 </div>
               </div>
 
-              <div className="glass rounded-xl p-6">
+              <div className="border shadow-sm bg-card rounded-xl p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-semibold">Billing History</h3>
                   <Button variant="ghost" size="sm">Download All</Button>
@@ -315,7 +315,7 @@ export default function Settings() {
 
           {/* Localization Settings */}
           <TabsContent value="localization">
-            <div className="glass rounded-xl p-6 space-y-6">
+            <div className="border shadow-sm bg-card rounded-xl p-6 space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label>Language</Label>

@@ -1,16 +1,13 @@
 import { useState } from "react";
-import { Plus, Search, MoreHorizontal, Mail, FileText, Bell, Edit, Trash2, Copy, Phone, MapPin } from "lucide-react";
+import {
+  Plus, Search, MoreHorizontal, Mail, Phone, MapPin, Building,
+  DollarSign, FileText, Clock, Star, MessageSquare, Send,
+  Edit, Trash2, User, Calendar
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { AppLayout } from "@/components/app/AppLayout";
-import { mockClients, Client, mockInvoices, mockReminders } from "@/data/mockData";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,100 +15,150 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Label } from "@/components/ui/label";
-import { toast } from "@/hooks/use-toast";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Textarea } from "@/components/ui/textarea";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
+
+// Dummy Client Data
+const clients = [
+  {
+    id: 1,
+    name: "Acme Corporation",
+    email: "billing@acme.com",
+    phone: "+1 (555) 123-4567",
+    company: "Acme Corp",
+    location: "San Francisco, CA",
+    avatar: "A",
+    totalInvoiced: "$45,200",
+    outstandingBalance: "$5,200",
+    invoiceCount: 12,
+    lastInvoice: "2 days ago",
+    status: "active",
+    tags: ["Enterprise", "Priority"],
+    notes: "Key client - always pays on time. Prefers monthly billing cycle.",
+  },
+  {
+    id: 2,
+    name: "TechStart Inc",
+    email: "accounts@techstart.io",
+    phone: "+1 (555) 234-5678",
+    company: "TechStart",
+    location: "Austin, TX",
+    avatar: "T",
+    totalInvoiced: "$28,900",
+    outstandingBalance: "$3,800",
+    invoiceCount: 8,
+    lastInvoice: "1 week ago",
+    status: "active",
+    tags: ["Startup", "Monthly"],
+    notes: "Growing startup, increased project scope recently.",
+  },
+  {
+    id: 3,
+    name: "Creative Studios",
+    email: "finance@creative.com",
+    phone: "+1 (555) 345-6789",
+    company: "Creative Studios LLC",
+    location: "Los Angeles, CA",
+    avatar: "C",
+    totalInvoiced: "$15,600",
+    outstandingBalance: "$2,100",
+    invoiceCount: 6,
+    lastInvoice: "3 days ago",
+    status: "active",
+    tags: ["Creative", "Quarterly"],
+    notes: "Design agency, prefers detailed line items.",
+  },
+  {
+    id: 4,
+    name: "Digital Dynamics",
+    email: "payments@digitald.com",
+    phone: "+1 (555) 456-7890",
+    company: "Digital Dynamics",
+    location: "New York, NY",
+    avatar: "D",
+    totalInvoiced: "$52,300",
+    outstandingBalance: "$0",
+    invoiceCount: 15,
+    lastInvoice: "1 month ago",
+    status: "active",
+    tags: ["Enterprise", "VIP"],
+    notes: "Excellent payment history, largest client.",
+  },
+  {
+    id: 5,
+    name: "Startup Labs",
+    email: "admin@startuplabs.co",
+    phone: "+1 (555) 567-8901",
+    company: "Startup Labs",
+    location: "Seattle, WA",
+    avatar: "S",
+    totalInvoiced: "$12,400",
+    outstandingBalance: "$3,500",
+    invoiceCount: 4,
+    lastInvoice: "Overdue",
+    status: "overdue",
+    tags: ["Startup"],
+    notes: "Payment delays recently, follow up needed.",
+  },
+];
+
+const recentMessages = {
+  1: [
+    { type: "sent", message: "Invoice #1250 has been sent", time: "2 days ago" },
+    { type: "received", message: "Payment processed successfully", time: "1 day ago" },
+  ],
+  2: [
+    { type: "sent", message: "Reminder: Invoice #1249 due soon", time: "5 hours ago" },
+  ],
+};
 
 export default function Clients() {
-  const [clients, setClients] = useState<Client[]>(mockClients);
-  const [selectedClient, setSelectedClient] = useState<Client | null>(null);
-  const [search, setSearch] = useState("");
-  const [isAddOpen, setIsAddOpen] = useState(false);
-  const [newClient, setNewClient] = useState({ name: "", email: "", company: "", phone: "" });
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedClient, setSelectedClient] = useState<typeof clients[0] | null>(null);
+  const [messageInput, setMessageInput] = useState("");
 
-  const filteredClients = clients.filter((client) =>
-    client.name.toLowerCase().includes(search.toLowerCase()) ||
-    client.company.toLowerCase().includes(search.toLowerCase()) ||
-    client.email.toLowerCase().includes(search.toLowerCase())
+  const filteredClients = clients.filter(client =>
+    client.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    client.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    client.company.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  const handleAddClient = () => {
-    const client: Client = {
-      id: `c${Date.now()}`,
-      ...newClient,
-      totalPaid: 0,
-      totalOutstanding: 0,
-      invoiceCount: 0,
-    };
-    setClients([client, ...clients]);
-    setNewClient({ name: "", email: "", company: "", phone: "" });
-    setIsAddOpen(false);
-    toast({ title: "Client added", description: `${client.name} has been added.` });
-  };
-
-  const handleDelete = (id: string) => {
-    setClients(clients.filter(c => c.id !== id));
-    toast({ title: "Client deleted" });
-  };
 
   return (
     <AppLayout>
-      <div className="space-y-6 animate-fade-in">
+      <div className="space-y-6">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+        <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-display font-semibold">Clients</h2>
-            <p className="text-muted-foreground">Manage your client relationships.</p>
+            <h1 className="text-3xl font-bold mb-2">Clients</h1>
+            <p className="text-muted-foreground">
+              Manage your client relationships and communication
+            </p>
           </div>
-          <Dialog open={isAddOpen} onOpenChange={setIsAddOpen}>
+          <Dialog>
             <DialogTrigger asChild>
-              <Button>
-                <Plus className="h-4 w-4 mr-2" />
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
+                <Plus className="h-5 w-5 mr-2" />
                 Add Client
               </Button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="sm:max-w-[500px]">
               <DialogHeader>
                 <DialogTitle>Add New Client</DialogTitle>
               </DialogHeader>
               <div className="space-y-4 py-4">
-                <div>
-                  <Label>Name</Label>
-                  <Input
-                    value={newClient.name}
-                    onChange={(e) => setNewClient({ ...newClient, name: e.target.value })}
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <Label>Email</Label>
-                  <Input
-                    type="email"
-                    value={newClient.email}
-                    onChange={(e) => setNewClient({ ...newClient, email: e.target.value })}
-                    placeholder="john@company.com"
-                  />
-                </div>
-                <div>
-                  <Label>Company</Label>
-                  <Input
-                    value={newClient.company}
-                    onChange={(e) => setNewClient({ ...newClient, company: e.target.value })}
-                    placeholder="Company Inc."
-                  />
-                </div>
-                <div>
-                  <Label>Phone</Label>
-                  <Input
-                    value={newClient.phone}
-                    onChange={(e) => setNewClient({ ...newClient, phone: e.target.value })}
-                    placeholder="+1 555-0100"
-                  />
-                </div>
-                <Button onClick={handleAddClient} className="w-full" disabled={!newClient.name || !newClient.email}>
+                <Input placeholder="Client Name" />
+                <Input placeholder="Email Address" type="email" />
+                <Input placeholder="Phone Number" />
+                <Input placeholder="Company Name" />
+                <Input placeholder="Location" />
+                <Textarea placeholder="Notes" rows={3} />
+                <Button className="w-full bg-primary hover:bg-primary/90">
                   Add Client
                 </Button>
               </div>
@@ -119,234 +166,182 @@ export default function Clients() {
           </Dialog>
         </div>
 
-        {/* Search */}
-        <div className="relative max-w-md">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder="Search clients..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="pl-10"
-          />
+        {/* Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="bg-white dark:bg-card rounded-xl border border-border/50 p-4">
+            <p className="text-sm text-muted-foreground mb-1">Total Clients</p>
+            <p className="text-2xl font-bold">{clients.length}</p>
+          </div>
+          <div className="bg-white dark:bg-card rounded-xl border border-border/50 p-4">
+            <p className="text-sm text-muted-foreground mb-1">Active</p>
+            <p className="text-2xl font-bold text-green-600">
+              {clients.filter(c => c.status === "active").length}
+            </p>
+          </div>
+          <div className="bg-white dark:bg-card rounded-xl border border-border/50 p-4">
+            <p className="text-sm text-muted-foreground mb-1">Total Revenue</p>
+            <p className="text-2xl font-bold">$154,400</p>
+          </div>
+          <div className="bg-white dark:bg-card rounded-xl border border-border/50 p-4">
+            <p className="text-sm text-muted-foreground mb-1">Outstanding</p>
+            <p className="text-2xl font-bold text-amber-600">$14,600</p>
+          </div>
         </div>
 
-        {/* Clients Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredClients.map((client) => (
-            <div key={client.id} className="glass rounded-xl p-5 hover-lift cursor-pointer group" onClick={() => setSelectedClient(client)}>
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center text-sm font-medium">
-                    {client.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                  <div>
-                    <h4 className="font-medium group-hover:text-primary transition-colors">{client.name}</h4>
-                    <p className="text-sm text-muted-foreground">{client.company}</p>
-                  </div>
-                </div>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="icon" onClick={(e) => e.stopPropagation()}>
-                      <MoreHorizontal className="h-4 w-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuItem onClick={(e) => { e.stopPropagation(); /* In real app, nav to invoice builder */ }}>
-                      <FileText className="h-4 w-4 mr-2" /> Create Invoice
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={(e) => { e.stopPropagation(); /* In real app, open reminder dialog */ }}>
-                      <Bell className="h-4 w-4 mr-2" /> Send Reminder
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={(e) => { e.stopPropagation(); setSelectedClient(client); }}>
-                      <Edit className="h-4 w-4 mr-2" /> View Details
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={(e) => { e.stopPropagation(); handleDelete(client.id); }} className="text-destructive">
-                      <Trash2 className="h-4 w-4 mr-2" /> Delete
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Mail className="h-4 w-4" />
-                  {client.email}
-                </div>
-                {client.tags && client.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5">
-                    {client.tags.map(tag => (
-                      <Badge key={tag} variant="secondary" className="text-[10px] px-1.5 py-0 h-5 font-normal">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-border/50">
-                <div>
-                  <p className="text-xs text-muted-foreground">Paid</p>
-                  <p className="font-medium">${client.totalPaid.toLocaleString()}</p>
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Outstanding</p>
-                  <p className="font-medium">${client.totalOutstanding.toLocaleString()}</p>
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Invoices</p>
-                  <p className="font-medium">{client.invoiceCount}</p>
-                </div>
+        {/* Main Content - Slack DM Style */}
+        <div className="grid lg:grid-cols-3 gap-0 h-[calc(100vh-180px)] border rounded-lg overflow-hidden bg-background shadow-sm">
+          {/* Client List - Left Sidebar */}
+          <div className="lg:col-span-1 border-r bg-muted/10 flex flex-col">
+            {/* Search */}
+            <div className="p-3 border-b">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  placeholder="Find a conversation..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-9 bg-background border-transparent focus:border-border transition-colors h-9"
+                />
               </div>
             </div>
-          ))}
-        </div>
 
-        <Sheet open={!!selectedClient} onOpenChange={(open) => !open && setSelectedClient(null)}>
-          <SheetContent className="w-full sm:max-w-[540px] overflow-y-auto">
-            <SheetHeader className="mb-6">
-              <SheetTitle>Client Details</SheetTitle>
-              <SheetDescription>View and manage client information.</SheetDescription>
-            </SheetHeader>
-
-            {selectedClient && (
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-foreground/5 flex items-center justify-center text-2xl font-medium">
-                    {selectedClient.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">{selectedClient.name}</h3>
-                    <p className="text-muted-foreground">{selectedClient.company}</p>
-                    <div className="flex gap-2 mt-2">
-                      {selectedClient.tags?.map(tag => <Badge key={tag} variant="outline" className="text-xs">{tag}</Badge>)}
+            {/* Client List */}
+            <div className="flex-1 overflow-y-auto">
+              {filteredClients.map((client) => (
+                <div
+                  key={client.id}
+                  onClick={() => setSelectedClient(client)}
+                  className={cn(
+                    "px-4 py-3 cursor-pointer hover:bg-muted/50 transition-colors flex items-center gap-3",
+                    selectedClient?.id === client.id && "bg-primary/10 text-foreground hover:bg-primary/20"
+                  )}
+                >
+                  <div className="relative">
+                    <div className={cn(
+                      "w-9 h-9 rounded bg-muted flex items-center justify-center font-bold text-sm flex-shrink-0",
+                      selectedClient?.id === client.id ? "bg-primary/20 text-primary" : "bg-gray-200 text-gray-600"
+                    )}>
+                      {client.avatar}
                     </div>
+                    {client.status === "active" && (
+                      <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-500 border-2 border-background"></span>
+                    )}
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <h4 className={cn("font-medium text-sm truncate", selectedClient?.id === client.id ? "text-foreground font-semibold" : "text-foreground")}>
+                        {client.name}
+                      </h4>
+                      <span className={cn("text-[10px]", selectedClient?.id === client.id ? "text-muted-foreground" : "text-muted-foreground")}>
+                        {client.lastInvoice}
+                      </span>
+                    </div>
+                    <p className={cn("text-xs truncate", selectedClient?.id === client.id ? "text-muted-foreground" : "text-muted-foreground")}>
+                      {client.company}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Chat Area - Right Panel */}
+          <div className="lg:col-span-2 flex flex-col bg-background">
+            {selectedClient ? (
+              <>
+                {/* Chat Header */}
+                <div className="h-14 border-b flex items-center justify-between px-4 flex-shrink-0">
+                  <div className="flex items-center gap-2">
+                    <div className="font-bold cursor-pointer hover:underline flex items-center gap-1">
+                      {selectedClient.name}
+                      <span className="w-2 h-2 rounded-full bg-green-500 inline-block ml-1"></span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1 text-muted-foreground">
+                    <Button variant="ghost" size="icon" className="h-8 w-8"><Phone className="w-4 h-4" /></Button>
+                    <Button variant="ghost" size="icon" className="h-8 w-8"><MoreHorizontal className="w-4 h-4" /></Button>
                   </div>
                 </div>
 
-                <Tabs defaultValue="overview" className="space-y-4">
-                  <TabsList>
-                    <TabsTrigger value="overview">Overview</TabsTrigger>
-                    <TabsTrigger value="history">History</TabsTrigger>
-                    <TabsTrigger value="settings">Notes & Settings</TabsTrigger>
-                  </TabsList>
-
-                  <TabsContent value="overview" className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="p-4 rounded-xl bg-muted/30">
-                        <p className="text-sm text-muted-foreground mb-1">Total Paid</p>
-                        <p className="text-2xl font-semibold">${selectedClient.totalPaid.toLocaleString()}</p>
-                      </div>
-                      <div className="p-4 rounded-xl bg-muted/30">
-                        <p className="text-sm text-muted-foreground mb-1">Outstanding</p>
-                        <p className="text-2xl font-semibold text-destructive">${selectedClient.totalOutstanding.toLocaleString()}</p>
-                      </div>
+                {/* Messages Area */}
+                <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                  {/* Client Profile Summary at top of chat */}
+                  <div className="pb-8 mb-4 border-b border-border/40">
+                    <div className="w-16 h-16 rounded-lg bg-muted flex items-center justify-center text-2xl font-bold mb-3">
+                      {selectedClient.avatar}
                     </div>
-
-                    <div className="space-y-4">
-                      <div className="group flex items-center justify-between p-3 rounded-lg border border-border/50 hover:bg-muted/30 transition-colors">
-                        <div className="flex items-center gap-3">
-                          <Mail className="h-4 w-4 text-muted-foreground" />
-                          <span className="text-sm">{selectedClient.email}</span>
-                        </div>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 opacity-0 group-hover:opacity-100"><Copy className="h-3 w-3" /></Button>
-                      </div>
-                      <div className="group flex items-center justify-between p-3 rounded-lg border border-border/50 hover:bg-muted/30 transition-colors">
-                        <div className="flex items-center gap-3">
-                          <Phone className="h-4 w-4 text-muted-foreground" />
-                          <span className="text-sm">{selectedClient.phone || "No phone added"}</span>
-                        </div>
-                      </div>
-                      <div className="group flex items-center justify-between p-3 rounded-lg border border-border/50 hover:bg-muted/30 transition-colors">
-                        <div className="flex items-center gap-3">
-                          <MapPin className="h-4 w-4 text-muted-foreground" />
-                          <span className="text-sm">{selectedClient.address || "No address added"}</span>
-                        </div>
-                      </div>
+                    <h2 className="text-xl font-bold">This is the very beginning of your direct message history with {selectedClient.name}.</h2>
+                    <p className="text-muted-foreground text-sm mt-1">
+                      {selectedClient.company} • {selectedClient.location} • {selectedClient.email}
+                    </p>
+                    <div className="flex gap-2 mt-3">
+                      <div className="px-2 py-1 bg-muted rounded text-xs">Total Invoiced: <span className="font-semibold">{selectedClient.totalInvoiced}</span></div>
+                      <div className="px-2 py-1 bg-muted rounded text-xs">Outstanding: <span className="font-semibold">{selectedClient.outstandingBalance}</span></div>
                     </div>
-                  </TabsContent>
+                  </div>
 
-                  <TabsContent value="history" className="space-y-4">
-                    <h4 className="text-sm font-medium text-muted-foreground">Recent Invoices</h4>
-                    <div className="space-y-2">
-                      {mockInvoices.filter(inv => inv.client.id === selectedClient.id).length === 0 ? (
-                        <p className="text-sm text-muted-foreground">No invoices found for this client.</p>
+                  {/* Messages */}
+                  {recentMessages[selectedClient.id as keyof typeof recentMessages]?.map((msg, i) => (
+                    <div key={i} className="flex gap-3 group hover:bg-muted/20 -mx-4 px-4 py-1">
+                      {msg.type === "received" ? (
+                        <div className="w-9 h-9 rounded bg-primary flex items-center justify-center text-white text-xs flex-shrink-0 mt-1">
+                          {selectedClient.avatar}
+                        </div>
                       ) : (
-                        mockInvoices.filter(inv => inv.client.id === selectedClient.id).map(inv => (
-                          <div key={inv.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/30">
-                            <div className="flex items-center gap-3">
-                              <FileText className="h-4 w-4 text-muted-foreground" />
-                              <div>
-                                <p className="text-sm font-medium">{inv.number}</p>
-                                <p className="text-xs text-muted-foreground">{new Date(inv.createdAt).toLocaleDateString()}</p>
-                              </div>
-                            </div>
-                            <div className="text-right">
-                              <p className="text-sm font-medium">${inv.amount.toLocaleString()}</p>
-                              <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${inv.status === 'paid' ? 'bg-green-500/10 text-green-600' : 'bg-yellow-500/10 text-yellow-600'}`}>
-                                {inv.status}
-                              </span>
-                            </div>
-                          </div>
-                        )))}
-                    </div>
-
-                    <h4 className="text-sm font-medium text-muted-foreground mt-6">Reminder History</h4>
-                    <div className="pl-4 border-l-2 border-border/50 space-y-6">
-                      {mockReminders.filter(r => r.client === selectedClient.name).length === 0 ? (
-                        <p className="text-sm text-muted-foreground">No reminders sent.</p>
-                      ) : (
-                        mockReminders.filter(r => r.client === selectedClient.name).map(reminder => (
-                          <div key={reminder.id} className="relative">
-                            <div className={`absolute -left-[21px] top-1 w-3 h-3 rounded-full ${reminder.status === 'delivered' ? 'bg-green-500' : 'bg-border'}`} />
-                            <p className="text-sm">Reminder {reminder.type === 'email' ? 'Email' : 'SMS'} {reminder.status}</p>
-                            <p className="text-xs text-muted-foreground">{new Date(reminder.scheduledDate).toLocaleDateString()} • {reminder.tone} tone</p>
-                          </div>
-                        )))}
-                    </div>
-                  </TabsContent>
-
-                  <TabsContent value="settings" className="space-y-6">
-                    <div className="space-y-2">
-                      <Label>Internal Notes</Label>
-                      <Textarea
-                        placeholder="Add notes about this client..."
-                        className="min-h-[100px]"
-                        defaultValue={selectedClient.notes}
-                      />
-                      <p className="text-xs text-muted-foreground">These notes are private and only visible to your team.</p>
-                    </div>
-
-                    <div className="space-y-4">
-                      <h4 className="font-medium text-sm">Tax & Currency</h4>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label>Tax ID / VAT</Label>
-                          <Input defaultValue={selectedClient.taxId} placeholder="Optional" />
+                        <div className="w-9 h-9 rounded bg-blue-600 flex items-center justify-center text-white text-xs flex-shrink-0 mt-1">
+                          You
                         </div>
-                        <div className="space-y-2">
-                          <Label>Currency</Label>
-                          <Input defaultValue={selectedClient.currency || "USD"} />
+                      )}
+                      <div>
+                        <div className="flex items-baseline gap-2">
+                          <span className="font-bold text-sm">
+                            {msg.type === "received" ? selectedClient.name : "You"}
+                          </span>
+                          <span className="text-xs text-muted-foreground">{msg.time}</span>
                         </div>
+                        <p className="text-[15px] leading-relaxed text-foreground/90">{msg.message}</p>
                       </div>
                     </div>
-                  </TabsContent>
-                </Tabs>
-
-                <div className="pt-4 flex gap-3">
-                  <Button className="flex-1">Create Invoice</Button>
-                  <Button variant="outline" className="flex-1">Send Statement</Button>
+                  ))}
                 </div>
+
+                {/* Message Input */}
+                <div className="p-4 pt-0">
+                  <div className="border rounded-md shadow-sm overflow-hidden focus-within:ring-1 focus-within:ring-ring focus-within:border-ring transition-all">
+                    <div className="bg-muted/30 flex items-center gap-1 border-b px-2 py-1">
+                      <Button variant="ghost" size="icon" className="h-6 w-6"><span className="font-bold text-xs">B</span></Button>
+                      <Button variant="ghost" size="icon" className="h-6 w-6"><span className="italic text-xs">I</span></Button>
+                      <Button variant="ghost" size="icon" className="h-6 w-6"><span className="line-through text-xs">S</span></Button>
+                    </div>
+                    <Input
+                      placeholder={`Message ${selectedClient.name}...`}
+                      className="border-0 focus-visible:ring-0 rounded-none bg-background px-3 py-3 h-auto min-h-[44px]"
+                      value={messageInput}
+                      onChange={(e) => setMessageInput(e.target.value)}
+                    />
+                    <div className="flex justify-between items-center p-2 bg-background">
+                      <div className="flex gap-1">
+                        <Button variant="ghost" size="icon" className="h-7 w-7"><Plus className="w-4 h-4" /></Button>
+                      </div>
+                      <Button size="sm" className="h-7 bg-success hover:bg-success/90 text-white">
+                        <Send className="w-3 h-3" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="flex flex-col items-center justify-center h-full text-muted-foreground p-8 text-center">
+                <div className="w-16 h-16 rounded-2xl bg-muted mb-4 flex items-center justify-center">
+                  <MessageSquare className="w-8 h-8 opacity-20" />
+                </div>
+                <h3 className="text-lg font-bold text-foreground">Select a conversation</h3>
+                <p>Choose a client from the left to start chatting or view details.</p>
               </div>
             )}
-          </SheetContent>
-        </Sheet>
-
-        {filteredClients.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground">No clients found</p>
           </div>
-        )}
+        </div>
       </div>
     </AppLayout>
   );

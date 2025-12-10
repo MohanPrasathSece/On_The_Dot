@@ -182,7 +182,7 @@ export default function Reminders() {
         </div>
 
         {/* Auto Reminders Toggle & Configuration */}
-        <div className="glass rounded-xl p-5 space-y-6">
+        <div className="border shadow-sm bg-card rounded-xl p-5 space-y-6">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="font-semibold flex items-center gap-2">
@@ -233,13 +233,13 @@ export default function Reminders() {
 
           <TabsContent value="scheduled" className="space-y-4">
             {scheduledReminders.length === 0 ? (
-              <div className="glass rounded-xl p-12 text-center">
+              <div className="border shadow-sm bg-card rounded-xl p-12 text-center">
                 <Calendar className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
                 <p className="text-muted-foreground">No scheduled reminders</p>
               </div>
             ) : (
               scheduledReminders.map((reminder) => (
-                <div key={reminder.id} className="glass rounded-xl p-5 flex items-center justify-between">
+                <div key={reminder.id} className="border shadow-sm bg-card rounded-xl p-5 flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className="p-2 rounded-lg bg-foreground/5">
                       {reminder.type === "email" ? <Mail className="h-5 w-5" /> : <MessageSquare className="h-5 w-5" />}
@@ -275,7 +275,7 @@ export default function Reminders() {
               </div>
             </div>
             {sentReminders.map((reminder) => (
-              <div key={reminder.id} className="glass rounded-xl p-5 flex items-center justify-between">
+              <div key={reminder.id} className="border shadow-sm bg-card rounded-xl p-5 flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="p-2 rounded-lg bg-foreground/5">
                     {reminder.type === "email" ? <Mail className="h-5 w-5" /> : <MessageSquare className="h-5 w-5" />}

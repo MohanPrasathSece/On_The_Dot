@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,7 +11,7 @@
     /* Darkest Neutral #1B1A18 */
     --foreground: 30 6% 10%;
 
-    /* Card Surface - Using specific neutral or White */
+    /* Card Surface */
     --card: 0 0% 100%;
     --card-foreground: 30 6% 10%;
 
@@ -26,10 +26,9 @@
     --secondary: 36 17% 94%;
     --secondary-foreground: 30 6% 10%;
 
-    /* Muted: #F3F1ED */
+    /* Muted */
     --muted: 36 17% 94%;
-    /* Muted Foreground: #4F4A45 */
-    --muted-foreground: 30 7% 29%;
+    --muted-foreground: 30 7% 40%;
 
     /* Accent: Ochre #C9A66B */
     --accent: 38 48% 60%;
@@ -38,91 +37,82 @@
     /* Tertiary: Teal #3E7C78 */
     --tertiary: 176 33% 36%;
     --tertiary-foreground: 0 0% 100%;
-    
+
     /* Functional Colors */
-    /* Success #3FAF7F */
     --success: 154 47% 47%;
-    /* Warning #D8A84B */
     --warning: 40 63% 57%;
-    /* Destructive #E15858 */
     --destructive: 0 70% 61%;
     --destructive-foreground: 0 0% 100%;
-    /* Info #295EC8 */
     --info: 220 66% 47%;
 
-    /* Border #E4E1DC */
+    /* Border */
     --border: 36 12% 88%;
     --input: 36 12% 88%;
     --ring: 227 90% 58%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    --glass-bg: 36 17% 97% / 0.8;
-    --glass-border: 0 0% 100% / 0.5;
-
-    /* Sidebar - keeping consistent with neutrals */
-    --sidebar-background: 36 17% 94%; /* #F3F1ED */
-    --sidebar-foreground: 30 6% 10%;
+    /* Sidebar - Project Brand (Deep Cobalt) */
+    --sidebar-background: 225 35% 15%;
+    /* Deep Blue */
+    --sidebar-foreground: 210 20% 90%;
     --sidebar-primary: 227 90% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 36 12% 88%;
-    --sidebar-accent-foreground: 227 90% 58%;
-    --sidebar-border: 36 12% 88%;
+    --sidebar-accent: 225 30% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 225 30% 20%;
     --sidebar-ring: 227 90% 58%;
   }
 
   .dark {
     /* Dark Mode BG #0F0E0C */
-    --background: 30 11% 5%;
-    /* Lightest Dark Mode Text #CFCBC6 */
-    --foreground: 36 8% 79%;
+    --background: 225 25% 5%;
+    /* Lightest Dark Mode Text */
+    --foreground: 210 20% 90%;
 
-    /* Dark Mode Card #1C1A18 */
-    --card: 30 8% 11%;
-    --card-foreground: 36 8% 79%;
+    /* Dark Mode Card */
+    --card: 225 25% 8%;
+    --card-foreground: 210 20% 90%;
 
-    --popover: 30 8% 11%;
-    --popover-foreground: 36 8% 79%;
+    --popover: 225 25% 8%;
+    --popover-foreground: 210 20% 90%;
 
     /* Primary: Cobalt #345FF6 */
     --primary: 227 90% 58%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Darker #1C1A18 */
-    --secondary: 30 8% 11%;
-    --secondary-foreground: 36 8% 79%;
+    /* Secondary */
+    --secondary: 225 25% 12%;
+    --secondary-foreground: 210 20% 90%;
 
-    /* Muted: #2A2724 */
-    --muted: 30 8% 15%;
-    --muted-foreground: 30 5% 60%;
+    /* Muted */
+    --muted: 225 25% 12%;
+    --muted-foreground: 215 15% 65%;
 
-    /* Accent: Ochre #C9A66B */
+    /* Accent */
     --accent: 38 48% 60%;
     --accent-foreground: 0 0% 100%;
-    
-    /* Tertiary: Teal #3E7C78 */
+
+    /* Tertiary */
     --tertiary: 176 33% 36%;
     --tertiary-foreground: 0 0% 100%;
 
-    /* Destructive #E15858 */
     --destructive: 0 70% 61%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Border #2A2724 */
-    --border: 30 8% 15%;
-    --input: 30 8% 15%;
+    /* Border */
+    --border: 225 20% 12%;
+    --input: 225 20% 12%;
     --ring: 227 90% 58%;
 
-    --glass-bg: 30 11% 5% / 0.7;
-    --glass-border: 36 8% 79% / 0.1;
-
-    --sidebar-background: 30 11% 5%;
-    --sidebar-foreground: 36 8% 79%;
+    --sidebar-background: 225 35% 12%;
+    /* Even Darker Blue */
+    --sidebar-foreground: 210 20% 90%;
     --sidebar-primary: 227 90% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 30 8% 11%;
-    --sidebar-accent-foreground: 36 8% 79%;
-    --sidebar-border: 30 8% 15%;
+    --sidebar-accent: 225 30% 20%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 225 30% 15%;
     --sidebar-ring: 227 90% 58%;
   }
 }
@@ -138,12 +128,17 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display text-foreground;
-    font-family: 'Spectral', 'Georgia', serif !important;
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif !important;
   }
 }
 
@@ -163,7 +158,7 @@
   .hover-lift {
     @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
-  
+
   .btn-primary-gradient {
     @apply bg-gradient-to-br from-primary to-primary/80 hover:to-primary text-primary-foreground shadow-lg shadow-primary/20;
   }
@@ -193,13 +188,15 @@
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .animation-delay-200 {
     animation-delay: 200ms;
   }
+
   .animation-delay-400 {
     animation-delay: 400ms;
   }
+
   .animation-delay-600 {
     animation-delay: 600ms;
   }
@@ -222,22 +219,49 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

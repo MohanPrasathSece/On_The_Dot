@@ -39,7 +39,7 @@ export default function Onboarding() {
 
     return (
         <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
-            <div className="w-full max-w-2xl bg-card border border-border/50 rounded-2xl shadow-xl overflow-hidden glass-strong">
+            <div className="w-full max-w-2xl bg-card border border-border/50 rounded-2xl shadow-xl overflow-hidden">
                 {/* Progress Bar */}
                 <div className="bg-muted h-2 w-full">
                     <div

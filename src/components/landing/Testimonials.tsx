@@ -1,75 +1,72 @@
-import { Star } from "lucide-react";
-
 const testimonials = [
     {
-        content: "OnTheDot has completely transformed how we handle invoicing. The interface is stunning and the automation saves us hours every week.",
+        content: "OnTheDot is a crucial enabler for our growth, bringing our people, processes and payment data together in the flow of work.",
         author: "Sarah Jenkins",
-        role: "Design Lead, Studio Alpha",
-        rating: 5,
-        avatar: "S"
+        role: "CFO",
+        company: "OpenAI"
     },
     {
-        content: "The 'Quiet Luxury' design isn't just a buzzword—it's genuinely the most pleasant enterprise software I've ever used. Getting paid is finally Stress-free.",
+        content: "The 'single pane of glass' has always been the holy grail for finance teams: less toggling, less friction and more focus. If people can stay in OnTheDot and get their invoicing and payments done, the productivity lift is significant.",
         author: "Michael Chen",
-        role: "Freelance Developer",
-        rating: 5,
-        avatar: "M"
+        role: "CTO",
+        company: "Box"
     },
     {
-        content: "The smart reminders are a game changer. My late payments dropped by 40% in the first month. Highly recommended.",
+        content: "Having automated reminders working alongside our team directly in OnTheDot is really powerful. They become really intelligent assistants that take actions right in the flow of work.",
         author: "Elena Rodriguez",
-        role: "Consultant",
-        rating: 5,
-        avatar: "E"
+        role: "VP of Finance",
+        company: "Wayfair"
+    },
+    {
+        content: "We use OnTheDot every day. The fact that I can see exactly what's happening with our cash flow from one single source of truth is invaluable.",
+        author: "Raj Patel",
+        role: "Head of Operations",
+        company: "IBM"
+    },
+    {
+        content: "OnTheDot allows our people to bring their authentic selves to work and manage client relationships seamlessly. From automations to integrations, it's a true productivity platform.",
+        author: "Jessica Wong",
+        role: "Director of Finance",
+        company: "Rivian"
+    },
+    {
+        content: "We're pleased to integrate our payment solutions even closer to where work happens in OnTheDot – so teams can access payment data as naturally as talking to a teammate.",
+        author: "David Martinez",
+        role: "Product Lead",
+        company: "Stripe"
     }
 ];
 
 export function Testimonials() {
     return (
-        <section className="py-24 relative overflow-hidden">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <h2 className="font-display text-3xl sm:text-4xl font-semibold mb-4">Loved by 10,000+ creators</h2>
-                    <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                        <div className="flex text-amber-500">
-                            {[...Array(5)].map((_, i) => (
-                                <Star key={i} className="w-5 h-5 fill-current" />
-                            ))}
-                        </div>
-                        <span className="font-medium">4.9/5 Average Rating</span>
-                    </div>
+        <section className="py-32 sm:py-40 bg-[#F8F5F2] dark:bg-background relative overflow-hidden">
+            <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+                <div className="text-center mb-20">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6">
+                        The world's most innovative
+                        <br />
+                        companies work with OnTheDot.
+                    </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {/* Testimonial Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {testimonials.map((testimonial, i) => (
-                        <div key={i} className="glass p-8 rounded-2xl hover-lift">
-                            <div className="flex gap-1 text-amber-500 mb-6">
-                                {[...Array(testimonial.rating)].map((_, i) => (
-                                    <Star key={i} className="w-4 h-4 fill-current" />
-                                ))}
-                            </div>
-                            <p className="text-lg mb-8 text-foreground/80 leading-relaxed">"{testimonial.content}"</p>
-                            <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary">
-                                    {testimonial.avatar}
-                                </div>
-                                <div>
-                                    <p className="font-medium">{testimonial.author}</p>
-                                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                                </div>
+                        <div
+                            key={i}
+                            className="bg-white dark:bg-card p-8 rounded-2xl border border-border/50 hover:border-[#4A154B]/20 transition-all duration-300 hover:-translate-y-1"
+                        >
+                            <p className="text-lg text-foreground/80 leading-relaxed mb-8 italic">
+                                "{testimonial.content}"
+                            </p>
+
+                            <div className="border-t border-border/50 pt-6">
+                                <p className="font-semibold text-lg mb-1">{testimonial.author}</p>
+                                <p className="text-sm text-muted-foreground mb-2">{testimonial.role}</p>
+                                <p className="text-xl font-bold text-[#4A154B]">{testimonial.company}</p>
                             </div>
                         </div>
                     ))}
-                </div>
-
-                {/* Brand Logos Strip */}
-                <div className="mt-20 pt-10 border-t border-border/50">
-                    <p className="text-center text-sm text-muted-foreground mb-8 uppercase tracking-widest">Trusted by teams at</p>
-                    <div className="flex flex-wrap justify-center gap-12 opacity-50 grayscale">
-                        {['Linear', 'Spotify', 'Shopify', 'Intercom', 'Framer'].map((brand) => (
-                            <span key={brand} className="text-xl font-display font-semibold">{brand}</span>
-                        ))}
-                    </div>
                 </div>
             </div>
         </section>

@@ -55,7 +55,7 @@ export default function Support() {
   const handleSendChat = () => {
     if (!chatMessage.trim()) return;
     setChatHistory([
-      ...chatHistory, 
+      ...chatHistory,
       { role: "user", message: chatMessage },
       { role: "bot", message: "Thanks for your message! A support agent will respond shortly. In the meantime, you might find our help articles useful." }
     ]);
@@ -99,13 +99,13 @@ export default function Support() {
               />
             </div>
 
-            <div className="glass rounded-xl p-6">
+            <div className="border shadow-sm bg-card rounded-xl p-6">
               <h3 className="font-semibold mb-4">Popular Articles</h3>
               <div className="space-y-3">
                 {filteredArticles.map((article) => (
-                  <a 
-                    key={article.id} 
-                    href="#" 
+                  <a
+                    key={article.id}
+                    href="#"
                     className="flex items-center justify-between p-3 rounded-lg hover:bg-muted/50 transition-colors"
                   >
                     <div>
@@ -118,7 +118,7 @@ export default function Support() {
               </div>
             </div>
 
-            <div className="glass rounded-xl p-6">
+            <div className="border shadow-sm bg-card rounded-xl p-6">
               <h3 className="font-semibold mb-4">Frequently Asked Questions</h3>
               <Accordion type="single" collapsible className="space-y-2">
                 <AccordionItem value="1" className="border-0 bg-muted/30 rounded-lg px-4">
@@ -145,7 +145,7 @@ export default function Support() {
 
           {/* Live Chat */}
           <TabsContent value="chat">
-            <div className="glass rounded-xl h-[500px] flex flex-col">
+            <div className="border shadow-sm bg-card rounded-xl h-[500px] flex flex-col">
               <div className="p-4 border-b border-border/50">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
@@ -157,11 +157,10 @@ export default function Support() {
               <div className="flex-1 overflow-y-auto p-4 space-y-4">
                 {chatHistory.map((chat, i) => (
                   <div key={i} className={`flex ${chat.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                    <div className={`max-w-[80%] p-3 rounded-xl ${
-                      chat.role === 'user' 
-                        ? 'bg-foreground text-background' 
+                    <div className={`max-w-[80%] p-3 rounded-xl ${chat.role === 'user'
+                        ? 'bg-foreground text-background'
                         : 'bg-muted'
-                    }`}>
+                      }`}>
                       <p className="text-sm">{chat.message}</p>
                     </div>
                   </div>
@@ -170,8 +169,8 @@ export default function Support() {
 
               <div className="p-4 border-t border-border/50">
                 <div className="flex gap-2">
-                  <Input 
-                    placeholder="Type your message..." 
+                  <Input
+                    placeholder="Type your message..."
                     value={chatMessage}
                     onChange={(e) => setChatMessage(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSendChat()}
@@ -186,12 +185,12 @@ export default function Support() {
 
           {/* Tickets */}
           <TabsContent value="tickets" className="space-y-6">
-            <div className="glass rounded-xl p-6 space-y-4">
+            <div className="border shadow-sm bg-card rounded-xl p-6 space-y-4">
               <h3 className="font-semibold">Submit a Ticket</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label>Subject</Label>
-                  <Input 
+                  <Input
                     value={newTicket.subject}
                     onChange={(e) => setNewTicket({ ...newTicket, subject: e.target.value })}
                     placeholder="Brief description of your issue"
@@ -213,7 +212,7 @@ export default function Support() {
                 </div>
                 <div className="md:col-span-2">
                   <Label>Description</Label>
-                  <Textarea 
+                  <Textarea
                     value={newTicket.description}
                     onChange={(e) => setNewTicket({ ...newTicket, description: e.target.value })}
                     placeholder="Describe your issue in detail..."
@@ -226,13 +225,13 @@ export default function Support() {
               </Button>
             </div>
 
-            <div className="glass rounded-xl p-6">
+            <div className="border shadow-sm bg-card rounded-xl p-6">
               <h3 className="font-semibold mb-4">Your Tickets</h3>
               <div className="space-y-3">
                 {tickets.map((ticket) => (
                   <div key={ticket.id} className="flex items-center justify-between p-4 rounded-lg bg-muted/30">
                     <div className="flex items-center gap-3">
-                      {ticket.status === 'resolved' 
+                      {ticket.status === 'resolved'
                         ? <CheckCircle className="h-5 w-5 text-foreground" />
                         : <Clock className="h-5 w-5 text-muted-foreground" />
                       }
@@ -241,9 +240,8 @@ export default function Support() {
                         <p className="text-sm text-muted-foreground">{ticket.id} • {ticket.created}</p>
                       </div>
                     </div>
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      ticket.status === 'resolved' ? 'bg-foreground/10 text-foreground' : 'bg-muted text-muted-foreground'
-                    }`}>
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${ticket.status === 'resolved' ? 'bg-foreground/10 text-foreground' : 'bg-muted text-muted-foreground'
+                      }`}>
                       {ticket.status}
                     </span>
                   </div>
@@ -254,7 +252,7 @@ export default function Support() {
 
           {/* Feature Request */}
           <TabsContent value="feature">
-            <div className="glass rounded-xl p-6 space-y-4">
+            <div className="border shadow-sm bg-card rounded-xl p-6 space-y-4">
               <div className="text-center py-8">
                 <Lightbulb className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
                 <h3 className="font-semibold text-lg mb-2">Have an idea?</h3>
@@ -270,7 +268,7 @@ export default function Support() {
                 </div>
                 <div>
                   <Label>Description</Label>
-                  <Textarea 
+                  <Textarea
                     placeholder="Describe the feature and how it would help you..."
                     rows={4}
                   />
@@ -284,7 +282,7 @@ export default function Support() {
         </Tabs>
 
         {/* Status */}
-        <div className="glass rounded-xl p-6">
+        <div className="border shadow-sm bg-card rounded-xl p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-3 h-3 rounded-full bg-success" />

@@ -128,7 +128,7 @@ export default function InvoiceBuilder() {
 
               <TabsContent value="content" className="space-y-6">
                 {/* Client & Basic Info */}
-                <div className="glass rounded-xl p-6 space-y-4">
+                <div className="border shadow-sm bg-card rounded-xl p-6 space-y-4">
                   <h3 className="font-semibold">Invoice Details</h3>
 
                   <div className="grid grid-cols-2 gap-4">
@@ -237,13 +237,13 @@ export default function InvoiceBuilder() {
 
 
                 {/* Line Items */}
-                <div className="glass rounded-xl p-6 space-y-4">
+                <div className="border shadow-sm bg-card rounded-xl p-6 space-y-4">
                   <h3 className="font-semibold">Line Items</h3>
 
                   <div className="space-y-3">
                     {items.map((item, index) => (
-                      <div key={item.id} className="grid grid-cols-12 gap-3 items-end group">
-                        <div className="col-span-1 flex flex-col gap-1 items-center justify-center pb-2">
+                      <div key={item.id} className="grid grid-cols-2 md:grid-cols-12 gap-3 items-end group p-4 border border-border/50 rounded-lg md:border-none md:p-0 mb-4 md:mb-0 bg-muted/10 md:bg-transparent">
+                        <div className="col-span-2 md:col-span-1 flex flex-row md:flex-col gap-1 items-center justify-end md:justify-center pb-2">
                           <Button
                             variant="ghost" size="icon" className="h-4 w-4 text-muted-foreground hover:text-foreground"
                             onClick={() => moveItem(index, 'up')}
@@ -259,16 +259,18 @@ export default function InvoiceBuilder() {
                             <MoveDown className="h-3 w-3" />
                           </Button>
                         </div>
-                        <div className="col-span-5">
-                          {index === 0 && <Label className="text-xs">Description</Label>}
+                        <div className="col-span-2 md:col-span-5">
+                          <Label className="text-xs md:hidden mb-1.5 block">Description</Label>
+                          {index === 0 && <Label className="text-xs hidden md:block">Description</Label>}
                           <Input
                             placeholder="Service description"
                             value={item.description}
                             onChange={(e) => updateItem(item.id, 'description', e.target.value)}
                           />
                         </div>
-                        <div className="col-span-2">
-                          {index === 0 && <Label className="text-xs">Qty</Label>}
+                        <div className="col-span-1 md:col-span-2">
+                          <Label className="text-xs md:hidden mb-1.5 block">Qty</Label>
+                          {index === 0 && <Label className="text-xs hidden md:block">Qty</Label>}
                           <Input
                             type="number"
                             value={item.quantity}
@@ -276,8 +278,9 @@ export default function InvoiceBuilder() {
                             min="1"
                           />
                         </div>
-                        <div className="col-span-3">
-                          {index === 0 && <Label className="text-xs">Rate</Label>}
+                        <div className="col-span-1 md:col-span-3">
+                          <Label className="text-xs md:hidden mb-1.5 block">Rate</Label>
+                          {index === 0 && <Label className="text-xs hidden md:block">Rate</Label>}
                           <Input
                             type="number"
                             value={item.rate}
@@ -285,7 +288,7 @@ export default function InvoiceBuilder() {
                             min="0"
                           />
                         </div>
-                        <div className="col-span-1 pb-1">
+                        <div className="col-span-2 md:col-span-1 pb-1 flex justify-end md:block">
                           <Button
                             variant="ghost"
                             size="icon"
@@ -307,10 +310,10 @@ export default function InvoiceBuilder() {
                 </div>
 
                 {/* Notes with AI */}
-                <div className="glass rounded-xl p-6 space-y-4">
+                <div className="border shadow-sm bg-card rounded-xl p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="font-semibold">Notes & Terms</h3>
-                    <div className="flex gap-2">
+                    <div className="flex flex-wrap gap-2">
                       <Button variant="outline" size="sm" onClick={() => handleAISuggest('polite')}>
                         <Sparkles className="h-3 w-3 mr-1" /> Polite
                       </Button>
@@ -332,7 +335,7 @@ export default function InvoiceBuilder() {
               </TabsContent>
 
               <TabsContent value="design" className="space-y-6">
-                <div className="glass rounded-xl p-6 space-y-6">
+                <div className="border shadow-sm bg-card rounded-xl p-6 space-y-6">
                   <div>
                     <h3 className="font-semibold mb-4 flex items-center gap-2">
                       <Upload className="h-4 w-4" /> Company Logo
@@ -385,7 +388,7 @@ export default function InvoiceBuilder() {
 
           {/* Preview & Summary */}
           <div className="space-y-6">
-            <div className="glass rounded-xl p-6 space-y-4 sticky top-24 transition-all duration-300" style={{ borderTopColor: brandColor, borderTopWidth: 4, fontFamily: font === 'Mono' ? 'monospace' : font === 'Spectral' ? 'serif' : 'sans-serif' }}>
+            <div className="border shadow-sm bg-card rounded-xl p-6 space-y-4 sticky top-24 transition-all duration-300" style={{ borderTopColor: brandColor, borderTopWidth: 4, fontFamily: font === 'Mono' ? 'monospace' : font === 'Spectral' ? 'serif' : 'sans-serif' }}>
               <h3 className="font-semibold" style={{ color: brandColor }}>Success Summary</h3>
 
               <div className="space-y-2 text-sm">

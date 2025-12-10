@@ -93,15 +93,15 @@ export default function Reports() {
         {/* Charts Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Revenue Chart */}
-          <div className="glass rounded-xl p-5">
+          <div className="border shadow-sm rounded-xl p-5 bg-card">
             <h3 className="font-semibold mb-6">Revenue Trend</h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={monthlyRevenue}>
                   <defs>
                     <linearGradient id="colorRevenue2" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="hsl(var(--foreground))" stopOpacity={0.2} />
-                      <stop offset="95%" stopColor="hsl(var(--foreground))" stopOpacity={0} />
+                      <stop offset="5%" stopColor="#1164A3" stopOpacity={0.1} />
+                      <stop offset="95%" stopColor="#1164A3" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
@@ -114,14 +114,14 @@ export default function Reports() {
                     }}
                     formatter={(value: number) => [`$${value.toLocaleString()}`, 'Revenue']}
                   />
-                  <Area type="monotone" dataKey="revenue" stroke="hsl(var(--foreground))" strokeWidth={2} fill="url(#colorRevenue2)" />
+                  <Area type="monotone" dataKey="revenue" stroke="#1164A3" strokeWidth={2} fill="url(#colorRevenue2)" />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
           </div>
 
           {/* Invoice Volume */}
-          <div className="glass rounded-xl p-5">
+          <div className="border shadow-sm rounded-xl p-5 bg-card">
             <h3 className="font-semibold mb-6">Invoice Volume</h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
@@ -135,14 +135,14 @@ export default function Reports() {
                       borderRadius: '8px'
                     }}
                   />
-                  <Bar dataKey="invoices" fill="hsl(var(--foreground))" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="invoices" fill="#3F0E40" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
           </div>
 
           {/* Invoice Status Pie */}
-          <div className="glass rounded-xl p-5">
+          <div className="border shadow-sm rounded-xl p-5 bg-card">
             <h3 className="font-semibold mb-6">Invoice Status</h3>
             <div className="h-64 flex items-center justify-center">
               <ResponsiveContainer width="100%" height="100%">
@@ -182,14 +182,14 @@ export default function Reports() {
         </div>
 
         {/* Cash Flow Forecast */}
-        <div className="glass rounded-xl p-5 lg:col-span-2">
+        <div className="border shadow-sm rounded-xl p-5 lg:col-span-2 bg-card">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="font-semibold">Cash Flow Forecast</h3>
               <p className="text-sm text-muted-foreground">Projected revenue vs expenses (AI-based)</p>
             </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1"><div className="w-3 h-3 bg-foreground/80 rounded-full"></div> In</div>
+              <div className="flex items-center gap-1"><div className="w-3 h-3 bg-[#1164A3] rounded-full"></div> In</div>
               <div className="flex items-center gap-1"><div className="w-3 h-3 bg-muted-foreground/30 rounded-full"></div> Out</div>
             </div>
           </div>
@@ -207,8 +207,8 @@ export default function Reports() {
               ]}>
                 <defs>
                   <linearGradient id="colorIn" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="hsl(var(--foreground))" stopOpacity={0.2} />
-                    <stop offset="95%" stopColor="hsl(var(--foreground))" stopOpacity={0} />
+                    <stop offset="5%" stopColor="#1164A3" stopOpacity={0.2} />
+                    <stop offset="95%" stopColor="#1164A3" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
@@ -221,7 +221,7 @@ export default function Reports() {
                   }}
                   formatter={(value: number) => [`$${value.toLocaleString()}`, '']}
                 />
-                <Area type="monotone" dataKey="in" stroke="hsl(var(--foreground))" strokeWidth={2} fill="url(#colorIn)" fillOpacity={1} />
+                <Area type="monotone" dataKey="in" stroke="#1164A3" strokeWidth={2} fill="url(#colorIn)" fillOpacity={1} />
                 <Area type="monotone" dataKey="out" stroke="hsl(var(--muted-foreground))" strokeDasharray="5 5" strokeWidth={2} fill="transparent" />
               </AreaChart>
             </ResponsiveContainer>
@@ -229,7 +229,7 @@ export default function Reports() {
         </div>
 
         {/* Tax Summary */}
-        <div className="glass rounded-xl p-5">
+        <div className="border shadow-sm rounded-xl p-5 bg-card">
           <h3 className="font-semibold mb-6">Est. Tax Liability</h3>
           <div className="space-y-6">
             <div className="flex items-center justify-between">
@@ -243,7 +243,7 @@ export default function Reports() {
               </div>
             </div>
             <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
-              <div className="h-full bg-foreground w-[75%]"></div>
+              <div className="h-full bg-[#1164A3] w-[75%]"></div>
             </div>
             <div className="flex gap-4">
               <div className="flex-1 p-3 bg-muted/50 rounded-lg">
@@ -260,7 +260,7 @@ export default function Reports() {
         </div>
 
         {/* Quick Stats */}
-        <div className="glass rounded-xl p-5">
+        <div className="border shadow-sm rounded-xl p-5 bg-card">
           <h3 className="font-semibold mb-6">Quick Insights</h3>
           <div className="space-y-6">
             <div className="flex items-center justify-between">
@@ -270,8 +270,8 @@ export default function Reports() {
               </div>
               <div className="w-32 h-2 bg-muted rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-foreground rounded-full"
-                  style={{ width: `${(paidInvoices / totalInvoices) * 100}%` }}
+                  className="h-full bg-success rounded-full"
+                  style={{ width: `${(paidInvoices / totalInvoices) * 100}%`, backgroundColor: '#007a5a' }}
                 />
               </div>
             </div>

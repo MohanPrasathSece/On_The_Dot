@@ -1,168 +1,156 @@
 import { useState } from "react";
-import { Check } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Check, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { cn } from "@/lib/utils";
 
 const plans = [
   {
     name: "Free Trial",
-    description: "Perfect for trying out OnTheDot",
-    monthlyPrice: 0,
-    yearlyPrice: 0,
+    price: { monthly: 0, yearly: 0 },
+    description: "Perfect for testing the waters.",
     features: [
-      "Up to 5 invoices/month",
-      "Basic templates",
-      "Email reminders",
-      "1 payment integration",
+      "3 Clients",
+      "5 Invoices per month",
+      "Basic Reporting",
+      "Email Support"
     ],
-    cta: "Start Free",
-    highlighted: false,
+    cta: "Start Free Trial",
+    highlight: false
   },
   {
     name: "Pro",
-    description: "For growing freelancers",
-    monthlyPrice: 10,
-    yearlyPrice: 96,
+    price: { monthly: 15, yearly: 12 },
+    description: "For freelancers growing their business.",
     features: [
-      "Unlimited invoices",
-      "Custom branding",
-      "Smart auto-reminders",
-      "AI writing assistance",
-      "All payment integrations",
-      "Cash flow dashboard",
+      "Unlimited Clients",
+      "Unlimited Invoices",
+      "Auto-Reminders",
+      "Custom Branding",
+      "Stripe & PowerPoint Integration"
     ],
     cta: "Get Started",
-    highlighted: true,
+    highlight: true
   },
   {
     name: "Premium",
-    description: "For agencies & teams",
-    monthlyPrice: 20,
-    yearlyPrice: 192,
+    price: { monthly: 39, yearly: 29 },
+    description: "Power features for scaling agencies.",
     features: [
       "Everything in Pro",
-      "Team collaboration",
-      "Priority support",
-      "Advanced reports",
-      "API access",
-      "Custom workflows",
+      "Team Roles & Permissions",
+      "Advanced Cash Flow Charts",
+      "Priority Support",
+      "API Access"
     ],
-    cta: "Get Started",
-    highlighted: false,
-  },
-  {
-    name: "Lifetime",
-    description: "Pay once, use forever",
-    monthlyPrice: 200,
-    yearlyPrice: 200,
-    isLifetime: true,
-    features: [
-      "Everything in Premium",
-      "Lifetime updates",
-      "No recurring fees",
-      "Early access to features",
-      "Founder's badge",
-    ],
-    cta: "Buy Now",
-    highlighted: false,
-  },
+    cta: "Go Premium",
+    highlight: false
+  }
 ];
 
 export function Pricing() {
-  const [isYearly, setIsYearly] = useState(false);
+  const [isYearly, setIsYearly] = useState(true);
 
   return (
-    <section id="pricing" className="py-24 sm:py-32 relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <p className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">
-            Pricing
-          </p>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-6">
-            Simple, transparent pricing
+    <section id="pricing" className="py-24 bg-[#4A154B] text-white overflow-hidden relative">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
+            Simple, transparent pricing.
           </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            Start free, upgrade when you're ready. No hidden fees, cancel anytime.
+          <p className="text-xl text-white/80 mb-8">
+            Choose the plan that fits your stage of growth. No hidden fees.
           </p>
 
-          {/* Toggle */}
           <div className="flex items-center justify-center gap-4">
-            <span className={cn("text-sm font-medium transition-colors", !isYearly ? "text-foreground" : "text-muted-foreground")}>
-              Monthly
-            </span>
-            <Switch checked={isYearly} onCheckedChange={setIsYearly} />
-            <span className={cn("text-sm font-medium transition-colors", isYearly ? "text-foreground" : "text-muted-foreground")}>
-              Yearly
-              <span className="ml-2 px-2 py-0.5 rounded-full bg-foreground/10 text-xs">
-                Save 20%
-              </span>
+            <span className={`text-sm font-medium ${!isYearly ? "text-white" : "text-white/60"}`}>Monthly</span>
+            <Switch
+              checked={isYearly}
+              onCheckedChange={setIsYearly}
+              className="data-[state=checked]:bg-white/20 data-[state=unchecked]:bg-white/20"
+            />
+            <span className={`text-sm font-medium ${isYearly ? "text-white" : "text-white/60"}`}>
+              Yearly <span className="text-emerald-300 text-xs ml-1">(Save 20%)</span>
             </span>
           </div>
         </div>
 
-        {/* Pricing Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {plans.map((plan, index) => (
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
+          {plans.map((plan) => (
             <div
-              key={index}
-              className={cn(
-                "rounded-2xl p-6 sm:p-8 transition-all duration-300",
-                plan.highlighted
-                  ? "glass-strong border-2 border-foreground/20 scale-105"
-                  : "glass hover-lift"
-              )}
+              key={plan.name}
+              className={`relative rounded-3xl p-8 transition-all duration-300 ${plan.highlight
+                  ? "bg-white text-[#4A154B] shadow-2xl scale-105 z-10"
+                  : "bg-white/10 text-white border border-white/20 hover:bg-white/15"
+                }`}
             >
-              {plan.highlighted && (
-                <div className="text-center mb-4">
-                  <span className="px-3 py-1 rounded-full bg-foreground text-background text-xs font-medium">
-                    Most Popular
-                  </span>
-                </div>
-              )}
-              
-              <h3 className="font-display text-xl font-semibold mb-2">
-                {plan.name}
-              </h3>
-              <p className="text-sm text-muted-foreground mb-6">
+              <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+              <p className={`text-sm mb-6 ${plan.highlight ? "text-gray-600" : "text-white/70"}`}>
                 {plan.description}
               </p>
 
-              <div className="mb-6">
-                <span className="font-display text-4xl font-semibold">
-                  ${plan.isLifetime ? plan.monthlyPrice : (isYearly ? Math.round(plan.yearlyPrice / 12) : plan.monthlyPrice)}
+              <div className="mb-8">
+                <span className="text-4xl font-bold">
+                  ${isYearly ? plan.price.yearly : plan.price.monthly}
                 </span>
-                {!plan.isLifetime && plan.monthlyPrice > 0 && (
-                  <span className="text-muted-foreground text-sm">/month</span>
-                )}
-                {plan.isLifetime && (
-                  <span className="text-muted-foreground text-sm ml-2">one-time</span>
+                <span className={`text-sm ${plan.highlight ? "text-gray-500" : "text-white/60"}`}>
+                  /mo
+                </span>
+                {isYearly && plan.price.monthly > 0 && (
+                  <div className="text-xs text-emerald-500 font-medium mt-1">
+                    Billed ${plan.price.yearly * 12} yearly
+                  </div>
                 )}
               </div>
 
-              <Button
-                className={cn(
-                  "w-full rounded-full mb-6",
-                  plan.highlighted
-                    ? ""
-                    : "bg-foreground/10 text-foreground hover:bg-foreground/20"
-                )}
-                variant={plan.highlighted ? "default" : "ghost"}
-              >
-                {plan.cta}
-              </Button>
-
-              <ul className="space-y-3">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm">
-                    <Check className="w-4 h-4 text-foreground/70 flex-shrink-0" />
-                    <span className="text-muted-foreground">{feature}</span>
+              <ul className="space-y-4 mb-8">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <Check className={`w-5 h-5 shrink-0 ${plan.highlight ? "text-green-600" : "text-white"}`} />
+                    <span className={`text-sm ${plan.highlight ? "text-gray-700" : "text-white/80"}`}>
+                      {feature}
+                    </span>
                   </li>
                 ))}
               </ul>
+
+              <Button
+                className={`w-full h-12 text-base font-semibold rounded-xl ${plan.highlight
+                    ? "bg-[#4A154B] hover:bg-[#4A154B]/90 text-white"
+                    : "bg-white hover:bg-white/90 text-[#4A154B]"
+                  }`}
+                asChild
+              >
+                <Link to="/signup">{plan.cta}</Link>
+              </Button>
             </div>
           ))}
+        </div>
+
+        {/* Subscription Management Details */}
+        <div className="max-w-4xl mx-auto bg-white/5 rounded-2xl p-8 border border-white/10">
+          <h4 className="text-xl font-semibold mb-6 flex items-center gap-2">
+            <ArrowRight className="w-5 h-5" />
+            Frequently asked questions about billing
+          </h4>
+          <div className="grid md:grid-cols-2 gap-8 text-sm text-white/80">
+            <div>
+              <strong className="block text-white mb-1">Payment Methods</strong>
+              We accept all major credit cards via Stripe and Razorpay. Secure and encrypted.
+            </div>
+            <div>
+              <strong className="block text-white mb-1">Cancellation Policy</strong>
+              Cancel anytime from your dashboard. No questions asked. You'll retain access until the end of your billing cycle.
+            </div>
+            <div>
+              <strong className="block text-white mb-1">Upgrades & Downgrades</strong>
+              Change your plan instantly. We'll prorate the difference automatically.
+            </div>
+            <div>
+              <strong className="block text-white mb-1">History & Invoices</strong>
+              Access your full billing history and download tax-ready invoices from your Settings page.
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -126,46 +126,46 @@ export default function Team() {
 
           <TabsContent value="members" className="space-y-4">
             {/* Team Members */}
-            <div className="glass rounded-xl overflow-hidden">
+            <div className="border shadow-sm bg-card rounded-xl overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-border/50 bg-muted/30">
-                      <th className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3">Member</th>
-                      <th className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3">Role</th>
-                      <th className="text-left text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3">Joined</th>
-                      <th className="text-right text-xs font-medium text-muted-foreground uppercase tracking-wider px-5 py-3">Actions</th>
+                    <tr className="border-b bg-muted/30">
+                      <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-5 py-3">Member</th>
+                      <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-5 py-3">Role</th>
+                      <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider px-5 py-3">Joined</th>
+                      <th className="text-right text-xs font-semibold text-muted-foreground uppercase tracking-wider px-5 py-3">Actions</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="divide-y">
                     {team.map((member) => {
                       const RoleIcon = roleIcons[member.role];
                       return (
-                        <tr key={member.id} className="table-row">
-                          <td className="px-5 py-4">
+                        <tr key={member.id} className="hover:bg-muted/30 transition-colors">
+                          <td className="px-5 py-3">
                             <div className="flex items-center gap-3">
-                              <div className="relative w-9 h-9">
-                                <div className="w-9 h-9 rounded-full bg-foreground/10 flex items-center justify-center text-sm font-medium">
+                              <div className="relative w-8 h-8">
+                                <div className="w-8 h-8 rounded-md bg-[#4A154B] flex items-center justify-center text-sm font-bold text-white">
                                   {member.name.split(' ').map(n => n[0]).join('')}
                                 </div>
-                                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-background flex items-center justify-center">
-                                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-background flex items-center justify-center">
+                                  <div className="w-2 h-2 rounded-full bg-green-500" />
                                 </div>
                               </div>
                               <div>
-                                <p className="font-medium">{member.name}</p>
-                                <p className="text-sm text-muted-foreground">{member.email}</p>
+                                <p className="font-medium text-sm">{member.name}</p>
+                                <p className="text-xs text-muted-foreground">{member.email}</p>
                               </div>
                             </div>
                           </td>
-                          <td className="px-5 py-4">
+                          <td className="px-5 py-3">
                             <div className="flex items-center gap-2">
-                              <RoleIcon className="h-4 w-4 text-muted-foreground" />
+                              <RoleIcon className="h-3.5 w-3.5 text-muted-foreground" />
                               <Select
                                 value={member.role}
                                 onValueChange={(v: "admin" | "editor" | "viewer") => handleRoleChange(member.id, v)}
                               >
-                                <SelectTrigger className="w-28 h-8">
+                                <SelectTrigger className="w-24 h-7 text-xs">
                                   <SelectValue />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -176,15 +176,15 @@ export default function Team() {
                               </Select>
                             </div>
                           </td>
-                          <td className="px-5 py-4 text-muted-foreground">
+                          <td className="px-5 py-3 text-sm text-muted-foreground">
                             {new Date(member.joinedAt).toLocaleDateString('en-US', {
                               month: 'short', day: 'numeric', year: 'numeric'
                             })}
                           </td>
-                          <td className="px-5 py-4 text-right">
+                          <td className="px-5 py-3 text-right">
                             <DropdownMenu>
                               <DropdownMenuTrigger asChild>
-                                <Button variant="ghost" size="icon">
+                                <Button variant="ghost" size="icon" className="h-8 w-8">
                                   <MoreHorizontal className="h-4 w-4" />
                                 </Button>
                               </DropdownMenuTrigger>
@@ -213,15 +213,15 @@ export default function Team() {
           </TabsContent>
 
           <TabsContent value="activity" className="space-y-4">
-            <div className="glass rounded-xl p-5">
+            <div className="border shadow-sm bg-card rounded-xl p-5">
               <div className="space-y-4">
                 {mockActivities.map((activity) => (
-                  <div key={activity.id} className="flex gap-4 pb-4 border-b border-border/50 last:border-0 last:pb-0">
-                    <div className="w-2 h-2 rounded-full bg-foreground/50 mt-2 flex-shrink-0" />
+                  <div key={activity.id} className="flex gap-4 pb-4 border-b last:border-0 last:pb-0">
+                    <div className="w-2 h-2 rounded-full bg-muted-foreground/30 mt-2 flex-shrink-0" />
                     <div className="flex-1">
                       <p className="text-sm">{activity.description}</p>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className="text-xs text-muted-foreground">{activity.user}</span>
+                        <span className="text-xs text-muted-foreground font-medium">{activity.user}</span>
                         <span className="text-xs text-muted-foreground">•</span>
                         <span className="text-xs text-muted-foreground">
                           {new Date(activity.timestamp).toLocaleDateString('en-US', {

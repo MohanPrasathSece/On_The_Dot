@@ -139,7 +139,7 @@ export default function Integrations() {
         </div>
 
         {/* Sync Logs */}
-        <div className="glass rounded-xl p-5">
+        <div className="border shadow-sm bg-card rounded-xl p-5">
           <div className="flex items-center justify-between mb-4">
             <h3 className="font-semibold">Sync Logs</h3>
             <Button variant="ghost" size="sm" className="text-xs">View All</Button>
@@ -148,7 +148,7 @@ export default function Integrations() {
             {mockSyncLogs.map((log) => (
               <div key={log.id} className="flex items-center justify-between py-3 border-b border-border/50 last:border-0 last:pb-0">
                 <div className="flex items-center gap-3">
-                  <div className={`w-2 h-2 rounded-full ${log.status === 'success' ? 'bg-success' : 'bg-destructive'}`} />
+                  <div className={`w-2 h-2 rounded-full ${log.status === 'success' ? 'bg-green-500' : 'bg-destructive'}`} />
                   <p className="text-sm">
                     <span className="font-medium">{log.integration}</span>
                     {log.message}
@@ -178,7 +178,7 @@ function IntegrationCard({
   onSync: (id: string) => void;
 }) {
   return (
-    <div className="glass rounded-xl p-5">
+    <div className="border shadow-sm bg-card rounded-xl p-5 hover:bg-muted/10 transition-colors">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
           <span className="text-3xl">{integration.icon}</span>
@@ -193,8 +193,8 @@ function IntegrationCard({
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Check className="h-4 w-4 text-foreground" />
-              <span className="text-sm text-foreground">Connected</span>
+              <Check className="h-4 w-4 text-primary" />
+              <span className="text-sm text-primary font-medium">Connected</span>
             </div>
             {integration.lastSync && (
               <span className="text-xs text-muted-foreground">Synced {integration.lastSync}</span>
@@ -220,7 +220,7 @@ function IntegrationCard({
           </div>
         </div>
       ) : (
-        <Button className="w-full" onClick={() => onConnect(integration.id)}>
+        <Button className="w-full bg-[#4A154B] hover:bg-[#4A154B]/90 text-white" onClick={() => onConnect(integration.id)}>
           Connect
           <ExternalLink className="h-3 w-3 ml-1" />
         </Button>
