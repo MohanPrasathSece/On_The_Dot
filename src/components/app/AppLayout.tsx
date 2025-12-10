@@ -102,7 +102,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           <Plus className="w-5 h-5" />
         </div>
         <div className="flex-1" />
-        <div className="w-10 h-10 rounded-full overflow-hidden cursor-pointer hover:opacity-80 transition-opacity border-2 border-green-500">
+        <div className="w-10 h-10 rounded-full overflow-hidden cursor-pointer hover:opacity-80 transition-opacity border-2 border-primary">
           <Avatar>
             <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'User'}`} />
             <AvatarFallback className="bg-blue-600 text-white">{user?.name?.[0] || 'U'}</AvatarFallback>
@@ -157,7 +157,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                           <div className="relative">
                             <div className={cn(
                               "w-2.5 h-2.5 rounded-full border-2 border-sidebar",
-                              item.status === 'online' ? "bg-green-500" : "bg-transparent border-white/50"
+                              item.status === 'online' ? "bg-primary" : "bg-transparent border-white/50"
                             )} />
                           </div>
                         )}
