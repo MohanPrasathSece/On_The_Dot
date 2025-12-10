@@ -39,8 +39,8 @@ export function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded bg-[#4A154B] flex items-center justify-center transition-transform group-hover:scale-105">
-              <span className="text-white font-bold text-lg">O</span>
+            <div className="w-8 h-8 rounded bg-primary flex items-center justify-center transition-transform group-hover:scale-105">
+              <span className="text-primary-foreground font-bold text-lg">O</span>
             </div>
             <span className="font-bold text-xl tracking-tight">OnTheDot</span>
           </Link>
@@ -51,7 +51,7 @@ export function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-semibold text-muted-foreground hover:text-[#4A154B] transition-colors"
+                className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors"
               >
                 {link.name}
               </a>
@@ -71,11 +71,11 @@ export function Navbar() {
               <span className="sr-only">Toggle theme</span>
             </Button>
             <div className="h-4 w-[1px] bg-border" />
-            <Link to="/login" className="text-sm font-semibold hover:text-[#4A154B] transition-colors">
+            <Link to="/login" className="text-sm font-semibold hover:text-primary transition-colors">
               Log In
             </Link>
             <Link to="/signup">
-              <Button className="bg-[#4A154B] hover:bg-[#4A154B]/90 text-white font-semibold rounded-lg px-6">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg px-6">
                 Start Free Trial
               </Button>
             </Link>
@@ -122,7 +122,7 @@ export function Navbar() {
                   <Button variant="outline" className="w-full h-12 text-lg">Log In</Button>
                 </Link>
                 <Link to="/signup" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full h-12 text-lg bg-[#4A154B] hover:bg-[#4A154B]/90 text-white">Start Free Trial</Button>
+                  <Button className="w-full h-12 text-lg bg-primary hover:bg-primary/90 text-primary-foreground">Start Free Trial</Button>
                 </Link>
               </div>
             </div>

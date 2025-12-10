@@ -45,13 +45,13 @@ export function Testimonials() {
                             </div>
                             <div>
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center font-bold text-[#4A154B] text-lg">
+                                    <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center font-bold text-primary text-lg">
                                         {t.author[0]}
                                     </div>
                                     <div>
                                         <div className="font-bold">{t.author}</div>
                                         <div className="text-sm text-muted-foreground">{t.role}</div>
-                                        <div className="text-xs text-[#4A154B] font-medium">{t.company}</div>
+                                        <div className="text-xs text-primary font-medium">{t.company}</div>
                                     </div>
                                 </div>
                             </div>

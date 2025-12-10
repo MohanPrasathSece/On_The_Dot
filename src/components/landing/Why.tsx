@@ -22,7 +22,7 @@ export function Why() {
                         { icon: Users, title: "Community", desc: "Join thousands of freelancers and agencies who trust OnTheDot." }
                     ].map((item, i) => (
                         <div key={i} className="bg-background p-6 rounded-2xl border border-border/50 hover:shadow-lg transition-all">
-                            <div className="w-12 h-12 rounded-xl bg-[#4A154B]/5 flex items-center justify-center mb-4 text-[#4A154B]">
+                            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 text-primary">
                                 <item.icon className="w-6 h-6" />
                             </div>
                             <h3 className="text-xl font-bold mb-2">{item.title}</h3>
@@ -32,10 +32,10 @@ export function Why() {
                 </div>
 
                 {/* Born from Frustration */}
-                <div className="bg-[#4A154B] text-white rounded-3xl p-8 sm:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-12">
+                <div className="bg-primary text-primary-foreground rounded-3xl p-8 sm:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-12">
                     <div className="md:w-1/2">
                         <h3 className="text-3xl font-bold mb-6">Born from Freelancer Frustration</h3>
-                        <p className="text-white/80 mb-8 text-lg">OnTheDot was created by freelancers who were tired of:</p>
+                        <p className="text-primary-foreground/80 mb-8 text-lg">OnTheDot was created by freelancers who were tired of:</p>
                         <ul className="space-y-4">
                             {[
                                 "Spending hours creating invoices manually",
@@ -43,19 +43,19 @@ export function Why() {
                                 "Having no visibility into cash flow patterns"
                             ].map((item, i) => (
                                 <li key={i} className="flex items-center gap-3">
-                                    <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-                                        <span className="w-2 h-2 rounded-full bg-white" />
+                                    <div className="w-6 h-6 rounded-full bg-primary-foreground/20 flex items-center justify-center shrink-0">
+                                        <span className="w-2 h-2 rounded-full bg-primary-foreground" />
                                     </div>
-                                    <span className="text-white/90 font-medium">{item}</span>
+                                    <span className="text-primary-foreground/90 font-medium">{item}</span>
                                 </li>
                             ))}
                         </ul>
                     </div>
                     <div className="md:w-1/2 relative">
-                        <div className="aspect-square rounded-2xl bg-white/10 border border-white/20 p-8 flex items-center justify-center">
+                        <div className="aspect-square rounded-2xl bg-primary-foreground/10 border border-primary-foreground/20 p-8 flex items-center justify-center">
                             <div className="text-center">
                                 <p className="text-6xl font-bold mb-2">10hrs+</p>
-                                <p className="text-white/60">Saved weekly per user</p>
+                                <p className="text-primary-foreground/60">Saved weekly per user</p>
                             </div>
                         </div>
                     </div>

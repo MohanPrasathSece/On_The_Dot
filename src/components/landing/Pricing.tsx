@@ -99,20 +99,20 @@ export function Pricing() {
             <div
               key={plan.name}
               className={`relative rounded-3xl p-8 flex flex-col transition-all duration-300 ${plan.highlight
-                  ? "bg-[#4A154B] text-white shadow-2xl scale-105 z-10"
-                  : "bg-background border border-border/50 hover:shadow-lg"
+                ? "bg-primary text-primary-foreground shadow-2xl scale-105 z-10"
+                : "bg-background border border-border/50 hover:shadow-lg"
                 }`}
             >
               {plan.badge && (
                 <div className="absolute top-4 right-4">
-                  <span className="text-xs font-bold px-2 py-1 rounded-full bg-white text-[#4A154B]">
+                  <span className="text-xs font-bold px-2 py-1 rounded-full bg-primary-foreground text-primary">
                     {plan.badge}
                   </span>
                 </div>
               )}
 
               <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-              <p className={`text-sm mb-6 ${plan.highlight ? "text-white/80" : "text-muted-foreground"}`}>
+              <p className={`text-sm mb-6 ${plan.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
                 {plan.description}
               </p>
 
@@ -120,29 +120,29 @@ export function Pricing() {
                 <span className="text-4xl font-bold">
                   ${isYearly ? plan.price.yearly : plan.price.monthly}
                 </span>
-                <span className={`text-sm ${plan.highlight ? "text-white/80" : "text-muted-foreground"}`}>
+                <span className={`text-sm ${plan.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
                   /month
                 </span>
               </div>
 
               <Button
                 className={`w-full mb-8 rounded-xl font-semibold h-12 ${plan.highlight
-                    ? "bg-white text-[#4A154B] hover:bg-white/90"
-                    : "bg-[#4A154B] text-white hover:bg-[#4A154B]/90"
+                  ? "bg-background text-primary hover:bg-background/90"
+                  : "bg-primary text-primary-foreground hover:bg-primary/90"
                   }`}
                 asChild
               >
                 <Link to="/signup">{plan.cta}</Link>
               </Button>
 
-              <p className={`text-sm font-semibold mb-4 ${plan.highlight ? "text-white" : "text-foreground"}`}>
+              <p className={`text-sm font-semibold mb-4 ${plan.highlight ? "text-primary-foreground" : "text-foreground"}`}>
                 Everything included:
               </p>
               <ul className="space-y-4 flex-1">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <Check className={`w-5 h-5 shrink-0 ${plan.highlight ? "text-green-300" : "text-green-500"}`} />
-                    <span className={`text-sm ${plan.highlight ? "text-white/90" : "text-muted-foreground"}`}>
+                    <Check className={`w-5 h-5 shrink-0 ${plan.highlight ? "text-primary-foreground/70" : "text-green-500"}`} />
+                    <span className={`text-sm ${plan.highlight ? "text-primary-foreground/90" : "text-muted-foreground"}`}>
                       {feature}
                     </span>
                   </li>
@@ -163,7 +163,7 @@ export function Pricing() {
                 <tr>
                   <th className="p-4 text-left font-medium text-muted-foreground">Features</th>
                   <th className="p-4 text-center font-bold">Starter</th>
-                  <th className="p-4 text-center font-bold text-[#4A154B]">Professional</th>
+                  <th className="p-4 text-center font-bold text-primary">Professional</th>
                   <th className="p-4 text-center font-bold">Enterprise</th>
                 </tr>
               </thead>
@@ -174,7 +174,7 @@ export function Pricing() {
                     <td className="p-4 text-center text-muted-foreground">
                       {typeof row.starter === 'boolean' ? (row.starter ? <Check className="w-5 h-5 mx-auto text-green-500" /> : <X className="w-5 h-5 mx-auto text-muted-foreground/30" />) : row.starter}
                     </td>
-                    <td className="p-4 text-center font-medium bg-[#4A154B]/5">
+                    <td className="p-4 text-center font-medium bg-primary/10">
                       {typeof row.pro === 'boolean' ? (row.pro ? <Check className="w-5 h-5 mx-auto text-green-500" /> : <X className="w-5 h-5 mx-auto text-muted-foreground/30" />) : row.pro}
                     </td>
                     <td className="p-4 text-center text-muted-foreground">

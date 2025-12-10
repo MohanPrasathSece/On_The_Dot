@@ -10,15 +10,15 @@ export function Hero() {
 
           {/* Text Content */}
           <div className="max-w-2xl lg:w-1/2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#4A154B]/10 text-[#4A154B] text-sm font-medium mb-6">
-              <span className="flex h-2 w-2 rounded-full bg-[#4A154B]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+              <span className="flex h-2 w-2 rounded-full bg-primary" />
               The future of invoicing is here
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
               Your Business,
               <br />
-              <span className="text-[#4A154B]">On The Dot.</span>
+              <span className="text-primary">On The Dot.</span>
             </h1>
 
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-lg">
@@ -27,7 +27,7 @@ export function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Link to="/signup">
-                <Button size="lg" className="h-14 px-8 text-lg bg-[#4A154B] hover:bg-[#4A154B]/90 w-full sm:w-auto">
+                <Button size="lg" className="h-14 px-8 text-lg bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto">
                   Start Free Trial
                 </Button>
               </Link>
@@ -80,7 +80,7 @@ export function Hero() {
                   </div>
                   <div className="flex justify-between items-center pt-4 border-t font-bold text-lg">
                     <span>Total</span>
-                    <span className="text-[#4A154B]">$3,700.00</span>
+                    <span className="text-primary">$3,700.00</span>
                   </div>
                 </div>
                 <Button className="w-full bg-gray-100 text-gray-900 hover:bg-gray-200" disabled>Download PDF</Button>
@@ -96,7 +96,7 @@ export function Hero() {
 
               <div className="absolute -left-8 bottom-20 bg-white dark:bg-card shadow-xl border rounded-xl p-4 z-20 animate-fade-in-right hidden sm:block">
                 <p className="text-xs text-muted-foreground mb-1">Avg. create time</p>
-                <p className="text-2xl font-bold text-[#4A154B]">
+                <p className="text-2xl font-bold text-primary">
                   2 min
                 </p>
               </div>

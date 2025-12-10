@@ -38,12 +38,12 @@ export function Comparison() {
                     </div>
 
                     {/* The OnTheDot Way */}
-                    <div className="bg-[#4A154B] p-10 md:p-12 relative text-white">
-                        <div className="absolute top-0 left-0 p-4 bg-white/10 rounded-br-2xl">
+                    <div className="bg-primary p-10 md:p-12 relative text-primary-foreground">
+                        <div className="absolute top-0 left-0 p-4 bg-primary-foreground/10 rounded-br-2xl">
                             <span className="text-xl">✨</span>
                         </div>
                         <h3 className="text-2xl font-bold mb-2">The OnTheDot Way</h3>
-                        <p className="text-white/80 font-medium mb-8">Smooth & Professional</p>
+                        <p className="text-primary-foreground/80 font-medium mb-8">Smooth & Professional</p>
 
                         <ul className="space-y-6">
                             {[
@@ -53,7 +53,7 @@ export function Comparison() {
                                 "Professional payment processes"
                             ].map((item, i) => (
                                 <li key={i} className="flex items-start gap-3">
-                                    <CheckCircle2 className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
+                                    <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
                                     <span className="text-lg font-medium">{item}</span>
                                 </li>
                             ))}

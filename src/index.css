@@ -18,9 +18,9 @@
     --popover: 0 0% 100%;
     --popover-foreground: 30 6% 10%;
 
-    /* Primary: Cobalt #345FF6 */
-    --primary: 227 90% 58%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary: Deep Yellow */
+    --primary: 45 93% 47%;
+    --primary-foreground: 30 6% 10%;
 
     /* Secondary: Muted Ivory #F3F1ED */
     --secondary: 36 17% 94%;
@@ -56,8 +56,8 @@
     --sidebar-background: 225 35% 15%;
     /* Deep Blue */
     --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 227 90% 58%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 45 93% 47%;
+    --sidebar-primary-foreground: 30 6% 10%;
     --sidebar-accent: 225 30% 25%;
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 225 30% 20%;
@@ -77,9 +77,9 @@
     --popover: 225 25% 8%;
     --popover-foreground: 210 20% 90%;
 
-    /* Primary: Cobalt #345FF6 */
-    --primary: 227 90% 58%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary: Deep Yellow */
+    --primary: 45 93% 47%;
+    --primary-foreground: 30 6% 10%;
 
     /* Secondary */
     --secondary: 225 25% 12%;
@@ -108,8 +108,8 @@
     --sidebar-background: 225 35% 12%;
     /* Even Darker Blue */
     --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 227 90% 58%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 45 93% 47%;
+    --sidebar-primary-foreground: 30 6% 10%;
     --sidebar-accent: 225 30% 20%;
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 225 30% 15%;

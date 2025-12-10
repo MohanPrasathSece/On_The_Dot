@@ -15,8 +15,8 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 rounded bg-[#4A154B] flex items-center justify-center">
-                <span className="text-white font-bold text-lg">O</span>
+              <div className="w-8 h-8 rounded bg-primary flex items-center justify-center">
+                <span className="text-primary-foreground font-bold text-lg">O</span>
               </div>
               <span className="font-bold text-xl tracking-tight">OnTheDot</span>
             </Link>
@@ -55,7 +55,7 @@ export function Footer() {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-muted-foreground hover:text-[#4A154B] transition-colors"
+                      className="text-muted-foreground hover:text-primary transition-colors"
                     >
                       {link}
                     </a>
