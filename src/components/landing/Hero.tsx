@@ -1,107 +1,107 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#4A154B]/5 to-background pt-20">
-      {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 opacity-30 pointer-events-none">
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(74, 21, 75, 0.15) 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }} />
-      </div>
-
+    <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-background">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        <div className="max-w-6xl mx-auto text-center">
-          {/* Main Headline */}
-          <div className="mb-12 pt-16">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1]">
-              Invoicing. Reminders.
+        <div className="flex flex-col lg:flex-row items-center gap-16">
+
+          {/* Text Content */}
+          <div className="max-w-2xl lg:w-1/2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#4A154B]/10 text-[#4A154B] text-sm font-medium mb-6">
+              <span className="flex h-2 w-2 rounded-full bg-[#4A154B]" />
+              The future of invoicing is here
+            </div>
+
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
+              Your Business,
               <br />
-              <span className="text-[#4A154B]">Cash Flow — On The Dot.</span>
+              <span className="text-[#4A154B]">On The Dot.</span>
             </h1>
 
-            <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
-              Automate your invoicing, get paid faster with smart reminders, and master your cash flow.
-              The all-in-one platform for freelancers and agencies.
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-lg">
+              Effortless Invoicing, Timely Reminders, and Seamless Cash Flow Tracking for Freelancers and Small Agencies.
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Link to="/signup">
-                <Button
-                  size="lg"
-                  className="bg-[#4A154B] hover:bg-[#4A154B]/90 text-white px-8 h-14 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
-                >
-                  GET STARTED
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                <Button size="lg" className="h-14 px-8 text-lg bg-[#4A154B] hover:bg-[#4A154B]/90 w-full sm:w-auto">
+                  Start Free Trial
                 </Button>
               </Link>
-
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-2 border-[#4A154B] text-[#4A154B] hover:bg-[#4A154B]/5 px-8 h-14 text-lg font-semibold rounded-lg"
-              >
-                <Play className="w-4 h-4 mr-2 fill-current" />
-                SEE DEMO
-              </Button>
+              <Link to="/demo">
+                <Button size="lg" variant="outline" className="h-14 px-8 text-lg w-full sm:w-auto">
+                  <Play className="w-4 h-4 mr-2" />
+                  Watch Demo
+                </Button>
+              </Link>
             </div>
-          </div>
 
-          {/* Product Preview / Visual */}
-          <div className="relative mx-auto max-w-5xl rounded-xl border border-border/50 bg-background shadow-2xl overflow-hidden aspect-[16/9]">
-            <div className="absolute inset-0 bg-muted/10 flex items-center justify-center">
-              {/* Simulated Dashboard UI */}
-              <div className="w-full h-full p-4 flex flex-col gap-4 bg-white dark:bg-black/20">
-                <div className="h-12 w-full border-b flex items-center px-4 gap-4">
-                  <div className="w-6 h-6 rounded bg-[#4A154B]"></div>
-                  <div className="w-32 h-4 rounded bg-gray-200 dark:bg-gray-800"></div>
-                  <div className="flex-1"></div>
-                  <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800"></div>
-                </div>
-                <div className="flex-1 flex gap-4">
-                  <div className="w-64 border-r p-4 hidden md:block">
-                    <div className="space-y-4">
-                      <div className="h-4 w-32 bg-gray-100 dark:bg-gray-800 rounded"></div>
-                      <div className="h-4 w-24 bg-gray-100 dark:bg-gray-800 rounded"></div>
-                      <div className="h-4 w-28 bg-gray-100 dark:bg-gray-800 rounded"></div>
-                    </div>
-                  </div>
-                  <div className="flex-1 p-4">
-                    <div className="flex gap-4 mb-8">
-                      <div className="h-32 flex-1 rounded-xl bg-[#4A154B]/5 border border-[#4A154B]/10 animate-pulse"></div>
-                      <div className="h-32 flex-1 rounded-xl bg-green-500/5 border border-green-500/10"></div>
-                      <div className="h-32 flex-1 rounded-xl bg-blue-500/5 border border-blue-500/10"></div>
-                    </div>
-                    <div className="h-64 rounded-xl border border-border/50 bg-muted/5"></div>
-                  </div>
-                </div>
+            <div className="flex items-center gap-6 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-green-500" />
+                <span>7-day free trial</span>
               </div>
-            </div>
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="bg-background/80 backdrop-blur-sm p-4 rounded-full border shadow-lg">
-                <Play className="w-8 h-8 text-[#4A154B] fill-current ml-1" />
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-green-500" />
+                <span>No credit card required</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-green-500" />
+                <span>Cancel anytime</span>
               </div>
             </div>
           </div>
 
-          {/* Trust Badge */}
-          <div className="text-center mt-20 mb-12">
-            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-6">
-              Trusted by 10,000+ freelancers and agencies
-            </p>
-            <div className="flex items-center justify-center gap-12 flex-wrap opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-              {["Stripe", "PayPal", "Plaid", "Slack", "QuickBooks", "Xero"].map((company) => (
-                <div key={company} className="text-xl font-bold text-foreground/70">
-                  {company}
+          {/* Visual Content */}
+          <div className="lg:w-1/2 w-full">
+            <div className="relative">
+              {/* Main Card */}
+              <div className="bg-white dark:bg-card border shadow-2xl rounded-2xl p-6 relative z-10 animate-fade-in-up">
+                <div className="flex items-center justify-between mb-6 border-b pb-4">
+                  <div>
+                    <p className="text-sm text-muted-foreground">Invoice #001</p>
+                    <p className="font-bold text-lg">Web Design Project</p>
+                  </div>
+                  <div className="px-3 py-1 bg-green-100 text-green-700 text-sm font-bold rounded-full">
+                    Paid
+                  </div>
                 </div>
-              ))}
+                <div className="space-y-4 mb-6">
+                  <div className="flex justify-between items-center">
+                    <span>Web Design</span>
+                    <span className="font-mono">$2,500.00</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span>Branding</span>
+                    <span className="font-mono">$1,200.00</span>
+                  </div>
+                  <div className="flex justify-between items-center pt-4 border-t font-bold text-lg">
+                    <span>Total</span>
+                    <span className="text-[#4A154B]">$3,700.00</span>
+                  </div>
+                </div>
+                <Button className="w-full bg-gray-100 text-gray-900 hover:bg-gray-200" disabled>Download PDF</Button>
+              </div>
+
+              {/* Floating Stats */}
+              <div className="absolute -right-4 top-10 bg-white dark:bg-card shadow-xl border rounded-xl p-4 z-20 animate-fade-in-left hidden sm:block">
+                <p className="text-xs text-muted-foreground mb-1">This month</p>
+                <p className="text-2xl font-bold text-green-600 flex items-center gap-1">
+                  +156% <ArrowRight className="w-4 h-4 -rotate-45" />
+                </p>
+              </div>
+
+              <div className="absolute -left-8 bottom-20 bg-white dark:bg-card shadow-xl border rounded-xl p-4 z-20 animate-fade-in-right hidden sm:block">
+                <p className="text-xs text-muted-foreground mb-1">Avg. create time</p>
+                <p className="text-2xl font-bold text-[#4A154B]">
+                  2 min
+                </p>
+              </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>

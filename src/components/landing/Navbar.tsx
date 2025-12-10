@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Moon, Sun, Menu, X, ChevronDown } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/ThemeProvider";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "Product", href: "#features" },
-  { name: "Solutions", href: "#solutions" },
+  { name: "About", href: "#why" },
+  { name: "Features", href: "#features" },
+  { name: "Testimonials", href: "#testimonials" },
   { name: "Pricing", href: "#pricing" },
-  { name: "Resources", href: "#resources" },
-  { name: "Company", href: "#footer" }, // Company usually in footer or separate page, linking to footer for now
+  { name: "FAQ", href: "#faq" },
 ];
 
 export function Navbar() {
@@ -36,15 +36,13 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <div className="w-8 h-8 rounded bg-[#4A154B] flex items-center justify-center transition-transform group-hover:scale-105">
               <span className="text-white font-bold text-lg">O</span>
             </div>
-            <span className="font-bold text-xl tracking-tight">
-              OnTheDot
-            </span>
+            <span className="font-bold text-xl tracking-tight">OnTheDot</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -53,7 +51,7 @@ export function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors flex items-center gap-1"
+                className="text-sm font-semibold text-muted-foreground hover:text-[#4A154B] transition-colors"
               >
                 {link.name}
               </a>
@@ -61,67 +59,71 @@ export function Navbar() {
           </div>
 
           {/* Actions */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-4">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-full"
+              className="rounded-full text-muted-foreground hover:text-foreground"
             >
-              <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">Toggle theme</span>
             </Button>
-            <Button variant="ghost" className="text-sm font-medium" asChild>
-              <Link to="/login">Log in</Link>
-            </Button>
-            <Button className="text-sm font-semibold bg-[#4A154B] hover:bg-[#4A154B]/90 text-white px-6 rounded-md" asChild>
-              <Link to="/signup">TRY FOR FREE</Link>
-            </Button>
+            <div className="h-4 w-[1px] bg-border" />
+            <Link to="/login" className="text-sm font-semibold hover:text-[#4A154B] transition-colors">
+              Log In
+            </Link>
+            <Link to="/signup">
+              <Button className="bg-[#4A154B] hover:bg-[#4A154B]/90 text-white font-semibold rounded-lg px-6">
+                Start Free Trial
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center gap-2">
+          <div className="flex lg:hidden items-center gap-4">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="rounded-full"
             >
-              <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             </Button>
+
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden py-4 animate-fade-in border-t border-border/50">
-            <div className="flex flex-col gap-4">
+          <div className="lg:hidden py-4 animate-fade-in border-t border-border/50 h-screen bg-background">
+            <div className="flex flex-col gap-6 px-4">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors py-2"
+                  className="text-lg font-medium text-foreground/80 hover:text-foreground transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
                 </a>
               ))}
-              <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
-                <Button variant="ghost" className="justify-start" asChild>
-                  <Link to="/login">Log in</Link>
-                </Button>
-                <Button className="bg-[#4A154B] hover:bg-[#4A154B]/90 text-white" asChild>
-                  <Link to="/signup">TRY FOR FREE</Link>
-                </Button>
+              <div className="flex flex-col gap-4 pt-6 border-t border-border/50">
+                <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full h-12 text-lg">Log In</Button>
+                </Link>
+                <Link to="/signup" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Button className="w-full h-12 text-lg bg-[#4A154B] hover:bg-[#4A154B]/90 text-white">Start Free Trial</Button>
+                </Link>
               </div>
             </div>
           </div>

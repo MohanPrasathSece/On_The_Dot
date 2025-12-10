@@ -4,80 +4,75 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 
 const faqs = [
   {
-    question: "How does the free trial work?",
-    answer: "Start with our free plan that includes up to 5 invoices per month. No credit card required. When you're ready for more, upgrade to Pro or Premium with just one click.",
+    question: "How does the 14-day free trial work?",
+    answer: "You get full access to the plan you choose for 14 days. No credit card is required to sign up. Detailed features are available for testing immediately."
   },
   {
     question: "Can I customize my invoice templates?",
-    answer: "Absolutely! Add your logo, choose your brand colors, customize fonts, and even add custom fields. Pro and Premium plans offer advanced branding options including custom domains.",
+    answer: "Yes! All plans include PDF export, but Professional and Enterprise plans allow deep customization with your logo, brand colors, and custom fonts."
   },
   {
-    question: "What payment methods do you support?",
-    answer: "We integrate with Stripe, PayPal, and Plaid to accept payments globally. Your clients can pay via credit card, bank transfer, or their preferred payment method.",
+    question: "How do payment reminders work?",
+    answer: "You can set up automated email and SMS reminders. For example, send a polite email 3 days before the due date, and a firmer SMS on the due date if unpaid."
   },
   {
-    question: "How do smart auto-reminders work?",
-    answer: "Our AI analyzes payment patterns and sends reminders at optimal times. You set the cadence (3, 7, or 14 days) and tone (polite, firm, or urgent). We handle the rest automatically.",
+    question: "Which payment processors do you support?",
+    answer: "We support direct integration with Stripe, PayPal, and standard Bank Transfers. You can connect your accounts to automatically reconcile payments."
   },
   {
     question: "Is my data secure?",
-    answer: "Yes, we take security seriously. All data is encrypted at rest and in transit. We're SOC 2 compliant and never share your information with third parties.",
+    answer: "Absolutely. We use bank-level 256-bit encryption for all data transmission and storage. We are fully GDPR and PCI-DSS compliant."
   },
   {
-    question: "Can I invite my team?",
-    answer: "Premium plans include team collaboration. Invite members, assign roles (Admin, Editor, Viewer), and work together in real-time with full audit logs.",
-  },
-  {
-    question: "What happens if I cancel?",
-    answer: "You can cancel anytime. You'll keep access until the end of your billing period. All your data can be exported before cancellation.",
+    question: "Can I collaborate with my team?",
+    answer: "Yes, the Enterprise plan supports up to 10 team members with specific roles (Admin, Editor, Viewer)."
   },
   {
     question: "Do you offer refunds?",
-    answer: "Yes, we offer a 30-day money-back guarantee on all paid plans. If you're not satisfied, just reach out to our support team.",
+    answer: "Yes, we offer a 30-day money-back guarantee. If you're not satisfied, we'll refund your first month's payment, no questions asked."
   },
+  {
+    question: "Can I export my data?",
+    answer: "Yes, you can export all your invoices, client data, and financial reports as CSV, PDF, or Excel files at any time."
+  }
 ];
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-24 sm:py-32 relative">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/20 to-transparent" />
+    <section id="faq" className="py-24 bg-background">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
+            Frequently asked questions
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Everything you need to know about OnTheDot
+          </p>
+        </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <p className="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">
-              FAQ
-            </p>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-6">
-              Frequently asked questions
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Everything you need to know about OnTheDot
-            </p>
-          </div>
-
-          {/* Accordion */}
-          <Accordion type="single" collapsible className="space-y-4">
+        <div className="max-w-3xl mx-auto mb-16">
+          <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="glass rounded-xl px-6 border-0"
-              >
-                <AccordionTrigger className="text-left font-medium hover:no-underline py-5">
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="text-left font-medium text-lg">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-5">
+                <AccordionContent className="text-muted-foreground leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
+        </div>
+
+        <div className="text-center bg-muted/30 p-8 rounded-2xl max-w-2xl mx-auto">
+          <h4 className="font-bold text-lg mb-2">Still have questions?</h4>
+          <p className="text-muted-foreground mb-6">Can't find the answer you're looking for? Please chat to our friendly team.</p>
+          <Button variant="default">Contact Support</Button>
         </div>
       </div>
     </section>

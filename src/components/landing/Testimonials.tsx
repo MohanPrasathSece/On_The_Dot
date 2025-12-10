@@ -1,69 +1,59 @@
+import { Star } from "lucide-react";
+
 const testimonials = [
     {
-        content: "OnTheDot is a crucial enabler for our growth, bringing our people, processes and payment data together in the flow of work.",
-        author: "Sarah Jenkins",
-        role: "CFO",
-        company: "OpenAI"
+        quote: "OnTheDot has completely transformed how I handle invoicing. What used to take me hours now takes minutes, and I get paid 50% faster thanks to their smart reminders.",
+        author: "Sarah Chen",
+        role: "Freelance Designer",
+        company: "Design Studio"
     },
     {
-        content: "The 'single pane of glass' has always been the holy grail for finance teams: less toggling, less friction and more focus. If people can stay in OnTheDot and get their invoicing and payments done, the productivity lift is significant.",
-        author: "Michael Chen",
-        role: "CTO",
-        company: "Box"
+        quote: "The automated reminder system is a game-changer. Our cash flow improved dramatically, and we spend zero time chasing payments. The branded invoices look incredibly professional.",
+        author: "Marcus Rodriguez",
+        role: "Digital Marketing Agency Owner",
+        company: "Growth Labs"
     },
     {
-        content: "Having automated reminders working alongside our team directly in OnTheDot is really powerful. They become really intelligent assistants that take actions right in the flow of work.",
-        author: "Elena Rodriguez",
-        role: "VP of Finance",
-        company: "Wayfair"
-    },
-    {
-        content: "We use OnTheDot every day. The fact that I can see exactly what's happening with our cash flow from one single source of truth is invaluable.",
-        author: "Raj Patel",
-        role: "Head of Operations",
-        company: "IBM"
-    },
-    {
-        content: "OnTheDot allows our people to bring their authentic selves to work and manage client relationships seamlessly. From automations to integrations, it's a true productivity platform.",
-        author: "Jessica Wong",
-        role: "Director of Finance",
-        company: "Rivian"
-    },
-    {
-        content: "We're pleased to integrate our payment solutions even closer to where work happens in OnTheDot – so teams can access payment data as naturally as talking to a teammate.",
-        author: "David Martinez",
-        role: "Product Lead",
-        company: "Stripe"
+        quote: "I love how OnTheDot integrates with my payment processors. Clients can pay immediately, and I get notified instantly. The dashboard gives me complete visibility into my finances.",
+        author: "Emma Thompson",
+        role: "Consultant",
+        company: "Thompson Consulting"
     }
 ];
 
 export function Testimonials() {
     return (
-        <section className="py-32 sm:py-40 bg-[#F8F5F2] dark:bg-background relative overflow-hidden">
+        <section id="testimonials" className="py-24 bg-background">
             <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-                <div className="text-center mb-20">
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6">
-                        The world's most innovative
-                        <br />
-                        companies work with OnTheDot.
+                <div className="text-center max-w-3xl mx-auto mb-16">
+                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
+                        Loved by thousands of professionals
                     </h2>
+                    <p className="text-lg text-muted-foreground">
+                        See what our users say about how OnTheDot has transformed their business operations.
+                    </p>
                 </div>
 
-                {/* Testimonial Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    {testimonials.map((testimonial, i) => (
-                        <div
-                            key={i}
-                            className="bg-white dark:bg-card p-8 rounded-2xl border border-border/50 hover:border-[#4A154B]/20 transition-all duration-300 hover:-translate-y-1"
-                        >
-                            <p className="text-lg text-foreground/80 leading-relaxed mb-8 italic">
-                                "{testimonial.content}"
-                            </p>
-
-                            <div className="border-t border-border/50 pt-6">
-                                <p className="font-semibold text-lg mb-1">{testimonial.author}</p>
-                                <p className="text-sm text-muted-foreground mb-2">{testimonial.role}</p>
-                                <p className="text-xl font-bold text-[#4A154B]">{testimonial.company}</p>
+                <div className="grid md:grid-cols-3 gap-8">
+                    {testimonials.map((t, i) => (
+                        <div key={i} className="bg-card p-8 rounded-3xl border border-border/50 hover:shadow-xl transition-all h-full flex flex-col justify-between">
+                            <div>
+                                <div className="flex gap-1 mb-6">
+                                    {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 text-orange-400 fill-current" />)}
+                                </div>
+                                <p className="text-lg leading-relaxed mb-8 font-medium">"{t.quote}"</p>
+                            </div>
+                            <div>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center font-bold text-[#4A154B] text-lg">
+                                        {t.author[0]}
+                                    </div>
+                                    <div>
+                                        <div className="font-bold">{t.author}</div>
+                                        <div className="text-sm text-muted-foreground">{t.role}</div>
+                                        <div className="text-xs text-[#4A154B] font-medium">{t.company}</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     ))}

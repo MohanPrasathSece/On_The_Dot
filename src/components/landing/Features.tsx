@@ -1,133 +1,144 @@
-import {
-  CreditCard,
-  Bell,
-  BarChart3,
-  Layers,
-  Users,
-  CheckCircle2,
-  XCircle,
-  Zap,
-  ShieldCheck,
-  Lock,
-  ArrowRight
-} from "lucide-react";
+import { FileText, Bell, BarChart3, Repeat, CreditCard, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Features() {
   return (
-    <section id="features" className="py-24 bg-background relative overflow-hidden">
+    <section id="features" className="py-24 bg-background">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-        {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-24">
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
-            Everything you need. Nothing you don't.
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6">
+            Everything you need to get paid
           </h2>
-          <p className="text-xl text-muted-foreground">
-            A complete suite of tools designed to help you get paid faster and manage cash flow smarter.
+          <p className="text-lg text-muted-foreground">
+            Powerful features designed to streamline your invoicing workflow and accelerate your cash flow.
           </p>
         </div>
 
-        {/* Feature Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
-          {[
-            {
-              icon: CreditCard,
-              title: "Smart Invoicing",
-              desc: "2-Click Branded Invoices, Custom Branding (Logo, Colors), GPT-Powered Messaging, and Multi-format Export (PDF, Email, SMS).",
-              color: "bg-blue-500"
-            },
-            {
-              icon: Bell,
-              title: "Auto-Reminders",
-              desc: "Smart 3/7/14 day cadence with polite, firm, or urgent AI-generated messages. Detailed delivery logs.",
-              color: "bg-purple-500"
-            },
-            {
-              icon: BarChart3,
-              title: "Cash Flow Dashboard",
-              desc: "Real-time income trends, overdue indicators, upcoming tasks, and tax-ready CSV/XLS exports.",
-              color: "bg-green-500"
-            },
-            {
-              icon: Layers,
-              title: "Integrations & Sync",
-              desc: "Seamlessly sync with Stripe, PayPal, and Plaid. Real-time tracking via WebSockets.",
-              color: "bg-orange-500"
-            },
-            {
-              icon: Users,
-              title: "Team Collaboration",
-              desc: "Invite members with Admin/Editor/Viewer roles. Full audit logs for every action.",
-              color: "bg-pink-500"
-            },
-            {
-              icon: Lock,
-              title: "Security & Compliance",
-              desc: "Bank-grade SSL/TLS encryption, RBAC, and full GDPR/PCI-DSS compliance.",
-              color: "bg-red-500"
-            }
-          ].map((f, i) => (
-            <div key={i} className="p-8 rounded-3xl bg-muted/20 border border-border/50 hover:bg-muted/40 transition-colors group">
-              <div className={`w-12 h-12 rounded-xl ${f.color} bg-opacity-10 flex items-center justify-center mb-6`}>
-                <f.icon className={`w-6 h-6 text-${f.color.replace('bg-', '')}`} />
-              </div>
-              <h3 className="text-xl font-bold mb-3 group-hover:text-[#4A154B] transition-colors">{f.title}</h3>
-              <p className="text-muted-foreground leading-relaxed text-sm">
-                {f.desc}
-              </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* 2-Click Invoices */}
+          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
+            <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center mb-6">
+              <FileText className="w-6 h-6" />
             </div>
-          ))}
-        </div>
-
-        {/* Why OnTheDot? Comparison */}
-        <div className="mb-32">
-          <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold mb-4">Why upgrade to OnTheDot?</h3>
-            <p className="text-muted-foreground">Focus on simplicity, design, and efficiency.</p>
+            <h3 className="text-xl font-bold mb-3">2-Click Branded Invoices</h3>
+            <p className="text-muted-foreground mb-6 text-sm">Create stunning, professional invoices with your brand colors and logo in seconds. No design skills required.</p>
+            <ul className="space-y-2 mb-6">
+              {["Custom logo upload", "Brand color themes", "Professional templates", "PDF export"].map(f => (
+                <li key={f} className="text-xs font-medium text-muted-foreground flex items-center gap-2">
+                  <div className="w-1 h-1 rounded-full bg-blue-500" /> {f}
+                </li>
+              ))}
+            </ul>
+            <Button variant="link" className="p-0 text-blue-600 h-auto font-semibold group-hover:gap-2 transition-all">
+              Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
+            </Button>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Productivity */}
-            <div className="p-8 rounded-3xl border border-border/50 bg-card hover:shadow-lg transition-all">
-              <Zap className="w-10 h-10 text-yellow-500 mb-6" />
-              <h4 className="text-xl font-bold mb-4">Productivity First</h4>
-              <p className="text-sm text-muted-foreground mb-4">
-                Smart reminders avoid late payments. Creating an invoice takes seconds, not minutes.
-              </p>
-              <ul className="text-sm space-y-2">
-                <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Task Management</li>
-                <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Quick Actions</li>
-              </ul>
+          {/* Smart Reminders */}
+          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
+            <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 flex items-center justify-center mb-6">
+              <Bell className="w-6 h-6" />
             </div>
+            <h3 className="text-xl font-bold mb-3">Smart Reminder Cadence</h3>
+            <p className="text-muted-foreground mb-6 text-sm">Automated email and SMS reminders with intelligent timing to maximize payment rates without being pushy.</p>
+            <ul className="space-y-2 mb-6">
+              {["Email & SMS reminders", "Intelligent timing", "Customizable tones", "Delivery tracking"].map(f => (
+                <li key={f} className="text-xs font-medium text-muted-foreground flex items-center gap-2">
+                  <div className="w-1 h-1 rounded-full bg-purple-500" /> {f}
+                </li>
+              ))}
+            </ul>
+            <Button variant="link" className="p-0 text-purple-600 h-auto font-semibold group-hover:gap-2 transition-all">
+              Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
+            </Button>
+          </div>
 
-            {/* Vs Manual */}
-            <div className="p-8 rounded-3xl border border-border/50 bg-card hover:shadow-lg transition-all">
-              <XCircle className="w-10 h-10 text-red-500 mb-6" />
-              <h4 className="text-xl font-bold mb-4">Vs. Spreadsheets</h4>
-              <p className="text-sm text-muted-foreground mb-4">
-                Manual entry leads to errors. Chasing payments is awkward. Spreadsheets don't remind clients.
-              </p>
-              <ul className="text-sm space-y-2">
-                <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Automated Follow-ups</li>
-                <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Professional Branding</li>
-              </ul>
+          {/* Overdue Dashboard */}
+          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
+            <div className="w-12 h-12 rounded-xl bg-red-100 dark:bg-red-900/30 text-red-600 flex items-center justify-center mb-6">
+              <BarChart3 className="w-6 h-6" />
             </div>
+            <h3 className="text-xl font-bold mb-3">Overdue Dashboard</h3>
+            <p className="text-muted-foreground mb-6 text-sm">Visual overview of all outstanding payments with urgency indicators and one-click actions to follow up.</p>
+            <ul className="space-y-2 mb-6">
+              {["Visual dashboard", "Urgency indicators", "Payment tracking", "Quick actions"].map(f => (
+                <li key={f} className="text-xs font-medium text-muted-foreground flex items-center gap-2">
+                  <div className="w-1 h-1 rounded-full bg-red-500" /> {f}
+                </li>
+              ))}
+            </ul>
+            <Button variant="link" className="p-0 text-red-600 h-auto font-semibold group-hover:gap-2 transition-all">
+              Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
+            </Button>
+          </div>
 
-            {/* Vs Others */}
-            <div className="p-8 rounded-3xl border border-[#4A154B]/20 bg-[#4A154B]/5 hover:shadow-lg transition-all">
-              <ShieldCheck className="w-10 h-10 text-[#4A154B] mb-6" />
-              <h4 className="text-xl font-bold mb-4">Vs. Clunky Tools</h4>
-              <p className="text-sm text-muted-foreground mb-4">
-                Other tools are bloated and hard to use. OnTheDot is minimalist, fast, and designed for small teams.
-              </p>
-              <ul className="text-sm space-y-2">
-                <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Streamlined Interface</li>
-                <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> Zero Learning Curve</li>
-              </ul>
+          {/* Recurring Invoices */}
+          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
+            <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-600 flex items-center justify-center mb-6">
+              <Repeat className="w-6 h-6" />
             </div>
+            <h3 className="text-xl font-bold mb-3">Recurring Invoices</h3>
+            <p className="text-muted-foreground mb-6 text-sm">Set up monthly retainers and subscriptions that invoice automatically, ensuring steady cash flow.</p>
+            <ul className="space-y-2 mb-6">
+              {["Auto-recurring", "Flexible schedules", "Subscription management", "Payment automation"].map(f => (
+                <li key={f} className="text-xs font-medium text-muted-foreground flex items-center gap-2">
+                  <div className="w-1 h-1 rounded-full bg-orange-500" /> {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Payment Integration */}
+          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
+            <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 text-green-600 flex items-center justify-center mb-6">
+              <CreditCard className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-bold mb-3">Payment Integration</h3>
+            <p className="text-muted-foreground mb-6 text-sm">Stripe, PayPal, and bank connections for seamless payment processing. Get paid faster than ever.</p>
+            <ul className="space-y-2 mb-6">
+              {["Multiple processors", "Instant payments", "Bank connections", "Transaction fees"].map(f => (
+                <li key={f} className="text-xs font-medium text-muted-foreground flex items-center gap-2">
+                  <div className="w-1 h-1 rounded-full bg-green-500" /> {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* AI Writer */}
+          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
+            <div className="w-12 h-12 rounded-xl bg-pink-100 dark:bg-pink-900/30 text-pink-600 flex items-center justify-center mb-6">
+              <Sparkles className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-bold mb-3">AI Writing Assistant</h3>
+            <p className="text-muted-foreground mb-6 text-sm">Generate professional invoice descriptions and reminder messages with AI. Never struggle with words again.</p>
+            <ul className="space-y-2 mb-6">
+              {["AI-powered writing", "Professional tone", "Multiple templates", "Custom messaging"].map(f => (
+                <li key={f} className="text-xs font-medium text-muted-foreground flex items-center gap-2">
+                  <div className="w-1 h-1 rounded-full bg-pink-500" /> {f}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
+        {/* Stats Bar */}
+        <div className="mt-24 grid md:grid-cols-3 gap-8 py-12 border-y border-border/50 divide-y md:divide-y-0 md:divide-x divide-border/50">
+          <div className="text-center px-4">
+            <div className="text-4xl font-bold text-[#4A154B] mb-2">Save 10+ Hours</div>
+            <p className="text-muted-foreground text-sm uppercase tracking-wide">Weekly</p>
+            <p className="text-sm text-muted-foreground mt-2">Automate your entire invoicing workflow</p>
+          </div>
+          <div className="text-center px-4 pt-8 md:pt-0">
+            <div className="text-4xl font-bold text-[#4A154B] mb-2">Get Paid 60%</div>
+            <p className="text-muted-foreground text-sm uppercase tracking-wide">Faster</p>
+            <p className="text-sm text-muted-foreground mt-2">Smart reminders accelerate payments</p>
+          </div>
+          <div className="text-center px-4 pt-8 md:pt-0">
+            <div className="text-4xl font-bold text-[#4A154B] mb-2">99.9%</div>
+            <p className="text-muted-foreground text-sm uppercase tracking-wide">Uptime</p>
+            <p className="text-sm text-muted-foreground mt-2">Reliable, secure, always available</p>
+          </div>
+        </div>
       </div>
     </section>
   );

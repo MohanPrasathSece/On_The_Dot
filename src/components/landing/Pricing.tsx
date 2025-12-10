@@ -1,202 +1,197 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Check, ArrowRight, Star } from "lucide-react";
+import { Check, ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 
 const plans = [
   {
-    name: "Free Trial",
-    price: { monthly: 0, yearly: 0 },
-    description: "Limited features, 30-day free trial of the Pro plan.",
+    name: "Starter",
+    price: { monthly: 15, yearly: 12 },
+    description: "Perfect for freelancers and small businesses",
     features: [
-      "2 Clients",
-      "3 Invoices per month",
-      "Basic Reporting",
-      "Email Support"
+      "25 invoices per month",
+      "3 clients maximum",
+      "Basic email reminders",
+      "PDF export",
+      "Mobile app access",
+      "Email support"
     ],
-    cta: "Start Free Trial",
-    highlight: false,
-    badge: "30 Days Free"
-  },
-  {
-    name: "Pro",
-    price: { monthly: 10, yearly: 100 },
-    description: "Full Invoicing & Reminders for freelancers.",
-    features: [
-      "Full Invoicing & Reminders",
-      "Access to Reports & Analytics",
-      "Up to 10 team members",
-      "1 Integration (Stripe/PayPal)",
-      "Recurring Invoices"
-    ],
-    cta: "Get Started",
-    highlight: true,
-    badge: "Popular"
-  },
-  {
-    name: "Premium",
-    price: { monthly: 20, yearly: 200 },
-    description: "Advanced features for growing agencies.",
-    features: [
-      "Everything in Pro",
-      "Unlimited Team Members",
-      "Priority Support",
-      "Advanced Reporting & Custom Exports",
-      "Multi-Integration (Stripe, PayPal, Plaid)"
-    ],
-    cta: "Go Premium",
+    cta: "Start 14-day free trial",
     highlight: false
   },
   {
-    name: "Lifetime",
-    price: { monthly: 200, yearly: 200 },
-    description: "One-time payment. Full features forever.",
+    name: "Professional",
+    price: { monthly: 35, yearly: 28 },
+    description: "Most popular for growing businesses",
     features: [
-      "Full Features Forever",
-      "Exclusive Support",
-      "Early Access to New Features",
-      "No Monthly Fees",
-      "All Future Updates Included"
+      "Unlimited invoices",
+      "Unlimited clients",
+      "Smart email & SMS reminders",
+      "AI writing assistant",
+      "Advanced reporting",
+      "Payment integrations",
+      "Custom branding",
+      "Recurring invoices",
+      "Priority support"
     ],
-    cta: "Get Lifetime Access",
-    highlight: false,
-    badge: "Best Value"
+    cta: "Start 14-day free trial",
+    highlight: true,
+    badge: "Most Popular"
+  },
+  {
+    name: "Enterprise",
+    price: { monthly: 75, yearly: 60 },
+    description: "For large teams and agencies",
+    features: [
+      "Everything in Professional",
+      "Team collaboration (up to 10 users)",
+      "Advanced analytics",
+      "API access",
+      "White-label options",
+      "Custom integrations",
+      "Dedicated account manager",
+      "SLA guarantee",
+      "24/7 phone support"
+    ],
+    cta: "Start 14-day free trial",
+    highlight: false
   }
+];
+
+const compareFeatures = [
+  { name: "Monthly Invoices", starter: "25", pro: "Unlimited", ent: "Unlimited" },
+  { name: "Active Clients", starter: "3", pro: "Unlimited", ent: "Unlimited" },
+  { name: "Advanced Analytics", starter: false, pro: true, ent: true },
+  { name: "API Access", starter: false, pro: false, ent: true },
+  { name: "Support Level", starter: "Email", pro: "Priority", ent: "24/7 Phone" },
 ];
 
 export function Pricing() {
   const [isYearly, setIsYearly] = useState(true);
 
   return (
-    <section id="pricing" className="py-24 bg-[#4A154B] text-white overflow-hidden relative">
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+    <section id="pricing" className="py-24 bg-muted/30">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
-            Simple, transparent pricing.
+            Simple, transparent pricing
           </h2>
-          <p className="text-xl text-white/80 mb-8">
-            Choose the specific plan that fits your stage of growth.
+          <p className="text-xl text-muted-foreground mb-8">
+            Choose the perfect plan for your business. Start with our 14-day free trial, no credit card required.
           </p>
 
           <div className="flex items-center justify-center gap-4">
-            <span className={`text-sm font-medium ${!isYearly ? "text-white" : "text-white/60"}`}>Monthly</span>
+            <span className={`text-sm font-medium ${!isYearly ? "text-foreground" : "text-muted-foreground"}`}>Monthly</span>
             <Switch
               checked={isYearly}
               onCheckedChange={setIsYearly}
-              className="data-[state=checked]:bg-white/20 data-[state=unchecked]:bg-white/20"
             />
-            <span className={`text-sm font-medium ${isYearly ? "text-white" : "text-white/60"}`}>
-              Yearly <span className="text-emerald-300 text-xs ml-1">(Save ~17%)</span>
+            <span className={`text-sm font-medium ${isYearly ? "text-foreground" : "text-muted-foreground"}`}>
+              Yearly <span className="text-emerald-500 text-xs font-bold ml-1">Save up to 20%</span>
             </span>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto mb-20">
+        {/* Pricing Cards */}
+        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-20">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative rounded-3xl p-6 transition-all duration-300 flex flex-col ${plan.highlight
-                  ? "bg-white text-[#4A154B] shadow-2xl scale-105 z-10"
-                  : "bg-white/10 text-white border border-white/20 hover:bg-white/15"
+              className={`relative rounded-3xl p-8 flex flex-col transition-all duration-300 ${plan.highlight
+                  ? "bg-[#4A154B] text-white shadow-2xl scale-105 z-10"
+                  : "bg-background border border-border/50 hover:shadow-lg"
                 }`}
             >
               {plan.badge && (
                 <div className="absolute top-4 right-4">
-                  <span className={`text-xs font-bold px-2 py-1 rounded-full ${plan.highlight ? "bg-[#4A154B]/10 text-[#4A154B]" : "bg-white/20 text-white"
-                    }`}>
+                  <span className="text-xs font-bold px-2 py-1 rounded-full bg-white text-[#4A154B]">
                     {plan.badge}
                   </span>
                 </div>
               )}
 
-              <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
-              <p className={`text-xs mb-6 h-8 ${plan.highlight ? "text-gray-600" : "text-white/70"}`}>
+              <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+              <p className={`text-sm mb-6 ${plan.highlight ? "text-white/80" : "text-muted-foreground"}`}>
                 {plan.description}
               </p>
 
               <div className="mb-6">
-                {plan.name === "Lifetime" ? (
-                  <span className="text-3xl font-bold">$200</span>
-                ) : (
-                  <>
-                    <span className="text-3xl font-bold">
-                      ${isYearly && plan.price.yearly !== 0 ? (plan.price.yearly / 12).toFixed(0) : plan.price.monthly}
-                    </span>
-                    <span className={`text-xs ${plan.highlight ? "text-gray-500" : "text-white/60"}`}>
-                      /mo
-                    </span>
-                  </>
-                )}
-
-                {isYearly && plan.price.monthly > 0 && plan.name !== "Lifetime" && (
-                  <div className="text-xs text-emerald-500 font-medium mt-1">
-                    Billed ${plan.price.yearly} yearly
-                  </div>
-                )}
-                {plan.name === "Lifetime" && (
-                  <div className="text-xs text-emerald-300 font-medium mt-1">
-                    One-time payment
-                  </div>
-                )}
+                <span className="text-4xl font-bold">
+                  ${isYearly ? plan.price.yearly : plan.price.monthly}
+                </span>
+                <span className={`text-sm ${plan.highlight ? "text-white/80" : "text-muted-foreground"}`}>
+                  /month
+                </span>
               </div>
 
-              <ul className="space-y-3 mb-8 flex-1">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2">
-                    <Check className={`w-4 h-4 shrink-0 ${plan.highlight ? "text-green-600" : "text-white"}`} />
-                    <span className={`text-xs ${plan.highlight ? "text-gray-700" : "text-white/80"}`}>
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
               <Button
-                className={`w-full h-10 text-sm font-semibold rounded-xl ${plan.highlight
-                    ? "bg-[#4A154B] hover:bg-[#4A154B]/90 text-white"
-                    : "bg-white hover:bg-white/90 text-[#4A154B]"
+                className={`w-full mb-8 rounded-xl font-semibold h-12 ${plan.highlight
+                    ? "bg-white text-[#4A154B] hover:bg-white/90"
+                    : "bg-[#4A154B] text-white hover:bg-[#4A154B]/90"
                   }`}
                 asChild
               >
                 <Link to="/signup">{plan.cta}</Link>
               </Button>
+
+              <p className={`text-sm font-semibold mb-4 ${plan.highlight ? "text-white" : "text-foreground"}`}>
+                Everything included:
+              </p>
+              <ul className="space-y-4 flex-1">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <Check className={`w-5 h-5 shrink-0 ${plan.highlight ? "text-green-300" : "text-green-500"}`} />
+                    <span className={`text-sm ${plan.highlight ? "text-white/90" : "text-muted-foreground"}`}>
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
 
-        {/* Enterprise */}
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <p className="text-white/80 text-lg">
-            Need enterprise-grade solutions? <a href="#" className="underline font-semibold hover:text-white">Contact Sales</a> for custom pricing.
-          </p>
-        </div>
-
-        {/* Subscription Management Details */}
-        <div className="max-w-4xl mx-auto bg-white/5 rounded-2xl p-8 border border-white/10">
-          <h4 className="text-xl font-semibold mb-6 flex items-center gap-2">
-            <ArrowRight className="w-5 h-5" />
-            Billing & Subscription Details
-          </h4>
-          <div className="grid md:grid-cols-2 gap-8 text-sm text-white/80">
-            <div>
-              <strong className="block text-white mb-1">Razorpay Integration</strong>
-              Seamless payments via Razorpay. Support for all major cards and UPI.
-            </div>
-            <div>
-              <strong className="block text-white mb-1">Lifetime Plan</strong>
-              Pay once, enjoy forever. Perfect for freelancers who hate subscriptions.
-            </div>
-            <div>
-              <strong className="block text-white mb-1">Cancellation Policy</strong>
-              Cancel anytime from your dashboard. Access remains until billing cycle ends.
-            </div>
-            <div>
-              <strong className="block text-white mb-1">Upgrades</strong>
-              Upgrade from Pro to Premium instantly. Prorated billing applies.
-            </div>
+        {/* Comparison Table */}
+        <div className="max-w-4xl mx-auto bg-background rounded-3xl border border-border/50 shadow-sm overflow-hidden mb-16">
+          <div className="p-6 border-b bg-muted/20">
+            <h3 className="text-xl font-bold text-center">Compare Plans</h3>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/10">
+                <tr>
+                  <th className="p-4 text-left font-medium text-muted-foreground">Features</th>
+                  <th className="p-4 text-center font-bold">Starter</th>
+                  <th className="p-4 text-center font-bold text-[#4A154B]">Professional</th>
+                  <th className="p-4 text-center font-bold">Enterprise</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border/50">
+                {compareFeatures.map((row, i) => (
+                  <tr key={i} className="hover:bg-muted/5">
+                    <td className="p-4 font-medium">{row.name}</td>
+                    <td className="p-4 text-center text-muted-foreground">
+                      {typeof row.starter === 'boolean' ? (row.starter ? <Check className="w-5 h-5 mx-auto text-green-500" /> : <X className="w-5 h-5 mx-auto text-muted-foreground/30" />) : row.starter}
+                    </td>
+                    <td className="p-4 text-center font-medium bg-[#4A154B]/5">
+                      {typeof row.pro === 'boolean' ? (row.pro ? <Check className="w-5 h-5 mx-auto text-green-500" /> : <X className="w-5 h-5 mx-auto text-muted-foreground/30" />) : row.pro}
+                    </td>
+                    <td className="p-4 text-center text-muted-foreground">
+                      {typeof row.ent === 'boolean' ? (row.ent ? <Check className="w-5 h-5 mx-auto text-green-500" /> : <X className="w-5 h-5 mx-auto text-muted-foreground/30" />) : row.ent}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
+
+        <div className="text-center">
+          <p className="text-lg font-bold mb-2">30-day money-back guarantee</p>
+          <p className="text-muted-foreground">Not satisfied? Get a full refund within 30 days, no questions asked.</p>
+        </div>
+
       </div>
     </section>
   );

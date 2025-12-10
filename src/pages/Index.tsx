@@ -1,24 +1,36 @@
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
+import { Why } from "@/components/landing/Why";
 import { Features } from "@/components/landing/Features";
-import { Solutions } from "@/components/landing/Solutions";
+import { Comparison } from "@/components/landing/Comparison";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { Pricing } from "@/components/landing/Pricing";
-import { Resources } from "@/components/landing/Resources";
 import { FAQ } from "@/components/landing/FAQ";
+import { CTA } from "@/components/landing/CTA";
 import { Footer } from "@/components/landing/Footer";
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground selection:bg-foreground/10">
+    <div className="min-h-screen bg-background font-sans text-foreground selection:bg-[#4A154B]/20">
       <Navbar />
       <Hero />
-      <Features />
-      <Solutions />
-      <Testimonials />
-      <Pricing />
-      <Resources />
-      <FAQ />
+      <div id="why">
+        <Why />
+      </div>
+      <div id="features">
+        <Features />
+      </div>
+      <Comparison />
+      <div id="testimonials">
+        <Testimonials />
+      </div>
+      <div id="pricing">
+        <Pricing />
+      </div>
+      <div id="faq">
+        <FAQ />
+      </div>
+      <CTA />
       <Footer />
     </div>
   );
