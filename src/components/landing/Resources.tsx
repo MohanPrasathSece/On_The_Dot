@@ -1,4 +1,4 @@
-import { Book, FileText, MessageSquare, Users, Code2, Globe } from "lucide-react";
+import { Book, FileText, MessageSquare, Users, Code2, Globe, Sparkles, PlayCircle, Calendar, GraduationCap, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Resources() {
@@ -8,10 +8,10 @@ export function Resources() {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                     <div className="max-w-2xl">
                         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-                            Resources to help you grow.
+                            Resources & Community
                         </h2>
                         <p className="text-xl text-muted-foreground">
-                            Everything you need to master invoicing, cash flow, and business growth.
+                            Everything you need to master OnTheDot and grow your business.
                         </p>
                     </div>
                     <Button variant="outline" className="shrink-0">
@@ -20,76 +20,112 @@ export function Resources() {
                 </div>
 
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {/* Help Center */}
-                    <div className="group p-6 rounded-2xl border border-border/50 hover:border-[#4A154B]/30 hover:bg-[#4A154B]/5 transition-all cursor-pointer">
-                        <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <Book className="w-6 h-6" />
+                    {/* Resource Library */}
+                    <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
+                        <div className="flex items-center gap-4 mb-4">
+                            <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600">
+                                <Book className="w-5 h-5" />
+                            </div>
+                            <h3 className="font-bold text-lg">Resource Library</h3>
                         </div>
-                        <h3 className="text-xl font-semibold mb-3">Help Center</h3>
-                        <p className="text-muted-foreground mb-4">
-                            Step-by-step tutorials on invoicing, settings, and reporting.
-                        </p>
-                        <span className="text-sm font-medium text-[#4A154B] group-hover:underline">Visit Help Center →</span>
+                        <p className="text-sm text-muted-foreground mb-4">Detailed guides, FAQs, and knowledge base.</p>
+                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">Browse Library →</a>
                     </div>
 
-                    {/* Resources Library */}
-                    <div className="group p-6 rounded-2xl border border-border/50 hover:border-[#4A154B]/30 hover:bg-[#4A154B]/5 transition-all cursor-pointer">
-                        <div className="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <FileText className="w-6 h-6" />
+                    {/* What's New */}
+                    <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
+                        <div className="flex items-center gap-4 mb-4">
+                            <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30 text-purple-600">
+                                <Sparkles className="w-5 h-5" />
+                            </div>
+                            <h3 className="font-bold text-lg">What's New</h3>
                         </div>
-                        <h3 className="text-xl font-semibold mb-3">Resources Library</h3>
-                        <p className="text-muted-foreground mb-4">
-                            E-books, guides, and templates like "The Ultimate Guide to Follow-Up Emails".
-                        </p>
-                        <span className="text-sm font-medium text-[#4A154B] group-hover:underline">Browse Library →</span>
+                        <p className="text-sm text-muted-foreground mb-4">Latest product updates and feature releases.</p>
+                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">View Changelog →</a>
                     </div>
 
-                    {/* Blog */}
-                    <div className="group p-6 rounded-2xl border border-border/50 hover:border-[#4A154B]/30 hover:bg-[#4A154B]/5 transition-all cursor-pointer">
-                        <div className="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <MessageSquare className="w-6 h-6" />
+                    {/* Product Tour */}
+                    <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
+                        <div className="flex items-center gap-4 mb-4">
+                            <div className="p-2 rounded-lg bg-pink-100 dark:bg-pink-900/30 text-pink-600">
+                                <PlayCircle className="w-5 h-5" />
+                            </div>
+                            <h3 className="font-bold text-lg">Product Tour</h3>
                         </div>
-                        <h3 className="text-xl font-semibold mb-3">OnTheDot Blog</h3>
-                        <p className="text-muted-foreground mb-4">
-                            Latest tips on freelancing, cash flow management, and business strategy.
-                        </p>
-                        <span className="text-sm font-medium text-[#4A154B] group-hover:underline">Read Articles →</span>
+                        <p className="text-sm text-muted-foreground mb-4">Interactive walkthrough of the app.</p>
+                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">Start Tour →</a>
+                    </div>
+
+                    {/* Events */}
+                    <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
+                        <div className="flex items-center gap-4 mb-4">
+                            <div className="p-2 rounded-lg bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600">
+                                <Calendar className="w-5 h-5" />
+                            </div>
+                            <h3 className="font-bold text-lg">Events</h3>
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-4">Webinars, workshops, and product demos.</p>
+                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">See Schedule →</a>
+                    </div>
+
+                    {/* Developers */}
+                    <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
+                        <div className="flex items-center gap-4 mb-4">
+                            <div className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600">
+                                <Code2 className="w-5 h-5" />
+                            </div>
+                            <h3 className="font-bold text-lg">Developers</h3>
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-4">API documentation, SDKs, and integrations.</p>
+                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">View Docs →</a>
+                    </div>
+
+                    {/* Customer Stories */}
+                    <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
+                        <div className="flex items-center gap-4 mb-4">
+                            <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600">
+                                <FileText className="w-5 h-5" />
+                            </div>
+                            <h3 className="font-bold text-lg">Customer Stories</h3>
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-4">Case studies and testimonials from users.</p>
+                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">Read Stories →</a>
                     </div>
 
                     {/* Community */}
-                    <div className="group p-6 rounded-2xl border border-border/50 hover:border-[#4A154B]/30 hover:bg-[#4A154B]/5 transition-all cursor-pointer">
-                        <div className="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <Users className="w-6 h-6" />
+                    <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
+                        <div className="flex items-center gap-4 mb-4">
+                            <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600">
+                                <Users className="w-5 h-5" />
+                            </div>
+                            <h3 className="font-bold text-lg">Community</h3>
                         </div>
-                        <h3 className="text-xl font-semibold mb-3">Community</h3>
-                        <p className="text-muted-foreground mb-4">
-                            Connect with other freelancers and agency owners for peer support.
-                        </p>
-                        <span className="text-sm font-medium text-[#4A154B] group-hover:underline">Join Community →</span>
+                        <p className="text-sm text-muted-foreground mb-4">Join our Slack/Discord channels and user groups.</p>
+                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">Join Now →</a>
                     </div>
 
-                    {/* API */}
-                    <div className="group p-6 rounded-2xl border border-border/50 hover:border-[#4A154B]/30 hover:bg-[#4A154B]/5 transition-all cursor-pointer">
-                        <div className="w-12 h-12 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <Code2 className="w-6 h-6" />
+                    {/* Certification */}
+                    <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
+                        <div className="flex items-center gap-4 mb-4">
+                            <div className="p-2 rounded-lg bg-teal-100 dark:bg-teal-900/30 text-teal-600">
+                                <GraduationCap className="w-5 h-5" />
+                            </div>
+                            <h3 className="font-bold text-lg">OnTheDot Certified</h3>
                         </div>
-                        <h3 className="text-xl font-semibold mb-3">Developers</h3>
-                        <p className="text-muted-foreground mb-4">
-                            API documentation and developer tools for custom integrations.
-                        </p>
-                        <span className="text-sm font-medium text-[#4A154B] group-hover:underline">View Docs →</span>
+                        <p className="text-sm text-muted-foreground mb-4">Certification program for power users.</p>
+                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">Get Certified →</a>
                     </div>
 
-                    {/* Partners */}
-                    <div className="group p-6 rounded-2xl border border-border/50 hover:border-[#4A154B]/30 hover:bg-[#4A154B]/5 transition-all cursor-pointer">
-                        <div className="w-12 h-12 rounded-xl bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                            <Globe className="w-6 h-6" />
+                    {/* Marketplace */}
+                    <div className="group p-6 rounded-2xl border border-border/50 hover:bg-muted/30 transition-all cursor-pointer">
+                        <div className="flex items-center gap-4 mb-4">
+                            <div className="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600">
+                                <ShoppingBag className="w-5 h-5" />
+                            </div>
+                            <h3 className="font-bold text-lg">Marketplace</h3>
                         </div>
-                        <h3 className="text-xl font-semibold mb-3">Partners</h3>
-                        <p className="text-muted-foreground mb-4">
-                            For accountants, payment processors, and solution providers.
-                        </p>
-                        <span className="text-sm font-medium text-[#4A154B] group-hover:underline">Become a Partner →</span>
+                        <p className="text-sm text-muted-foreground mb-4">Third-party integrations and add-ons.</p>
+                        <a href="#" className="text-sm font-semibold text-[#4A154B] hover:underline">Browse Apps →</a>
                     </div>
                 </div>
             </div>

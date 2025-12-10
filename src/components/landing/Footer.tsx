@@ -1,32 +1,35 @@
 import { Link } from "react-router-dom";
+import { Twitter, Linkedin, Facebook, Github, Mail } from "lucide-react";
 
 const footerLinks = {
   Product: ["Features", "Solutions", "Pricing", "Enterprise", "Changelog", "Status Page"],
-  Resources: ["Help Center", "Resources Library", "Blog", "Customer Stories", "Community", "Developers"],
-  Company: ["About Us", "Careers", "News / Media Kit", "Contact Us", "Trust Center"],
-  Legal: ["Privacy Policy", "Terms of Service", "Cookie Policy", "Security"]
+  Resources: ["Resource Library", "What's New", "Product Tour", "Events", "Developers", "Customer Stories", "Community"],
+  Company: ["About Us", "Mission & Vision", "News", "Careers", "Swag Store", "Brand Center"],
+  Blogs: ["OnTheDot Blog", "Engineering Blog", "Design Blog"],
+  Support: ["Live Chat", "Help Center", "Ticketing System", "Feature Requests"],
+  Legal: ["Terms of Service", "Privacy Policy", "Cookie Policy", "Compliance"]
 };
 
 export function Footer() {
   return (
     <footer id="footer" className="border-t border-border/50 bg-muted/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12">
-          {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 lg:gap-12">
+          {/* Brand & Newsletter */}
+          <div className="col-span-2 md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded bg-[#4A154B] flex items-center justify-center">
                 <span className="text-white font-bold text-lg">O</span>
               </div>
               <span className="font-bold text-xl tracking-tight">OnTheDot</span>
             </Link>
-            <p className="text-sm text-muted-foreground mb-6">
-              The modern invoicing platform for freelancers and agencies.
+            <p className="text-sm text-muted-foreground mb-6 max-w-sm">
+              The modern invoicing platform for freelancers and agencies. Get paid on the dot, every time.
             </p>
 
             {/* Newsletter */}
             <div className="mb-8">
-              <h5 className="font-semibold text-sm mb-2">Stay up to date</h5>
+              <h5 className="font-semibold text-sm mb-2">Subscribe to our newsletter</h5>
               <div className="flex gap-2 max-w-sm">
                 <input
                   type="email"
@@ -40,16 +43,27 @@ export function Footer() {
             </div>
 
             <div className="flex items-center gap-3">
-              {["X", "LinkedIn", "GitHub"].map((social) => (
+              {[
+                { icon: Twitter, label: "Twitter" },
+                { icon: Linkedin, label: "LinkedIn" },
+                { icon: Facebook, label: "Facebook" },
+                { icon: Github, label: "GitHub" },
+                { icon: Mail, label: "Contact" }
+              ].map((social, i) => (
                 <a
-                  key={social}
+                  key={i}
                   href="#"
-                  className="w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center text-xs font-medium text-muted-foreground hover:bg-foreground/10 hover:text-foreground transition-colors"
-                  aria-label={social}
+                  className="w-8 h-8 rounded-full bg-foreground/5 flex items-center justify-center text-muted-foreground hover:bg-foreground/10 hover:text-foreground transition-colors"
+                  aria-label={social.label}
                 >
-                  {social[0]}
+                  <social.icon className="w-4 h-4" />
                 </a>
               ))}
+            </div>
+
+            <div className="mt-6 flex flex-col gap-1 text-sm text-muted-foreground">
+              <p>Support: <a href="mailto:support@onthedot.com" className="hover:underline">support@onthedot.com</a></p>
+              <p>Sales: <a href="mailto:sales@onthedot.com" className="hover:underline">sales@onthedot.com</a></p>
             </div>
           </div>
 
@@ -76,11 +90,11 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} OnTheDot. All rights reserved.
+            © {new Date().getFullYear()} OnTheDot Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-2 text-sm text-muted-foreground">
-              <span className="w-2 h-2 rounded-full bg-green-500"></span>
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
               System Operational
             </span>
           </div>

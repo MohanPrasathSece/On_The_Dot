@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, TrendingUp, Zap, Target, BookOpen } from "lucide-react";
+import { ArrowRight, Briefcase, Building2, Code2, GraduationCap, Gavel, Stethoscope, ShoppingBag, Palette } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Solutions() {
@@ -7,97 +7,60 @@ export function Solutions() {
             <div className="container mx-auto px-6 sm:px-8 lg:px-12">
                 <div className="text-center max-w-3xl mx-auto mb-20">
                     <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-                        Solutions for every stage of growth.
+                        Built for your specific needs.
                     </h2>
                     <p className="text-xl text-muted-foreground">
-                        Whether you're a solo creative or scaling agency, OnTheDot evolves with you.
+                        Whether you're a freelancer or running a small agency, OnTheDot adapts to you.
                     </p>
                 </div>
 
-                {/* By Profession */}
+                {/* By Department */}
                 <div className="mb-24">
-                    <h3 className="text-2xl font-bold mb-10 text-center">By Profession</h3>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <h3 className="text-2xl font-bold mb-10 border-l-4 border-[#4A154B] pl-4">By Department</h3>
+                    <div className="grid md:grid-cols-3 gap-6">
                         {[
-                            {
-                                title: "Creative Agencies",
-                                description: "Streamline client billing and team permissions.",
-                                icon: Zap,
-                                features: ["Branded Invoices", "Team Roles", "Audit Logs"]
-                            },
-                            {
-                                title: "Freelancers",
-                                description: "Automate admin work and get paid faster.",
-                                icon: Target,
-                                features: ["Auto-Reminders", "Recurring Invoices", "Fast Payouts"]
-                            },
-                            {
-                                title: "Consultants",
-                                description: "Professional retainers and detailed reporting.",
-                                icon: BookOpen,
-                                features: ["Retainer Agreements", "Time Tracking", "Tax Reports"]
-                            },
-                            {
-                                title: "Service Business",
-                                description: "Manage high volume of small transactions.",
-                                icon: TrendingUp,
-                                features: ["Bulk Invoicing", "Client Portal", "SMS Notifications"]
-                            }
+                            { title: "Freelancers", desc: "Automate admin, focus on work." },
+                            { title: "Small Agencies", desc: "Manage team roles & client branding." },
+                            { title: "Project Managers", desc: "Track invoice status per project." },
+                            { title: "Financial Teams", desc: "Reconcile payments & export reports." },
+                            { title: "Client Managers", desc: "Review client history before calls." },
+                            { title: "Business Owners", desc: "Bird's eye view of cash flow." }
                         ].map((item, i) => (
-                            <div key={i} className="bg-background p-6 rounded-2xl border border-border/50 hover:shadow-lg transition-all duration-300">
-                                <div className="w-12 h-12 rounded-xl bg-[#4A154B]/10 flex items-center justify-center mb-6">
-                                    <item.icon className="w-6 h-6 text-[#4A154B]" />
-                                </div>
-                                <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
-                                <p className="text-muted-foreground text-sm mb-6">{item.description}</p>
-                                <ul className="space-y-2">
-                                    {item.features.map((feature, idx) => (
-                                        <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground/80">
-                                            <CheckCircle2 className="w-4 h-4 text-[#4A154B]" />
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
+                            <div key={i} className="bg-background p-6 rounded-xl border border-border/50 hover:border-[#4A154B]/30 transition-all">
+                                <h4 className="font-semibold text-lg mb-2 text-foreground">{item.title}</h4>
+                                <p className="text-sm text-muted-foreground">{item.desc}</p>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                {/* By Goal */}
+                {/* By Industry */}
                 <div>
-                    <h3 className="text-2xl font-bold mb-10 text-center">By Goal</h3>
-                    <div className="grid md:grid-cols-2 gap-8">
-                        <div className="bg-[#4A154B] text-white p-8 sm:p-12 rounded-3xl overflow-hidden relative">
-                            <div className="relative z-10">
-                                <h4 className="text-2xl font-bold mb-4">Eliminate Late Payments</h4>
-                                <p className="text-white/80 mb-8 max-w-md">
-                                    Stop chasing clients. Our smart reminders and polite nudges reduce overdue invoices by an average of 40%.
-                                </p>
-                                <Button className="bg-white text-[#4A154B] hover:bg-white/90">
-                                    See How It Works
-                                </Button>
+                    <h3 className="text-2xl font-bold mb-10 border-l-4 border-[#4A154B] pl-4">By Industry</h3>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {[
+                            { icon: Palette, title: "Creative & Design", desc: "Content Creators, Designers" },
+                            { icon: Code2, title: "Tech & Dev", desc: "Web Development, SaaS" },
+                            { icon: ShoppingBag, title: "E-Commerce", desc: "Retail, Dropshipping" },
+                            { icon: GraduationCap, title: "Education", desc: "Training, Tutoring" },
+                            { icon: Stethoscope, title: "Healthcare", desc: "Life Sciences, Wellness" },
+                            { icon: Gavel, title: "Legal & Finance", desc: "Accounting Firms, Law" },
+                            { icon: Building2, title: "Consulting", desc: "Strategy, Management" },
+                            { icon: Briefcase, title: "Small Business", desc: "Services, Trades" }
+                        ].map((item, i) => (
+                            <div key={i} className="flex items-start gap-4 bg-background p-5 rounded-xl border border-border/50 hover:shadow-md transition-all">
+                                <div className="p-2 rounded-lg bg-[#4A154B]/5 text-[#4A154B]">
+                                    <item.icon className="w-5 h-5" />
+                                </div>
+                                <div>
+                                    <h4 className="font-semibold text-sm mb-1">{item.title}</h4>
+                                    <p className="text-xs text-muted-foreground">{item.desc}</p>
+                                </div>
                             </div>
-                            <div className="absolute right-0 bottom-0 opacity-10 transform translate-x-1/3 translate-y-1/3">
-                                <TrendingUp className="w-64 h-64" />
-                            </div>
-                        </div>
-
-                        <div className="bg-card border border-border/50 p-8 sm:p-12 rounded-3xl overflow-hidden relative">
-                            <div className="relative z-10">
-                                <h4 className="text-2xl font-bold mb-4">Scale Your Agency</h4>
-                                <p className="text-muted-foreground mb-8 max-w-md">
-                                    From one freelancer to a team of twenty. Manage roles, permissions, and consolidate cash flow in one dashboard.
-                                </p>
-                                <Button variant="outline">
-                                    Explore Enterprise
-                                </Button>
-                            </div>
-                            <div className="absolute right-0 bottom-0 opacity-5 transform translate-x-1/3 translate-y-1/3">
-                                <Zap className="w-64 h-64" />
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
+
             </div>
         </section>
     );

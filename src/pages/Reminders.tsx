@@ -201,7 +201,9 @@ export default function Reminders() {
                 {[
                   { id: 1, when: "3 days before due date", channel: "Email", icon: Mail },
                   { id: 2, when: "On due date", channel: "Email & SMS", icon: MessageSquare },
-                  { id: 3, when: "7 days after due date", channel: "Email", icon: Mail },
+                  { id: 3, when: "3 days after due date", channel: "Email", icon: Mail },
+                  { id: 4, when: "7 days after due date", channel: "Email & SMS", icon: MessageSquare },
+                  { id: 5, when: "14 days after due date", channel: "Email & SMS + Urgent Tone", icon: AlertCircle },
                 ].map((rule) => (
                   <div key={rule.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/30 border border-border/50">
                     <div className="flex items-center gap-3">
