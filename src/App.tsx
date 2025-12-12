@@ -43,10 +43,17 @@ function AppRoutes() {
       <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Index />} />
       <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
       <Route path="/signup" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Signup />} />
+
+      {/* Public Pages routed to Generic Landing Template */}
       <Route path="/features/:featureId" element={<GenericFeaturePage />} />
+      <Route path="/solutions/:featureId" element={<GenericFeaturePage />} />
+      <Route path="/resources/:featureId" element={<GenericFeaturePage />} />
+      <Route path="/company/:featureId" element={<GenericFeaturePage />} />
+      <Route path="/support/:featureId" element={<GenericFeaturePage />} />
+      <Route path="/enterprise" element={<GenericFeaturePage />} /> {/* Special case, might need id param handling */}
 
+      {/* App Routes */}
       <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
-
       <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       <Route path="/invoices" element={<ProtectedRoute><Invoices /></ProtectedRoute>} />
       <Route path="/invoices/new" element={<ProtectedRoute><InvoiceBuilder /></ProtectedRoute>} />
@@ -57,7 +64,8 @@ function AppRoutes() {
       <Route path="/integrations" element={<ProtectedRoute><Integrations /></ProtectedRoute>} />
       <Route path="/team" element={<ProtectedRoute><Team /></ProtectedRoute>} />
       <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-      <Route path="/support" element={<ProtectedRoute><Support /></ProtectedRoute>} />
+      {/* Private Support Page - Renamed to avoid partial match conflict if desired, but exact match /support works */}
+      <Route path="/app-support" element={<ProtectedRoute><Support /></ProtectedRoute>} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>

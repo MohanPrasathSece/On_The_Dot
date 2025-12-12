@@ -1,5 +1,5 @@
 
-import { LucideIcon, MessageSquare, Users, Video, Paperclip, Search, Shield, Zap, Layout, List, FileText, Globe, Box, Lock, Database, PlayCircle, Code2, Laptop, Headphones, Briefcase, Megaphone, TrendingUp, BarChart, Tv, HelpCircle, BookOpen, Rss, Heart, UserPlus, Terminal, Server, Info, Newspaper, Image, Layers, ShoppingBag, Contact, Award, Building, Building2, Factory, GraduationCap, Stethoscope, HandHeart, Radio, Cloud, PenTool, CheckCircle, Clock, Activity, Coins, LineChart } from "lucide-react";
+import { LucideIcon, MessageSquare, Users, Video, Paperclip, Search, Shield, Zap, Layout, List, FileText, Globe, Box, Lock, Database, PlayCircle, Code2, Laptop, Headphones, Briefcase, Megaphone, TrendingUp, BarChart, Tv, HelpCircle, BookOpen, Rss, Heart, UserPlus, Terminal, Server, Info, Newspaper, Image, Layers, ShoppingBag, Contact, Award, Building, Building2, Factory, GraduationCap, Stethoscope, HandHeart, Radio, Cloud, PenTool, CheckCircle, Clock, Activity, Coins, LineChart, Bell, PieChart, Smartphone, FileCheck, Scale, Ticket } from "lucide-react";
 
 export type TemplateType = "standard" | "solution" | "resource" | "enterprise";
 
@@ -28,190 +28,296 @@ export interface FeatureData {
 }
 
 export const featureData: Record<string, FeatureData> = {
-    // --- PRODUCT ---
-    "watch-demo": {
-        title: "Watch Demo",
-        subtitle: "See OnTheDot",
-        description: "Get a guided tour of the productivity platform.",
-        icon: Tv,
-        benefits: ["Product walkthrough", "Feature deep dives"],
+    // --- FEATURES ---
+    "overview": {
+        title: "Platform Overview",
+        subtitle: "The Complete OS",
+        description: "One platform to manage your entire financial workflow.",
+        icon: Layout,
+        benefits: ["Invoicing", "Payments", "Banking"],
         template: "standard",
         sections: [
-            { title: "Everything you need", content: "From channels to huddles, see how the platform comes together to create a unified digital HQ that connects everyone.", layout: "left" },
-            { title: "Integrate your tools", content: "Don't switch contexts. Bring your calendar, Jira, and GitHub right into the conversation to stay in flow.", layout: "right" }
-        ]
-    },
-    "paid-vs-free": {
-        title: "Paid vs Free",
-        subtitle: "Compare Plans",
-        description: "Find the right plan for your team's needs.",
-        icon: Coins,
-        benefits: ["Limits", "Features", "Support"],
-        template: "standard",
-        stats: [
-            { value: "Unlimited", label: "History" },
-            { value: "50+", label: "Apps" },
-            { value: "99.99%", label: "Uptime" },
-            { value: "24/7", label: "Support" }
-        ]
-    },
-
-    // --- ENTERPRISE ---
-    "enterprise": {
-        title: "Enterprise",
-        subtitle: "Scale with confidence",
-        description: "Security, control, and compliance for huge organizations.",
-        icon: Building2,
-        benefits: ["Enterprise grid", "Data residency", "SSO"],
-        template: "enterprise",
-        stats: [
-            { value: "500K+", label: "Daily Users" },
-            { value: "99.999%", label: "Uptime SLA" },
-            { value: "ISO", label: "Certified" },
-            { value: "24/7", label: "Priority Support" }
+            { title: "Everything in one place", content: "Stop switching between tools. manage invoices, payments, and clients in a single dashboard.", layout: "center" },
+            { title: "Automation first", content: "Let our AI agents handle the chasing, reminding, and reconciliation.", layout: "right" }
         ],
-        sections: [
-            { title: "Security at scale", content: "Manage thousands of users with centralized controls, audit logs, and data residency.", layout: "center" },
-            { title: "Unify your organization", content: "Connect workspace siloes with Enterprise Grid to create a single, searchable network.", layout: "right" }
+        stats: [
+            { value: "100%", label: "Visibility" },
+            { value: "0", label: "Admin Headaches" }
         ]
+    },
+    "invoicing": {
+        title: "Smart Invoicing",
+        subtitle: "2-Click Billing",
+        description: "Create stunning, professional invoices in seconds.",
+        icon: FileText,
+        benefits: ["Custom Branding", "Recurring Invoices", "Multi-currency"],
+        template: "standard",
+        sections: [
+            { title: "Branded for you", content: "Customize logos, colors, and fonts to match your brand identity perfectly.", layout: "left" },
+            { title: "Recurring billing", content: "Set up retainers and subscriptions once, and let them run on autopilot.", layout: "right" },
+            { title: "Global ready", content: "Support for 135+ currencies and local tax compliance rules.", layout: "center" }
+        ],
+        stats: [
+            { value: "30s", label: "To Create Invoice" },
+            { value: "135+", label: "Currencies" }
+        ]
+    },
+    "reminders": {
+        title: "Auto-Reminders",
+        subtitle: "Get Paid 2x Faster",
+        description: "AI-powered follow-ups that preserve client relationships.",
+        icon: Bell,
+        benefits: ["Smart Cadence", "AI Messaging", "Multi-channel"],
+        template: "standard",
+        sections: [
+            { title: "Polite but firm", content: "Our AI adjusts tone based on how overdue the payment is, from gentle nudges to firm notices.", layout: "right" },
+            { title: "Set and forget", content: "Define your cadence (3, 7, 14 days) and let the system handle the rest.", layout: "left" }
+        ]
+    },
+    "cash-flow": {
+        title: "Cash Flow",
+        subtitle: "Financial Health",
+        description: "Real-time visibility into your income and expenses.",
+        icon: Coins,
+        benefits: ["Forecasting", "Trends", "Burn Rate"],
+        template: "standard",
+        sections: [
+            { title: "Predict the future", content: "AI-driven forecasting tells you exactly when money will land in your account.", layout: "center" }
+        ]
+    },
+    "reports": {
+        title: "Reports & Analytics",
+        subtitle: "Deep Insights",
+        description: "Interactive dashboards for data-driven decisions.",
+        icon: PieChart,
+        benefits: ["Income Trends", "Client Value", "Tax Export"],
+        template: "standard",
+        stats: [
+            { value: "15+", label: "Report Types" },
+            { value: "CSV/PDF", label: "Export Formats" }
+        ]
+    },
+    "integrations": {
+        title: "Integrations",
+        subtitle: "Connect Everything",
+        description: "Sync with Stripe, PayPal, Plaid, and your favorite tools.",
+        icon: Zap,
+        benefits: ["Real-time Sync", "No-code setup", "Secure"],
+        template: "standard",
+        sections: [
+            { title: "Payment Gateways", content: "Accept credit cards and bank transfers directly on your invoices.", layout: "right" },
+            { title: "Accounting Sync", content: "Automatically push data to Xero or QuickBooks for tax time.", layout: "left" }
+        ]
+    },
+    "team": {
+        title: "Team Collaboration",
+        subtitle: "Work Together",
+        description: " invite team members with granular roles and permissions.",
+        icon: Users,
+        benefits: ["Admin/Editor Roles", "Activity Feed", "Comments"],
+        template: "standard"
     },
     "security": {
         title: "Security",
-        subtitle: "Enterprise Grade",
-        description: "Protecting your data at every layer.",
+        subtitle: "Bank-Grade Protection",
+        description: "Your financial data is locked down with AES-256 encryption.",
         icon: Shield,
-        benefits: ["SSO", "Audit logs", "DLP"],
+        benefits: ["SOC2 Type II", "GDPR", "2FA"],
         template: "enterprise",
         sections: [
-            { title: "Compliance built-in", content: "We meet global standards including GDPR, HIPAA, and FINRA so you can work worry-free.", layout: "left" },
-            { title: "Data Loss Prevention", content: "Scan messages and files for sensitive data to prevent accidental leaks.", layout: "right" }
+            { title: "Encrypted at rest and in transit", content: "We use the same security standards as major banks.", layout: "center" }
         ]
     },
-
-    // --- FEATURES ---
-    "channels": {
-        title: "Channels",
-        subtitle: "Organised work",
-        description: "Channels bring order to your work by organizing conversations.",
-        icon: MessageSquare,
-        benefits: ["Transparent work", "Searchable history"],
-        template: "standard",
-        sections: [
-            { title: "Create a channel for anything", content: "A project, a team, or just 'Lunch'. Channels keep topics organized and searchable.", layout: "left" },
-            { title: "Public or Private", content: "Make work transparent by default, or lock it down when sensitivity matters.", layout: "right" },
-            { title: "Connect tools", content: "Pipe alerts, approvals, and commits directly into the relevant channel.", layout: "center" }
-        ],
-        stats: [
-            { value: "12m+", label: "Active Channels" },
-            { value: "30%", label: "Less Email" }
-        ]
+    "audit-logs": {
+        title: "Audit Logs",
+        subtitle: "Total Accountability",
+        description: "Track every action, view, and edit across your workspace.",
+        icon: FileCheck,
+        benefits: ["Immutable Logs", "User Actions", "IP Tracking"],
+        template: "standard"
     },
-    "huddles": {
-        title: "Huddles",
-        subtitle: "Live Audio & Video",
-        description: "Quick informal conversations with your team, just like in the office.",
-        icon: Video,
-        benefits: ["Screen share", "Live cursor", "Drawing"],
-        template: "standard",
-        sections: [
-            { title: "Drop in, drop out", content: "Start a huddle in any channel. Teammates can hop in instantly without scheduling a meeting.", layout: "left" },
-            { title: "Share your screen", content: "Multi-person screen sharing and drawing tools make remote collaboration feel like whiteboard sessions.", layout: "right" }
-        ]
-    },
-    "messaging": {
-        title: "Messaging",
-        subtitle: "Team Chat",
-        description: "The core of collaboration. Communicating efficiently.",
-        icon: MessageSquare,
-        benefits: ["Threads", "Formatting", "Emoji"],
-        template: "standard",
-        sections: [
-            { title: "Threaded conversations", content: "Keep the main channel clean by organizing discussions into side threads.", layout: "right" },
-            { title: "Rich formatting", content: "Code blocks, bold text, bullet points. Communicate with clarity.", layout: "left" }
-        ]
+    "mobile": {
+        title: "Mobile App",
+        subtitle: "Business on the Go",
+        description: "Manage invoices and check status from your pocket.",
+        icon: Smartphone,
+        benefits: ["iOS & Android", "Push Notifications", "Offline Mode"],
+        template: "standard"
     },
 
     // --- SOLUTIONS ---
-    "engineering": {
-        title: "Engineering",
-        subtitle: "Ship faster",
-        description: "Integrate deployments and incidents.",
-        icon: Code2,
-        benefits: ["CI/CD alerts", "Incidentswarming"],
+    "freelancers": {
+        title: "Freelancers",
+        subtitle: "Solo Freedom",
+        description: "Automate the boring stuff so you can focus on your craft.",
+        icon: Video, // Using Video as proxy for "Creator" vibe or just generic
+        benefits: ["Time Saving", "Professional Image"],
         template: "solution",
-        stats: [
-            { value: "2x", label: "Deploy Frequency" },
-            { value: "-33%", label: "Resolution Time" }
-        ],
         sections: [
-            { title: "Automate your pipeline", content: "Pipe alerts from PagerDuty, Jira, and GitHub directly into incident channels.", layout: "right" },
-            { title: "Review code together", content: "Discuss pull requests and code snippets without leaving your IDE context.", layout: "left" }
+            { title: "Look bigger than you are", content: "Send enterprise-grade invoices that build trust with clients.", layout: "right" }
         ]
     },
-    "sales": {
-        title: "Sales",
-        subtitle: "Close Deals",
-        description: "Speed up sales cycles with real-time collaboration.",
-        icon: TrendingUp,
-        template: "solution",
-        benefits: [],
-        stats: [
-            { value: "13%", label: "Higher Win Rate" },
-            { value: "29%", label: "Faster Cycles" }
-        ],
-        sections: [
-            { title: "Deal Rooms", content: "Spin up a channel for every major deal to bring in legal, product, and execs.", layout: "left" },
-            { title: "CRM Sync", content: "Update Salesforce records directly from OnTheDot using slash commands.", layout: "right" }
-        ]
+    "agencies": {
+        title: "Small Agencies",
+        subtitle: "Scale Up",
+        description: "Manage multiple clients and team members with ease.",
+        icon: Building,
+        benefits: ["Team Roles", "Client Portal"],
+        template: "solution"
     },
+    "project-managers": {
+        title: "Project Managers",
+        subtitle: "Track Progress",
+        description: "Link payments to milestones and deliverables.",
+        icon: List,
+        benefits: ["Milestone Billing", "Project Budgeting"],
+        template: "solution"
+    },
+    "finance": {
+        title: "Financial Teams",
+        subtitle: "Control & Compliance",
+        description: "Streamline reconciliation and reporting.",
+        icon: LineChart,
+        benefits: ["Audit Trail", "Bulk Actions"],
+        template: "solution"
+    },
+    "client-managers": {
+        title: "Client Managers",
+        subtitle: "Relationship Focus",
+        description: "Know exactly where every account stands before you call.",
+        icon: Contact,
+        benefits: ["CRM Sync", "History View"],
+        template: "solution"
+    },
+    "owners": {
+        title: "Business Owners",
+        subtitle: "Bird's Eye View",
+        description: "Master your cash flow and sleep better at night.",
+        icon: Briefcase,
+        benefits: ["Executive Dashboard", "Runway Calc"],
+        template: "solution"
+    },
+    "content-creators": { title: "Content Creators", subtitle: "Creators", description: "Monetize your content.", icon: Video, benefits: [], template: "solution" },
+    "design-marketing": { title: "Design & Marketing", subtitle: "Agencies", description: "Bill for your creativity.", icon: PenTool, benefits: [], template: "solution" },
+    "ecommerce": { title: "E-Commerce", subtitle: "Retail", description: "Integrated sales tracking.", icon: ShoppingBag, benefits: [], template: "solution" },
+    "education": { title: "Education", subtitle: "Training", description: "Bill for courses and time.", icon: GraduationCap, benefits: [], template: "solution" },
+    "healthcare": { title: "Healthcare", subtitle: "Medical", description: "HIPAA compliant billing.", icon: Stethoscope, benefits: [], template: "solution" },
+    "legal": { title: "Legal", subtitle: "Firms", description: "Trust accounting and retainers.", icon: Scale, benefits: [], template: "solution" },
 
     // --- RESOURCES ---
-    "resources-library": {
-        title: "Library",
-        subtitle: "Guides & Reports",
-        description: "E-books, webinars, and more.",
+    "library": {
+        title: "Resource Library",
+        subtitle: "Knowledge Base",
+        description: "Detailed guides, FAQs, and masterclasses.",
         icon: BookOpen,
-        benefits: ["Deep dives", "Trends"],
-        template: "resource",
+        benefits: ["Guides", "Videos"],
+        template: "resource"
     },
-    "help-centre": {
-        title: "Help Centre",
-        subtitle: "Support",
-        description: "How can we help you today?",
-        icon: HelpCircle,
-        benefits: [],
-        template: "resource" // Reusing resource template for now implies article list
-    },
-    "slack-blog": {
+    "blog": {
         title: "Blog",
-        subtitle: "News",
-        description: "Latest stories from the team.",
-        icon: PenTool,
+        subtitle: "Insights",
+        description: "News, tips, and financial wisdom.",
+        icon: Newspaper,
         benefits: [],
         template: "resource"
     },
+    "tour": {
+        title: "Product Tour",
+        subtitle: "Walkthrough",
+        description: "Interactive demo of the platform features.",
+        icon: PlayCircle,
+        benefits: [],
+        template: "standard"
+    },
+    "events": {
+        title: "Events",
+        subtitle: "Webinars",
+        description: "Join live sessions with experts.",
+        icon: Tv,
+        benefits: [],
+        template: "resource"
+    },
+    "certified": {
+        title: "Certification",
+        subtitle: "Become an Expert",
+        description: "Get certified in OTD workflows.",
+        icon: Award,
+        benefits: [],
+        template: "standard"
+    },
+    "community": {
+        title: "Community",
+        subtitle: "Connect",
+        description: "Join thousands of other founders.",
+        icon: Users,
+        benefits: [],
+        template: "resource"
+    },
+    "stories": {
+        title: "Customer Stories",
+        subtitle: "Case Studies",
+        description: "See how others are growing.",
+        icon: Heart,
+        benefits: [],
+        template: "resource"
+    },
+    "developers": {
+        title: "Developers",
+        subtitle: "API Docs",
+        description: "Build on top of OnTheDot.",
+        icon: Code2,
+        benefits: [],
+        template: "standard"
+    },
+    "marketplace": {
+        title: "Marketplace",
+        subtitle: "Add-ons",
+        description: "Extend power with third-party apps.",
+        icon: Box,
+        benefits: [],
+        template: "resource"
+    },
+    "whats-new": {
+        title: "What's New",
+        subtitle: "Changelog",
+        description: "Latest updates and improvements.",
+        icon: Rss,
+        benefits: [],
+        template: "standard"
+    },
 
-    // Fallbacks for others (simplified for file length, but preserving keys)
-    "slack-connect": { title: "Connect", subtitle: "Work External", description: "Collaborate with partners.", icon: Users, benefits: ["Secure"], template: "standard", sections: [{ title: "Shared Channels", content: "Connect two organizations securely.", layout: "left" }] },
-    "canvas": { title: "Canvas", subtitle: "Docs", description: "Knowledge base.", icon: FileText, benefits: ["Persistent"], template: "standard" },
-    "lists": { title: "Lists", subtitle: "Tracking", description: "Manage tasks.", icon: List, benefits: ["Views"], template: "standard" },
-    "clips": { title: "Clips", subtitle: "Video", description: "Async updates.", icon: PlayCircle, benefits: ["Easy"], template: "standard" },
-    "apps-integrations": { title: "Apps", subtitle: "Integrations", description: "Connect tools.", icon: Box, benefits: ["2500+"], template: "standard" },
-    "workflow-builder": { title: "Workflows", subtitle: "Automation", description: "No-code.", icon: Zap, benefits: ["Easy"], template: "standard" },
-    "slack-ai": { title: "AI", subtitle: "Intelligence", description: "Work smarter.", icon: Zap, benefits: ["Summaries"], template: "standard" },
-    "agentforce": { title: "Agentforce", subtitle: "Agents", description: "Autonomous.", icon: Users, benefits: ["Scale"], template: "standard" },
-    "enterprise-search": { title: "Search", subtitle: "Find", description: "Everything.", icon: Search, benefits: ["Fast"], template: "standard" },
-    "enterprise-key-management": { title: "EKM", subtitle: "Keys", description: "Control.", icon: Lock, benefits: ["Safety"], template: "enterprise" },
-    "slack-atlas": { title: "Atlas", subtitle: "Profiles", description: "Org charts.", icon: Users, benefits: ["Visual"], template: "standard" },
 
-    // Solutions continued
-    "it": { title: "IT", subtitle: "Support", description: "Modernize helpdesk.", icon: Laptop, benefits: [], template: "solution" },
-    "customer-service": { title: "Service", subtitle: "Support", description: "Solve faster.", icon: Headphones, benefits: [], template: "solution" },
-    "project-management": { title: "PM", subtitle: "Deliver", description: "On time.", icon: Briefcase, benefits: [], template: "solution" },
-    "marketing": { title: "Marketing", subtitle: "Campaigns", description: "Launch.", icon: Megaphone, benefits: [], template: "solution" },
+    // --- COMPANY ---
+    "about": { title: "About Us", subtitle: "Our Mission", description: "Helping small businesses win.", icon: Info, benefits: [], template: "standard" },
+    "news": { title: "Newsroom", subtitle: "Press", description: "Latest announcements.", icon: Newspaper, benefits: [], template: "resource" },
+    "careers": { title: "Careers", subtitle: "Join Us", description: "We're hiring builders.", icon: UserPlus, benefits: [], template: "standard" },
+    "swag": { title: "Swag Store", subtitle: "Merch", description: "Rep the brand.", icon: ShoppingBag, benefits: [], template: "standard" },
+    "brand": { title: "Brand Center", subtitle: "Assets", description: "Logos and guidelines.", icon: Image, benefits: [], template: "standard" },
+    "engineering": { title: "Engineering Blog", subtitle: "Tech", description: "Under the hood.", icon: Code2, benefits: [], template: "resource" },
+    "design": { title: "Design Blog", subtitle: "UX/UI", description: "Crafting the experience.", icon: PenTool, benefits: [], template: "resource" },
+    "contact": { title: "Contact Us", subtitle: "Get in Touch", description: "We'd love to hear from you.", icon: Contact, benefits: [], template: "standard" },
 
-    // Company / Misc
-    "about-us": { title: "About", subtitle: "Us", description: "Our story.", icon: Info, benefits: [], template: "standard" },
-    "careers": { title: "Careers", subtitle: "Join Us", description: "We are hiring.", icon: UserPlus, benefits: [], template: "standard", sections: [{ title: "Work with us", content: "We are looking for great people.", layout: "center" }] },
-    "contact-us": { title: "Contact", subtitle: "Touch", description: "Get in touch.", icon: Contact, benefits: [], template: "standard" },
+    // --- SUPPORT ---
+    "chat": { title: "Live Chat", subtitle: "Support", description: "Chat with our team.", icon: MessageSquare, benefits: [], template: "standard" },
+    "tickets": { title: "Support Tickets", subtitle: "Help", description: "Track your issues.", icon: Ticket, benefits: [], template: "standard" },
+    "requests": { title: "Feature Requests", subtitle: "Ideas", description: "Shape the roadmap.", icon: HelpCircle, benefits: [], template: "standard" },
+    "status": { title: "System Status", subtitle: "Uptime", description: "All systems operational.", icon: Activity, benefits: [], template: "standard" },
+    "help": { title: "Help Center", subtitle: "Knowledge Base", description: "Find answers fast.", icon: BookOpen, benefits: [], template: "resource" },
+
+    // --- MAIN ---
+    "enterprise": {
+        title: "Enterprise",
+        subtitle: "Scale with Confidence",
+        description: "Custom solutions for large organizations.",
+        icon: Building2,
+        benefits: ["SLA", "Dedicated Support", "Custom Integ."],
+        template: "enterprise",
+        sections: [
+            { title: "Security at scale", content: "Manage thousands of users with centralized controls.", layout: "center" }
+        ],
+        stats: [
+            { value: "99.99%", label: "SLA" },
+            { value: "24/7", label: "Support" }
+        ]
+    }
 };

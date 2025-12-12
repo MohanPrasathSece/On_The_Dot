@@ -9,7 +9,13 @@ import { CTA } from "@/components/landing/CTA";
 import { cn } from "@/lib/utils";
 
 export default function GenericFeaturePage() {
-    const { featureId } = useParams<{ featureId: string }>();
+    const params = useParams<{ featureId: string }>();
+    const location = window.location.pathname;
+
+    // Determine featureId based on route
+    let featureId = params.featureId;
+    if (location === "/enterprise") featureId = "enterprise";
+
     const data = featureId ? featureData[featureId] : null;
 
     if (!data) {
