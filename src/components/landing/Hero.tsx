@@ -31,7 +31,7 @@ export function Hero() {
                   Start Free Trial
                 </Button>
               </Link>
-              <Link to="/demo">
+              <Link to="/resources/res-tour">
                 <Button size="lg" variant="outline" className="h-14 px-8 text-lg w-full sm:w-auto">
                   <Play className="w-4 h-4 mr-2" />
                   Watch Demo

@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/accordion";
 
 const helpArticles = [
-  { id: 1, title: "Getting Started with OnTheDot", category: "Basics" },
+  { id: 1, title: "Getting Started with Flowryte", category: "Basics" },
   { id: 2, title: "How to Create Your First Invoice", category: "Invoices" },
   { id: 3, title: "Setting Up Payment Integrations", category: "Payments" },
   { id: 4, title: "Understanding Smart Reminders", category: "Reminders" },
@@ -158,8 +158,8 @@ export default function Support() {
                 {chatHistory.map((chat, i) => (
                   <div key={i} className={`flex ${chat.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                     <div className={`max-w-[80%] p-3 rounded-xl ${chat.role === 'user'
-                        ? 'bg-foreground text-background'
-                        : 'bg-muted'
+                      ? 'bg-foreground text-background'
+                      : 'bg-muted'
                       }`}>
                       <p className="text-sm">{chat.message}</p>
                     </div>
@@ -257,7 +257,7 @@ export default function Support() {
                 <Lightbulb className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
                 <h3 className="font-semibold text-lg mb-2">Have an idea?</h3>
                 <p className="text-muted-foreground max-w-md mx-auto mb-6">
-                  We'd love to hear your suggestions for improving OnTheDot. Your feedback helps shape our roadmap.
+                  We'd love to hear your suggestions for improving Flowryte. Your feedback helps shape our roadmap.
                 </p>
               </div>
 

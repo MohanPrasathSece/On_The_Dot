@@ -11,7 +11,7 @@ export function Resources() {
                             Resources & Community
                         </h2>
                         <p className="text-xl text-muted-foreground">
-                            Everything you need to master OnTheDot and grow your business.
+                            Everything you need to master Flowryte and grow your business.
                         </p>
                     </div>
                     <Button variant="outline" className="shrink-0">
@@ -110,7 +110,7 @@ export function Resources() {
                             <div className="p-2 rounded-lg bg-primary/10 text-primary">
                                 <GraduationCap className="w-5 h-5" />
                             </div>
-                            <h3 className="font-bold text-lg">OnTheDot Certified</h3>
+                            <h3 className="font-bold text-lg">Flowryte Certified</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Certification program for power users.</p>
                         <a href="#" className="text-sm font-semibold text-primary hover:underline">Get Certified →</a>

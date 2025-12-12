@@ -8,7 +8,7 @@ export function Company() {
             <div className="container mx-auto px-6 sm:px-8 lg:px-12">
                 <div className="text-center max-w-3xl mx-auto mb-20">
                     <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-                        About OnTheDot
+                        About Flowryte
                     </h2>
                     <p className="text-xl text-muted-foreground">
                         We're on a mission to simplify invoicing and payment processes, so business owners can focus on what they do best.

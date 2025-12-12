@@ -50,6 +50,7 @@ function AppRoutes() {
       <Route path="/resources/:featureId" element={<GenericFeaturePage />} />
       <Route path="/company/:featureId" element={<GenericFeaturePage />} />
       <Route path="/support/:featureId" element={<GenericFeaturePage />} />
+      <Route path="/legal/:featureId" element={<GenericFeaturePage />} />
       <Route path="/enterprise" element={<GenericFeaturePage />} /> {/* Special case, might need id param handling */}
 
       {/* App Routes */}
@@ -74,7 +75,7 @@ function AppRoutes() {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider defaultTheme="light" storageKey="onthedot-theme">
+    <ThemeProvider defaultTheme="light" storageKey="flowryte-theme">
       <AuthProvider>
         <TooltipProvider>
           <Toaster />

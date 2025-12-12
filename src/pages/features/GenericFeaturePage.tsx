@@ -77,8 +77,12 @@ export default function GenericFeaturePage() {
 function StandardHeader({ data }: { data: any }) {
     const HeroIcon = data.icon;
     return (
-        <section className="pt-32 pb-20 px-6 sm:px-8 lg:px-12 container mx-auto">
-            <div className="max-w-4xl mx-auto text-center">
+        <section className="pt-32 pb-20 px-6 sm:px-8 lg:px-12 container mx-auto relative overflow-hidden">
+            {/* Background Blobs */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blob-1 -z-10" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blob-2 -z-10" />
+
+            <div className="max-w-4xl mx-auto text-center relative z-10">
                 <div className="inline-flex items-center justify-center p-4 rounded-2xl bg-primary/10 text-primary mb-8 shadow-sm">
                     <HeroIcon className="w-10 h-10" />
                 </div>
@@ -89,8 +93,12 @@ function StandardHeader({ data }: { data: any }) {
                     {data.description}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button size="lg" className="text-lg px-8 h-14 shadow-lg shadow-primary/20">Start for free</Button>
-                    <Button size="lg" variant="outline" className="text-lg px-8 h-14">Talk to Sales</Button>
+                    <Link to="/signup">
+                        <Button size="lg" className="text-lg px-8 h-14 shadow-lg shadow-primary/20 bg-primary hover:bg-primary/90">Start for free</Button>
+                    </Link>
+                    <Link to="/company/com-contact">
+                        <Button size="lg" variant="outline" className="text-lg px-8 h-14">Talk to Sales</Button>
+                    </Link>
                 </div>
             </div>
         </section>
@@ -100,8 +108,11 @@ function StandardHeader({ data }: { data: any }) {
 function SolutionHeader({ data }: { data: any }) {
     const HeroIcon = data.icon;
     return (
-        <section className="pt-32 pb-24 px-6 sm:px-8 lg:px-12 container mx-auto bg-gradient-to-b from-primary/5 to-background">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <section className="pt-32 pb-24 px-6 sm:px-8 lg:px-12 container mx-auto bg-gradient-to-b from-primary/5 to-background relative overflow-hidden">
+            {/* Background Blobs */}
+            <div className="absolute top-20 right-20 w-[600px] h-[600px] bg-blob-3 opacity-20 -z-10" />
+
+            <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
                 <div className="space-y-8">
                     <div className="flex items-center gap-3 text-primary font-bold tracking-wide uppercase text-sm bg-primary/10 w-fit px-4 py-1 rounded-full">
                         <HeroIcon className="w-4 h-4" />
@@ -114,10 +125,14 @@ function SolutionHeader({ data }: { data: any }) {
                         {data.description}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                        <Button size="lg" className="text-lg px-8 h-14 shadow-xl">Get Started</Button>
-                        <Button size="lg" variant="ghost" className="text-lg px-8 h-14 gap-3 bg-background/50 border border-border/50">
-                            <PlayCircle className="w-5 h-5" /> Watch Demo
-                        </Button>
+                        <Link to="/signup">
+                            <Button size="lg" className="text-lg px-8 h-14 shadow-xl bg-primary text-primary-foreground hover:bg-primary/90">Get Started</Button>
+                        </Link>
+                        <Link to="/resources/res-tour">
+                            <Button size="lg" variant="ghost" className="text-lg px-8 h-14 gap-3 bg-background/50 border border-border/50">
+                                <PlayCircle className="w-5 h-5" /> Watch Demo
+                            </Button>
+                        </Link>
                     </div>
                 </div>
                 <div className="relative aspect-square lg:aspect-[4/3] rounded-2xl bg-background shadow-2xl border border-border p-2 rotate-2 hover:rotate-0 transition-transform duration-500">
@@ -166,7 +181,9 @@ function EnterpriseHeader({ data }: { data: any }) {
                     {data.description}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button size="lg" className="text-lg px-8 h-14 bg-white text-slate-950 hover:bg-white/90">Contact Sales</Button>
+                    <Link to="/company/com-contact">
+                        <Button size="lg" className="text-lg px-8 h-14 bg-white text-slate-950 hover:bg-white/90">Contact Sales</Button>
+                    </Link>
                     <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-white/20 text-white hover:bg-white/10">Read Whitepaper</Button>
                 </div>
             </div>

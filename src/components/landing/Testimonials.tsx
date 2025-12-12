@@ -2,7 +2,7 @@ import { Star } from "lucide-react";
 
 const testimonials = [
     {
-        quote: "OnTheDot has completely transformed how I handle invoicing. What used to take me hours now takes minutes, and I get paid 50% faster thanks to their smart reminders.",
+        quote: "Flowryte has completely transformed how I handle invoicing. What used to take me hours now takes minutes, and I get paid 50% faster thanks to their smart reminders.",
         author: "Sarah Chen",
         role: "Freelance Designer",
         company: "Design Studio"
@@ -14,7 +14,7 @@ const testimonials = [
         company: "Growth Labs"
     },
     {
-        quote: "I love how OnTheDot integrates with my payment processors. Clients can pay immediately, and I get notified instantly. The dashboard gives me complete visibility into my finances.",
+        quote: "I love how Flowryte integrates with my payment processors. Clients can pay immediately, and I get notified instantly. The dashboard gives me complete visibility into my finances.",
         author: "Emma Thompson",
         role: "Consultant",
         company: "Thompson Consulting"
@@ -30,7 +30,7 @@ export function Testimonials() {
                         Loved by thousands of professionals
                     </h2>
                     <p className="text-lg text-muted-foreground">
-                        See what our users say about how OnTheDot has transformed their business operations.
+                        See what our users say about how Flowryte has transformed their business operations.
                     </p>
                 </div>
 

@@ -26,10 +26,10 @@ export function NavbarMegaMenu() {
                             <li className="row-span-4">
                                 <Link
                                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-primary/20 to-primary/5 p-6 no-underline outline-none focus:shadow-md"
-                                    to="/features/overview"
+                                    to="/features/invoicing"
                                 >
                                     <div className="mb-2 mt-4 text-lg font-medium text-foreground">
-                                        OnTheDot Platform
+                                        Flowryte Platform
                                     </div>
                                     <p className="text-sm leading-tight text-muted-foreground">
                                         The complete financial operating system for freelancers and agencies.
@@ -44,8 +44,6 @@ export function NavbarMegaMenu() {
                                 <ListItem href="/features/integrations" title="Integrations" icon={Zap}>Stripe, PayPal, Plaid</ListItem>
                                 <ListItem href="/features/team" title="Team" icon={Users}>Collaboration tools</ListItem>
                                 <ListItem href="/features/security" title="Security" icon={Shield}>Bank-grade encryption</ListItem>
-                                <ListItem href="/features/audit-logs" title="Audit Logs">Track every action</ListItem>
-                                <ListItem href="/features/mobile" title="Mobile App">Manage on the go</ListItem>
                             </div>
                         </ul>
                     </NavigationMenuContent>
@@ -63,12 +61,12 @@ export function NavbarMegaMenu() {
                                     <Users className="w-4 h-4" /> By Department
                                 </h4>
                                 <div className="grid gap-2">
-                                    <ListItem href="/solutions/freelancers" title="Freelancers" />
-                                    <ListItem href="/solutions/agencies" title="Small Agencies" />
-                                    <ListItem href="/solutions/project-managers" title="Project Managers" />
-                                    <ListItem href="/solutions/finance" title="Financial Teams" />
-                                    <ListItem href="/solutions/client-managers" title="Client Managers" />
-                                    <ListItem href="/solutions/owners" title="Business Owners" />
+                                    <ListItem href="/solutions/sol-freelancers" title="Freelancers" />
+                                    <ListItem href="/solutions/sol-agencies" title="Small Agencies" />
+                                    <ListItem href="/solutions/sol-pm" title="Project Managers" />
+                                    <ListItem href="/solutions/sol-finance" title="Financial Teams" />
+                                    <ListItem href="/solutions/sol-client-mgr" title="Client Managers" />
+                                    <ListItem href="/solutions/sol-owners" title="Business Owners" />
                                 </div>
                             </div>
                             <div className="p-2 border-l border-border/50 pl-4">
@@ -76,12 +74,12 @@ export function NavbarMegaMenu() {
                                     <Briefcase className="w-4 h-4" /> By Industry
                                 </h4>
                                 <div className="grid gap-2">
-                                    <ListItem href="/solutions/content-creators" title="Content Creators" />
-                                    <ListItem href="/solutions/design-marketing" title="Design & Marketing" />
-                                    <ListItem href="/solutions/ecommerce" title="E-Commerce" />
-                                    <ListItem href="/solutions/education" title="Education & Training" />
-                                    <ListItem href="/solutions/healthcare" title="Healthcare" />
-                                    <ListItem href="/solutions/legal" title="Legal & Accounting" />
+                                    <ListItem href="/solutions/ind-freelancers" title="Content Creators" />
+                                    <ListItem href="/solutions/ind-agencies" title="Design & Marketing" />
+                                    <ListItem href="/solutions/ind-ecommerce" title="E-Commerce" />
+                                    <ListItem href="/solutions/ind-education" title="Education & Training" />
+                                    <ListItem href="/solutions/ind-healthcare" title="Healthcare" />
+                                    <ListItem href="/solutions/ind-legal" title="Legal & Accounting" />
                                 </div>
                             </div>
                         </ul>
@@ -99,22 +97,38 @@ export function NavbarMegaMenu() {
                                 <h4 className="font-bold text-sm mb-3 text-primary flex items-center gap-2">
                                     <GraduationCap className="w-4 h-4" /> Learn
                                 </h4>
-                                <ListItem href="/resources/library" title="Resource Library">Guides & FAQs</ListItem>
-                                <ListItem href="/resources/blog" title="Blog">Insights & News</ListItem>
-                                <ListItem href="/resources/tour" title="Product Tour">Interactive walkthrough</ListItem>
-                                <ListItem href="/resources/events" title="Events">Webinars & Demos</ListItem>
-                                <ListItem href="/resources/certified" title="Certification">Become an expert</ListItem>
+                                <ListItem href="/resources/res-library" title="Resource Library">Guides & FAQs</ListItem>
+                                <ListItem href="/resources/res-whats-new" title="What's New">Latest updates</ListItem>
+                                <ListItem href="/resources/res-tour" title="Product Tour">Walkthrough</ListItem>
+                                <ListItem href="/resources/res-events" title="Events">Webinars</ListItem>
+                                <ListItem href="/resources/res-blog" title="Blog">Insights</ListItem>
                             </div>
                             <div className="p-2 border-l border-border/50 pl-4">
                                 <h4 className="font-bold text-sm mb-3 text-primary flex items-center gap-2">
                                     <ShoppingBag className="w-4 h-4" /> Connect
                                 </h4>
-                                <ListItem href="/resources/community" title="Community">User groups</ListItem>
-                                <ListItem href="/resources/stories" title="Customer Stories">Success cases</ListItem>
-                                <ListItem href="/resources/developers" title="Developers">API & SDKs</ListItem>
-                                <ListItem href="/resources/marketplace" title="Marketplace">Integrations</ListItem>
-                                <ListItem href="/support" title="Help Center">Get support</ListItem>
+                                <ListItem href="/resources/res-community" title="Community">User groups</ListItem>
+                                <ListItem href="/resources/res-stories" title="Customer Stories">Case studies</ListItem>
+                                <ListItem href="/resources/res-devs" title="Developers">API & SDKs</ListItem>
+                                <ListItem href="/resources/res-marketplace" title="Marketplace">Integrations</ListItem>
+                                <ListItem href="/resources/res-certified" title="Certified">Certification</ListItem>
                             </div>
+                        </ul>
+                    </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                {/* PRODUCT (New) */}
+                <NavigationMenuItem>
+                    <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[active]:bg-transparent text-sm font-semibold text-muted-foreground hover:text-primary transition-colors">
+                        Product
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                        <ul className="grid w-[400px] gap-3 p-4 bg-background border border-border rounded-xl shadow-xl">
+                            <ListItem href="/features/prod-why" title="Why Flowryte?" icon={FileText} />
+                            <ListItem href="/features/prod-vs-manual" title="Vs Manual Invoicing" />
+                            <ListItem href="/features/prod-vs-tools" title="Vs Other Tools" />
+                            <ListItem href="/features/prod-productivity" title="Productivity" />
+                            <ListItem href="/features/prod-tasks" title="Task Management" />
                         </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>

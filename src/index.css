@@ -222,6 +222,22 @@
   .animate-scale-in {
     animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
+
+  /* Decorative Blobs */
+  .bg-blob-1 {
+    @apply absolute rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float;
+    background-color: hsl(var(--primary));
+  }
+
+  .bg-blob-2 {
+    @apply absolute rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float animation-delay-200;
+    background-color: hsl(var(--accent));
+  }
+
+  .bg-blob-3 {
+    @apply absolute rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float animation-delay-400;
+    background-color: hsl(var(--tertiary));
+  }
 }
 
 @keyframes fadeIn {

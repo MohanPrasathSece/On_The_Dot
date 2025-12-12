@@ -53,7 +53,7 @@ export function Navbar() {
             <div className="w-8 h-8 rounded bg-primary flex items-center justify-center transition-transform group-hover:scale-105">
               <span className="text-primary-foreground font-bold text-lg">O</span>
             </div>
-            <span className="font-bold text-xl tracking-tight">OnTheDot</span>
+            <span className="font-bold text-xl tracking-tight">Flowryte</span>
           </Link>
 
           {/* Desktop Navigation */}

@@ -25,7 +25,7 @@ export function CTA() {
               Start Free Trial
             </Button>
           </Link>
-          <Link to="/demo">
+          <Link to="/company/com-contact">
             <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 w-full sm:w-auto">
               <Play className="w-4 h-4 mr-2" />
               Schedule Demo

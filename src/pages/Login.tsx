@@ -20,7 +20,7 @@ export default function Login() {
           <div className="w-8 h-8 rounded bg-sidebar flex items-center justify-center">
             <span className="text-white font-bold text-lg">O</span>
           </div>
-          <span className="font-bold text-xl">OnTheDot</span>
+          <span className="font-bold text-xl">Flowryte</span>
         </div>
       </header>
 
@@ -33,7 +33,7 @@ export default function Login() {
               <span className="text-white font-bold text-2xl">O</span>
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-              Sign in to OnTheDot
+              Sign in to Flowryte
             </h1>
             <p className="text-lg text-muted-foreground">
               We suggest using the <strong>email address you use at work</strong>.
@@ -98,7 +98,7 @@ export default function Login() {
           {/* Footer Links */}
           <div className="text-center text-sm text-muted-foreground space-y-2 pt-6">
             <p>
-              New to OnTheDot?{" "}
+              New to Flowryte?{" "}
               <a href="/signup" className="text-[#1164A3] hover:underline font-medium">
                 Create an account
               </a>
@@ -114,7 +114,7 @@ export default function Login() {
 
       {/* Footer */}
       <footer className="p-6 text-center text-sm text-muted-foreground">
-        <p>© {new Date().getFullYear()} OnTheDot. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Flowryte. All rights reserved.</p>
       </footer>
     </div>
   );

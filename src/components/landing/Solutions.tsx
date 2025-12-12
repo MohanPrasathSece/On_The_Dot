@@ -10,7 +10,7 @@ export function Solutions() {
                         Built for your specific needs.
                     </h2>
                     <p className="text-xl text-muted-foreground">
-                        Whether you're a freelancer or running a small agency, OnTheDot adapts to you.
+                        Whether you're a freelancer or running a small agency, Flowryte adapts to you.
                     </p>
                 </div>
 

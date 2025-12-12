@@ -4,13 +4,13 @@ export function Why() {
     return (
         <section className="py-24 bg-muted/30">
             <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-                {/* Why OnTheDot */}
+                {/* Why Flowryte */}
                 <div className="text-center max-w-3xl mx-auto mb-20">
                     <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6">
-                        Why OnTheDot?
+                        Why Flowryte?
                     </h2>
                     <p className="text-lg text-muted-foreground leading-relaxed">
-                        We understand the frustration of chasing payments, managing cash flow, and spending hours on administrative tasks. OnTheDot transforms your invoicing process from chaos to clarity, giving you more time to focus on what you do best.
+                        We understand the frustration of chasing payments, managing cash flow, and spending hours on administrative tasks. Flowryte transforms your invoicing process from chaos to clarity, giving you more time to focus on what you do best.
                     </p>
                 </div>
 
@@ -19,7 +19,7 @@ export function Why() {
                         { icon: Target, title: "Precision", desc: "Every invoice, reminder, and payment tracked with military precision." },
                         { icon: Zap, title: "Speed", desc: "Create professional invoices in 2 clicks. Get paid in days, not weeks." },
                         { icon: ShieldCheck, title: "Security", desc: "Bank-level encryption protects your financial data and client information." },
-                        { icon: Users, title: "Community", desc: "Join thousands of freelancers and agencies who trust OnTheDot." }
+                        { icon: Users, title: "Community", desc: "Join thousands of freelancers and agencies who trust Flowryte." }
                     ].map((item, i) => (
                         <div key={i} className="bg-background p-6 rounded-2xl border border-border/50 hover:shadow-lg transition-all">
                             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 text-primary">
@@ -35,7 +35,7 @@ export function Why() {
                 <div className="bg-primary text-primary-foreground rounded-3xl p-8 sm:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-12">
                     <div className="md:w-1/2">
                         <h3 className="text-3xl font-bold mb-6">Born from Freelancer Frustration</h3>
-                        <p className="text-primary-foreground/80 mb-8 text-lg">OnTheDot was created by freelancers who were tired of:</p>
+                        <p className="text-primary-foreground/80 mb-8 text-lg">Flowryte was created by freelancers who were tired of:</p>
                         <ul className="space-y-4">
                             {[
                                 "Spending hours creating invoices manually",

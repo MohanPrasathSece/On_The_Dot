@@ -22,7 +22,7 @@ export default function Signup() {
                     <div className="w-8 h-8 rounded bg-sidebar flex items-center justify-center">
                         <span className="text-white font-bold text-lg">O</span>
                     </div>
-                    <span className="font-bold text-xl">OnTheDot</span>
+                    <span className="font-bold text-xl">Flowryte</span>
                 </div>
             </header>
 
@@ -103,7 +103,7 @@ export default function Signup() {
                         {/* Footer Links */}
                         <div className="text-center text-sm text-muted-foreground pt-6">
                             <p>
-                                Already using OnTheDot?{" "}
+                                Already using Flowryte?{" "}
                                 <Link to="/login" className="text-primary hover:underline font-medium">
                                     Sign in to an existing workspace
                                 </Link>
@@ -125,7 +125,7 @@ export default function Signup() {
 
             {/* Footer */}
             <footer className="p-6 text-center text-sm text-muted-foreground">
-                <p>© {new Date().getFullYear()} OnTheDot. All rights reserved.</p>
+                <p>© {new Date().getFullYear()} Flowryte. All rights reserved.</p>
             </footer>
         </div>
     );

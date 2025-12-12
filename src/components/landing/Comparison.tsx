@@ -9,7 +9,7 @@ export function Comparison() {
                         From chaos to clarity
                     </h2>
                     <p className="text-lg text-muted-foreground">
-                        See how OnTheDot transforms your invoicing workflow.
+                        See how Flowryte transforms your invoicing workflow.
                     </p>
                 </div>
 
@@ -37,12 +37,12 @@ export function Comparison() {
                         </ul>
                     </div>
 
-                    {/* The OnTheDot Way */}
+                    {/* The Flowryte Way */}
                     <div className="bg-primary p-10 md:p-12 relative text-primary-foreground">
                         <div className="absolute top-0 left-0 p-4 bg-primary-foreground/10 rounded-br-2xl">
                             <span className="text-xl">✨</span>
                         </div>
-                        <h3 className="text-2xl font-bold mb-2">The OnTheDot Way</h3>
+                        <h3 className="text-2xl font-bold mb-2">The Flowryte Way</h3>
                         <p className="text-primary-foreground/80 font-medium mb-8">Smooth & Professional</p>
 
                         <ul className="space-y-6">
