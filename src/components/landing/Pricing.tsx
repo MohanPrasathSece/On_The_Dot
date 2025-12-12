@@ -6,69 +6,49 @@ import { Switch } from "@/components/ui/switch";
 
 const plans = [
   {
-    name: "Starter",
-    price: { monthly: 15, yearly: 12 },
-    description: "Perfect for freelancers and small businesses",
+    name: "Pro Plan",
+    price: 10,
+    description: "Full Invoicing & Reminders",
     features: [
-      "25 invoices per month",
-      "3 clients maximum",
-      "Basic email reminders",
-      "PDF export",
-      "Mobile app access",
-      "Email support"
+      "Access to Reports & Analytics",
+      "Up to 10 team members",
+      "1 Integration (Stripe/PayPal)"
     ],
-    cta: "Start 14-day free trial",
+    cta: "Start 30-day free trial",
     highlight: false
   },
   {
-    name: "Professional",
-    price: { monthly: 35, yearly: 28 },
-    description: "Most popular for growing businesses",
+    name: "Premium Plan",
+    price: 20,
+    description: "Everything in Pro, plus advanced features",
     features: [
-      "Unlimited invoices",
-      "Unlimited clients",
-      "Smart email & SMS reminders",
-      "AI writing assistant",
-      "Advanced reporting",
-      "Payment integrations",
-      "Custom branding",
-      "Recurring invoices",
-      "Priority support"
+      "Unlimited Team Members",
+      "Priority Support",
+      "Advanced Reporting & Custom Export Options",
+      "Multi-Integration (Stripe, PayPal, Plaid)"
     ],
-    cta: "Start 14-day free trial",
+    cta: "Start 30-day free trial",
     highlight: true,
     badge: "Most Popular"
   },
   {
-    name: "Enterprise",
-    price: { monthly: 75, yearly: 60 },
-    description: "For large teams and agencies",
+    name: "Lifetime Plan",
+    price: 200,
+    oneTime: true,
+    description: "Full Features Forever",
     features: [
-      "Everything in Professional",
-      "Team collaboration (up to 10 users)",
-      "Advanced analytics",
-      "API access",
-      "White-label options",
-      "Custom integrations",
-      "Dedicated account manager",
-      "SLA guarantee",
-      "24/7 phone support"
+      "Exclusive Support",
+      "Early Access to New Features",
+      "All Premium Features",
+      "One-time payment"
     ],
-    cta: "Start 14-day free trial",
+    cta: "Get Lifetime Access",
     highlight: false
   }
 ];
 
-const compareFeatures = [
-  { name: "Monthly Invoices", starter: "25", pro: "Unlimited", ent: "Unlimited" },
-  { name: "Active Clients", starter: "3", pro: "Unlimited", ent: "Unlimited" },
-  { name: "Advanced Analytics", starter: false, pro: true, ent: true },
-  { name: "API Access", starter: false, pro: false, ent: true },
-  { name: "Support Level", starter: "Email", pro: "Priority", ent: "24/7 Phone" },
-];
-
 export function Pricing() {
-  const [isYearly, setIsYearly] = useState(true);
+  const [isYearly, setIsYearly] = useState(false);
 
   return (
     <section id="pricing" className="py-24 bg-muted/30">
@@ -78,17 +58,17 @@ export function Pricing() {
             Simple, transparent pricing
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            Choose the perfect plan for your business. Start with our 14-day free trial, no credit card required.
+            30-day free trial of the Pro plan. No credit card required.
           </p>
 
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-4 mb-8">
             <span className={`text-sm font-medium ${!isYearly ? "text-foreground" : "text-muted-foreground"}`}>Monthly</span>
             <Switch
               checked={isYearly}
               onCheckedChange={setIsYearly}
             />
             <span className={`text-sm font-medium ${isYearly ? "text-foreground" : "text-muted-foreground"}`}>
-              Yearly <span className="text-emerald-500 text-xs font-bold ml-1">Save up to 20%</span>
+              Yearly <span className="text-emerald-500 text-xs font-bold ml-1">Save 17%</span>
             </span>
           </div>
         </div>
@@ -118,10 +98,10 @@ export function Pricing() {
 
               <div className="mb-6">
                 <span className="text-4xl font-bold">
-                  ${isYearly ? plan.price.yearly : plan.price.monthly}
+                  ${plan.oneTime ? plan.price : (isYearly ? Math.round(plan.price * 0.83) : plan.price)}
                 </span>
                 <span className={`text-sm ${plan.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
-                  /month
+                  {plan.oneTime ? " one-time" : "/month"}
                 </span>
               </div>
 
@@ -136,7 +116,7 @@ export function Pricing() {
               </Button>
 
               <p className={`text-sm font-semibold mb-4 ${plan.highlight ? "text-primary-foreground" : "text-foreground"}`}>
-                Everything included:
+                What's included:
               </p>
               <ul className="space-y-4 flex-1">
                 {plan.features.map((feature) => (
@@ -152,44 +132,11 @@ export function Pricing() {
           ))}
         </div>
 
-        {/* Comparison Table */}
-        <div className="max-w-4xl mx-auto bg-background rounded-3xl border border-border/50 shadow-sm overflow-hidden mb-16">
-          <div className="p-6 border-b bg-muted/20">
-            <h3 className="text-xl font-bold text-center">Compare Plans</h3>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead className="bg-muted/10">
-                <tr>
-                  <th className="p-4 text-left font-medium text-muted-foreground">Features</th>
-                  <th className="p-4 text-center font-bold">Starter</th>
-                  <th className="p-4 text-center font-bold text-primary">Professional</th>
-                  <th className="p-4 text-center font-bold">Enterprise</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border/50">
-                {compareFeatures.map((row, i) => (
-                  <tr key={i} className="hover:bg-muted/5">
-                    <td className="p-4 font-medium">{row.name}</td>
-                    <td className="p-4 text-center text-muted-foreground">
-                      {typeof row.starter === 'boolean' ? (row.starter ? <Check className="w-5 h-5 mx-auto text-green-500" /> : <X className="w-5 h-5 mx-auto text-muted-foreground/30" />) : row.starter}
-                    </td>
-                    <td className="p-4 text-center font-medium bg-primary/10">
-                      {typeof row.pro === 'boolean' ? (row.pro ? <Check className="w-5 h-5 mx-auto text-green-500" /> : <X className="w-5 h-5 mx-auto text-muted-foreground/30" />) : row.pro}
-                    </td>
-                    <td className="p-4 text-center text-muted-foreground">
-                      {typeof row.ent === 'boolean' ? (row.ent ? <Check className="w-5 h-5 mx-auto text-green-500" /> : <X className="w-5 h-5 mx-auto text-muted-foreground/30" />) : row.ent}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div className="text-center">
-          <p className="text-lg font-bold mb-2">30-day money-back guarantee</p>
-          <p className="text-muted-foreground">Not satisfied? Get a full refund within 30 days, no questions asked.</p>
+        {/* Enterprise Pricing */}
+        <div className="max-w-3xl mx-auto bg-background rounded-3xl border border-border/50 p-8 md:p-12 text-center">
+          <h3 className="text-2xl font-bold mb-4">Enterprise Pricing</h3>
+          <p className="text-muted-foreground mb-8">Need a custom solution? Contact our sales team for enterprise-grade solutions tailored to your organization.</p>
+          <Button size="lg" variant="outline" className="px-8">Contact Sales</Button>
         </div>
 
       </div>

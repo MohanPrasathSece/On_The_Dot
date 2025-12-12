@@ -10,45 +10,48 @@ import {
 import { cn } from "@/lib/utils";
 import React from "react";
 import { Link } from "react-router-dom";
+import { FileText, Bell, BarChart3, Users, Shield, Zap, Briefcase, GraduationCap, ShoppingBag } from "lucide-react";
 
 export function NavbarMegaMenu() {
     return (
         <NavigationMenu>
             <NavigationMenuList>
-                {/* FEATURES (Existing) */}
+                {/* FEATURES */}
                 <NavigationMenuItem>
                     <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[active]:bg-transparent text-sm font-semibold text-muted-foreground hover:text-primary transition-colors">
                         Features
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid w-[800px] gap-3 p-4 md:w-[900px] md:grid-cols-4 lg:w-[1000px] bg-background border border-border rounded-xl shadow-xl">
-                            <li className="row-span-3">
+                            <li className="row-span-4">
                                 <Link
                                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-primary/20 to-primary/5 p-6 no-underline outline-none focus:shadow-md"
-                                    to="/features/features"
+                                    to="/features/overview"
                                 >
                                     <div className="mb-2 mt-4 text-lg font-medium text-foreground">
                                         OnTheDot Platform
                                     </div>
                                     <p className="text-sm leading-tight text-muted-foreground">
-                                        Collaboration, Intelligence, and Automation.
+                                        The complete financial operating system for freelancers and agencies.
                                     </p>
                                 </Link>
                             </li>
-                            <ListItem href="/features/channels" title="Channels">Organize teams and work</ListItem>
-                            <ListItem href="/features/workflow-builder" title="Workflow Builder">Automate tasks</ListItem>
-                            <ListItem href="/features/slack-ai" title="AI">Built-in intelligence</ListItem>
-                            <ListItem href="/features/huddles" title="Huddles">Audio & Video</ListItem>
-                            <ListItem href="/features/canvas" title="Canvas">Rich docs</ListItem>
-                            <ListItem href="/features/security" title="Security">Enterprise grade</ListItem>
-                            <ListItem href="/features/apps-integrations" title="Apps">Connect your tools</ListItem>
-                            <ListItem href="/features/slack-connect" title="Connect">Work externally</ListItem>
-                            <ListItem href="/features/status" title="Status" className="text-muted-foreground">System health</ListItem>
+                            <div className="col-span-3 grid grid-cols-3 gap-3">
+                                <ListItem href="/features/invoicing" title="Invoicing" icon={FileText}>2-click branded invoices</ListItem>
+                                <ListItem href="/features/reminders" title="Reminders" icon={Bell}>Smart auto-followups</ListItem>
+                                <ListItem href="/features/cash-flow" title="Cash Flow" icon={BarChart3}>Real-time dashboard</ListItem>
+                                <ListItem href="/features/reports" title="Reports" icon={BarChart3}>Interactive analytics</ListItem>
+                                <ListItem href="/features/integrations" title="Integrations" icon={Zap}>Stripe, PayPal, Plaid</ListItem>
+                                <ListItem href="/features/team" title="Team" icon={Users}>Collaboration tools</ListItem>
+                                <ListItem href="/features/security" title="Security" icon={Shield}>Bank-grade encryption</ListItem>
+                                <ListItem href="/features/audit-logs" title="Audit Logs">Track every action</ListItem>
+                                <ListItem href="/features/mobile" title="Mobile App">Manage on the go</ListItem>
+                            </div>
                         </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                {/* SOLUTIONS (New) */}
+                {/* SOLUTIONS */}
                 <NavigationMenuItem>
                     <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[active]:bg-transparent text-sm font-semibold text-muted-foreground hover:text-primary transition-colors">
                         Solutions
@@ -56,36 +59,62 @@ export function NavbarMegaMenu() {
                     <NavigationMenuContent>
                         <ul className="grid w-[600px] gap-3 p-4 md:grid-cols-2 bg-background border border-border rounded-xl shadow-xl">
                             <div className="p-2">
-                                <h4 className="font-bold text-sm mb-2 text-primary">By Department</h4>
-                                <ListItem href="/features/engineering" title="Engineering">Ship faster</ListItem>
-                                <ListItem href="/features/it" title="IT">Modernize support</ListItem>
-                                <ListItem href="/features/sales" title="Sales">Close deals</ListItem>
-                                <ListItem href="/features/marketing" title="Marketing">Campaigns</ListItem>
+                                <h4 className="font-bold text-sm mb-3 text-primary flex items-center gap-2">
+                                    <Users className="w-4 h-4" /> By Department
+                                </h4>
+                                <div className="grid gap-2">
+                                    <ListItem href="/solutions/freelancers" title="Freelancers" />
+                                    <ListItem href="/solutions/agencies" title="Small Agencies" />
+                                    <ListItem href="/solutions/project-managers" title="Project Managers" />
+                                    <ListItem href="/solutions/finance" title="Financial Teams" />
+                                    <ListItem href="/solutions/client-managers" title="Client Managers" />
+                                    <ListItem href="/solutions/owners" title="Business Owners" />
+                                </div>
                             </div>
-                            <div className="p-2">
-                                <h4 className="font-bold text-sm mb-2 text-primary">By Industry</h4>
-                                <ListItem href="/features/financial-services" title="Financial Services" />
-                                <ListItem href="/features/retail" title="Retail" />
-                                <ListItem href="/features/technology" title="Technology" />
-                                <ListItem href="/features/media" title="Media" />
+                            <div className="p-2 border-l border-border/50 pl-4">
+                                <h4 className="font-bold text-sm mb-3 text-primary flex items-center gap-2">
+                                    <Briefcase className="w-4 h-4" /> By Industry
+                                </h4>
+                                <div className="grid gap-2">
+                                    <ListItem href="/solutions/content-creators" title="Content Creators" />
+                                    <ListItem href="/solutions/design-marketing" title="Design & Marketing" />
+                                    <ListItem href="/solutions/ecommerce" title="E-Commerce" />
+                                    <ListItem href="/solutions/education" title="Education & Training" />
+                                    <ListItem href="/solutions/healthcare" title="Healthcare" />
+                                    <ListItem href="/solutions/legal" title="Legal & Accounting" />
+                                </div>
                             </div>
                         </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                {/* RESOURCES (New) */}
+                {/* RESOURCES */}
                 <NavigationMenuItem>
                     <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[active]:bg-transparent text-sm font-semibold text-muted-foreground hover:text-primary transition-colors">
                         Resources
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                        <ul className="grid w-[500px] gap-3 p-4 md:grid-cols-2 bg-background border border-border rounded-xl shadow-xl">
-                            <ListItem href="/features/help-centre" title="Help Centre" />
-                            <ListItem href="/features/resources-library" title="Library" />
-                            <ListItem href="/features/slack-blog" title="Blog" />
-                            <ListItem href="/features/community" title="Community" />
-                            <ListItem href="/features/partners" title="Partners" />
-                            <ListItem href="/features/developers" title="Developers" />
+                        <ul className="grid w-[600px] gap-3 p-4 md:grid-cols-2 bg-background border border-border rounded-xl shadow-xl">
+                            <div className="p-2">
+                                <h4 className="font-bold text-sm mb-3 text-primary flex items-center gap-2">
+                                    <GraduationCap className="w-4 h-4" /> Learn
+                                </h4>
+                                <ListItem href="/resources/library" title="Resource Library">Guides & FAQs</ListItem>
+                                <ListItem href="/resources/blog" title="Blog">Insights & News</ListItem>
+                                <ListItem href="/resources/tour" title="Product Tour">Interactive walkthrough</ListItem>
+                                <ListItem href="/resources/events" title="Events">Webinars & Demos</ListItem>
+                                <ListItem href="/resources/certified" title="Certification">Become an expert</ListItem>
+                            </div>
+                            <div className="p-2 border-l border-border/50 pl-4">
+                                <h4 className="font-bold text-sm mb-3 text-primary flex items-center gap-2">
+                                    <ShoppingBag className="w-4 h-4" /> Connect
+                                </h4>
+                                <ListItem href="/resources/community" title="Community">User groups</ListItem>
+                                <ListItem href="/resources/stories" title="Customer Stories">Success cases</ListItem>
+                                <ListItem href="/resources/developers" title="Developers">API & SDKs</ListItem>
+                                <ListItem href="/resources/marketplace" title="Marketplace">Integrations</ListItem>
+                                <ListItem href="/support" title="Help Center">Get support</ListItem>
+                            </div>
                         </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -96,8 +125,8 @@ export function NavbarMegaMenu() {
 
 const ListItem = React.forwardRef<
     React.ElementRef<"a">,
-    React.ComponentPropsWithoutRef<"a"> & { title: string }
->(({ className, title, children, href, ...props }, ref) => {
+    React.ComponentPropsWithoutRef<"a"> & { title: string; icon?: React.ElementType }
+>(({ className, title, children, icon: Icon, href, ...props }, ref) => {
     return (
         <li>
             <Link
@@ -108,8 +137,11 @@ const ListItem = React.forwardRef<
                 )}
                 {...props}
             >
-                <div className="text-sm font-medium leading-none">{title}</div>
-                {children && <p className="line-clamp-2 text-xs leading-snug text-muted-foreground mt-1">
+                <div className="flex items-center gap-2">
+                    {Icon && <Icon className="w-4 h-4 text-primary" />}
+                    <div className="text-sm font-medium leading-none">{title}</div>
+                </div>
+                {children && <p className="line-clamp-2 text-xs leading-snug text-muted-foreground mt-1 pl-6">
                     {children}
                 </p>}
             </Link>

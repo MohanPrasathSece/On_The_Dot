@@ -100,7 +100,7 @@ export function Resources() {
                             </div>
                             <h3 className="font-bold text-lg">Community</h3>
                         </div>
-                        <p className="text-sm text-muted-foreground mb-4">Join our Slack/Discord channels and user groups.</p>
+                        <p className="text-sm text-muted-foreground mb-4">Join our community channels and user groups.</p>
                         <a href="#" className="text-sm font-semibold text-primary hover:underline">Join Now →</a>
                     </div>
 

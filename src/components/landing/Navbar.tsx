@@ -6,14 +6,6 @@ import { useTheme } from "@/components/ThemeProvider";
 import { cn } from "@/lib/utils";
 import { NavbarMegaMenu } from "./NavbarMegaMenu";
 
-/* const navLinks = [
-  { name: "About", href: "#why" },
-  { name: "Features", href: "#features" },
-  { name: "Testimonials", href: "#testimonials" },
-  { name: "Pricing", href: "#pricing" },
-  { name: "FAQ", href: "#faq" },
-]; */
-
 export function Navbar() {
   const { theme, setTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,6 +18,24 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const scrollToSection = (id: string) => {
+    setIsMobileMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const navLinks = [
+    { name: "Features", id: "features" },
+    { name: "Solutions", id: "solutions" },
+    { name: "Pricing", id: "pricing" },
+    { name: "Resources", id: "resources" },
+    { name: "Product", id: "product" },
+    { name: "Company", id: "company" },
+    { name: "Support", id: "support" },
+  ];
 
   return (
     <nav
@@ -49,7 +59,7 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-6">
             <NavbarMegaMenu />
-            <Link to="/features/enterprise" className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors">
+            <Link to="/enterprise" className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors">
               Enterprise
             </Link>
             <Link to="/pricing" className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors">
@@ -104,13 +114,17 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden py-4 animate-fade-in border-t border-border/50 h-screen bg-background">
-            <div className="flex flex-col gap-6 px-4">
-              <Link to="/features/features" className="text-lg font-medium text-foreground/80 hover:text-foreground">Features</Link>
-              <Link to="/features/solutions" className="text-lg font-medium text-foreground/80 hover:text-foreground">Solutions</Link>
-              <Link to="/features/enterprise" className="text-lg font-medium text-foreground/80 hover:text-foreground">Enterprise</Link>
-              <Link to="/features/resources-library" className="text-lg font-medium text-foreground/80 hover:text-foreground">Resources</Link>
-              <Link to="/pricing" className="text-lg font-medium text-foreground/80 hover:text-foreground">Pricing</Link>
+          <div className="lg:hidden py-4 animate-fade-in border-t border-border/50 h-screen bg-background fixed left-0 right-0 top-20 overflow-y-auto">
+            <div className="flex flex-col gap-6 px-4 pb-20">
+              {navLinks.map((link) => (
+                <button
+                  key={link.name}
+                  onClick={() => scrollToSection(link.id)}
+                  className="text-lg font-medium text-foreground/80 hover:text-foreground text-left"
+                >
+                  {link.name}
+                </button>
+              ))}
               <div className="flex flex-col gap-4 pt-6 border-t border-border/50">
                 <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
                   <Button variant="outline" className="w-full h-12 text-lg">Log In</Button>

@@ -1,142 +1,107 @@
 
 import { Link } from "react-router-dom";
-import { Twitter, Linkedin, Facebook, Github, Mail, Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Twitter, Linkedin, Facebook, Globe, Mail } from "lucide-react";
 
-// The exact structure requested by the user
+// Structure reflecting the user's detailed list, organized by category
 const footerLinks = {
-  Product: [
-    "Watch demo",
-    "Pricing",
-    "Paid vs Free",
-    "Accessibility",
-    "Featured releases",
-    "Change log",
-    "Status"
-  ],
-  "Why Slack?": [
-    "Slack vs email",
-    "Enterprise",
-    "Small business",
-    "Productivity",
-    "Task management",
-    "Scale",
-    "Trust"
-  ],
   Features: [
-    "Channels",
-    "Slack Connect",
-    "Workflow Builder",
-    "Messaging",
-    "Huddles",
-    "Canvas",
-    "Lists",
-    "Clips",
-    "Apps & integrations",
-    "File sharing",
-    "Slack AI",
-    "Agentforce",
-    "Enterprise search",
-    "Security",
-    "Enterprise Key Management",
-    "Slack Atlas",
-    "See all features"
+    { name: "Invoicing", to: "/features/invoicing" },
+    { name: "Reminders", to: "/features/reminders" },
+    { name: "Cash Flow Dashboard", to: "/features/cash-flow" },
+    { name: "Reports & Analytics", to: "/features/reports" },
+    { name: "Integrations", to: "/features/integrations" },
+    { name: "Team Collaboration", to: "/features/team" },
+    { name: "Security & Compliance", to: "/features/security" }
   ],
   Solutions: [
-    "Engineering",
-    "IT",
-    "Customer service",
-    "Sales",
-    "Project management",
-    "Marketing",
-    "Security", // This might duplicate the key 'security', handled by unique paths usually or shared page
-    "Manufacturing, auto and energy",
-    "Technology",
-    "Media",
-    "Financial services",
-    "Retail",
-    "Public sector",
-    "Education",
-    "Health and life sciences",
-    "See all solutions"
+    { name: "Freelancers", to: "/solutions/freelancers" },
+    { name: "Small Agencies", to: "/solutions/agencies" },
+    { name: "Project Managers", to: "/solutions/project-managers" },
+    { name: "Financial Teams", to: "/solutions/finance" },
+    { name: "E-Commerce", to: "/solutions/ecommerce" },
+    { name: "Healthcare & Life Sciences", to: "/solutions/healthcare" },
+    { name: "Legal & Accounting", to: "/solutions/legal" }
   ],
   Resources: [
-    "Help Centre",
-    "What’s new",
-    "Resources library",
-    "Slack blog",
-    "Community",
-    "Customer stories",
-    "Events",
-    "Developers",
-    "Partners",
-    "Partner offers",
-    "Slack Marketplace",
-    "Slack Certified"
+    { name: "Resource Library", to: "/resources/library" },
+    { name: "What's New", to: "/resources/whats-new" },
+    { name: "Product Tour", to: "/resources/tour" },
+    { name: "Events", to: "/resources/events" },
+    { name: "Developer Resources", to: "/resources/developers" },
+    { name: "Customer Stories", to: "/resources/stories" },
+    { name: "Community", to: "/resources/community" },
+    { name: "Marketplace", to: "/resources/marketplace" }
   ],
   Company: [
-    "About us",
-    "News",
-    "Media kit",
-    "Brand centre",
-    "Careers",
-    "Slack shop",
-    "Engineering blog",
-    "Design blog",
-    "Contact us"
+    { name: "About Us", to: "/company/about" },
+    { name: "News", to: "/company/news" },
+    { name: "Careers", to: "/company/careers" },
+    { name: "Swag Store", to: "/company/swag" },
+    { name: "Brand Center", to: "/company/brand" },
+    { name: "Engineering Blog", to: "/company/engineering" },
+    { name: "Design Blog", to: "/company/design" },
+    { name: "Contact Us", to: "/company/contact" }
+  ],
+  Support: [
+    { name: "Live Chat Support", to: "/support/chat" },
+    { name: "Help Center", to: "/support/help" },
+    { name: "Ticketing System", to: "/support/tickets" },
+    { name: "Feature Request", to: "/support/requests" },
+    { name: "Status Page", to: "/support/status" }
   ]
 };
 
 export function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer id="footer" className="bg-background pt-20 pb-10 border-t border-border/50">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-12 mb-16">
 
-          {/* Brand - forced to top on mobile, maybe specialized placement */}
-          <div className="col-span-2 md:col-span-3 lg:col-span-6 mb-4">
-            <Link to="/" className="flex items-center gap-2 mb-6">
+        {/* Top Section: Brand + Links Grid */}
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 mb-16">
+
+          {/* Brand Info (Mobile: Top, Desktop: Left) */}
+          <div className="lg:w-1/5 shrink-0">
+            <Link to="/" className="flex items-center gap-2 mb-6" onClick={scrollToTop}>
               <div className="w-8 h-8 rounded bg-primary flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-lg">O</span>
               </div>
               <span className="font-bold text-xl tracking-tight">OnTheDot</span>
             </Link>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+              Simplifying invoicing and payment processes for freelancers and small businesses worldwide.
+            </p>
+            <div className="flex items-center gap-4 text-muted-foreground">
+              <a href="#" className="hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></a>
+              <a href="#" className="hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></a>
+              <a href="#" className="hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></a>
+            </div>
           </div>
 
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h4 className="font-bold text-foreground mb-4 uppercase text-xs tracking-wider">{category}</h4>
-              <ul className="space-y-3">
-                {links.map((link) => {
-                  // Advanced Slugify to match keys
-                  let path = link.toLowerCase()
-                    .replace(/['’]/g, "") // Remove quotes like What's -> Whats
-                    .replace(/&/g, "and")
-                    .replace(/,/g, "")
-                    .replace(/\s+/g, "-");
-
-                  // Handle special known discrepancies if any
-                  // e.g. "Slack AI" -> "slack-ai" (handled by simple slugify)
-                  // "Manufacturing, auto and energy" -> "manufacturing-auto-and-energy" (handled)
-
-                  // Route logic
-                  const isMainPage = ["pricing", "status"].includes(path);
-                  const effectiveTo = isMainPage ? `/${path}` : `/features/${path}`;
-
-                  return (
-                    <li key={link + category}> {/* Added category to key to avoid duplicate key issues if 'Security' appears twice */}
+          {/* Links Grid */}
+          <div className="flex-1 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            {Object.entries(footerLinks).map(([category, links]) => (
+              <div key={category}>
+                <h4 className="font-bold text-foreground mb-4 uppercase text-xs tracking-wider">{category}</h4>
+                <ul className="space-y-3">
+                  {links.map((link) => (
+                    <li key={link.name}>
                       <Link
-                        to={effectiveTo}
+                        to={link.to}
                         className="text-sm text-muted-foreground hover:text-primary transition-colors block"
+                        onClick={scrollToTop}
                       >
-                        {link}
+                        {link.name}
                       </Link>
                     </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ))}
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Bottom */}
@@ -144,28 +109,21 @@ export function Footer() {
 
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
             <div className="flex items-center gap-4">
-              <span className="font-semibold text-foreground hover:underline cursor-pointer">Status</span>
-              <span className="font-semibold text-foreground hover:underline cursor-pointer">Privacy</span>
-              <span className="font-semibold text-foreground hover:underline cursor-pointer">Terms</span>
-              <span className="font-semibold text-foreground hover:underline cursor-pointer">Cookie Preferences</span>
-              <span className="font-semibold text-foreground hover:underline cursor-pointer">Contact Us</span>
+              <span>© {new Date().getFullYear()} OnTheDot, Inc.</span>
+            </div>
+            <div className="flex items-center gap-6">
+              <Link to="/legal/privacy" className="hover:text-primary font-medium">Privacy</Link>
+              <Link to="/legal/terms" className="hover:text-primary font-medium">Terms</Link>
+              <Link to="/legal/cookie" className="hover:text-primary font-medium">Cookie Preferences</Link>
             </div>
           </div>
 
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 text-foreground font-bold cursor-pointer hover:text-primary transition-colors">
               <Globe className="w-4 h-4" />
-              <span>Change Region</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <a href="#"><Twitter className="w-4 h-4" /></a>
-              <a href="#"><Facebook className="w-4 h-4" /></a>
-              <a href="#"><Linkedin className="w-4 h-4" /></a>
+              <span>English (US)</span>
             </div>
           </div>
-        </div>
-        <div className="mt-8 text-xs text-muted-foreground text-center md:text-left">
-          © {new Date().getFullYear()} OnTheDot, Inc. All rights reserved. OnTheDot is a registered trademark of OnTheDot, Inc.
         </div>
       </div>
     </footer>
