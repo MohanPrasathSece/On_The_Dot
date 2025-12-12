@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useToast } from "@/components/ui/use-toast";
 import {
   Plus, TrendingUp, Clock, AlertCircle, CheckCircle,
   ArrowUpRight, Filter, MoreHorizontal, Send, FileText,
@@ -19,71 +20,73 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
-// Dummy Data
-const stats = [
-  { label: "Total Revenue", value: "$52,400", change: "+12.5%", icon: DollarSign, color: "text-green-600" },
-  { label: "Pending", value: "$17,600", count: "4 invoices", icon: Clock, color: "text-yellow-600" },
-  { label: "Overdue", value: "$3,500", count: "1 invoice", icon: AlertCircle, color: "text-red-600" },
-  { label: "Active Clients", value: "24", count: "This month", icon: Users, color: "text-blue-600" },
-];
-
-const feedItems = [
-  {
-    id: 1,
-    user: "Stripe Integration",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Stripe",
-    time: "10:42 AM",
-    content: (
-      <span>
-        Payment received from <span className="font-semibold text-[#1264A3] hover:underline cursor-pointer">@Acme Corp</span> for <span className="font-semibold">Invoice #1024</span>. Amount: <span className="font-bold">$1,200.00</span> 💸
-      </span>
-    ),
-    reactions: [
-      { emoji: "🤑", count: 2 },
-      { emoji: "🔥", count: 1 }
-    ]
-  },
-  {
-    id: 2,
-    user: "System Bot",
-    avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=System",
-    time: "11:15 AM",
-    content: (
-      <span>
-        New invoice generated for <span className="font-semibold text-[#1264A3] hover:underline cursor-pointer">@Design Studio</span>. <br />
-        <span className="inline-block mt-2 p-3 bg-muted/40 rounded border border-border/50 text-sm font-mono text-muted-foreground">
-          INV-2024-001 • $4,500.00 • Due in 14 days
-        </span>
-      </span>
-    ),
-    reactions: []
-  },
-  {
-    id: 3,
-    user: "Sarah Jenkins",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
-    time: "11:30 AM",
-    content: "Just spoke with the client, they promised to pay the overdue invoice by tomorrow! 👍",
-    reactions: [
-      { emoji: "🙌", count: 4 }
-    ]
-  },
-  {
-    id: 4,
-    user: "Reminder Bot",
-    avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=Reminder",
-    time: "12:05 PM",
-    content: (
-      <span>
-        <span className="text-red-500 font-bold">Alert:</span> Invoice #998 for <span className="font-semibold">Global Tech</span> is now 3 days overdue.
-        <Button variant="link" className="h-auto p-0 ml-2 text-[#1264A3]">Send Reminder</Button>
-      </span>
-    ),
-    reactions: []
-  }
-];
-
 export default function Dashboard() {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const stats = [
+    { label: "Total Revenue", value: "$52,400", change: "+12.5%", icon: DollarSign, color: "text-green-600", link: "/reports" },
+    { label: "Pending", value: "$17,600", count: "4 invoices", icon: Clock, color: "text-yellow-600", link: "/invoices" },
+    { label: "Overdue", value: "$3,500", count: "1 invoice", icon: AlertCircle, color: "text-red-600", link: "/invoices?filter=overdue" },
+    { label: "Active Clients", value: "24", count: "This month", icon: Users, color: "text-blue-600", link: "/clients" },
+  ];
+
+  const feedItems = [
+    {
+      id: 1,
+      user: "Stripe Integration",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Stripe",
+      time: "10:42 AM",
+      content: (
+        <span>
+          Payment received from <Link to="/clients" className="font-semibold text-[#1264A3] hover:underline cursor-pointer">@Acme Corp</Link> for <Link to="/invoices/1024" className="font-semibold hover:underline">Invoice #1024</Link>. Amount: <span className="font-bold">$1,200.00</span> 💸
+        </span>
+      ),
+      reactions: [
+        { emoji: "🤑", count: 2 },
+        { emoji: "🔥", count: 1 }
+      ]
+    },
+    {
+      id: 2,
+      user: "System Bot",
+      avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=System",
+      time: "11:15 AM",
+      content: (
+        <span>
+          New invoice generated for <Link to="/clients" className="font-semibold text-[#1264A3] hover:underline cursor-pointer">@Design Studio</Link>. <br />
+          <span className="inline-block mt-2 p-3 bg-muted/40 rounded border border-border/50 text-sm font-mono text-muted-foreground">
+            INV-2024-001 • $4,500.00 • Due in 14 days
+          </span>
+        </span>
+      ),
+      reactions: []
+    },
+    {
+      id: 3,
+      user: "Sarah Jenkins",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+      time: "11:30 AM",
+      content: "Just spoke with the client, they promised to pay the overdue invoice by tomorrow! 👍",
+      reactions: [
+        { emoji: "🙌", count: 4 }
+      ]
+    },
+    {
+      id: 4,
+      user: "Reminder Bot",
+      avatar: "https://api.dicebear.com/7.x/bottts/svg?seed=Reminder",
+      time: "12:05 PM",
+      content: (
+        <span>
+          <span className="text-red-500 font-bold">Alert:</span> Invoice #998 for <span className="font-semibold">Global Tech</span> is now 3 days overdue.
+          <Button variant="link" className="h-auto p-0 ml-2 text-[#1264A3]" onClick={() => toast({ title: "Reminder Sent", description: "Client has been notified via email and SMS." })}>Send Reminder</Button>
+        </span>
+      ),
+      reactions: []
+    }
+  ];
+
   return (
     <AppLayout>
       <div className="max-w-4xl mx-auto space-y-8">
@@ -99,6 +102,7 @@ export default function Dashboard() {
           {stats.map((stat, index) => (
             <div
               key={index}
+              onClick={() => navigate(stat.link)}
               className="bg-card hover:bg-muted/50 transition-colors p-4 rounded-xl border shadow-sm cursor-pointer group"
             >
               <div className="flex items-center justify-between mb-2">
@@ -216,9 +220,10 @@ export default function Dashboard() {
                 Send
               </Button>
             </div>
+            <div className="absolute inset-0 bg-white/50 hidden group-has-[:disabled]:block"></div>
           </div>
-
         </div>
+
       </div>
     </AppLayout>
   );

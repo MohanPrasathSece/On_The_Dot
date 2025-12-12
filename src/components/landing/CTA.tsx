@@ -13,7 +13,7 @@ export function CTA() {
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
           Ready to transform your business?
           <br />
-          <span className="text-primary-foreground">Ready to get paid On The Dot?</span>
+          <span className="text-primary-foreground">Ready to get paid with Flowryte?</span>
         </h2>
         <p className="text-xl text-primary-foreground/80 max-w-3xl mx-auto mb-10 leading-relaxed">
           Join thousands of freelancers and agencies who've already transformed their invoicing process. Start your free trial today and see the difference in just 7 days.

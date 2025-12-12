@@ -85,7 +85,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
       title: "Direct Messages",
       items: [
         { icon: Users, label: "Client Manager (Clients)", href: "/clients", variant: "dm", status: "online" },
-        { icon: HelpCircle, label: "Support Bot", href: "/support", variant: "dm", status: "online" },
+        { icon: HelpCircle, label: "Support Bot", href: "/app-support", variant: "dm", status: "online" },
         { icon: Settings, label: "Settings", href: "/settings", variant: "dm", status: "offline" },
       ]
     }
@@ -96,18 +96,39 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
       {/* 1. WORKSPACE SWITCHER (Left Rail) */}
       <div className="w-[70px] bg-sidebar flex flex-col items-center py-3 space-y-4 z-20 flex-shrink-0 border-r border-sidebar-border">
         <div className="w-10 h-10 rounded-xl bg-sidebar-accent flex items-center justify-center cursor-pointer hover:bg-sidebar-accent/80 transition-all border-2 border-transparent hover:border-sidebar-primary/20">
-          <span className="font-bold text-sidebar-primary text-lg">OTD</span>
+          <span className="font-bold text-sidebar-primary text-lg">FR</span>
         </div>
-        <div className="w-10 h-10 rounded-xl bg-transparent border border-sidebar-border flex items-center justify-center cursor-pointer hover:bg-sidebar-accent transition-all text-sidebar-foreground">
+        <Link to="/invoices/new" className="w-10 h-10 rounded-xl bg-transparent border border-sidebar-border flex items-center justify-center cursor-pointer hover:bg-sidebar-accent transition-all text-sidebar-foreground">
           <Plus className="w-5 h-5" />
-        </div>
+        </Link>
         <div className="flex-1" />
-        <div className="w-10 h-10 rounded-full overflow-hidden cursor-pointer hover:opacity-80 transition-opacity border-2 border-primary">
-          <Avatar>
-            <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'User'}`} />
-            <AvatarFallback className="bg-blue-600 text-white">{user?.name?.[0] || 'U'}</AvatarFallback>
-          </Avatar>
-        </div>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <div className="w-10 h-10 rounded-full overflow-hidden cursor-pointer hover:opacity-80 transition-opacity border-2 border-primary">
+              <Avatar>
+                <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'User'}`} />
+                <AvatarFallback className="bg-blue-600 text-white">{user?.name?.[0] || 'U'}</AvatarFallback>
+              </Avatar>
+            </div>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start" side="right" className="w-56" sideOffset={10}>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={() => navigate('/settings')}>
+              <Settings className="mr-2 h-4 w-4" />
+              <span>Settings</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <div className="h-2 w-2 rounded-full bg-green-500 mr-2" />
+              <span>Set yourself as active</span>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="text-red-600 focus:text-red-600 focus:bg-red-50" onClick={logout}>
+              <span>Sign Out</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
       {/* 2. SIDEBAR (Channel List) */}
@@ -118,7 +139,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         {/* Sidebar Header */}
         <div className="h-12 flex items-center justify-between px-4 border-b border-sidebar-border hover:bg-sidebar-accent/50 cursor-pointer transition-colors text-sidebar-foreground">
           <div className="flex items-center gap-2 font-bold truncate">
-            <span className="truncate">OnTheDot HQ</span>
+            <span className="truncate">Flowryte HQ</span>
             <ChevronDown className="w-3 h-3 opacity-70" />
           </div>
           <div className="w-8 h-8 rounded-full bg-sidebar-accent text-sidebar-primary flex items-center justify-center">
@@ -203,7 +224,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             <div className="relative group">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/50 md:text-muted-foreground group-focus-within:text-foreground transition-colors" />
               <Input
-                placeholder={`Search ${location.pathname.split('/')[1] || 'OnTheDot'}...`}
+                placeholder={`Search ${location.pathname.split('/')[1] || 'Flowryte'}...`}
                 className="bg-white/10 md:bg-muted border-0 md:border-transparent text-white md:text-foreground placeholder:text-white/50 md:placeholder:text-muted-foreground h-8 pl-9 focus-visible:ring-1 focus-visible:ring-offset-0 focus-visible:bg-background focus-visible:text-foreground transition-all rounded-md"
               />
             </div>
