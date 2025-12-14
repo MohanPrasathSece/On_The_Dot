@@ -265,12 +265,11 @@ function StandardContent({ data }: { data: any }) {
                         {section.layout !== "center" && (
                             <div className="flex-1 w-full perspective-1000">
                                 {section.image ? (
-                                    <div className={cn(
-                                        "aspect-[4/3] rounded-3xl bg-muted border border-border/50 shadow-2xl relative overflow-hidden transform transition-all hover:scale-[1.02]",
-                                        section.layout === "left" ? "rotate-y-3 hover:rotate-y-0" : "-rotate-y-3 hover:rotate-y-0"
-                                    )}>
-                                        <img src={section.image} alt={section.title} className="w-full h-full object-cover" />
-                                    </div>
+                                    <img
+                                        src={section.image}
+                                        alt={section.title}
+                                        className="w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-500"
+                                    />
                                 ) : (
                                     <div className={cn(
                                         "aspect-[4/3] rounded-3xl bg-gradient-to-br from-background to-muted border border-border/50 shadow-2xl relative overflow-hidden transform transition-all hover:scale-[1.02]",
