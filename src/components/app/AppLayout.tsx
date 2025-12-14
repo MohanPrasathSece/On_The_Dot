@@ -240,7 +240,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               <HelpCircle className="w-4 h-4" />
             </Button>
             <Avatar className="w-8 h-8 rounded-lg border-2 border-primary/20">
-              <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white font-semibold text-sm">
+              <AvatarFallback className="bg-gradient-to-br from-orange-500 to-amber-600 text-white font-semibold text-sm">
                 {user?.name?.split(' ').map(n => n[0]).join('').toUpperCase() || 'U'}
               </AvatarFallback>
             </Avatar>

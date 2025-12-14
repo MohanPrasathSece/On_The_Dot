@@ -15,32 +15,32 @@ export default function Login() {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState<{email?: string; password?: string}>({});
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
 
   const validateForm = () => {
-    const newErrors: {email?: string; password?: string} = {};
-    
+    const newErrors: { email?: string; password?: string } = {};
+
     if (!formData.email) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Email is invalid";
     }
-    
+
     if (!formData.password) {
       newErrors.password = "Password is required";
     } else if (formData.password.length < 6) {
       newErrors.password = "Password must be at least 6 characters";
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleLogin = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     setIsLoading(true);
     try {
       // Simulate API call
@@ -66,8 +66,8 @@ export default function Login() {
       {/* Header */}
       <header className="p-6">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-            <span className="text-white font-bold text-lg">F</span>
+          <div className="w-8 h-8 rounded bg-primary flex items-center justify-center">
+            <span className="text-primary-foreground font-bold text-lg">F</span>
           </div>
           <span className="font-bold text-xl">Flowryte</span>
         </div>
@@ -78,8 +78,8 @@ export default function Login() {
         <div className="w-full max-w-md space-y-8">
           {/* Logo and Title */}
           <div className="text-center space-y-4">
-            <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mx-auto mb-6">
-              <span className="text-white font-bold text-2xl">F</span>
+            <div className="w-16 h-16 rounded-xl bg-primary flex items-center justify-center mx-auto mb-6">
+              <span className="text-primary-foreground font-bold text-2xl">F</span>
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
               Sign in to Flowryte
@@ -107,7 +107,7 @@ export default function Login() {
                   <p className="text-sm text-red-500">{errors.email}</p>
                 )}
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
                 <div className="relative">

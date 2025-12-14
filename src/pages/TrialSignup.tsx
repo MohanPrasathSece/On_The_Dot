@@ -16,7 +16,7 @@ const trialSteps = [
 
 const planFeatures = [
     "Unlimited invoices & clients",
-    "Advanced analytics & reports", 
+    "Advanced analytics & reports",
     "Team collaboration (up to 10)",
     "Priority customer support",
     "Custom branding & templates",
@@ -64,7 +64,7 @@ export default function TrialSignup() {
         if (currentStep === 2) {
             if (!formData.companyName) {
                 toast({
-                    title: "Missing Information", 
+                    title: "Missing Information",
                     description: "Please provide your company name.",
                     variant: "destructive"
                 });
@@ -120,8 +120,8 @@ export default function TrialSignup() {
                 {/* Header */}
                 <div className="text-center mb-8">
                     <div className="flex items-center justify-center gap-2 mb-4">
-                        <div className="w-10 h-10 rounded bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                            <span className="text-white font-bold text-xl">F</span>
+                        <div className="w-10 h-10 rounded bg-primary flex items-center justify-center">
+                            <span className="text-primary-foreground font-bold text-xl">F</span>
                         </div>
                         <span className="font-bold text-2xl tracking-tight">Flowryte</span>
                     </div>
@@ -133,25 +133,22 @@ export default function TrialSignup() {
                 <div className="flex items-center justify-center mb-8">
                     {trialSteps.map((step, index) => (
                         <div key={step.id} className="flex items-center">
-                            <div className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
-                                currentStep >= step.id 
-                                    ? 'bg-primary border-primary text-primary-foreground' 
+                            <div className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${currentStep >= step.id
+                                    ? 'bg-primary border-primary text-primary-foreground'
                                     : 'border-muted-foreground/30 text-muted-foreground'
-                            }`}>
+                                }`}>
                                 {currentStep > step.id ? <Check className="w-5 h-5" /> : step.id}
                             </div>
                             <div className="ml-3 mr-8">
-                                <div className={`text-sm font-medium ${
-                                    currentStep >= step.id ? 'text-foreground' : 'text-muted-foreground'
-                                }`}>
+                                <div className={`text-sm font-medium ${currentStep >= step.id ? 'text-foreground' : 'text-muted-foreground'
+                                    }`}>
                                     {step.title}
                                 </div>
                                 <div className="text-xs text-muted-foreground">{step.description}</div>
                             </div>
                             {index < trialSteps.length - 1 && (
-                                <div className={`w-12 h-0.5 mx-2 ${
-                                    currentStep > step.id ? 'bg-primary' : 'bg-muted-foreground/30'
-                                }`} />
+                                <div className={`w-12 h-0.5 mx-2 ${currentStep > step.id ? 'bg-primary' : 'bg-muted-foreground/30'
+                                    }`} />
                             )}
                         </div>
                     ))}
@@ -367,7 +364,7 @@ export default function TrialSignup() {
                                     </div>
                                     <Separator />
                                     <div className="text-sm text-muted-foreground">
-                                        After trial: $20/month<br/>
+                                        After trial: $20/month<br />
                                         Cancel anytime
                                     </div>
                                 </div>
