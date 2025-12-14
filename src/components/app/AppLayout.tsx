@@ -107,7 +107,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           <DropdownMenuTrigger asChild>
             <div className="w-10 h-10 rounded-full overflow-hidden cursor-pointer hover:opacity-80 transition-opacity border-2 border-primary">
               <Avatar>
-                <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'User'}`} />
+                <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(user?.name || 'User')}`} alt={user?.name || 'User'} />
                 <AvatarFallback className="bg-blue-600 text-white">{user?.name?.[0] || 'U'}</AvatarFallback>
               </Avatar>
             </div>

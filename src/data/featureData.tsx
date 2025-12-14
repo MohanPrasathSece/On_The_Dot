@@ -42,7 +42,8 @@ export const featureData: Record<string, FeatureData> = {
             {
                 title: "2-click Branded Invoices",
                 content: "Generate professional invoices instantly. Save your line items and client details to creates invoices with just two clicks.",
-                layout: "left"
+                layout: "left",
+                image: "https://placehold.co/600x400/png?text=Invoice+Preview"
             },
             {
                 title: "Recurring Invoices",
@@ -221,11 +222,11 @@ export const featureData: Record<string, FeatureData> = {
     // 2. SOLUTIONS SECTION
     // ==========================================
     // By Department
-    "sol-freelancers": { 
-        title: "Freelancers", 
-        subtitle: "For Solo Talent", 
-        description: "Automate the admin, focus on the craft.", 
-        icon: UserPlus, 
+    "sol-freelancers": {
+        title: "Freelancers",
+        subtitle: "For Solo Talent",
+        description: "Automate the admin, focus on the craft.",
+        icon: UserPlus,
         benefits: ["Time Savings", "Pro Image", "Client Management"],
         template: "solution",
         sections: [
@@ -256,11 +257,11 @@ export const featureData: Record<string, FeatureData> = {
             { value: "500+", label: "Happy Freelancers" }
         ]
     },
-    "sol-agencies": { 
-        title: "Small Agencies", 
-        subtitle: "For Teams", 
-        description: "Manage multiple clients and team members.", 
-        icon: Building2, 
+    "sol-agencies": {
+        title: "Small Agencies",
+        subtitle: "For Teams",
+        description: "Manage multiple clients and team members.",
+        icon: Building2,
         benefits: ["Collaboration", "Scale", "Team Management"],
         template: "solution",
         sections: [

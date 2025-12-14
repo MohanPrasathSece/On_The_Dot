@@ -78,8 +78,8 @@ export default function GenericFeaturePage() {
 
             {/* Content Switcher */}
             {template === "resource" ? (
-                <ProtectedContent 
-                    data={data} 
+                <ProtectedContent
+                    data={data}
                     isAuthenticated={isAuthenticated}
                     featureId={featureId || ''}
                 />
@@ -264,32 +264,41 @@ function StandardContent({ data }: { data: any }) {
                         {/* Visual */}
                         {section.layout !== "center" && (
                             <div className="flex-1 w-full perspective-1000">
-                                <div className={cn(
-                                    "aspect-[4/3] rounded-3xl bg-gradient-to-br from-background to-muted border border-border/50 shadow-2xl relative overflow-hidden transform transition-all hover:scale-[1.02]",
-                                    section.layout === "left" ? "rotate-y-3 hover:rotate-y-0" : "-rotate-y-3 hover:rotate-y-0"
-                                )}>
-                                    <div className="absolute inset-0 bg-grid-slate-500/[0.05]" />
-                                    {/* Abstract UI Elements */}
-                                    <div className="absolute top-10 left-10 right-10 bottom-0 bg-background rounded-t-xl shadow-lg border border-border/50 p-6">
-                                        <div className="flex gap-4 mb-6">
-                                            <div className="w-12 h-12 rounded-full bg-primary/10" />
-                                            <div className="space-y-2">
-                                                <div className="w-32 h-4 rounded bg-muted" />
-                                                <div className="w-20 h-3 rounded bg-muted/50" />
+                                {section.image ? (
+                                    <div className={cn(
+                                        "aspect-[4/3] rounded-3xl bg-muted border border-border/50 shadow-2xl relative overflow-hidden transform transition-all hover:scale-[1.02]",
+                                        section.layout === "left" ? "rotate-y-3 hover:rotate-y-0" : "-rotate-y-3 hover:rotate-y-0"
+                                    )}>
+                                        <img src={section.image} alt={section.title} className="w-full h-full object-cover" />
+                                    </div>
+                                ) : (
+                                    <div className={cn(
+                                        "aspect-[4/3] rounded-3xl bg-gradient-to-br from-background to-muted border border-border/50 shadow-2xl relative overflow-hidden transform transition-all hover:scale-[1.02]",
+                                        section.layout === "left" ? "rotate-y-3 hover:rotate-y-0" : "-rotate-y-3 hover:rotate-y-0"
+                                    )}>
+                                        <div className="absolute inset-0 bg-grid-slate-500/[0.05]" />
+                                        {/* Abstract UI Elements */}
+                                        <div className="absolute top-10 left-10 right-10 bottom-0 bg-background rounded-t-xl shadow-lg border border-border/50 p-6">
+                                            <div className="flex gap-4 mb-6">
+                                                <div className="w-12 h-12 rounded-full bg-primary/10" />
+                                                <div className="space-y-2">
+                                                    <div className="w-32 h-4 rounded bg-muted" />
+                                                    <div className="w-20 h-3 rounded bg-muted/50" />
+                                                </div>
+                                            </div>
+                                            <div className="space-y-3">
+                                                <div className="w-full h-3 rounded bg-muted/30" />
+                                                <div className="w-full h-3 rounded bg-muted/30" />
+                                                <div className="w-3/4 h-3 rounded bg-muted/30" />
+                                            </div>
+
+                                            <div className="mt-8 grid grid-cols-2 gap-4">
+                                                <div className="h-24 rounded-lg bg-primary/5 border border-primary/10" />
+                                                <div className="h-24 rounded-lg bg-muted/20" />
                                             </div>
                                         </div>
-                                        <div className="space-y-3">
-                                            <div className="w-full h-3 rounded bg-muted/30" />
-                                            <div className="w-full h-3 rounded bg-muted/30" />
-                                            <div className="w-3/4 h-3 rounded bg-muted/30" />
-                                        </div>
-
-                                        <div className="mt-8 grid grid-cols-2 gap-4">
-                                            <div className="h-24 rounded-lg bg-primary/5 border border-primary/10" />
-                                            <div className="h-24 rounded-lg bg-muted/20" />
-                                        </div>
                                     </div>
-                                </div>
+                                )}
                             </div>
                         )}
                     </div>
@@ -317,7 +326,7 @@ function StandardContent({ data }: { data: any }) {
 
 function ResourceContent({ data }: { data: any }) {
     const { isAuthenticated } = useAuth();
-    
+
     const handleArticleClick = (articleTitle: string) => {
         if (!isAuthenticated) {
             toast({
