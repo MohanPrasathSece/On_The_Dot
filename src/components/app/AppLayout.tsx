@@ -239,9 +239,10 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             <Button variant="ghost" size="icon" className="h-8 w-8 text-white/80 md:text-muted-foreground hover:bg-white/10 md:hover:bg-muted">
               <HelpCircle className="w-4 h-4" />
             </Button>
-            <Avatar className="h-7 w-7 md:hidden cursor-pointer">
-              <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'User'}`} />
-              <AvatarFallback>{user?.name?.[0]}</AvatarFallback>
+            <Avatar className="w-8 h-8 rounded-lg border-2 border-primary/20">
+              <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white font-semibold text-sm">
+                {user?.name?.split(' ').map(n => n[0]).join('').toUpperCase() || 'U'}
+              </AvatarFallback>
             </Avatar>
           </div>
         </div>
@@ -267,11 +268,15 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
 
             <div className="flex items-center gap-3">
               <div className="flex -space-x-2 overflow-hidden py-1">
-                <Avatar className="inline-block h-6 w-6 ring-2 ring-background">
-                  <AvatarImage src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" />
+                <Avatar className="w-8 h-8">
+                  <AvatarFallback className="bg-gradient-to-br from-orange-500 to-red-600 text-white font-semibold text-sm">
+                    FE
+                  </AvatarFallback>
                 </Avatar>
                 <Avatar className="inline-block h-6 w-6 ring-2 ring-background">
-                  <AvatarImage src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka" />
+                  <AvatarFallback className="bg-gradient-to-br from-purple-500 to-pink-600 text-white font-semibold text-xs">
+                    AN
+                  </AvatarFallback>
                 </Avatar>
                 <div className="h-6 w-6 rounded-full bg-muted ring-2 ring-background flex items-center justify-center text-[10px] font-medium text-muted-foreground max-w-fit px-1">
                   +24

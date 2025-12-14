@@ -3,95 +3,13 @@ import { Link } from "react-router-dom";
 import {
   Plus, Search, Filter, MoreHorizontal, Download, Send,
   Eye, Edit, Trash2, Copy, CheckCircle, Clock, AlertCircle,
-  DollarSign, Calendar, User, Mail, Phone, Star, Pin, ArrowUpRight
+  DollarSign, Calendar, User, Mail, Pin, ArrowUpRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AppLayout } from "@/components/app/AppLayout";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-
-// Dummy Invoice Data
-const invoices = [
-  {
-    id: "INV-1250",
-    client: "Acme Corporation",
-    clientEmail: "billing@acme.com",
-    amount: "$5,200",
-    status: "paid",
-    dueDate: "2024-01-15",
-    issueDate: "2024-01-01",
-    items: 3,
-    avatar: "A",
-    isPinned: true,
-  },
-  {
-    id: "INV-1249",
-    client: "TechStart Inc",
-    clientEmail: "accounts@techstart.io",
-    amount: "$3,800",
-    status: "pending",
-    dueDate: "2024-01-20",
-    issueDate: "2024-01-05",
-    items: 2,
-    avatar: "T",
-    isPinned: false,
-  },
-  {
-    id: "INV-1248",
-    client: "Creative Studios",
-    clientEmail: "finance@creative.com",
-    amount: "$2,100",
-    status: "pending",
-    dueDate: "2024-01-18",
-    issueDate: "2024-01-03",
-    items: 4,
-    avatar: "C",
-    isPinned: false,
-  },
-  {
-    id: "INV-1247",
-    client: "Digital Dynamics",
-    clientEmail: "payments@digitald.com",
-    amount: "$4,500",
-    status: "paid",
-    dueDate: "2024-01-12",
-    issueDate: "2023-12-28",
-    items: 5,
-    avatar: "D",
-    isPinned: false,
-  },
-  {
-    id: "INV-1246",
-    client: "Startup Labs",
-    clientEmail: "admin@startuplabs.co",
-    amount: "$3,500",
-    status: "overdue",
-    dueDate: "2024-01-10",
-    issueDate: "2023-12-25",
-    items: 3,
-    avatar: "S",
-    isPinned: true,
-  },
-  {
-    id: "INV-1245",
-    client: "Innovation Hub",
-    clientEmail: "billing@innovhub.com",
-    amount: "$6,200",
-    status: "draft",
-    dueDate: "2024-01-25",
-    issueDate: "2024-01-08",
-    items: 6,
-    avatar: "I",
-    isPinned: false,
-  },
-];
+import { useAppData, Invoice } from "@/hooks/useAppData";
 
 const statusConfig = {
   paid: { color: "bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400", icon: CheckCircle },
@@ -101,12 +19,12 @@ const statusConfig = {
 };
 
 export default function Invoices() {
+  const { invoices } = useAppData();
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [viewMode, setViewMode] = useState<"list" | "cards">("list");
 
   const filteredInvoices = invoices.filter(invoice => {
-    const matchesSearch = invoice.client.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    const matchesSearch = invoice.clientName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       invoice.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
       invoice.clientEmail.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesStatus = selectedStatus === "all" || invoice.status === selectedStatus;
@@ -116,7 +34,7 @@ export default function Invoices() {
   const pinnedInvoices = filteredInvoices.filter(inv => inv.isPinned);
   const regularInvoices = filteredInvoices.filter(inv => !inv.isPinned);
 
-  const InvoiceCard = ({ invoice }: { invoice: typeof invoices[0] }) => {
+  const InvoiceCard = ({ invoice }: { invoice: Invoice }) => {
     const StatusIcon = statusConfig[invoice.status as keyof typeof statusConfig].icon;
 
     return (
@@ -131,7 +49,7 @@ export default function Invoices() {
         {/* Content */}
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline gap-2">
-            <span className="font-bold text-[15px] cursor-pointer hover:underline">{invoice.client}</span>
+            <span className="font-bold text-[15px] cursor-pointer hover:underline">{invoice.clientName}</span>
             <span className="text-xs text-muted-foreground">at {invoice.issueDate}</span>
           </div>
 
@@ -236,14 +154,16 @@ export default function Invoices() {
         )}
 
         {/* Date Divider - Today */}
-        <div className="relative flex items-center justify-center py-4">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t border-border/60" />
+        {(regularInvoices.length > 0 || pinnedInvoices.length > 0) && (
+          <div className="relative flex items-center justify-center py-4">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-border/60" />
+            </div>
+            <div className="relative flex justify-center text-xs font-bold text-muted-foreground">
+              <span className="bg-background px-4 border rounded-full py-0.5 shadow-sm">Today</span>
+            </div>
           </div>
-          <div className="relative flex justify-center text-xs font-bold text-muted-foreground">
-            <span className="bg-background px-4 border rounded-full py-0.5 shadow-sm">Today</span>
-          </div>
-        </div>
+        )}
 
         {/* Regular Invoices */}
         <div className="space-y-1">
@@ -252,7 +172,14 @@ export default function Invoices() {
 
         {regularInvoices.length === 0 && pinnedInvoices.length === 0 && (
           <div className="text-center py-20 text-muted-foreground">
-            <p>No invoices found matching your filters.</p>
+            <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+              <DollarSign className="w-8 h-8 opacity-20" />
+            </div>
+            <h3 className="text-lg font-semibold mb-2">No invoices found</h3>
+            <p className="mb-6">Create your first invoice to get started.</p>
+            <Link to="/invoices/new">
+              <Button>Create Invoice</Button>
+            </Link>
           </div>
         )}
       </div>

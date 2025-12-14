@@ -1,7 +1,16 @@
 import { Book, FileText, MessageSquare, Users, Code2, Globe, Sparkles, PlayCircle, Calendar, GraduationCap, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { toast } from "@/components/ui/use-toast";
 
 export function Resources() {
+    const handleResourceClick = (resource: string) => {
+        toast({
+            title: "Resource Access",
+            description: `This would navigate to the ${resource} page. In production, this would be a fully functional page.`,
+        });
+    };
+
     return (
         <section id="resources" className="py-24 bg-background">
             <div className="container mx-auto px-6 sm:px-8 lg:px-12">
@@ -14,7 +23,7 @@ export function Resources() {
                             Everything you need to master Flowryte and grow your business.
                         </p>
                     </div>
-                    <Button variant="outline" className="shrink-0">
+                    <Button variant="outline" className="shrink-0" onClick={() => handleResourceClick('All Resources')}>
                         View All Resources
                     </Button>
                 </div>
@@ -29,7 +38,7 @@ export function Resources() {
                             <h3 className="font-bold text-lg">Resource Library</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Detailed guides, FAQs, and knowledge base.</p>
-                        <a href="#" className="text-sm font-semibold text-primary hover:underline">Browse Library →</a>
+                        <Link to="/resources/res-library" className="text-sm font-semibold text-primary hover:underline">Browse Library →</Link>
                     </div>
 
                     {/* What's New */}
@@ -41,7 +50,7 @@ export function Resources() {
                             <h3 className="font-bold text-lg">What's New</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Latest product updates and feature releases.</p>
-                        <a href="#" className="text-sm font-semibold text-primary hover:underline">View Changelog →</a>
+                        <Link to="/resources/res-whats-new" className="text-sm font-semibold text-primary hover:underline">View Changelog →</Link>
                     </div>
 
                     {/* Product Tour */}
@@ -53,7 +62,7 @@ export function Resources() {
                             <h3 className="font-bold text-lg">Product Tour</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Interactive walkthrough of the app.</p>
-                        <a href="#" className="text-sm font-semibold text-primary hover:underline">Start Tour →</a>
+                        <Link to="/resources/res-tour" className="text-sm font-semibold text-primary hover:underline">Start Tour →</Link>
                     </div>
 
                     {/* Events */}
@@ -65,7 +74,7 @@ export function Resources() {
                             <h3 className="font-bold text-lg">Events</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Webinars, workshops, and product demos.</p>
-                        <a href="#" className="text-sm font-semibold text-primary hover:underline">See Schedule →</a>
+                        <Link to="/resources/res-events" className="text-sm font-semibold text-primary hover:underline">See Schedule →</Link>
                     </div>
 
                     {/* Developers */}
@@ -77,7 +86,7 @@ export function Resources() {
                             <h3 className="font-bold text-lg">Developers</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">API documentation, SDKs, and integrations.</p>
-                        <a href="#" className="text-sm font-semibold text-primary hover:underline">View Docs →</a>
+                        <Link to="/resources/res-devs" className="text-sm font-semibold text-primary hover:underline">View Docs →</Link>
                     </div>
 
                     {/* Customer Stories */}
@@ -89,7 +98,7 @@ export function Resources() {
                             <h3 className="font-bold text-lg">Customer Stories</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Case studies and testimonials from users.</p>
-                        <a href="#" className="text-sm font-semibold text-primary hover:underline">Read Stories →</a>
+                        <Link to="/resources/res-stories" className="text-sm font-semibold text-primary hover:underline">Read Stories →</Link>
                     </div>
 
                     {/* Community */}
@@ -101,7 +110,7 @@ export function Resources() {
                             <h3 className="font-bold text-lg">Community</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Join our community channels and user groups.</p>
-                        <a href="#" className="text-sm font-semibold text-primary hover:underline">Join Now →</a>
+                        <Link to="/resources/res-community" className="text-sm font-semibold text-primary hover:underline">Join Now →</Link>
                     </div>
 
                     {/* Certification */}
@@ -113,7 +122,7 @@ export function Resources() {
                             <h3 className="font-bold text-lg">Flowryte Certified</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Certification program for power users.</p>
-                        <a href="#" className="text-sm font-semibold text-primary hover:underline">Get Certified →</a>
+                        <Link to="/resources/res-certified" className="text-sm font-semibold text-primary hover:underline">Get Certified →</Link>
                     </div>
 
                     {/* Marketplace */}
@@ -125,7 +134,7 @@ export function Resources() {
                             <h3 className="font-bold text-lg">Marketplace</h3>
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">Third-party integrations and add-ons.</p>
-                        <a href="#" className="text-sm font-semibold text-primary hover:underline">Browse Apps →</a>
+                        <Link to="/resources/res-marketplace" className="text-sm font-semibold text-primary hover:underline">Browse Apps →</Link>
                     </div>
                 </div>
             </div>

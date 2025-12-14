@@ -1,20 +1,12 @@
 import { useState } from "react";
 import {
-  Plus, Search, MoreHorizontal, Mail, Phone, MapPin, Building,
-  DollarSign, FileText, Clock, Star, MessageSquare, Send,
-  Edit, Trash2, User, Calendar
+  Plus, Search, MoreHorizontal, Phone,
+  MessageSquare, Send
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { AppLayout } from "@/components/app/AppLayout";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   Dialog,
   DialogContent,
@@ -23,111 +15,46 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-
-// Dummy Client Data
-const clients = [
-  {
-    id: 1,
-    name: "Acme Corporation",
-    email: "billing@acme.com",
-    phone: "+1 (555) 123-4567",
-    company: "Acme Corp",
-    location: "San Francisco, CA",
-    avatar: "A",
-    totalInvoiced: "$45,200",
-    outstandingBalance: "$5,200",
-    invoiceCount: 12,
-    lastInvoice: "2 days ago",
-    status: "active",
-    tags: ["Enterprise", "Priority"],
-    notes: "Key client - always pays on time. Prefers monthly billing cycle.",
-  },
-  {
-    id: 2,
-    name: "TechStart Inc",
-    email: "accounts@techstart.io",
-    phone: "+1 (555) 234-5678",
-    company: "TechStart",
-    location: "Austin, TX",
-    avatar: "T",
-    totalInvoiced: "$28,900",
-    outstandingBalance: "$3,800",
-    invoiceCount: 8,
-    lastInvoice: "1 week ago",
-    status: "active",
-    tags: ["Startup", "Monthly"],
-    notes: "Growing startup, increased project scope recently.",
-  },
-  {
-    id: 3,
-    name: "Creative Studios",
-    email: "finance@creative.com",
-    phone: "+1 (555) 345-6789",
-    company: "Creative Studios LLC",
-    location: "Los Angeles, CA",
-    avatar: "C",
-    totalInvoiced: "$15,600",
-    outstandingBalance: "$2,100",
-    invoiceCount: 6,
-    lastInvoice: "3 days ago",
-    status: "active",
-    tags: ["Creative", "Quarterly"],
-    notes: "Design agency, prefers detailed line items.",
-  },
-  {
-    id: 4,
-    name: "Digital Dynamics",
-    email: "payments@digitald.com",
-    phone: "+1 (555) 456-7890",
-    company: "Digital Dynamics",
-    location: "New York, NY",
-    avatar: "D",
-    totalInvoiced: "$52,300",
-    outstandingBalance: "$0",
-    invoiceCount: 15,
-    lastInvoice: "1 month ago",
-    status: "active",
-    tags: ["Enterprise", "VIP"],
-    notes: "Excellent payment history, largest client.",
-  },
-  {
-    id: 5,
-    name: "Startup Labs",
-    email: "admin@startuplabs.co",
-    phone: "+1 (555) 567-8901",
-    company: "Startup Labs",
-    location: "Seattle, WA",
-    avatar: "S",
-    totalInvoiced: "$12,400",
-    outstandingBalance: "$3,500",
-    invoiceCount: 4,
-    lastInvoice: "Overdue",
-    status: "overdue",
-    tags: ["Startup"],
-    notes: "Payment delays recently, follow up needed.",
-  },
-];
-
-const recentMessages = {
-  1: [
-    { type: "sent", message: "Invoice #1250 has been sent", time: "2 days ago" },
-    { type: "received", message: "Payment processed successfully", time: "1 day ago" },
-  ],
-  2: [
-    { type: "sent", message: "Reminder: Invoice #1249 due soon", time: "5 hours ago" },
-  ],
-};
+import { useAppData, Client } from "@/hooks/useAppData";
 
 export default function Clients() {
+  const { clients, addClient } = useAppData();
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedClient, setSelectedClient] = useState<typeof clients[0] | null>(null);
+  const [selectedClient, setSelectedClient] = useState<Client | null>(null);
   const [messageInput, setMessageInput] = useState("");
+
+  // New Client Form State
+  const [newClientName, setNewClientName] = useState("");
+  const [newClientEmail, setNewClientEmail] = useState("");
+  const [newClientCompany, setNewClientCompany] = useState("");
+  const [newClientPhone, setNewClientPhone] = useState("");
+  const [newClientNotes, setNewClientNotes] = useState("");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const filteredClients = clients.filter(client =>
     client.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     client.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
     client.company.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleAddClient = () => {
+    addClient({
+      name: newClientName,
+      email: newClientEmail,
+      company: newClientCompany,
+      phone: newClientPhone,
+      location: 'Remote',
+      status: 'active',
+      tags: [],
+      notes: newClientNotes
+    });
+    setNewClientName("");
+    setNewClientEmail("");
+    setNewClientCompany("");
+    setNewClientPhone("");
+    setNewClientNotes("");
+    setIsDialogOpen(false);
+  };
 
   return (
     <AppLayout>
@@ -140,7 +67,7 @@ export default function Clients() {
               Manage your client relationships and communication
             </p>
           </div>
-          <Dialog>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
                 <Plus className="h-5 w-5 mr-2" />
@@ -152,13 +79,38 @@ export default function Clients() {
                 <DialogTitle>Add New Client</DialogTitle>
               </DialogHeader>
               <div className="space-y-4 py-4">
-                <Input placeholder="Client Name" />
-                <Input placeholder="Email Address" type="email" />
-                <Input placeholder="Phone Number" />
-                <Input placeholder="Company Name" />
-                <Input placeholder="Location" />
-                <Textarea placeholder="Notes" rows={3} />
-                <Button className="w-full bg-primary hover:bg-primary/90">
+                <Input
+                  placeholder="Client Name"
+                  value={newClientName}
+                  onChange={(e) => setNewClientName(e.target.value)}
+                />
+                <Input
+                  placeholder="Email Address"
+                  type="email"
+                  value={newClientEmail}
+                  onChange={(e) => setNewClientEmail(e.target.value)}
+                />
+                <Input
+                  placeholder="Phone Number"
+                  value={newClientPhone}
+                  onChange={(e) => setNewClientPhone(e.target.value)}
+                />
+                <Input
+                  placeholder="Company Name"
+                  value={newClientCompany}
+                  onChange={(e) => setNewClientCompany(e.target.value)}
+                />
+                <Textarea
+                  placeholder="Notes"
+                  rows={3}
+                  value={newClientNotes}
+                  onChange={(e) => setNewClientNotes(e.target.value)}
+                />
+                <Button
+                  className="w-full bg-primary hover:bg-primary/90"
+                  onClick={handleAddClient}
+                  disabled={!newClientName || !newClientEmail}
+                >
                   Add Client
                 </Button>
               </div>
@@ -180,11 +132,11 @@ export default function Clients() {
           </div>
           <div className="bg-white dark:bg-card rounded-xl border border-border/50 p-4">
             <p className="text-sm text-muted-foreground mb-1">Total Revenue</p>
-            <p className="text-2xl font-bold">$154,400</p>
+            <p className="text-2xl font-bold">$0</p>
           </div>
           <div className="bg-white dark:bg-card rounded-xl border border-border/50 p-4">
             <p className="text-sm text-muted-foreground mb-1">Outstanding</p>
-            <p className="text-2xl font-bold text-amber-600">$14,600</p>
+            <p className="text-2xl font-bold text-amber-600">$0</p>
           </div>
         </div>
 
@@ -207,42 +159,48 @@ export default function Clients() {
 
             {/* Client List */}
             <div className="flex-1 overflow-y-auto">
-              {filteredClients.map((client) => (
-                <div
-                  key={client.id}
-                  onClick={() => setSelectedClient(client)}
-                  className={cn(
-                    "px-4 py-3 cursor-pointer hover:bg-muted/50 transition-colors flex items-center gap-3",
-                    selectedClient?.id === client.id && "bg-primary/10 text-foreground hover:bg-primary/20"
-                  )}
-                >
-                  <div className="relative">
-                    <div className={cn(
-                      "w-9 h-9 rounded bg-muted flex items-center justify-center font-bold text-sm flex-shrink-0",
-                      selectedClient?.id === client.id ? "bg-primary/20 text-primary" : "bg-gray-200 text-gray-600"
-                    )}>
-                      {client.avatar}
-                    </div>
-                    {client.status === "active" && (
-                      <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-500 border-2 border-background"></span>
-                    )}
-                  </div>
-
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between">
-                      <h4 className={cn("font-medium text-sm truncate", selectedClient?.id === client.id ? "text-foreground font-semibold" : "text-foreground")}>
-                        {client.name}
-                      </h4>
-                      <span className={cn("text-[10px]", selectedClient?.id === client.id ? "text-muted-foreground" : "text-muted-foreground")}>
-                        {client.lastInvoice}
-                      </span>
-                    </div>
-                    <p className={cn("text-xs truncate", selectedClient?.id === client.id ? "text-muted-foreground" : "text-muted-foreground")}>
-                      {client.company}
-                    </p>
-                  </div>
+              {filteredClients.length === 0 ? (
+                <div className="p-4 text-center text-muted-foreground text-sm">
+                  No clients found. Add one to get started.
                 </div>
-              ))}
+              ) : (
+                filteredClients.map((client) => (
+                  <div
+                    key={client.id}
+                    onClick={() => setSelectedClient(client)}
+                    className={cn(
+                      "px-4 py-3 cursor-pointer hover:bg-muted/50 transition-colors flex items-center gap-3",
+                      selectedClient?.id === client.id && "bg-primary/10 text-foreground hover:bg-primary/20"
+                    )}
+                  >
+                    <div className="relative">
+                      <div className={cn(
+                        "w-9 h-9 rounded bg-muted flex items-center justify-center font-bold text-sm flex-shrink-0",
+                        selectedClient?.id === client.id ? "bg-primary/20 text-primary" : "bg-gray-200 text-gray-600"
+                      )}>
+                        {client.avatar}
+                      </div>
+                      {client.status === "active" && (
+                        <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-green-500 border-2 border-background"></span>
+                      )}
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between">
+                        <h4 className={cn("font-medium text-sm truncate", selectedClient?.id === client.id ? "text-foreground font-semibold" : "text-foreground")}>
+                          {client.name}
+                        </h4>
+                        <span className={cn("text-[10px]", selectedClient?.id === client.id ? "text-muted-foreground" : "text-muted-foreground")}>
+                          {client.lastInvoice}
+                        </span>
+                      </div>
+                      <p className={cn("text-xs truncate", selectedClient?.id === client.id ? "text-muted-foreground" : "text-muted-foreground")}>
+                        {client.company}
+                      </p>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </div>
 
@@ -271,39 +229,18 @@ export default function Clients() {
                     <div className="w-16 h-16 rounded-lg bg-muted flex items-center justify-center text-2xl font-bold mb-3">
                       {selectedClient.avatar}
                     </div>
-                    <h2 className="text-xl font-bold">This is the very beginning of your direct message history with {selectedClient.name}.</h2>
+                    <h2 className="text-xl font-bold">This is the beginning of your history with {selectedClient.name}.</h2>
                     <p className="text-muted-foreground text-sm mt-1">
                       {selectedClient.company} • {selectedClient.location} • {selectedClient.email}
                     </p>
                     <div className="flex gap-2 mt-3">
                       <div className="px-2 py-1 bg-muted rounded text-xs">Total Invoiced: <span className="font-semibold">{selectedClient.totalInvoiced}</span></div>
-                      <div className="px-2 py-1 bg-muted rounded text-xs">Outstanding: <span className="font-semibold">{selectedClient.outstandingBalance}</span></div>
                     </div>
                   </div>
 
-                  {/* Messages */}
-                  {recentMessages[selectedClient.id as keyof typeof recentMessages]?.map((msg, i) => (
-                    <div key={i} className="flex gap-3 group hover:bg-muted/20 -mx-4 px-4 py-1">
-                      {msg.type === "received" ? (
-                        <div className="w-9 h-9 rounded bg-primary flex items-center justify-center text-white text-xs flex-shrink-0 mt-1">
-                          {selectedClient.avatar}
-                        </div>
-                      ) : (
-                        <div className="w-9 h-9 rounded bg-blue-600 flex items-center justify-center text-white text-xs flex-shrink-0 mt-1">
-                          You
-                        </div>
-                      )}
-                      <div>
-                        <div className="flex items-baseline gap-2">
-                          <span className="font-bold text-sm">
-                            {msg.type === "received" ? selectedClient.name : "You"}
-                          </span>
-                          <span className="text-xs text-muted-foreground">{msg.time}</span>
-                        </div>
-                        <p className="text-[15px] leading-relaxed text-foreground/90">{msg.message}</p>
-                      </div>
-                    </div>
-                  ))}
+                  <div className="flex justify-center my-4">
+                    <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded-full">No messages yet</span>
+                  </div>
                 </div>
 
                 {/* Message Input */}
@@ -324,7 +261,7 @@ export default function Clients() {
                       <div className="flex gap-1">
                         <Button variant="ghost" size="icon" className="h-7 w-7"><Plus className="w-4 h-4" /></Button>
                       </div>
-                      <Button size="sm" className="h-7 bg-success hover:bg-success/90 text-white">
+                      <Button size="sm" className="h-7 bg-green-600 hover:bg-green-700 text-white">
                         <Send className="w-3 h-3" />
                       </Button>
                     </div>

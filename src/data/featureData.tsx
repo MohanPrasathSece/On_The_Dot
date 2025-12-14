@@ -221,8 +221,76 @@ export const featureData: Record<string, FeatureData> = {
     // 2. SOLUTIONS SECTION
     // ==========================================
     // By Department
-    "sol-freelancers": { title: "Freelancers", subtitle: "For Solo Talent", description: "Automate the admin, focus on the craft.", icon: UserPlus, benefits: ["Time Savings", "Pro Image"], template: "solution" },
-    "sol-agencies": { title: "Small Agencies", subtitle: "For Teams", description: "Manage multiple clients and team members.", icon: Building2, benefits: ["Collaboration", "Scale"], template: "solution" },
+    "sol-freelancers": { 
+        title: "Freelancers", 
+        subtitle: "For Solo Talent", 
+        description: "Automate the admin, focus on the craft.", 
+        icon: UserPlus, 
+        benefits: ["Time Savings", "Pro Image", "Client Management"],
+        template: "solution",
+        sections: [
+            {
+                title: "Designed for Solo Professionals",
+                content: "Built specifically for freelancers who need to focus on their craft, not paperwork. Every feature is optimized for solo workflows.",
+                layout: "center"
+            },
+            {
+                title: "Professional Branding",
+                content: "Create stunning, branded invoices that reflect your professional quality. Custom templates, logos, and colors make every document impressive.",
+                layout: "left"
+            },
+            {
+                title: "Client Relationship Management",
+                content: "Keep detailed client records, track communication history, and maintain professional relationships with automated follow-ups and reminders.",
+                layout: "right"
+            },
+            {
+                title: "Financial Freedom",
+                content: "Get paid faster and predict your cash flow with real-time dashboards. No more guessing when payments will arrive.",
+                layout: "center"
+            }
+        ],
+        stats: [
+            { value: "20+ hrs", label: "Saved Weekly" },
+            { value: "95%", label: "On-Time Payments" },
+            { value: "500+", label: "Happy Freelancers" }
+        ]
+    },
+    "sol-agencies": { 
+        title: "Small Agencies", 
+        subtitle: "For Teams", 
+        description: "Manage multiple clients and team members.", 
+        icon: Building2, 
+        benefits: ["Collaboration", "Scale", "Team Management"],
+        template: "solution",
+        sections: [
+            {
+                title: "Built for Team Collaboration",
+                content: "Perfect for agencies with 2-50 team members. Role-based access, real-time sync, and collaborative workflows keep everyone aligned.",
+                layout: "center"
+            },
+            {
+                title: "Multi-Client Management",
+                content: "Handle dozens or hundreds of clients simultaneously. Advanced filtering, tagging, and search make client management effortless.",
+                layout: "left"
+            },
+            {
+                title: "Team Performance Analytics",
+                content: "Track team productivity, individual performance, and client profitability. Make data-driven decisions about resource allocation.",
+                layout: "right"
+            },
+            {
+                title: "Scalable Infrastructure",
+                content: "From startup to enterprise, our system grows with you. No performance issues, no data limits, no workflow constraints.",
+                layout: "center"
+            }
+        ],
+        stats: [
+            { value: "50+", label: "Team Members" },
+            { value: "1000+", label: "Clients Managed" },
+            { value: "99.9%", label: "Uptime" }
+        ]
+    },
     "sol-pm": { title: "Project Managers", subtitle: "Track Deliverables", description: "Link payments to project milestones.", icon: List, benefits: ["Milestones", "Budgets"], template: "solution" },
     "sol-finance": { title: "Financial Teams", subtitle: "Control & Report", description: "Reconciliation and reporting made easy.", icon: FileBarChart, benefits: ["Compliance", "Speed"], template: "solution" },
     "sol-client-mgr": { title: "Client Managers", subtitle: "Relationship View", description: "Instant access to account status.", icon: Contact, benefits: ["CRM Sync", "History"], template: "solution" },
@@ -303,18 +371,79 @@ export const featureData: Record<string, FeatureData> = {
         subtitle: "Manage Time",
         description: "Smart reminders to avoid late payments and save mental energy.",
         icon: Zap,
-        benefits: ["Focus", "Flow"],
-        template: "standard"
+        benefits: ["Focus", "Flow", "Time Savings"],
+        template: "standard",
+        sections: [
+            {
+                title: "Intelligent Time Management",
+                content: "Our system learns your patterns and suggests optimal times for invoicing and follow-ups, maximizing your productivity peaks.",
+                layout: "left"
+            },
+            {
+                title: "Automated Workflow",
+                content: "Reduce administrative overhead by 80%. From invoice creation to payment collection, every step is automated to save you hours each week.",
+                layout: "right"
+            },
+            {
+                title: "Focus Mode Integration",
+                content: "Minimize distractions with batched notifications. Get all your updates at once, or pause notifications during deep work sessions.",
+                layout: "center"
+            },
+            {
+                title: "Smart Templates",
+                content: "Create invoice templates for different client types and projects. One-click generation means you spend less time on paperwork and more on billable work.",
+                layout: "left"
+            },
+            {
+                title: "Productivity Analytics",
+                content: "Track how much time you're saving with detailed metrics on invoice generation, follow-up automation, and payment collection efficiency.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "15+ hrs", label: "Saved Monthly" },
+            { value: "80%", label: "Less Admin Work" },
+            { value: "2x", label: "Faster Payments" }
+        ]
     },
     "prod-tasks": {
         title: "Task Management",
         subtitle: "Stay Organized",
         description: "Keep track of overdue invoices and to-dos.",
         icon: CheckSquare,
-        benefits: ["Actionable", "Fast"],
+        benefits: ["Actionable", "Fast", "Priority-Based"],
         template: "standard",
         sections: [
-            { title: "Actionable Dashboard", content: "Access all your urgent items directly from the homepage.", layout: "center" }
+            {
+                title: "Smart Task Prioritization",
+                content: "Our AI automatically prioritizes tasks based on urgency and impact. Overdue invoices and critical follow-ups always appear at the top.",
+                layout: "left"
+            },
+            {
+                title: "Actionable Dashboard",
+                content: "Access all your urgent items directly from the homepage. See at a glance what needs your attention today, this week, and this month.",
+                layout: "center"
+            },
+            {
+                title: "Automated Task Creation",
+                content: "Tasks are automatically generated when invoices are created, sent, or become overdue. No manual entry required - just focus on execution.",
+                layout: "right"
+            },
+            {
+                title: "Bulk Actions",
+                content: "Handle multiple tasks at once. Send batch reminders, mark multiple invoices as paid, or export task lists for team coordination.",
+                layout: "left"
+            },
+            {
+                title: "Task History & Analytics",
+                content: "Track your task completion rates and identify bottlenecks. See how quickly you're responding to clients and processing payments.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "95%", label: "Task Completion" },
+            { value: "24hrs", label: "Avg Response Time" },
+            { value: "50+", label: "Automated Tasks" }
         ]
     },
 

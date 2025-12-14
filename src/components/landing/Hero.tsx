@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Play, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Play, CheckCircle2, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 
 export function Hero() {
+  const handleDownloadPDF = () => {
+    toast({
+      title: "Sample Invoice",
+      description: "This is a demo. In the real app, this would download a PDF invoice.",
+    });
+  };
+
   return (
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-background">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
@@ -26,8 +34,9 @@ export function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Link to="/signup">
+              <Link to="/trial">
                 <Button size="lg" className="h-14 px-8 text-lg bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto">
+                  <CheckCircle2 className="w-4 h-4 mr-2" />
                   Start Free Trial
                 </Button>
               </Link>
@@ -42,7 +51,7 @@ export function Hero() {
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-green-500" />
-                <span>7-day free trial</span>
+                <span>30-day free trial</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-green-500" />
@@ -83,7 +92,10 @@ export function Hero() {
                     <span className="text-primary">$3,700.00</span>
                   </div>
                 </div>
-                <Button className="w-full bg-gray-100 text-gray-900 hover:bg-gray-200" disabled>Download PDF</Button>
+                <Button className="w-full bg-gray-100 text-gray-900 hover:bg-gray-200" onClick={handleDownloadPDF}>
+                  <Download className="w-4 h-4 mr-2" />
+                  Download PDF
+                </Button>
               </div>
 
               {/* Floating Stats */}

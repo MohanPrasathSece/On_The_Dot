@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { AppLayout } from "@/components/app/AppLayout";
-import { mockClients } from "@/data/mockData";
+import { useAppData } from "@/hooks/useAppData";
 import {
   Select,
   SelectContent,
@@ -32,9 +32,10 @@ const aiSuggestions = {
 };
 
 export default function InvoiceBuilder() {
+  const { clients, addInvoice } = useAppData();
   const navigate = useNavigate();
   const [selectedClient, setSelectedClient] = useState("");
-  const [invoiceNumber, setInvoiceNumber] = useState("INV-006");
+  const [invoiceNumber, setInvoiceNumber] = useState("INV-00" + Math.floor(Math.random() * 100));
   const [dueDate, setDueDate] = useState("");
   const [currency, setCurrency] = useState("USD");
   const [taxRate, setTaxRate] = useState(0);
@@ -48,7 +49,6 @@ export default function InvoiceBuilder() {
   ]);
   const [brandColor, setBrandColor] = useState("#000000");
   const [font, setFont] = useState("Inter");
-  const [logo, setLogo] = useState<string | null>(null);
 
   const addItem = () => {
     setItems([...items, { id: Date.now().toString(), description: "", quantity: 1, rate: 0 }]);
@@ -76,21 +76,34 @@ export default function InvoiceBuilder() {
 
   const subtotal = items.reduce((sum, item) => sum + (item.quantity * item.rate), 0);
   const tax = subtotal * (taxRate / 100);
-  const total = subtotal + tax;
+  const total = subtotal + tax + lateFee;
 
   const handleAISuggest = (tone: keyof typeof aiSuggestions) => {
     setNotes(aiSuggestions[tone]);
     toast({ title: "AI Suggestion Applied", description: `${tone} tone message generated.` });
   };
 
-  const handleSave = () => {
-    toast({ title: "Invoice Saved", description: `${invoiceNumber} has been saved as draft.` });
-    navigate("/invoices");
-  };
+  const saveInvoice = (status: 'draft' | 'pending') => {
+    if (!selectedClient) {
+      toast({ title: "Error", description: "Please select a client", variant: "destructive" });
+      return;
+    }
 
-  const handleSend = () => {
-    const client = mockClients.find(c => c.id === selectedClient);
-    toast({ title: "Invoice Sent", description: `${invoiceNumber} sent to ${client?.email}` });
+    const client = clients.find(c => c.id === selectedClient);
+    if (!client) return;
+
+    addInvoice({
+      clientId: client.id,
+      clientName: client.name,
+      clientEmail: client.email,
+      amount: `$${total.toFixed(2)}`,
+      status: status,
+      dueDate: dueDate || new Date().toISOString().split('T')[0],
+      issueDate: new Date().toISOString().split('T')[0],
+      items: items.length,
+    });
+
+    toast({ title: status === 'draft' ? "Invoice Saved" : "Invoice Sent", description: `Invoice ${invoiceNumber} created successfully.` });
     navigate("/invoices");
   };
 
@@ -107,11 +120,11 @@ export default function InvoiceBuilder() {
             <p className="text-muted-foreground">Build and send professional invoices.</p>
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" onClick={handleSave}>
+            <Button variant="outline" onClick={() => saveInvoice('draft')}>
               <Save className="h-4 w-4 mr-2" />
               Save Draft
             </Button>
-            <Button onClick={handleSend} disabled={!selectedClient}>
+            <Button onClick={() => saveInvoice('pending')} disabled={!selectedClient}>
               <Send className="h-4 w-4 mr-2" />
               Send Invoice
             </Button>
@@ -136,16 +149,21 @@ export default function InvoiceBuilder() {
                       <Label>Client</Label>
                       <Select value={selectedClient} onValueChange={setSelectedClient}>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select a client" />
+                          <SelectValue placeholder={clients.length === 0 ? "No clients found" : "Select a client"} />
                         </SelectTrigger>
                         <SelectContent>
-                          {mockClients.map((client) => (
+                          {clients.map((client) => (
                             <SelectItem key={client.id} value={client.id}>
                               {client.name} - {client.company}
                             </SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
+                      {clients.length === 0 && (
+                        <p className="text-xs text-muted-foreground mt-1">
+                          No clients available. <Button variant="link" className="p-0 h-auto text-xs" onClick={() => navigate('/clients')}>Add a client first.</Button>
+                        </p>
+                      )}
                     </div>
 
                     <div>

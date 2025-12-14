@@ -1,6 +1,6 @@
-
 import { Link } from "react-router-dom";
 import { Twitter, Linkedin, Facebook, Globe, Mail } from "lucide-react";
+import { toast } from "@/components/ui/use-toast";
 
 // Updated Footer Links based on "Header and Footer" Section 9 and others
 const footerLinks = {
@@ -59,6 +59,13 @@ const footerLinks = {
 };
 
 export function Footer() {
+  const handleSocialClick = (platform: string) => {
+    toast({
+      title: "Social Media",
+      description: `This would open Flowryte's ${platform} page in a new tab.`,
+    });
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -73,8 +80,8 @@ export function Footer() {
           {/* Brand Info (Mobile: Top, Desktop: Left) */}
           <div className="lg:w-1/5 shrink-0">
             <Link to="/" className="flex items-center gap-2 mb-6" onClick={scrollToTop}>
-              <div className="w-8 h-8 rounded bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">O</span>
+              <div className="w-8 h-8 rounded bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                <span className="text-white font-bold text-lg">F</span>
               </div>
               <span className="font-bold text-xl tracking-tight">Flowryte</span>
             </Link>
@@ -82,9 +89,9 @@ export function Footer() {
               Simplifying invoicing and payment processes for freelancers and small businesses worldwide.
             </p>
             <div className="flex items-center gap-4 text-muted-foreground">
-              <a href="#" className="hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></a>
-              <a href="#" className="hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></a>
-              <a href="#" className="hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></a>
+              <button onClick={() => handleSocialClick('Facebook')} className="hover:text-primary transition-colors"><Facebook className="w-5 h-5" /></button>
+              <button onClick={() => handleSocialClick('Twitter')} className="hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></button>
+              <button onClick={() => handleSocialClick('LinkedIn')} className="hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></button>
             </div>
           </div>
 

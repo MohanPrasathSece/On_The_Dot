@@ -3,7 +3,6 @@ import { Plus, MoreHorizontal, Mail, Shield, Eye, Edit, Trash2, UserPlus } from 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AppLayout } from "@/components/app/AppLayout";
-import { mockTeam, mockActivities, TeamMember } from "@/data/mockData";
 import {
   Dialog,
   DialogContent,
@@ -35,8 +34,24 @@ const roleIcons = {
   viewer: Eye,
 };
 
+interface TeamMember {
+  id: string;
+  name: string;
+  email: string;
+  role: "admin" | "editor" | "viewer";
+  joinedAt: string;
+}
+
 export default function Team() {
-  const [team, setTeam] = useState<TeamMember[]>(mockTeam);
+  const [team, setTeam] = useState<TeamMember[]>([
+    {
+      id: "me",
+      name: "You (Admin)",
+      email: "you@example.com",
+      role: "admin",
+      joinedAt: new Date().toISOString().split('T')[0]
+    }
+  ]);
   const [isInviteOpen, setIsInviteOpen] = useState(false);
   const [inviteEmail, setInviteEmail] = useState("");
   const [inviteRole, setInviteRole] = useState<"admin" | "editor" | "viewer">("editor");
@@ -213,26 +228,8 @@ export default function Team() {
           </TabsContent>
 
           <TabsContent value="activity" className="space-y-4">
-            <div className="border shadow-sm bg-card rounded-xl p-5">
-              <div className="space-y-4">
-                {mockActivities.map((activity) => (
-                  <div key={activity.id} className="flex gap-4 pb-4 border-b last:border-0 last:pb-0">
-                    <div className="w-2 h-2 rounded-full bg-muted-foreground/30 mt-2 flex-shrink-0" />
-                    <div className="flex-1">
-                      <p className="text-sm">{activity.description}</p>
-                      <div className="flex items-center gap-2 mt-1">
-                        <span className="text-xs text-muted-foreground font-medium">{activity.user}</span>
-                        <span className="text-xs text-muted-foreground">•</span>
-                        <span className="text-xs text-muted-foreground">
-                          {new Date(activity.timestamp).toLocaleDateString('en-US', {
-                            month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
-                          })}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="border shadow-sm bg-card rounded-xl p-5 text-center text-muted-foreground py-10">
+              <p>No recent activity logs.</p>
             </div>
           </TabsContent>
         </Tabs>

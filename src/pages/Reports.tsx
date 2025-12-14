@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Download, Calendar, TrendingUp, TrendingDown, DollarSign, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AppLayout } from "@/components/app/AppLayout";
-import { monthlyRevenue, invoiceStatusData, mockInvoices } from "@/data/mockData";
+import { useAppData } from "@/hooks/useAppData";
 import {
   Select,
   SelectContent,
@@ -16,23 +16,68 @@ import {
 } from "recharts";
 import { toast } from "@/hooks/use-toast";
 
-const stats = [
-  { label: "Total Revenue", value: "$116,800", change: "+12.5%", trend: "up", icon: DollarSign },
-  { label: "Avg. Invoice Value", value: "$4,273", change: "+8.2%", trend: "up", icon: FileText },
-  { label: "Collection Rate", value: "94.2%", change: "+2.1%", trend: "up", icon: TrendingUp },
-  { label: "Days to Payment", value: "8.3", change: "-1.5", trend: "down", icon: Calendar },
-];
-
 export default function Reports() {
+  const { invoices } = useAppData();
   const [dateRange, setDateRange] = useState("6m");
 
   const handleExport = (format: string) => {
     toast({ title: "Export started", description: `Downloading report as ${format.toUpperCase()}...` });
   };
 
-  const paidInvoices = mockInvoices.filter(i => i.status === "paid").length;
-  const totalInvoices = mockInvoices.length;
-  const overdueAmount = mockInvoices.filter(i => i.status === "overdue").reduce((sum, i) => sum + i.amount, 0);
+  const paidInvoices = invoices.filter(i => i.status === "paid").length;
+  const totalInvoices = invoices.length;
+  // Parse amount string "$1,234.56" to float
+  const parseAmount = (amt: string) => parseFloat(amt.replace(/[^0-9.-]+/g, "")) || 0;
+
+  const totalRevenue = invoices
+    .filter(i => i.status === "paid")
+    .reduce((sum, i) => sum + parseAmount(i.amount), 0);
+
+  const overdueAmount = invoices
+    .filter(i => i.status === "overdue")
+    .reduce((sum, i) => sum + parseAmount(i.amount), 0);
+
+  const avgInvoiceValue = totalInvoices > 0 ? totalRevenue / totalInvoices : 0;
+
+  // Stats
+  const stats = [
+    { label: "Total Revenue", value: `$${totalRevenue.toLocaleString()}`, change: "+0%", trend: "up", icon: DollarSign },
+    { label: "Avg. Invoice Value", value: `$${avgInvoiceValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}`, change: "0%", trend: "up", icon: FileText },
+    { label: "Collection Rate", value: totalInvoices > 0 ? `${Math.round((paidInvoices / totalInvoices) * 100)}%` : "0%", change: "0%", trend: "up", icon: TrendingUp },
+    { label: "Days to Payment", value: "0", change: "0", trend: "flat", icon: Calendar },
+  ];
+
+  // Group invoices by month for charts (Last 6 months placeholder logic)
+  // In a real app, strict date parsing is needed. Here we just mock if empty or use issueDate.
+  const chartData = invoices.length > 0 ?
+    invoices.reduce((acc: any[], inv) => {
+      const month = new Date(inv.issueDate).toLocaleString('default', { month: 'short' });
+      const existing = acc.find(d => d.month === month);
+      const amt = parseAmount(inv.amount);
+      if (existing) {
+        existing.revenue += (inv.status === 'paid' ? amt : 0);
+        existing.invoices += 1;
+      } else {
+        acc.push({ month, revenue: (inv.status === 'paid' ? amt : 0), invoices: 1 });
+      }
+      return acc;
+    }, []) :
+    [
+      { month: "Jan", revenue: 0, invoices: 0 },
+      { month: "Feb", revenue: 0, invoices: 0 },
+      { month: "Mar", revenue: 0, invoices: 0 },
+    ];
+
+  const invoiceStatusData = [
+    { name: "Paid", value: paidInvoices, color: "#10B981" },
+    { name: "Pending", value: invoices.filter(i => i.status === "pending").length, color: "#3B82F6" },
+    { name: "Overdue", value: invoices.filter(i => i.status === "overdue").length, color: "#EF4444" },
+    { name: "Draft", value: invoices.filter(i => i.status === "draft").length, color: "#9CA3AF" },
+  ].filter(d => d.value > 0);
+
+  if (invoiceStatusData.length === 0) {
+    invoiceStatusData.push({ name: "No Data", value: 1, color: "#E5E7EB" });
+  }
 
   return (
     <AppLayout>
@@ -73,13 +118,12 @@ export default function Reports() {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {stats.map((stat, i) => (
-            <div key={i} className="stat-card">
+            <div key={i} className="stat-card p-4 border rounded-xl bg-card shadow-sm">
               <div className="flex items-start justify-between mb-3">
                 <div className="p-2 rounded-lg bg-foreground/5">
                   <stat.icon className="h-5 w-5" />
                 </div>
-                <span className={`text-xs font-medium px-2 py-1 rounded-full flex items-center gap-1 ${stat.trend === 'up' ? 'bg-foreground/10 text-foreground' : 'bg-muted text-muted-foreground'
-                  }`}>
+                <span className={`text-xs font-medium px-2 py-1 rounded-full flex items-center gap-1 bg-muted text-muted-foreground`}>
                   {stat.trend === 'up' ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />}
                   {stat.change}
                 </span>
@@ -97,7 +141,7 @@ export default function Reports() {
             <h3 className="font-semibold mb-6">Revenue Trend</h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={monthlyRevenue}>
+                <AreaChart data={chartData}>
                   <defs>
                     <linearGradient id="colorRevenue2" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="#1164A3" stopOpacity={0.1} />
@@ -105,7 +149,7 @@ export default function Reports() {
                     </linearGradient>
                   </defs>
                   <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
-                  <YAxis axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} tickFormatter={(v) => `$${v / 1000}k`} />
+                  <YAxis axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} tickFormatter={(v) => `$${v}`} />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: 'hsl(var(--card))',
@@ -117,6 +161,7 @@ export default function Reports() {
                   <Area type="monotone" dataKey="revenue" stroke="#1164A3" strokeWidth={2} fill="url(#colorRevenue2)" />
                 </AreaChart>
               </ResponsiveContainer>
+              {invoices.length === 0 && <div className="text-center text-xs text-muted-foreground mt-2">No data available</div>}
             </div>
           </div>
 
@@ -125,7 +170,7 @@ export default function Reports() {
             <h3 className="font-semibold mb-6">Invoice Volume</h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={monthlyRevenue}>
+                <BarChart data={chartData}>
                   <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
                   <YAxis axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
                   <Tooltip
@@ -170,134 +215,13 @@ export default function Reports() {
                 </PieChart>
               </ResponsiveContainer>
             </div>
-            <div className="flex justify-center gap-6 mt-4">
+            <div className="flex justify-center gap-6 mt-4 flex-wrap">
               {invoiceStatusData.map((item, i) => (
                 <div key={i} className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
-                  <span className="text-sm text-muted-foreground">{item.name}</span>
+                  <span className="text-sm text-muted-foreground">{item.name} ({item.value})</span>
                 </div>
               ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Cash Flow Forecast */}
-        <div className="border shadow-sm rounded-xl p-5 lg:col-span-2 bg-card">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h3 className="font-semibold">Cash Flow Forecast</h3>
-              <p className="text-sm text-muted-foreground">Projected revenue vs expenses (AI-based)</p>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1"><div className="w-3 h-3 bg-[#1164A3] rounded-full"></div> In</div>
-              <div className="flex items-center gap-1"><div className="w-3 h-3 bg-muted-foreground/30 rounded-full"></div> Out</div>
-            </div>
-          </div>
-          <div className="h-72">
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={[
-                { month: "Jul", in: 12400, out: 8200 },
-                { month: "Aug", in: 18200, out: 9100 },
-                { month: "Sep", in: 15800, out: 8800 },
-                { month: "Oct", in: 22100, out: 12400 },
-                { month: "Nov", in: 28400, out: 14500 },
-                { month: "Dec", in: 19800, out: 11200 },
-                { month: "Jan (Est)", in: 24500, out: 13000, projected: true },
-                { month: "Feb (Est)", in: 26800, out: 13500, projected: true },
-              ]}>
-                <defs>
-                  <linearGradient id="colorIn" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#1164A3" stopOpacity={0.2} />
-                    <stop offset="95%" stopColor="#1164A3" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
-                <YAxis axisLine={false} tickLine={false} tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} tickFormatter={(v) => `$${v / 1000}k`} />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: 'hsl(var(--card))',
-                    border: '1px solid hsl(var(--border))',
-                    borderRadius: '8px'
-                  }}
-                  formatter={(value: number) => [`$${value.toLocaleString()}`, '']}
-                />
-                <Area type="monotone" dataKey="in" stroke="#1164A3" strokeWidth={2} fill="url(#colorIn)" fillOpacity={1} />
-                <Area type="monotone" dataKey="out" stroke="hsl(var(--muted-foreground))" strokeDasharray="5 5" strokeWidth={2} fill="transparent" />
-              </AreaChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-
-        {/* Tax Summary */}
-        <div className="border shadow-sm rounded-xl p-5 bg-card">
-          <h3 className="font-semibold mb-6">Est. Tax Liability</h3>
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Taxable Income</p>
-                <p className="text-2xl font-semibold">$97,000</p>
-              </div>
-              <div className="text-right">
-                <p className="text-sm text-muted-foreground">Est. Tax (20%)</p>
-                <p className="text-xl font-medium text-destructive">$19,400</p>
-              </div>
-            </div>
-            <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
-              <div className="h-full bg-[#1164A3] w-[75%]"></div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-1 p-3 bg-muted/50 rounded-lg">
-                <p className="text-xs text-muted-foreground">Next Payment</p>
-                <p className="font-medium mt-1">Jan 15</p>
-              </div>
-              <div className="flex-1 p-3 bg-muted/50 rounded-lg">
-                <p className="text-xs text-muted-foreground">Deductions</p>
-                <p className="font-medium mt-1">$4,300</p>
-              </div>
-            </div>
-            <Button variant="outline" className="w-full">Download Tax Report</Button>
-          </div>
-        </div>
-
-        {/* Quick Stats */}
-        <div className="border shadow-sm rounded-xl p-5 bg-card">
-          <h3 className="font-semibold mb-6">Quick Insights</h3>
-          <div className="space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Payment Rate</p>
-                <p className="text-2xl font-semibold">{Math.round((paidInvoices / totalInvoices) * 100)}%</p>
-              </div>
-              <div className="w-32 h-2 bg-muted rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-success rounded-full"
-                  style={{ width: `${(paidInvoices / totalInvoices) * 100}%`, backgroundColor: '#007a5a' }}
-                />
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Overdue Amount</p>
-                <p className="text-2xl font-semibold">${overdueAmount.toLocaleString()}</p>
-              </div>
-              <Button variant="outline" size="sm">Send Reminders</Button>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Top Client</p>
-                <p className="text-lg font-semibold">Creative Agency</p>
-              </div>
-              <span className="text-sm text-muted-foreground">$45,000 total</span>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-muted-foreground">Recurring Revenue</p>
-                <p className="text-2xl font-semibold">$8,400/mo</p>
-              </div>
-              <span className="text-xs bg-foreground/10 text-foreground px-2 py-1 rounded-full">4 clients</span>
             </div>
           </div>
         </div>

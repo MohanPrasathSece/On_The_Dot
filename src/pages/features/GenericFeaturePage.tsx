@@ -7,8 +7,11 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle2, ArrowRight, PlayCircle, ShieldCheck, Lock, Search, BookOpen, ExternalLink, Users } from "lucide-react";
 import { CTA } from "@/components/landing/CTA";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "@/components/ui/use-toast";
 
 export default function GenericFeaturePage() {
+    const { isAuthenticated } = useAuth();
     const params = useParams<{ featureId: string }>();
     const location = window.location.pathname;
 
@@ -17,6 +20,9 @@ export default function GenericFeaturePage() {
     if (location === "/enterprise") featureId = "enterprise";
 
     const data = featureId ? featureData[featureId] : null;
+
+    // Premium content check - certain resources require authentication
+    const isPremiumContent = featureId && ['res-stories', 'res-certified', 'res-devs'].includes(featureId);
 
     if (!data) {
         return (
@@ -34,6 +40,17 @@ export default function GenericFeaturePage() {
     }
 
     const template = data.template || "standard";
+
+    const handleProtectedAction = (action: string) => {
+        if (!isAuthenticated) {
+            toast({
+                title: "Authentication Required",
+                description: "Please sign in to access this premium content.",
+            });
+            return false;
+        }
+        return true;
+    };
 
     return (
         <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20">
@@ -61,7 +78,11 @@ export default function GenericFeaturePage() {
 
             {/* Content Switcher */}
             {template === "resource" ? (
-                <ResourceContent data={data} />
+                <ProtectedContent 
+                    data={data} 
+                    isAuthenticated={isAuthenticated}
+                    featureId={featureId || ''}
+                />
             ) : (
                 <StandardContent data={data} />
             )}
@@ -295,6 +316,23 @@ function StandardContent({ data }: { data: any }) {
 }
 
 function ResourceContent({ data }: { data: any }) {
+    const { isAuthenticated } = useAuth();
+    
+    const handleArticleClick = (articleTitle: string) => {
+        if (!isAuthenticated) {
+            toast({
+                title: "Authentication Required",
+                description: "Please sign in to read premium articles.",
+            });
+            return;
+        }
+        // In a real app, this would navigate to the article
+        toast({
+            title: "Article Access",
+            description: `Opening article: ${articleTitle}`,
+        });
+    };
+
     return (
         <div className="py-20 bg-muted/10 min-h-screen">
             <div className="container mx-auto px-6 sm:px-8 lg:px-12">
@@ -306,21 +344,36 @@ function ResourceContent({ data }: { data: any }) {
                         <div className="text-sm font-bold text-primary uppercase tracking-wider">Featured</div>
                         <h2 className="text-3xl font-bold">The State of Work 2025</h2>
                         <p className="text-muted-foreground text-lg">New research reveals how AI and automation are reshaping the modern workplace.</p>
-                        <Button>Read Report</Button>
+                        <Button onClick={() => handleArticleClick("The State of Work 2025")}>Read Report</Button>
                     </div>
                 </div>
 
                 <h3 className="text-2xl font-bold mb-8">Latest Articles</h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {[1, 2, 3, 4, 5, 6].map((i) => (
-                        <div key={i} className="group bg-background rounded-xl border border-border overflow-hidden hover:shadow-xl transition-all">
+                    {[
+                        { title: "Improving Team Collaboration in Hybrid Environments", description: "Discover actionable strategies to keep your distributed team aligned and productive...", type: "Guide" },
+                        { title: "Advanced Financial Planning for Startups", description: "Learn how to manage cash flow and create sustainable financial models for growth...", type: "Finance" },
+                        { title: "Building Scalable Invoice Systems", description: "Best practices for creating invoice management systems that grow with your business...", type: "Technical" },
+                        { title: "Customer Success Stories: Q4 2024", description: "How leading companies transformed their billing processes with Flowryte...", type: "Case Study" },
+                        { title: "Security Best Practices for SaaS Platforms", description: "Essential security measures every SaaS company should implement...", type: "Security" },
+                        { title: "The Future of Remote Work Tools", description: "Exploring emerging trends in remote collaboration and productivity tools...", type: "Trends" }
+                    ].map((article, i) => (
+                        <div key={i} className="group bg-background rounded-xl border border-border overflow-hidden hover:shadow-xl transition-all cursor-pointer" onClick={() => handleArticleClick(article.title)}>
                             <div className="h-48 bg-muted relative">
                                 <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors" />
+                                {!isAuthenticated && (
+                                    <div className="absolute top-4 right-4">
+                                        <div className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                                            <Lock className="w-3 h-3" />
+                                            Premium
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                             <div className="p-6 space-y-4">
-                                <div className="text-xs font-semibold text-primary">Guide</div>
-                                <h4 className="text-xl font-bold group-hover:text-primary transition-colors">Improving Team Collaboration in Hybrid Environments</h4>
-                                <p className="text-muted-foreground text-sm line-clamp-3">Discover actionable strategies to keep your distributed team aligned and productive...</p>
+                                <div className="text-xs font-semibold text-primary">{article.type}</div>
+                                <h4 className="text-xl font-bold group-hover:text-primary transition-colors">{article.title}</h4>
+                                <p className="text-muted-foreground text-sm line-clamp-3">{article.description}</p>
                                 <div className="pt-4 flex items-center text-sm font-medium text-foreground">
                                     Read More <ArrowRight className="w-4 h-4 ml-2" />
                                 </div>
@@ -331,4 +384,40 @@ function ResourceContent({ data }: { data: any }) {
             </div>
         </div>
     )
+}
+
+function ProtectedContent({ data, isAuthenticated, featureId }: { data: any; isAuthenticated: boolean; featureId: string }) {
+    const premiumFeatures = ['res-stories', 'res-certified', 'res-devs'];
+    const isPremium = premiumFeatures.includes(featureId);
+
+    if (isPremium && !isAuthenticated) {
+        return (
+            <div className="py-20 bg-muted/10 min-h-screen">
+                <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+                    <div className="bg-background rounded-2xl border border-border p-8 mb-16 shadow-sm">
+                        <div className="text-center max-w-2xl mx-auto">
+                            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
+                                <Lock className="w-8 h-8 text-primary" />
+                            </div>
+                            <h2 className="text-3xl font-bold mb-4">Premium Content</h2>
+                            <p className="text-muted-foreground text-lg mb-8">
+                                This content requires authentication. Please sign in to access premium resources, articles, and exclusive content.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                <Link to="/login">
+                                    <Button size="lg" className="px-8">Sign In</Button>
+                                </Link>
+                                <Link to="/signup">
+                                    <Button size="lg" variant="outline" className="px-8">Create Account</Button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // Show regular resource content if authenticated or not premium
+    return <ResourceContent data={data} />;
 }

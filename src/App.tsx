@@ -9,6 +9,7 @@ import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import TrialSignup from "./pages/TrialSignup";
 import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
 import Invoices from "./pages/Invoices";
@@ -43,6 +44,7 @@ function AppRoutes() {
       <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Index />} />
       <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
       <Route path="/signup" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Signup />} />
+      <Route path="/trial" element={isAuthenticated ? <Navigate to="/dashboard" /> : <TrialSignup />} />
 
       {/* Public Pages routed to Generic Landing Template */}
       <Route path="/features/:featureId" element={<GenericFeaturePage />} />
