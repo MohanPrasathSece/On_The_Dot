@@ -6,7 +6,7 @@ import {
   Search, Plus, Hash, ChevronDown,
   MessageSquare, MoreHorizontal, History,
   Menu, X, Smile, Paperclip, Mic, Video,
-  Sun, Moon
+  Sun, Moon, LogOut, User, Sparkles, PlusCircle, Zap, UserPlus
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -24,6 +24,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import { toast } from "@/components/ui/use-toast";
 
 interface NavSection {
   title?: string;
@@ -44,6 +45,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [userStatus, setUserStatus] = useState<'online' | 'offline' | 'busy'>('online');
 
   useEffect(() => {
     // Check initial preference
@@ -95,11 +97,33 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
     <div className="flex h-screen overflow-hidden bg-background text-foreground">
       {/* 1. WORKSPACE SWITCHER (Left Rail) */}
       <div className="w-[70px] bg-sidebar flex flex-col items-center py-3 space-y-4 z-20 flex-shrink-0 border-r border-sidebar-border">
-        <div className="w-10 h-10 rounded-xl bg-sidebar-accent flex items-center justify-center cursor-pointer hover:bg-sidebar-accent/80 transition-all border-2 border-transparent hover:border-sidebar-primary/20">
-          <span className="font-bold text-sidebar-primary text-lg">FR</span>
-        </div>
-        <Link to="/invoices/new" className="w-10 h-10 rounded-xl bg-transparent border border-sidebar-border flex items-center justify-center cursor-pointer hover:bg-sidebar-accent transition-all text-sidebar-foreground">
-          <Plus className="w-5 h-5" />
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <div className="w-10 h-10 rounded-xl bg-sidebar-accent flex items-center justify-center cursor-pointer hover:bg-sidebar-accent/80 transition-all border-2 border-transparent hover:border-sidebar-primary/20">
+              <span className="font-bold text-sidebar-primary text-lg">FR</span>
+            </div>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent side="right" align="start" sideOffset={10}>
+            <DropdownMenuLabel>Workspace</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={() => navigate('/settings')}>
+              <Settings className="mr-2 h-4 w-4" />
+              Workspace Settings
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => {
+              toast({ title: "Add Workspace", description: "Create a new workspace for different projects" });
+            }}>
+              <PlusCircle className="mr-2 h-4 w-4" />
+              Add Workspace
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => navigate('/team')}>
+              <Users className="mr-2 h-4 w-4" />
+              Invite Team
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <Link to="/invoices/new" className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center cursor-pointer hover:bg-primary/20 transition-all text-primary group relative" title="Create New Invoice">
+          <Sparkles className="w-5 h-5 group-hover:scale-110 transition-transform" />
         </Link>
         <div className="flex-1" />
 
@@ -113,18 +137,46 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start" side="right" className="w-56" sideOffset={10}>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuLabel>
+              <div className="flex flex-col space-y-1">
+                <p className="text-sm font-medium">{user?.name || 'User'}</p>
+                <p className="text-xs text-muted-foreground">{user?.email || 'user@example.com'}</p>
+              </div>
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => navigate('/settings')}>
               <Settings className="mr-2 h-4 w-4" />
               <span>Settings</span>
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              <div className="h-2 w-2 rounded-full bg-green-500 mr-2" />
-              <span>Set yourself as active</span>
+            <DropdownMenuItem onClick={() => navigate('/settings')}>
+              <User className="mr-2 h-4 w-4" />
+              <span>Profile</span>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={() => {
+              setUserStatus('online');
+              toast({ title: "Status Updated", description: "You are now online" });
+            }}>
+              <div className={cn("h-2 w-2 rounded-full mr-2", userStatus === 'online' ? 'bg-green-500' : 'bg-gray-300')} />
+              <span>Set as Active</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => {
+              setUserStatus('busy');
+              toast({ title: "Status Updated", description: "You are now busy" });
+            }}>
+              <div className={cn("h-2 w-2 rounded-full mr-2", userStatus === 'busy' ? 'bg-red-500' : 'bg-gray-300')} />
+              <span>Set as Busy</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => {
+              setUserStatus('offline');
+              toast({ title: "Status Updated", description: "You are now offline" });
+            }}>
+              <div className={cn("h-2 w-2 rounded-full mr-2", userStatus === 'offline' ? 'bg-gray-500' : 'bg-gray-300')} />
+              <span>Set as Offline</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="text-red-600 focus:text-red-600 focus:bg-red-50" onClick={logout}>
+              <LogOut className="mr-2 h-4 w-4" />
               <span>Sign Out</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
@@ -137,15 +189,61 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         mobileMenuOpen ? "translate-x-[70px]" : "-translate-x-full md:translate-x-0 md:left-0"
       )}>
         {/* Sidebar Header */}
-        <div className="h-12 flex items-center justify-between px-4 border-b border-sidebar-border hover:bg-sidebar-accent/50 cursor-pointer transition-colors text-sidebar-foreground">
-          <div className="flex items-center gap-2 font-bold truncate">
-            <span className="truncate">Flowryte HQ</span>
-            <ChevronDown className="w-3 h-3 opacity-70" />
-          </div>
-          <div className="w-8 h-8 rounded-full bg-sidebar-accent text-sidebar-primary flex items-center justify-center">
-            <Plus className="w-4 h-4" />
-          </div>
-        </div>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <div className="h-12 flex items-center justify-between px-4 border-b border-sidebar-border hover:bg-sidebar-accent/50 cursor-pointer transition-colors text-sidebar-foreground">
+              <div className="flex items-center gap-2 font-bold truncate">
+                <span className="truncate">Flowryte HQ</span>
+                <ChevronDown className="w-3 h-3 opacity-70" />
+              </div>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <div className="w-8 h-8 rounded-full bg-sidebar-accent text-sidebar-primary flex items-center justify-center hover:bg-primary/20 transition-colors" onClick={(e) => e.stopPropagation()}>
+                    <Zap className="w-4 h-4" />
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent side="right" align="start" sideOffset={5}>
+                  <DropdownMenuLabel>Quick Actions</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => navigate('/invoices/new')}>
+                    <Sparkles className="mr-2 h-4 w-4" />
+                    New Invoice
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/clients')}>
+                    <UserPlus className="mr-2 h-4 w-4" />
+                    Add Client
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/reminders')}>
+                    <Bell className="mr-2 h-4 w-4" />
+                    Set Reminder
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/reports')}>
+                    <BarChart3 className="mr-2 h-4 w-4" />
+                    View Reports
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent side="right" align="start" className="w-56" sideOffset={10}>
+            <DropdownMenuLabel>Workspace Options</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={() => navigate('/settings')}>
+              <Settings className="mr-2 h-4 w-4" />
+              Settings
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => navigate('/team')}>
+              <Users className="mr-2 h-4 w-4" />
+              Manage Team
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => {
+              toast({ title: "Preferences", description: "Opening workspace preferences..." });
+            }}>
+              <Settings className="mr-2 h-4 w-4" />
+              Preferences
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         {/* Scrollable Nav Area */}
         <ScrollArea className="flex-1 py-3">
@@ -153,9 +251,15 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             {mainNav.map((section, idx) => (
               <div key={idx}>
                 {section.title && (
-                  <div className="flex items-center justify-between group px-3 mb-1 text-sidebar-foreground/70 hover:text-sidebar-foreground cursor-pointer">
+                  <div className="flex items-center justify-between group px-3 mb-1 text-sidebar-foreground/70 hover:text-sidebar-foreground cursor-pointer" onClick={() => {
+                    if (section.title === 'Channels') {
+                      toast({ title: "Add Channel", description: "Create a new channel for team discussions" });
+                    } else if (section.title === 'Direct Messages') {
+                      toast({ title: "New Direct Message", description: "Start a conversation with a team member" });
+                    }
+                  }}>
                     <span className="text-xs font-medium uppercase tracking-wider">{section.title}</span>
-                    <Plus className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <PlusCircle className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                 )}
                 <div className="space-y-[1px]">
@@ -214,7 +318,15 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
 
           {/* History/Navigation */}
           <div className="hidden md:flex items-center gap-2 text-muted-foreground">
-            <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-muted">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 hover:bg-muted"
+              onClick={() => {
+                navigate(-1);
+                toast({ title: "Navigating Back", description: "Going to previous page" });
+              }}
+            >
               <History className="w-4 h-4" />
             </Button>
           </div>
@@ -236,14 +348,60 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </Button>
 
-            <Button variant="ghost" size="icon" className="h-8 w-8 text-white/80 md:text-muted-foreground hover:bg-white/10 md:hover:bg-muted">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 text-white/80 md:text-muted-foreground hover:bg-white/10 md:hover:bg-muted"
+              onClick={() => navigate('/app-support')}
+            >
               <HelpCircle className="w-4 h-4" />
             </Button>
-            <Avatar className="w-8 h-8 rounded-lg border-2 border-primary/20">
-              <AvatarFallback className="bg-gradient-to-br from-orange-500 to-amber-600 text-white font-semibold text-sm">
-                {user?.name?.split(' ').map(n => n[0]).join('').toUpperCase() || 'U'}
-              </AvatarFallback>
-            </Avatar>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Avatar className="w-8 h-8 rounded-lg border-2 border-primary/20 cursor-pointer hover:border-primary/40 transition-colors">
+                  <AvatarFallback className="bg-gradient-to-br from-orange-500 to-amber-600 text-white font-semibold text-sm">
+                    {user?.name?.split(' ').map(n => n[0]).join('').toUpperCase() || 'U'}
+                  </AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel>
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-medium">{user?.name || 'User'}</p>
+                    <p className="text-xs text-muted-foreground">{user?.email || 'user@example.com'}</p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => navigate('/settings')}>
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Settings</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate('/settings')}>
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => {
+                  setUserStatus('online');
+                  toast({ title: "Status Updated", description: "You are now online" });
+                }}>
+                  <div className={cn("h-2 w-2 rounded-full mr-2", userStatus === 'online' ? 'bg-green-500' : 'bg-gray-300')} />
+                  <span>Set as Active</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => {
+                  setUserStatus('busy');
+                  toast({ title: "Status Updated", description: "You are now busy" });
+                }}>
+                  <div className={cn("h-2 w-2 rounded-full mr-2", userStatus === 'busy' ? 'bg-red-500' : 'bg-gray-300')} />
+                  <span>Set as Busy</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="text-red-600 focus:text-red-600 focus:bg-red-50" onClick={logout}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Sign Out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
 
@@ -283,9 +441,36 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
                 </div>
               </div>
               <Separator orientation="vertical" className="h-4" />
-              <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:bg-muted">
-                <MoreHorizontal className="w-4 h-4" />
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:bg-muted">
+                    <MoreHorizontal className="w-4 h-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => {
+                    toast({ title: "Page Settings", description: "Opening page settings..." });
+                  }}>
+                    <Settings className="mr-2 h-4 w-4" />
+                    Page Settings
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => {
+                    toast({ title: "Notifications", description: "Manage your notification preferences" });
+                  }}>
+                    <Bell className="mr-2 h-4 w-4" />
+                    Notifications
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => navigate('/team')}>
+                    <Users className="mr-2 h-4 w-4" />
+                    View Team Members
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate('/app-support')}>
+                    <HelpCircle className="mr-2 h-4 w-4" />
+                    Get Help
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
 

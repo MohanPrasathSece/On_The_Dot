@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import {
   Plus, Search, Filter, MoreHorizontal, Download, Send,
   Eye, Edit, Trash2, Copy, CheckCircle, Clock, AlertCircle,
-  DollarSign, Calendar, User, Mail, Pin, ArrowUpRight
+  DollarSign, Calendar, User, Mail, Pin, ArrowUpRight, Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AppLayout } from "@/components/app/AppLayout";
 import { cn } from "@/lib/utils";
 import { useAppData, Invoice } from "@/hooks/useAppData";
+import { toast } from "@/components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const statusConfig = {
   paid: { color: "bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400", icon: CheckCircle },
@@ -20,6 +22,7 @@ const statusConfig = {
 
 export default function Invoices() {
   const { invoices } = useAppData();
+  const navigate = useNavigate();
   const [selectedStatus, setSelectedStatus] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -74,17 +77,49 @@ export default function Invoices() {
 
           {/* Hover Actions */}
           <div className="absolute right-4 top-2 opacity-0 group-hover:opacity-100 bg-background border shadow-sm rounded-md flex items-center p-0.5 transition-opacity">
-            <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-muted text-muted-foreground" title="View Details">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 hover:bg-muted text-muted-foreground"
+              title="View Details"
+              onClick={() => {
+                navigate(`/invoices/${invoice.id}`);
+                toast({ title: "Opening Invoice", description: `Viewing ${invoice.id}` });
+              }}
+            >
               <Eye className="w-4 h-4" />
             </Button>
-            <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-muted text-muted-foreground" title="Send Email">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 hover:bg-muted text-muted-foreground"
+              title="Send Email"
+              onClick={() => {
+                toast({ title: "Sending Email", description: `Email sent to ${invoice.clientEmail}` });
+              }}
+            >
               <Send className="w-4 h-4" />
             </Button>
-            <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-muted text-muted-foreground" title="Download PDF">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 hover:bg-muted text-muted-foreground"
+              title="Download PDF"
+              onClick={() => {
+                toast({ title: "Downloading", description: `Downloading ${invoice.id} as PDF` });
+              }}
+            >
               <Download className="w-4 h-4" />
             </Button>
             <div className="w-[1px] h-4 bg-border mx-1" />
-            <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-muted text-muted-foreground">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 hover:bg-muted text-muted-foreground"
+              onClick={() => {
+                toast({ title: "More Options", description: "Edit, duplicate, or delete invoice" });
+              }}
+            >
               <MoreHorizontal className="w-4 h-4" />
             </Button>
           </div>
@@ -130,7 +165,7 @@ export default function Invoices() {
           </div>
           <Link to="/invoices/new">
             <Button size="sm" className="h-7 bg-[#007a5a] hover:bg-[#007a5a]/90 text-white text-xs px-3">
-              <Plus className="h-3 w-3 mr-1" />
+              <Sparkles className="h-3 w-3 mr-1" />
               New Invoice
             </Button>
           </Link>

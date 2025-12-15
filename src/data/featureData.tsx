@@ -41,30 +41,38 @@ export const featureData: Record<string, FeatureData> = {
         sections: [
             {
                 title: "2-click Branded Invoices",
-                content: "Generate professional invoices instantly. Save your line items and client details to creates invoices with just two clicks.",
+                content: "Generate professional invoices instantly. Save your line items and client details to create invoices with just two clicks. Our intelligent system remembers your preferences and auto-fills common fields.",
                 layout: "left",
-                image: "https://placehold.co/600x400/png?text=Invoice+Preview"
+                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop"
             },
             {
                 title: "Recurring Invoices",
-                content: "Set up retainers and subscriptions once. We'll automatically generate and send invoices on your schedule (weekly, monthly, annually).",
-                layout: "right"
+                content: "Set up retainers and subscriptions once. We'll automatically generate and send invoices on your schedule (weekly, monthly, annually). Perfect for subscription businesses and retainer clients.",
+                layout: "right",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
             },
             {
                 title: "Custom Branding",
-                content: "Make it yours. Upload your logo, choose your brand color scheme, and customize fonts to ensure every invoice reflects your professional identity.",
+                content: "Make it yours. Upload your logo, choose your brand color scheme, and customize fonts to ensure every invoice reflects your professional identity. Stand out with personalized templates.",
                 layout: "center"
             },
             {
                 title: "GPT-Powered Messaging",
-                content: "Stop stressing about what to write. Our AI generates polite initial emails, firm follow-ups, and urgent overdue notices automatically.",
-                layout: "left"
+                content: "Stop stressing about what to write. Our AI generates polite initial emails, firm follow-ups, and urgent overdue notices automatically. Maintain professional tone without the mental effort.",
+                layout: "left",
+                image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop"
             },
             {
                 title: "Universal Export",
-                content: "Send it your way. Email directly from the platform, download as PDF, or send via SMS link for faster mobile payments.",
-                layout: "right"
+                content: "Send it your way. Email directly from the platform, download as PDF, or send via SMS link for faster mobile payments. Multiple export formats ensure compatibility with any workflow.",
+                layout: "right",
+                image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=600&fit=crop"
             }
+        ],
+        stats: [
+            { value: "2 clicks", label: "Average Invoice Time" },
+            { value: "95%", label: "Faster Than Manual" },
+            { value: "10,000+", label: "Invoices Generated" }
         ]
     },
     "reminders": {
@@ -77,24 +85,33 @@ export const featureData: Record<string, FeatureData> = {
         sections: [
             {
                 title: "Smart Auto-Reminders",
-                content: "Never chase a client manually again. Our system detects unpaid invoices and initiates a follow-up sequence automatically.",
-                layout: "right"
+                content: "Never chase a client manually again. Our system detects unpaid invoices and initiates a follow-up sequence automatically. Set it once, forget it forever.",
+                layout: "right",
+                image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop"
             },
             {
                 title: "Custom Reminder Cadence",
-                content: "You're in control. Set reminders for 3 days before due, on due date, and 3, 7, or 14 days overdue.",
-                layout: "left"
+                content: "You're in control. Set reminders for 3 days before due, on due date, and 3, 7, or 14 days overdue. Customize frequency and timing to match your business style.",
+                layout: "left",
+                image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop"
             },
             {
                 title: "AI-Generated Messages",
-                content: "Context-aware messaging that evolves from helpful reminders to firm requests based on how late the payment is.",
-                layout: "right"
+                content: "Context-aware messaging that evolves from helpful reminders to firm requests based on how late the payment is. Professional tone maintained automatically.",
+                layout: "right",
+                image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop"
             },
             {
                 title: "Reminder Logs",
-                content: "Full visibility. See exactly when reminders were Sent, Delivered, and if they Failed, so you're never in the dark.",
-                layout: "left"
+                content: "Full visibility. See exactly when reminders were Sent, Delivered, and if they Failed, so you're never in the dark about your collection efforts.",
+                layout: "left",
+                image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop"
             }
+        ],
+        stats: [
+            { value: "2x faster", label: "Payment Collection" },
+            { value: "90%", label: "Automation Rate" },
+            { value: "24/7", label: "Active Monitoring" }
         ]
     },
     "cash-flow": {
@@ -107,19 +124,27 @@ export const featureData: Record<string, FeatureData> = {
         sections: [
             {
                 title: "Real-Time Income Summaries",
-                content: "Know exactly how much you've made this month, quarter, and year with live updating dashboards.",
-                layout: "center"
+                content: "Know exactly how much you've made this month, quarter, and year with live updating dashboards. Track your financial health at a glance with intuitive visualizations.",
+                layout: "center",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
             },
             {
                 title: "Overdue Invoice Indicators",
-                content: "Spot trouble fast. Red indicators highlight late payments so you can take action immediately.",
-                layout: "left"
+                content: "Spot trouble fast. Red indicators highlight late payments so you can take action immediately. Prevent cash flow issues before they become problems.",
+                layout: "left",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
             },
             {
                 title: "Upcoming Reminders & Tasks",
-                content: "Stay ahead. See which invoices are due soon and what automated tasks the system has scheduled for today.",
-                layout: "right"
+                content: "Stay ahead. See which invoices are due soon and what automated tasks the system has scheduled for today. Never miss a follow-up opportunity.",
+                layout: "right",
+                image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
             }
+        ],
+        stats: [
+            { value: "Real-time", label: "Updates" },
+            { value: "360°", label: "Financial View" },
+            { value: "< 1 sec", label: "Refresh Time" }
         ]
     },
     "reports": {
@@ -132,19 +157,27 @@ export const featureData: Record<string, FeatureData> = {
         sections: [
             {
                 title: "Interactive Income Trends",
-                content: "Visualize your growth. diverse charts showing revenue month-over-month and year-over-year.",
-                layout: "left"
+                content: "Visualize your growth with diverse charts showing revenue month-over-month and year-over-year. Identify patterns and make data-driven decisions.",
+                layout: "left",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
             },
             {
                 title: "Overdue Analysis",
-                content: "Identify bottlenecks. See which clients are consistently late and how much revenue is currently locked up.",
-                layout: "right"
+                content: "Identify bottlenecks. See which clients are consistently late and how much revenue is currently locked up. Take targeted action to improve cash flow.",
+                layout: "right",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
             },
             {
                 title: "Tax-Ready Exports",
-                content: "Breeze through tax season. Export all your data to CSV, PDF, or XLS formats compatible with major accounting software.",
-                layout: "center"
+                content: "Breeze through tax season. Export all your data to CSV, PDF, or XLS formats compatible with major accounting software like QuickBooks and Xero.",
+                layout: "center",
+                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop"
             }
+        ],
+        stats: [
+            { value: "15+", label: "Report Types" },
+            { value: "100%", label: "Export Compatible" },
+            { value: "3 formats", label: "CSV, PDF, XLS" }
         ]
     },
     "integrations": {
@@ -157,14 +190,27 @@ export const featureData: Record<string, FeatureData> = {
         sections: [
             {
                 title: "Payment Sync",
-                content: "Connect Stripe, PayPal, and Plaid directly. Payments made through these platforms automatically mark invoices as paid.",
-                layout: "right"
+                content: "Connect Stripe, PayPal, and Plaid directly. Payments made through these platforms automatically mark invoices as paid. Real-time synchronization keeps everything up-to-date.",
+                layout: "right",
+                image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop"
             },
             {
                 title: "Real-Time Tracking",
-                content: "No more manual reconciliation. See payment statuses update instantly as money hits your account.",
-                layout: "left"
+                content: "No more manual reconciliation. See payment statuses update instantly as money hits your account. Automatic matching saves hours of bookkeeping.",
+                layout: "left",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
+            },
+            {
+                title: "Platform Connections",
+                content: "Integrate with 50+ popular business tools. Connect your CRM, accounting software, and payment processors for seamless data flow across your entire tech stack.",
+                layout: "right",
+                image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop"
             }
+        ],
+        stats: [
+            { value: "50+", label: "Integrations" },
+            { value: "< 5 min", label: "Setup Time" },
+            { value: "Real-time", label: "Sync Speed" }
         ]
     },
     "team": {
@@ -177,19 +223,27 @@ export const featureData: Record<string, FeatureData> = {
         sections: [
             {
                 title: "Invite Team Members",
-                content: "Scale securely. Add Admin, Editor, or Viewer roles to control who can see and do what.",
-                layout: "left"
+                content: "Scale securely. Add Admin, Editor, or Viewer roles to control who can see and do what. Granular permissions ensure the right people have the right access.",
+                layout: "left",
+                image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
             },
             {
                 title: "Real-Time Sync",
-                content: "Collaborate without stepping on toes. Updates happen instantly across all devices via WebSockets.",
-                layout: "right"
+                content: "Collaborate without stepping on toes. Updates happen instantly across all devices via WebSockets. See changes as they happen, no refresh needed.",
+                layout: "right",
+                image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop"
             },
             {
                 title: "Full Audit Logs",
-                content: "Total accountability. Track every invoice created, edited, sent, or deleted by any team member.",
-                layout: "center"
+                content: "Total accountability. Track every invoice created, edited, sent, or deleted by any team member. Complete transparency for compliance and security.",
+                layout: "center",
+                image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
             }
+        ],
+        stats: [
+            { value: "Unlimited", label: "Team Members" },
+            { value: "3 roles", label: "Permission Levels" },
+            { value: "100%", label: "Activity Logged" }
         ]
     },
     "security": {
@@ -202,19 +256,27 @@ export const featureData: Record<string, FeatureData> = {
         sections: [
             {
                 title: "Data Encryption",
-                content: "All data is encrypted in transit and at rest using industry-standard SSL/TLS protocols.",
-                layout: "center"
+                content: "All data is encrypted in transit and at rest using industry-standard SSL/TLS protocols with 256-bit encryption. Military-grade security for your financial data.",
+                layout: "center",
+                image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=600&fit=crop"
             },
             {
                 title: "Role-Based Access Control",
-                content: "Granular permissions ensure employees only access the data necessary for their role.",
-                layout: "left"
+                content: "Granular permissions ensure employees only access the data necessary for their role. Configurable security policies protect sensitive information.",
+                layout: "left",
+                image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop"
             },
             {
                 title: "Global Compliance",
-                content: "Fully compliant with GDPR and PCI-DSS standards, ensuring your client data is handled legally and safely.",
-                layout: "right"
+                content: "Fully compliant with GDPR and PCI-DSS standards, ensuring your client data is handled legally and safely. Regular security audits and penetration testing.",
+                layout: "right",
+                image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop"
             }
+        ],
+        stats: [
+            { value: "256-bit", label: "Encryption" },
+            { value: "99.9%", label: "Uptime SLA" },
+            { value: "GDPR", label: "Compliant" }
         ]
     },
 
@@ -233,22 +295,26 @@ export const featureData: Record<string, FeatureData> = {
             {
                 title: "Designed for Solo Professionals",
                 content: "Built specifically for freelancers who need to focus on their craft, not paperwork. Every feature is optimized for solo workflows.",
-                layout: "center"
+                layout: "center",
+                image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop"
             },
             {
                 title: "Professional Branding",
                 content: "Create stunning, branded invoices that reflect your professional quality. Custom templates, logos, and colors make every document impressive.",
-                layout: "left"
+                layout: "left",
+                image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&h=600&fit=crop"
             },
             {
                 title: "Client Relationship Management",
                 content: "Keep detailed client records, track communication history, and maintain professional relationships with automated follow-ups and reminders.",
-                layout: "right"
+                layout: "right",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop"
             },
             {
                 title: "Financial Freedom",
                 content: "Get paid faster and predict your cash flow with real-time dashboards. No more guessing when payments will arrive.",
-                layout: "center"
+                layout: "center",
+                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop"
             }
         ],
         stats: [
@@ -268,22 +334,26 @@ export const featureData: Record<string, FeatureData> = {
             {
                 title: "Built for Team Collaboration",
                 content: "Perfect for agencies with 2-50 team members. Role-based access, real-time sync, and collaborative workflows keep everyone aligned.",
-                layout: "center"
+                layout: "center",
+                image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
             },
             {
                 title: "Multi-Client Management",
                 content: "Handle dozens or hundreds of clients simultaneously. Advanced filtering, tagging, and search make client management effortless.",
-                layout: "left"
+                layout: "left",
+                image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop"
             },
             {
                 title: "Team Performance Analytics",
                 content: "Track team productivity, individual performance, and client profitability. Make data-driven decisions about resource allocation.",
-                layout: "right"
+                layout: "right",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
             },
             {
                 title: "Scalable Infrastructure",
                 content: "From startup to enterprise, our system grows with you. No performance issues, no data limits, no workflow constraints.",
-                layout: "center"
+                layout: "center",
+                image: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&h=600&fit=crop"
             }
         ],
         stats: [

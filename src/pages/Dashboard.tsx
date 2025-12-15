@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   Building2, Users, CreditCard, Activity, ArrowUpRight,
   Plus, Search, Grip, LayoutGrid, CheckCircle2,
-  DollarSign, BarChart3, ArrowRight, Wallet
+  DollarSign, BarChart3, ArrowRight, Wallet, MoreHorizontal, Clock, Mail, Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,11 +13,16 @@ import { Label } from "@/components/ui/label";
 import { AppLayout } from "@/components/app/AppLayout";
 import { useAppData } from "@/hooks/useAppData";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { toast } from "@/components/ui/use-toast";
 
 export default function Dashboard() {
   const { clients, invoices, settings, loading, updateSettings, addClient } = useAppData();
   const navigate = useNavigate();
   const [setupStep, setSetupStep] = useState(0);
+  const [activityFilter, setActivityFilter] = useState("all");
+  const [goalDialogOpen, setGoalDialogOpen] = useState(false);
+  const [newGoal, setNewGoal] = useState("");
 
   // Setup Form States
   const [companyName, setCompanyName] = useState("");
@@ -226,7 +231,7 @@ export default function Dashboard() {
             </Link>
             <Link to="/invoices">
               <Button className="bg-primary hover:bg-primary/90">
-                <Plus className="w-4 h-4 mr-2" />
+                <Sparkles className="w-4 h-4 mr-2" />
                 Create Invoice
               </Button>
             </Link>
@@ -275,9 +280,44 @@ export default function Dashboard() {
             <CardContent className="p-6 flex flex-col items-center justify-center text-center h-full">
               <p className="text-sm font-medium text-muted-foreground mb-2">Monthly Goal</p>
               <div className="text-xl font-bold text-foreground/80">${parseInt(settings.monthlyGoal || "0").toLocaleString()}</div>
-              <Button variant="link" size="sm" className="h-auto p-0 text-xs mt-1 text-primary">
-                Adjust Goal
-              </Button>
+              <Dialog open={goalDialogOpen} onOpenChange={setGoalDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button variant="link" size="sm" className="h-auto p-0 text-xs mt-1 text-primary">
+                    Adjust Goal
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Update Monthly Goal</DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4 py-4">
+                    <div className="space-y-2">
+                      <Label>New Monthly Revenue Goal</Label>
+                      <div className="relative">
+                        <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                        <Input
+                          className="pl-9"
+                          type="number"
+                          placeholder={settings.monthlyGoal || "10000"}
+                          value={newGoal}
+                          onChange={(e) => setNewGoal(e.target.value)}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <DialogFooter>
+                    <Button variant="outline" onClick={() => setGoalDialogOpen(false)}>Cancel</Button>
+                    <Button onClick={() => {
+                      if (newGoal) {
+                        updateSettings({ monthlyGoal: newGoal });
+                        toast({ title: "Goal Updated", description: `Monthly goal set to $${parseInt(newGoal).toLocaleString()}` });
+                        setGoalDialogOpen(false);
+                        setNewGoal("");
+                      }
+                    }}>Update Goal</Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
             </CardContent>
           </Card>
         </div>
@@ -288,7 +328,7 @@ export default function Dashboard() {
           <div className="lg:col-span-2 space-y-6">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold">Activity Feed</h3>
-              <Select defaultValue="all">
+              <Select value={activityFilter} onValueChange={setActivityFilter}>
                 <SelectTrigger className="w-[120px] h-8 text-xs">
                   <SelectValue placeholder="Filter" />
                 </SelectTrigger>
@@ -321,39 +361,87 @@ export default function Dashboard() {
             ) : (
               <div className="space-y-4">
                 {/* Recent Invoices */}
-                {invoices.slice(0, 5).map(invoice => (
-                  <div key={invoice.id} className="flex items-center justify-between p-4 bg-card border rounded-lg hover:bg-muted/30 transition-colors">
-                    <div className="flex items-center gap-4">
+                {(activityFilter === 'all' || activityFilter === 'invoices') && invoices.slice(0, 5).map(invoice => (
+                  <div key={invoice.id} className="flex items-center justify-between p-4 bg-card border rounded-lg hover:bg-muted/30 transition-colors group">
+                    <div className="flex items-center gap-4 flex-1">
                       <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                         <CreditCard className="w-5 h-5 text-primary" />
                       </div>
-                      <div>
+                      <div className="flex-1">
                         <p className="font-medium">New Invoice for {invoice.clientName}</p>
                         <p className="text-sm text-muted-foreground">{invoice.issueDate}</p>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <p className="font-bold">{invoice.amount}</p>
-                      <span className="text-xs px-2 py-0.5 rounded-full bg-muted uppercase font-medium">{invoice.status}</span>
+                    <div className="flex items-center gap-4">
+                      <div className="text-right">
+                        <p className="font-bold">{invoice.amount}</p>
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-muted uppercase font-medium">{invoice.status}</span>
+                      </div>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button variant="ghost" size="icon" className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <MoreHorizontal className="h-4 w-4" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                          <DropdownMenuItem onClick={() => navigate(`/invoices/${invoice.id}`)}>
+                            <CreditCard className="mr-2 h-4 w-4" />
+                            View Invoice
+                          </DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => {
+                            toast({ title: "Sending reminder...", description: `Reminder sent to ${invoice.clientName}` });
+                          }}>
+                            <Mail className="mr-2 h-4 w-4" />
+                            Send Reminder
+                          </DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => {
+                            toast({ title: "Message Client", description: "Opening message composer..." });
+                          }}>
+                            <Mail className="mr-2 h-4 w-4" />
+                            Message Client
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
                     </div>
                   </div>
                 ))}
 
                 {/* Recent Clients */}
-                {clients.slice(0, 3).map(client => (
-                  <div key={client.id} className="flex items-center justify-between p-4 bg-card border rounded-lg hover:bg-muted/30 transition-colors">
-                    <div className="flex items-center gap-4">
+                {(activityFilter === 'all' || activityFilter === 'clients') && clients.slice(0, 3).map(client => (
+                  <div key={client.id} className="flex items-center justify-between p-4 bg-card border rounded-lg hover:bg-muted/30 transition-colors group">
+                    <div className="flex items-center gap-4 flex-1">
                       <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center">
                         <Users className="w-5 h-5 text-secondary-foreground" />
                       </div>
-                      <div>
+                      <div className="flex-1">
                         <p className="font-medium">New Client: {client.name}</p>
                         <p className="text-sm text-muted-foreground">Added to {client.company}</p>
                       </div>
                     </div>
-                    <Button variant="ghost" size="sm" asChild>
-                      <Link to="/clients">View</Link>
-                    </Button>
+                    <div className="flex items-center gap-2">
+                      <Button variant="ghost" size="sm" asChild>
+                        <Link to="/clients">View</Link>
+                      </Button>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button variant="ghost" size="icon" className="h-8 w-8 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <MoreHorizontal className="h-4 w-4" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                          <DropdownMenuItem onClick={() => navigate('/clients')}>
+                            <Users className="mr-2 h-4 w-4" />
+                            View Details
+                          </DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => {
+                            toast({ title: "Message Client", description: `Opening chat with ${client.name}...` });
+                          }}>
+                            <Mail className="mr-2 h-4 w-4" />
+                            Send Message
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -390,7 +478,16 @@ export default function Dashboard() {
                   <p className="text-xs text-muted-foreground">
                     Connect your bank account to automatically reconcile payments and track expenses in real-time.
                   </p>
-                  <Button variant="link" className="px-0 text-xs h-auto mt-2">
+                  <Button
+                    variant="link"
+                    className="px-0 text-xs h-auto mt-2"
+                    onClick={() => {
+                      toast({
+                        title: "Bank Integration",
+                        description: "This feature is coming soon! You'll be able to connect Plaid, Stripe, and PayPal."
+                      });
+                    }}
+                  >
                     Connect Bank Account
                   </Button>
                 </div>

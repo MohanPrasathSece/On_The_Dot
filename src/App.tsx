@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 import Index from "./pages/Index";
 import Login from "./pages/Login";
@@ -38,6 +39,7 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
 function AppRoutes() {
   const { isAuthenticated } = useAuth();
+  useScrollToTop();
 
   return (
     <Routes>

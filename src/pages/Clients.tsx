@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {
   Plus, Search, MoreHorizontal, Phone,
-  MessageSquare, Send
+  MessageSquare, Send, UserPlus, Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { useAppData, Client } from "@/hooks/useAppData";
+import { toast } from "@/components/ui/use-toast";
 
 export default function Clients() {
   const { clients, addClient } = useAppData();
@@ -70,7 +71,7 @@ export default function Clients() {
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
-                <Plus className="h-5 w-5 mr-2" />
+                <UserPlus className="h-5 w-5 mr-2" />
                 Add Client
               </Button>
             </DialogTrigger>
@@ -217,8 +218,16 @@ export default function Clients() {
                     </div>
                   </div>
                   <div className="flex items-center gap-1 text-muted-foreground">
-                    <Button variant="ghost" size="icon" className="h-8 w-8"><Phone className="w-4 h-4" /></Button>
-                    <Button variant="ghost" size="icon" className="h-8 w-8"><MoreHorizontal className="w-4 h-4" /></Button>
+                    <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => {
+                      toast({ title: "Calling", description: `Initiating call with ${selectedClient.name}` });
+                    }}>
+                      <Phone className="w-4 h-4" />
+                    </Button>
+                    <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => {
+                      toast({ title: "Client Options", description: "View details, edit, or delete client" });
+                    }}>
+                      <MoreHorizontal className="w-4 h-4" />
+                    </Button>
                   </div>
                 </div>
 
@@ -247,9 +256,15 @@ export default function Clients() {
                 <div className="p-4 pt-0">
                   <div className="border rounded-md shadow-sm overflow-hidden focus-within:ring-1 focus-within:ring-ring focus-within:border-ring transition-all">
                     <div className="bg-muted/30 flex items-center gap-1 border-b px-2 py-1">
-                      <Button variant="ghost" size="icon" className="h-6 w-6"><span className="font-bold text-xs">B</span></Button>
-                      <Button variant="ghost" size="icon" className="h-6 w-6"><span className="italic text-xs">I</span></Button>
-                      <Button variant="ghost" size="icon" className="h-6 w-6"><span className="line-through text-xs">S</span></Button>
+                      <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => toast({ title: "Format Bold", description: "Bold text formatting" })}>
+                        <span className="font-bold text-xs">B</span>
+                      </Button>
+                      <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => toast({ title: "Format Italic", description: "Italic text formatting" })}>
+                        <span className="italic text-xs">I</span>
+                      </Button>
+                      <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => toast({ title: "Format Strikethrough", description: "Strikethrough text formatting" })}>
+                        <span className="line-through text-xs">S</span>
+                      </Button>
                     </div>
                     <Input
                       placeholder={`Message ${selectedClient.name}...`}
@@ -259,9 +274,18 @@ export default function Clients() {
                     />
                     <div className="flex justify-between items-center p-2 bg-background">
                       <div className="flex gap-1">
-                        <Button variant="ghost" size="icon" className="h-7 w-7"><Plus className="w-4 h-4" /></Button>
+                        <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => {
+                          toast({ title: "Attach File", description: "Attach documents or images" });
+                        }}>
+                          <Sparkles className="w-4 h-4" />
+                        </Button>
                       </div>
-                      <Button size="sm" className="h-7 bg-green-600 hover:bg-green-700 text-white">
+                      <Button size="sm" className="h-7 bg-green-600 hover:bg-green-700 text-white" onClick={() => {
+                        if (messageInput.trim()) {
+                          toast({ title: "Message Sent", description: `Sent to ${selectedClient.name}` });
+                          setMessageInput("");
+                        }
+                      }}>
                         <Send className="w-3 h-3" />
                       </Button>
                     </div>
