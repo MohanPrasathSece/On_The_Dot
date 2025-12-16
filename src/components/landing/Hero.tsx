@@ -24,9 +24,9 @@ export function Hero() {
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
-              Your Business,
+              Professional Invoicing
               <br />
-              <span className="text-primary">Flowryte.</span>
+              <span className="text-primary">Made Simple.</span>
             </h1>
 
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-lg">

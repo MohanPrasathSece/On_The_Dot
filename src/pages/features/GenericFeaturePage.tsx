@@ -9,6 +9,9 @@ import { CTA } from "@/components/landing/CTA";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/components/ui/use-toast";
+import SEOMeta from "@/components/seo/SEOMeta";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import { serviceSchema, breadcrumbSchema, faqSchema } from "@/components/seo/StructuredData";
 
 export default function GenericFeaturePage() {
     const { isAuthenticated } = useAuth();
@@ -39,6 +42,66 @@ export default function GenericFeaturePage() {
         );
     }
 
+    // Generate SEO metadata
+    const generateSEOMetadata = () => {
+        const baseTitle = data.title || 'Flowryte';
+        const baseDescription = data.description || 'Professional invoicing and payment tracking solutions';
+        const keywords = generateKeywords(data);
+        
+        // Generate structured data
+        const structuredData = [
+            serviceSchema(baseTitle, baseDescription),
+            breadcrumbSchema(generateBreadcrumbItems())
+        ];
+
+        // Add FAQ schema if FAQs exist
+        if (data.faqs && data.faqs.length > 0) {
+            structuredData.push(faqSchema(data.faqs));
+        }
+
+        return {
+            title: `${baseTitle} | Flowryte`,
+            description: baseDescription,
+            keywords: keywords.join(', '),
+            structuredData: structuredData
+        };
+    };
+
+    const generateKeywords = (pageData: any): string[] => {
+        const baseKeywords = [
+            'invoicing software', 'invoice management', 'payment tracking', 
+            'cash flow', 'freelance invoicing', 'agency billing', 'Flowryte'
+        ];
+
+        if (pageData.template === 'solution') {
+            baseKeywords.push('business solutions', 'workflow automation', 'enterprise invoicing');
+        } else if (pageData.template === 'resource') {
+            baseKeywords.push('invoice templates', 'billing guides', 'payment tutorials');
+        } else if (pageData.template === 'enterprise') {
+            baseKeywords.push('enterprise invoicing', 'scale billing', 'corporate payments');
+        }
+
+        return baseKeywords;
+    };
+
+    const generateBreadcrumbItems = () => {
+        const pathSegments = location.pathname.split('/').filter(Boolean);
+        const items = [
+            { name: 'Home', url: 'https://flowryte.io/' }
+        ];
+
+        let currentPath = '';
+        pathSegments.forEach((segment) => {
+            currentPath += `/${segment}`;
+            const name = segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' ');
+            items.push({ name, url: `https://flowryte.io${currentPath}` });
+        });
+
+        return items;
+    };
+
+    const seoMetadata = generateSEOMetadata();
+
     const template = data.template || "standard";
 
     const handleProtectedAction = (action: string) => {
@@ -52,44 +115,57 @@ export default function GenericFeaturePage() {
         return true;
     };
 
-    return (
-        <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20">
-            <Navbar />
+                return (
+        <>
+            <SEOMeta 
+                title={seoMetadata.title}
+                description={seoMetadata.description}
+                keywords={seoMetadata.keywords}
+                structuredData={seoMetadata.structuredData}
+            />
+            <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20">
+                <Navbar />
+                
+                {/* Breadcrumbs */}
+                <div className="container mx-auto px-6 sm:px-8 lg:px-12 pt-8">
+                    <Breadcrumbs />
+                </div>
 
-            {/* Header / Hero Switcher */}
-            {template === "solution" && <SolutionHeader data={data} />}
-            {template === "enterprise" && <EnterpriseHeader data={data} />}
-            {template === "resource" && <ResourceHeader data={data} />}
-            {template === "standard" && <StandardHeader data={data} />}
+                {/* Header / Hero Switcher */}
+                {template === "solution" && <SolutionHeader data={data} />}
+                {template === "enterprise" && <EnterpriseHeader data={data} />}
+                {template === "resource" && <ResourceHeader data={data} />}
+                {template === "standard" && <StandardHeader data={data} />}
 
-            {/* Stats Section (Global) */}
-            {data.stats && (
-                <section className="py-16 border-y border-border/50 bg-muted/20">
-                    <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-                        {data.stats.map((stat, i) => (
-                            <div key={i} className="text-center group hover:scale-105 transition-transform duration-300">
-                                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</div>
-                                <div className="text-sm font-semibold text-muted-foreground uppercase tracking-widest">{stat.label}</div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            )}
+                {/* Stats Section (Global) */}
+                {data.stats && (
+                    <section className="py-16 border-y border-border/50 bg-muted/20">
+                        <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+                            {data.stats.map((stat, i) => (
+                                <div key={i} className="text-center group hover:scale-105 transition-transform duration-300">
+                                    <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</div>
+                                    <div className="text-sm font-semibold text-muted-foreground uppercase tracking-widest">{stat.label}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                )}
 
-            {/* Content Switcher */}
-            {template === "resource" ? (
-                <ProtectedContent
-                    data={data}
-                    isAuthenticated={isAuthenticated}
-                    featureId={featureId || ''}
-                />
-            ) : (
-                <StandardContent data={data} />
-            )}
+                {/* Content Switcher */}
+                {template === "resource" ? (
+                    <ProtectedContent
+                        data={data}
+                        isAuthenticated={isAuthenticated}
+                        featureId={featureId || ''}
+                    />
+                ) : (
+                    <StandardContent data={data} />
+                )}
 
-            <CTA />
-            <Footer />
-        </div>
+                <CTA />
+                <Footer />
+            </div>
+        </>
     );
 }
 

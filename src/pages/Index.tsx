@@ -12,53 +12,65 @@ import { Support } from "@/components/landing/Support";
 import { FAQ } from "@/components/landing/FAQ";
 import { CTA } from "@/components/landing/CTA";
 import { Footer } from "@/components/landing/Footer";
+import SEOMeta from "@/components/seo/SEOMeta";
+import { organizationSchema, softwareApplicationSchema } from "@/components/seo/StructuredData";
 
 export default function Index() {
+  const structuredData = [organizationSchema, softwareApplicationSchema];
+
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20">
-      <Navbar />
-      <Hero />
+    <>
+      <SEOMeta 
+        title="Flowryte - Professional Invoicing Software for Freelancers & Agencies"
+        description="Create stunning invoices, automate payment reminders, and track cash flow with Flowryte. The modern invoicing platform designed for freelancers and agencies in India."
+        keywords="invoicing software, invoice template, freelance invoicing, automated reminders, payment tracking, cash flow management, billing software, GST invoice, online payments"
+        structuredData={structuredData}
+      />
+      <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20">
+        <Navbar />
+        <Hero />
 
-      <div id="features">
-        <Features />
+        <div id="features">
+          <Features />
+        </div>
+
+        <div id="solutions">
+          <Solutions />
+        </div>
+
+        <div id="pricing">
+          <Pricing />
+        </div>
+
+        <div id="resources">
+          <Resources />
+        </div>
+
+        {/* Product Section: Why + Comparison */}
+        <div id="product">
+          <Why />
+          <Comparison />
+        </div>
+
+        <div id="testimonials">
+          <Testimonials />
+        </div>
+
+        <div id="company">
+          <Company />
+        </div>
+
+        <div id="support">
+          <Support />
+        </div>
+
+        <div id="faq">
+          <FAQ />
+        </div>
+
+        <CTA />
+        <Footer />
       </div>
-
-      <div id="solutions">
-        <Solutions />
-      </div>
-
-      <div id="pricing">
-        <Pricing />
-      </div>
-
-      <div id="resources">
-        <Resources />
-      </div>
-
-      {/* Product Section: Why + Comparison */}
-      <div id="product">
-        <Why />
-        <Comparison />
-      </div>
-
-      <div id="testimonials">
-        <Testimonials />
-      </div>
-
-      <div id="company">
-        <Company />
-      </div>
-
-      <div id="support">
-        <Support />
-      </div>
-
-      <div id="faq">
-        <FAQ />
-      </div>
-
-      <CTA />
-      <Footer />
-    </div>
+    </>
   );
 }
