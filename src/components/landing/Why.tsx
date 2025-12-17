@@ -32,7 +32,7 @@ export function Why() {
                 </div>
 
                 {/* Born from Frustration */}
-                <div className="bg-black text-white rounded-3xl border border-yellow-500/50 p-8 sm:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-12">
+                <div className="bg-muted text-foreground rounded-3xl border border-yellow-500/50 p-8 sm:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-12">
                     <div className="md:w-1/2">
                         <h3 className="text-3xl font-bold mb-6">Born from Freelancer Frustration</h3>
                         <p className="text-yellow-500/80 mb-8 text-lg">Flowryte was created by freelancers who were tired of:</p>

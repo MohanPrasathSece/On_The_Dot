@@ -1,5 +1,5 @@
 
-import { LucideIcon, MessageSquare, Users, Video, Paperclip, Search, Shield, Zap, Layout, List, FileText, Globe, Box, Lock, Database, PlayCircle, Code2, Laptop, Headphones, Briefcase, Megaphone, TrendingUp, BarChart, Tv, HelpCircle, BookOpen, Rss, Heart, UserPlus, Terminal, Server, Info, Newspaper, Image, Layers, ShoppingBag, Contact, Award, Building, Building2, Factory, GraduationCap, Stethoscope, HandHeart, Radio, Cloud, PenTool, CheckCircle, Clock, Activity, Coins, LineChart, Bell, PieChart, Smartphone, FileCheck, Scale, Ticket, Lightbulb, CheckSquare, RefreshCcw, CreditCard, Download, Mail, MessageCircle, AlertTriangle, Calendar, FileBarChart } from "lucide-react";
+import { LucideIcon, MessageSquare, Users, Video, Paperclip, Search, Shield, Zap, Layout, List, FileText, Globe, Box, Lock, Database, PlayCircle, Code2, Laptop, Headphones, Briefcase, Megaphone, TrendingUp, BarChart, Tv, HelpCircle, BookOpen, Rss, Heart, UserPlus, Terminal, Server, Info, Newspaper, Image, Layers, ShoppingBag, Contact, Award, Building, Building2, Factory, GraduationCap, Stethoscope, HandHeart, Radio, Cloud, PenTool, CheckCircle, Clock, Activity, Coins, LineChart, Bell, PieChart, Smartphone, FileCheck, Scale, Ticket, Lightbulb, CheckSquare, RefreshCcw, CreditCard, Download, Mail, MessageCircle, AlertTriangle, Calendar, FileBarChart, Repeat, Sparkles } from "lucide-react";
 
 export type TemplateType = "standard" | "solution" | "resource" | "enterprise";
 
@@ -43,13 +43,13 @@ export const featureData: Record<string, FeatureData> = {
                 title: "2-click Branded Invoices",
                 content: "Generate professional invoices instantly. Save your line items and client details to create invoices with just two clicks. Our intelligent system remembers your preferences and auto-fills common fields. Perfect for busy freelancers who need to focus on their work, not paperwork.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Invoicing+Dashboard"
             },
             {
                 title: "Recurring Invoices",
                 content: "Set up retainers and subscriptions once. We'll automatically generate and send invoices on your schedule (weekly, monthly, annually). Perfect for subscription businesses and retainer clients. Never miss a billing cycle again - our system handles it all automatically.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Recurring+Invoices"
             },
             {
                 title: "Custom Branding",
@@ -60,13 +60,13 @@ export const featureData: Record<string, FeatureData> = {
                 title: "GPT-Powered Messaging",
                 content: "Stop stressing about what to write. Our AI generates polite initial emails, firm follow-ups, and urgent overdue notices automatically. Maintain professional tone without the mental effort. The AI adapts based on payment history and client behavior.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=AI+Writer"
             },
             {
                 title: "Universal Export",
                 content: "Send it your way. Email directly from the platform, download as PDF, or send via SMS link for faster mobile payments. Multiple export formats ensure compatibility with any workflow. Clients can pay directly from their email or SMS.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Universal+Export"
             },
             {
                 title: "Advanced Line Items",
@@ -77,7 +77,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Client Management",
                 content: "Keep all client information organized. Store contact details, billing addresses, payment history, and communication logs in one place. Quick client selection makes invoicing faster than ever. Never hunt for client details again.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Client+Management"
             }
         ],
         stats: [
@@ -98,19 +98,19 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Smart Auto-Reminders",
                 content: "Never chase a client manually again. Our system detects unpaid invoices and initiates a follow-up sequence automatically. The system learns from payment patterns to optimize timing.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Client+Management"
             },
             {
                 title: "Custom Reminder Cadence",
                 content: "You're in control. Set reminders for 3 days before due, on due date, and 3, 7, or 14 days overdue. Different cadences for different client types.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Custom+Reminders"
             },
             {
                 title: "AI-Generated Messages",
                 content: "Context-aware messaging that evolves from helpful reminders to firm requests based on how late the payment is. Messages adapt based on client history.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=AI+Messages"
             },
             {
                 title: "Multi-Channel Delivery",
@@ -121,7 +121,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Reminder Logs & Analytics",
                 content: "Full visibility into your collection efforts. See exactly when reminders were sent, delivered, opened, and track response rates.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Collection+Tracking"
             }
         ],
         stats: [
@@ -143,19 +143,19 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Real-Time Income Summaries",
                 content: "Know exactly how much you've made this month, quarter, and year with live updating dashboards. Track your financial health at a glance with intuitive visualizations that update as payments come in.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Cash+Flow+Dashboard"
             },
             {
                 title: "Overdue Invoice Indicators",
                 content: "Spot trouble fast. Red indicators highlight late payments so you can take action immediately. Prevent cash flow issues before they become problems with early warning system.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Recurring+Invoices"
             },
             {
                 title: "Upcoming Reminders & Tasks",
                 content: "Stay ahead of your workload. See which invoices are due soon and what automated tasks the system has scheduled for today. Never miss a follow-up opportunity with your daily task overview.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Task+Reminders"
             },
             {
                 title: "Cash Flow Forecasting",
@@ -166,7 +166,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Client Payment Patterns",
                 content: "Understand your clients better. See who pays on time, who needs reminders, and seasonal payment trends. Use this data to optimize your billing strategy and client relationships.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Client+Analytics"
             }
         ],
         stats: [
@@ -188,19 +188,19 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Interactive Income Trends",
                 content: "Visualize your growth with diverse charts showing revenue month-over-month and year-over-year. Identify patterns and make data-driven decisions.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Cash+Flow+Dashboard"
             },
             {
                 title: "Overdue Analysis",
                 content: "Identify bottlenecks. See which clients are consistently late and how much revenue is currently locked up. Take targeted action to improve cash flow.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Recurring+Invoices"
             },
             {
                 title: "Tax-Ready Exports",
                 content: "Breeze through tax season. Export all your data to CSV, PDF, or XLS formats compatible with major accounting software like QuickBooks and Xero.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Invoicing+Dashboard"
             }
         ],
         stats: [
@@ -221,19 +221,19 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Payment Sync",
                 content: "Connect Stripe, PayPal, and Plaid directly. Payments made through these platforms automatically mark invoices as paid. Real-time synchronization keeps everything up-to-date.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Payment+Integration"
             },
             {
                 title: "Real-Time Tracking",
                 content: "No more manual reconciliation. See payment statuses update instantly as money hits your account. Automatic matching saves hours of bookkeeping.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Cash+Flow+Dashboard"
             },
             {
                 title: "Platform Connections",
                 content: "Integrate with 50+ popular business tools. Connect your CRM, accounting software, and payment processors for seamless data flow across your entire tech stack.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Platform+Connections"
             }
         ],
         stats: [
@@ -254,19 +254,19 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Invite Team Members",
                 content: "Scale securely. Add Admin, Editor, or Viewer roles to control who can see and do what. Granular permissions ensure the right people have the right access.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Team+Roles"
             },
             {
                 title: "Real-Time Sync",
                 content: "Collaborate without stepping on toes. Updates happen instantly across all devices via WebSockets. See changes as they happen, no refresh needed.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Team+Sync"
             },
             {
                 title: "Full Audit Logs",
                 content: "Total accountability. Track every invoice created, edited, sent, or deleted by any team member. Complete transparency for compliance and security.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Task+Reminders"
             }
         ],
         stats: [
@@ -287,19 +287,19 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Data Encryption",
                 content: "All data is encrypted in transit and at rest using industry-standard SSL/TLS protocols with 256-bit encryption. Military-grade security for your financial data.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Data+Encryption"
             },
             {
                 title: "Role-Based Access Control",
                 content: "Granular permissions ensure employees only access the data necessary for their role. Configurable security policies protect sensitive information.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Payment+Integration"
             },
             {
                 title: "Global Compliance",
                 content: "Fully compliant with GDPR and PCI-DSS standards, ensuring your client data is handled legally and safely. Regular security audits and penetration testing.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Global+Compliance"
             }
         ],
         stats: [
@@ -402,25 +402,25 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Designed for Solo Professionals",
                 content: "Built specifically for freelancers who need to focus on their craft, not paperwork. Every feature is optimized for solo workflows.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Financial+Freedom"
             },
             {
                 title: "Professional Branding",
                 content: "Create stunning, branded invoices that reflect your professional quality. Custom templates, logos, and colors make every document impressive.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Professional+Branding"
             },
             {
                 title: "Client Relationship Management",
                 content: "Keep detailed client records, track communication history, and maintain professional relationships with automated follow-ups and reminders.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Client+Relationships"
             },
             {
                 title: "Financial Freedom",
                 content: "Get paid faster and predict your cash flow with real-time dashboards. No more guessing when payments will arrive.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Invoicing+Dashboard"
             }
         ],
         stats: [
@@ -441,25 +441,25 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Built for Team Collaboration",
                 content: "Perfect for agencies with 2-50 team members. Role-based access, real-time sync, and collaborative workflows keep everyone aligned.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Team+Roles"
             },
             {
                 title: "Multi-Client Management",
                 content: "Handle dozens or hundreds of clients simultaneously. Advanced filtering, tagging, and search make client management effortless.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Team+Sync"
             },
             {
                 title: "Team Performance Analytics",
                 content: "Track team productivity, individual performance, and client profitability. Make data-driven decisions about resource allocation.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Cash+Flow+Dashboard"
             },
             {
                 title: "Scalable Infrastructure",
                 content: "From startup to enterprise, our system grows with you. No performance issues, no data limits, no workflow constraints.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&h=600&fit=crop"
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Scalable+Infrastructure"
             }
         ],
         stats: [

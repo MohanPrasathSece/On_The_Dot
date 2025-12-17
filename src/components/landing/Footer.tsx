@@ -91,7 +91,7 @@ export function Footer() {
   };
 
   return (
-    <footer id="footer" className="bg-muted/30 pt-24 pb-12 border-t border-border/50">
+    <footer id="footer" className="bg-background/95 pt-24 pb-12 border-t border-border/50">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12">
 
         {/* Top Section: Brand + Links Grid */}
@@ -103,9 +103,9 @@ export function Footer() {
               <div className="w-10 h-10 rounded-xl bg-yellow-500 flex items-center justify-center shadow-lg shadow-yellow-500/20 group-hover:scale-105 transition-transform">
                 <span className="text-black font-bold text-xl">F</span>
               </div>
-              <span className="font-bold text-2xl tracking-tight text-black">Flowryte</span>
+              <span className="font-bold text-2xl tracking-tight text-foreground">Flowryte</span>
             </Link>
-            <p className="text-black/70 text-sm leading-relaxed max-w-xs">
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               The complete financial operating system for freelancers and agencies. Invoicing, payments, and cash flow—all in one place.
             </p>
             <div className="flex items-center gap-4">
@@ -118,7 +118,7 @@ export function Footer() {
                 <button
                   key={social.label}
                   onClick={() => handleSocialClick(social.label)}
-                  className="w-10 h-10 rounded-full bg-black/10 border border-black/20 flex items-center justify-center text-black/60 hover:text-yellow-500 hover:border-yellow-500 transition-all hover:-translate-y-1"
+                  className="w-10 h-10 rounded-full bg-muted/10 border border-border flex items-center justify-center text-muted-foreground hover:text-yellow-500 hover:border-yellow-500 transition-all hover:-translate-y-1"
                 >
                   <social.icon className="w-4 h-4" />
                   <span className="sr-only">{social.label}</span>
@@ -131,16 +131,16 @@ export function Footer() {
           <div className="flex-1 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-8 gap-y-12">
             {Object.entries(footerLinks).map(([category, { icon: Icon, links }]) => (
               <div key={category} className="space-y-4">
-                <div className="flex items-center gap-2 font-bold text-black mb-4">
+                <div className="flex items-center gap-2 font-bold text-foreground mb-4">
                   <Icon className="w-4 h-4 text-yellow-500" />
-                  <span className="uppercase text-xs tracking-wider text-black">{category}</span>
+                  <span className="uppercase text-xs tracking-wider text-foreground">{category}</span>
                 </div>
                 <ul className="space-y-3">
                   {links.map((link) => (
                     <li key={link.name}>
                       <Link
                         to={link.to}
-                        className="text-sm text-black/60 hover:text-yellow-500 transition-colors block hover:translate-x-1 duration-200"
+                        className="text-sm text-muted-foreground hover:text-yellow-500 transition-colors block hover:translate-x-1 duration-200"
                         onClick={scrollToTop}
                       >
                         {link.name}
@@ -154,12 +154,12 @@ export function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="pt-8 border-t border-black/20 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-sm text-black/60 text-center md:text-left">
+        <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="text-sm text-muted-foreground text-center md:text-left">
             © {new Date().getFullYear()} Flowryte, Inc. All rights reserved.
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-black/60 font-medium">
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground font-medium">
             <Link to="/legal/leg-privacy" className="hover:text-yellow-500 transition-colors">Privacy Policy</Link>
             <Link to="/legal/leg-terms" className="hover:text-yellow-500 transition-colors">Terms of Service</Link>
             <Link to="/legal/leg-cookie" className="hover:text-yellow-500 transition-colors">Cookie Policy</Link>
@@ -171,7 +171,7 @@ export function Footer() {
               <Input
                 type="email"
                 placeholder="Subscribe to newsletter"
-                className="pr-10 bg-black/5 border-black/20 text-black placeholder:text-black/40"
+                className="pr-10 bg-muted/5 border-border text-foreground placeholder:text-muted-foreground"
               />
               <Button
                 size="sm"

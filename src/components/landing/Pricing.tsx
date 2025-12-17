@@ -93,6 +93,7 @@ export function Pricing() {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [showDemoDialog, setShowDemoDialog] = useState(false);
   const [demoDate, setDemoDate] = useState<Date | undefined>(new Date());
+  const [selectedTime, setSelectedTime] = useState<string | undefined>();
   const navigate = useNavigate();
 
   const handlePlanSelect = (planId: string) => {
@@ -102,7 +103,10 @@ export function Pricing() {
   };
 
   const handleScheduleDemo = () => {
-    // In a real app, this would submit the selected date to a backend
+    if (!demoDate || !selectedTime) {
+      return;
+    }
+    // In a real app, this would submit the selected date and time to a backend
     // For now, we simulate success and redirect to signup
     setShowDemoDialog(false);
     navigate("/signup");
@@ -151,7 +155,7 @@ export function Pricing() {
               className={`relative rounded-3xl p-8 flex flex-col transition-all duration-300 cursor-pointer ${plan.highlight
                   ? "bg-black text-white shadow-2xl scale-105 z-10 border-2 border-yellow-500/50"
                   : selectedPlan === plan.id
-                    ? "bg-yellow-50 border-2 border-yellow-500 shadow-lg"
+                    ? "bg-background border-2 border-yellow-500 shadow-lg"
                     : "bg-background border border-border/50 hover:shadow-lg hover:border-yellow-500/50"
                 }`}
               onClick={() => setSelectedPlan(plan.id)}
@@ -169,7 +173,7 @@ export function Pricing() {
                   {plan.icon}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">{plan.name}</h3>
+                  <h3 className={`text-2xl font-bold ${plan.highlight ? "text-white" : "text-foreground"}`}>{plan.name}</h3>
                   {plan.popular && (
                     <div className="flex items-center gap-1 mt-1">
                       <div className="flex">
@@ -177,7 +181,7 @@ export function Pricing() {
                           <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                         ))}
                       </div>
-                      <span className="text-xs ml-1 opacity-80">4.9/5</span>
+                      <span className={`text-xs ml-1 ${plan.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>4.9/5</span>
                     </div>
                   )}
                 </div>
@@ -189,7 +193,7 @@ export function Pricing() {
 
               <div className="mb-6">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-bold">
+                  <span className={`text-4xl font-bold ${plan.highlight ? "text-white" : "text-foreground"}`}>
                     ${getDisplayPrice(plan)}
                   </span>
                   <span className={`text-sm ${plan.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
@@ -197,7 +201,7 @@ export function Pricing() {
                   </span>
                 </div>
                 {isYearly && !plan.oneTime && (
-                  <p className="text-xs mt-1 opacity-80">
+                  <p className={`text-xs mt-1 ${plan.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
                     Save ${(plan.price * 12 - plan.yearlyPrice)} per year
                   </p>
                 )}
@@ -274,9 +278,9 @@ export function Pricing() {
           <h3 className="text-2xl font-bold text-center mb-8">Compare all features</h3>
           <div className="bg-background rounded-2xl border border-border/50 overflow-hidden">
             <div className="grid grid-cols-4 border-b border-border/50">
-              <div className="p-4 font-semibold">Feature</div>
+              <div className="p-4 font-semibold text-foreground">Feature</div>
               {plans.map((plan) => (
-                <div key={plan.id} className="p-4 text-center font-semibold">
+                <div key={plan.id} className="p-4 text-center font-semibold text-foreground">
                   {plan.name}
                 </div>
               ))}
@@ -294,14 +298,14 @@ export function Pricing() {
               { feature: "Automated Workflows", pro: false, premium: true, lifetime: true }
             ].map((row, index) => (
               <div key={index} className="grid grid-cols-4 border-b border-border/30 last:border-b-0">
-                <div className="p-4 text-sm font-medium">{row.feature}</div>
+                <div className="p-4 text-sm font-medium text-foreground">{row.feature}</div>
                 <div className="p-4 text-center">
                   {row.pro === true ? (
                     <Check className="w-5 h-5 text-green-500 mx-auto" />
                   ) : row.pro === false ? (
                     <X className="w-4 h-4 text-muted-foreground/50 mx-auto" />
                   ) : (
-                    <span className="text-sm">{row.pro}</span>
+                    <span className="text-sm text-foreground">{row.pro}</span>
                   )}
                 </div>
                 <div className="p-4 text-center">
@@ -310,7 +314,7 @@ export function Pricing() {
                   ) : row.premium === false ? (
                     <X className="w-4 h-4 text-muted-foreground/50 mx-auto" />
                   ) : (
-                    <span className="text-sm">{row.premium}</span>
+                    <span className="text-sm text-foreground">{row.premium}</span>
                   )}
                 </div>
                 <div className="p-4 text-center">
@@ -319,7 +323,7 @@ export function Pricing() {
                   ) : row.lifetime === false ? (
                     <X className="w-4 h-4 text-muted-foreground/50 mx-auto" />
                   ) : (
-                    <span className="text-sm">{row.lifetime}</span>
+                    <span className="text-sm text-foreground">{row.lifetime}</span>
                   )}
                 </div>
               </div>
@@ -328,13 +332,13 @@ export function Pricing() {
         </div>
 
         {/* Enterprise CTA */}
-        <div className="max-w-4xl mx-auto bg-black rounded-3xl border border-yellow-500/50 p-8 md:p-12 text-white">
+        <div className="max-w-4xl mx-auto bg-muted rounded-3xl border border-yellow-500/50 p-8 md:p-12 text-foreground">
           <div className="text-center max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-2 mb-4">
               <Headphones className="w-6 h-6 text-yellow-500" />
               <h3 className="text-2xl font-bold">Need a custom solution?</h3>
             </div>
-            <p className="text-white/90 mb-8">
+            <p className="text-muted-foreground mb-8">
               Contact our sales team for enterprise-grade solutions, custom features, and volume pricing tailored to your organization's needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -391,13 +395,10 @@ export function Pricing() {
                     {["9:00 AM", "10:00 AM", "11:00 AM", "2:00 PM", "3:00 PM", "4:00 PM"].map((time) => (
                       <Button
                         key={time}
-                        variant="outline"
+                        variant={selectedTime === time ? "default" : "outline"}
                         size="sm"
                         className="text-xs"
-                        onClick={() => {
-                          // Store selected time
-                          setDemoDate(demoDate);
-                        }}
+                        onClick={() => setSelectedTime(time)}
                       >
                         {time}
                       </Button>
@@ -411,7 +412,7 @@ export function Pricing() {
               <Button variant="outline" onClick={() => setShowDemoDialog(false)}>Cancel</Button>
               <Button 
                 onClick={handleScheduleDemo} 
-                disabled={!demoDate}
+                disabled={!demoDate || !selectedTime}
                 className="bg-yellow-500 text-black hover:bg-yellow-400"
               >
                 Confirm & Sign Up

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export function CTA() {
   return (
-    <section className="py-24 bg-black text-white overflow-hidden relative">
+    <section className="py-24 bg-muted text-foreground overflow-hidden relative">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-yellow-500/10 skew-x-12 translate-x-12" />
       <div className="absolute bottom-0 left-0 w-1/4 h-full bg-yellow-500/10 -skew-x-12 -translate-x-12" />
@@ -13,7 +13,7 @@ export function CTA() {
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
           Need a custom solution?
         </h2>
-        <p className="text-xl text-white/90 max-w-3xl mx-auto mb-10 leading-relaxed">
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
           Contact our sales team for enterprise-grade solutions, custom features, and volume pricing tailored to your organization's needs.
         </p>
 
