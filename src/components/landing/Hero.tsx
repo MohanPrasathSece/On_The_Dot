@@ -1,16 +1,8 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Play, CheckCircle2, Download } from "lucide-react";
+import { ArrowRight, Play, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { toast } from "@/components/ui/use-toast";
 
 export function Hero() {
-  const handleDownloadPDF = () => {
-    toast({
-      title: "Sample Invoice",
-      description: "This is a demo. In the real app, this would download a PDF invoice.",
-    });
-  };
-
   return (
     <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-background">
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
@@ -18,8 +10,8 @@ export function Hero() {
 
           {/* Text Content */}
           <div className="max-w-2xl lg:w-1/2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              <span className="flex h-2 w-2 rounded-full bg-primary" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-500 text-sm font-medium mb-6">
+              <span className="flex h-2 w-2 rounded-full bg-yellow-500" />
               The future of invoicing is here
             </div>
 
@@ -92,10 +84,6 @@ export function Hero() {
                     <span className="text-primary">$3,700.00</span>
                   </div>
                 </div>
-                <Button className="w-full bg-gray-100 text-gray-900 hover:bg-gray-200" onClick={handleDownloadPDF}>
-                  <Download className="w-4 h-4 mr-2" />
-                  Download PDF
-                </Button>
               </div>
 
               {/* Floating Stats */}

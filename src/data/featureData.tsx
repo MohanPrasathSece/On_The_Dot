@@ -41,32 +41,43 @@ export const featureData: Record<string, FeatureData> = {
         sections: [
             {
                 title: "2-click Branded Invoices",
-                content: "Generate professional invoices instantly. Save your line items and client details to create invoices with just two clicks. Our intelligent system remembers your preferences and auto-fills common fields.",
+                content: "Generate professional invoices instantly. Save your line items and client details to create invoices with just two clicks. Our intelligent system remembers your preferences and auto-fills common fields. Perfect for busy freelancers who need to focus on their work, not paperwork.",
                 layout: "left",
                 image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop"
             },
             {
                 title: "Recurring Invoices",
-                content: "Set up retainers and subscriptions once. We'll automatically generate and send invoices on your schedule (weekly, monthly, annually). Perfect for subscription businesses and retainer clients.",
+                content: "Set up retainers and subscriptions once. We'll automatically generate and send invoices on your schedule (weekly, monthly, annually). Perfect for subscription businesses and retainer clients. Never miss a billing cycle again - our system handles it all automatically.",
                 layout: "right",
                 image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
             },
             {
                 title: "Custom Branding",
-                content: "Make it yours. Upload your logo, choose your brand color scheme, and customize fonts to ensure every invoice reflects your professional identity. Stand out with personalized templates.",
+                content: "Make it yours. Upload your logo, choose your brand color scheme, and customize fonts to ensure every invoice reflects your professional identity. Stand out with personalized templates that impress clients and reinforce your brand every time you bill.",
                 layout: "center"
             },
             {
                 title: "GPT-Powered Messaging",
-                content: "Stop stressing about what to write. Our AI generates polite initial emails, firm follow-ups, and urgent overdue notices automatically. Maintain professional tone without the mental effort.",
+                content: "Stop stressing about what to write. Our AI generates polite initial emails, firm follow-ups, and urgent overdue notices automatically. Maintain professional tone without the mental effort. The AI adapts based on payment history and client behavior.",
                 layout: "left",
                 image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=600&fit=crop"
             },
             {
                 title: "Universal Export",
-                content: "Send it your way. Email directly from the platform, download as PDF, or send via SMS link for faster mobile payments. Multiple export formats ensure compatibility with any workflow.",
+                content: "Send it your way. Email directly from the platform, download as PDF, or send via SMS link for faster mobile payments. Multiple export formats ensure compatibility with any workflow. Clients can pay directly from their email or SMS.",
                 layout: "right",
                 image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=600&fit=crop"
+            },
+            {
+                title: "Advanced Line Items",
+                content: "Handle complex billing with ease. Add hourly rates, fixed fees, quantity-based items, and discounts automatically. Calculate taxes, apply late fees, and include payment terms - all done for you. Perfect for projects with multiple deliverables.",
+                layout: "center"
+            },
+            {
+                title: "Client Management",
+                content: "Keep all client information organized. Store contact details, billing addresses, payment history, and communication logs in one place. Quick client selection makes invoicing faster than ever. Never hunt for client details again.",
+                layout: "left",
+                image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop"
             }
         ],
         stats: [
@@ -76,34 +87,39 @@ export const featureData: Record<string, FeatureData> = {
         ]
     },
     "reminders": {
-        title: "Reminders",
-        subtitle: "Smart Auto-Reminders",
-        description: "Get paid 2x faster with automated, intelligent follow-ups.",
+        title: "Smart Reminders",
+        subtitle: "Intelligent Auto-Reminders",
+        description: "Get paid 2x faster with automated, intelligent follow-ups that adapt to your clients.",
         icon: Bell,
-        benefits: ["Smart Cadence", "AI Messages", "Detailed Logs"],
+        benefits: ["Smart Cadence", "AI Messages", "Detailed Logs", "Multi-Channel"],
         template: "standard",
         sections: [
             {
                 title: "Smart Auto-Reminders",
-                content: "Never chase a client manually again. Our system detects unpaid invoices and initiates a follow-up sequence automatically. Set it once, forget it forever.",
+                content: "Never chase a client manually again. Our system detects unpaid invoices and initiates a follow-up sequence automatically. The system learns from payment patterns to optimize timing.",
                 layout: "right",
                 image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop"
             },
             {
                 title: "Custom Reminder Cadence",
-                content: "You're in control. Set reminders for 3 days before due, on due date, and 3, 7, or 14 days overdue. Customize frequency and timing to match your business style.",
+                content: "You're in control. Set reminders for 3 days before due, on due date, and 3, 7, or 14 days overdue. Different cadences for different client types.",
                 layout: "left",
                 image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop"
             },
             {
                 title: "AI-Generated Messages",
-                content: "Context-aware messaging that evolves from helpful reminders to firm requests based on how late the payment is. Professional tone maintained automatically.",
+                content: "Context-aware messaging that evolves from helpful reminders to firm requests based on how late the payment is. Messages adapt based on client history.",
                 layout: "right",
                 image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop"
             },
             {
-                title: "Reminder Logs",
-                content: "Full visibility. See exactly when reminders were Sent, Delivered, and if they Failed, so you're never in the dark about your collection efforts.",
+                title: "Multi-Channel Delivery",
+                content: "Reach clients where they are. Send reminders via email, SMS, or both automatically. Track what works best for each client.",
+                layout: "center"
+            },
+            {
+                title: "Reminder Logs & Analytics",
+                content: "Full visibility into your collection efforts. See exactly when reminders were sent, delivered, opened, and track response rates.",
                 layout: "left",
                 image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop"
             }
@@ -111,40 +127,53 @@ export const featureData: Record<string, FeatureData> = {
         stats: [
             { value: "2x faster", label: "Payment Collection" },
             { value: "90%", label: "Automation Rate" },
-            { value: "24/7", label: "Active Monitoring" }
+            { value: "24/7", label: "Active Monitoring" },
+            { value: "95%", label: "Delivery Rate" }
         ]
     },
     "cash-flow": {
         title: "Cash Flow Dashboard",
-        subtitle: "Financial Clarity",
-        description: "Real-time visibility into your business's financial health.",
+        subtitle: "Real-Time Financial Clarity",
+        description: "Complete visibility into your business's financial health with live updating dashboards.",
         icon: Coins,
-        benefits: ["Real-Time Summaries", "Overdue Alerts", "Task View"],
+        benefits: ["Real-Time Summaries", "Overdue Alerts", "Task View", "Forecasting"],
         template: "standard",
         sections: [
             {
                 title: "Real-Time Income Summaries",
-                content: "Know exactly how much you've made this month, quarter, and year with live updating dashboards. Track your financial health at a glance with intuitive visualizations.",
+                content: "Know exactly how much you've made this month, quarter, and year with live updating dashboards. Track your financial health at a glance with intuitive visualizations that update as payments come in.",
                 layout: "center",
                 image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop"
             },
             {
                 title: "Overdue Invoice Indicators",
-                content: "Spot trouble fast. Red indicators highlight late payments so you can take action immediately. Prevent cash flow issues before they become problems.",
+                content: "Spot trouble fast. Red indicators highlight late payments so you can take action immediately. Prevent cash flow issues before they become problems with early warning system.",
                 layout: "left",
                 image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
             },
             {
                 title: "Upcoming Reminders & Tasks",
-                content: "Stay ahead. See which invoices are due soon and what automated tasks the system has scheduled for today. Never miss a follow-up opportunity.",
+                content: "Stay ahead of your workload. See which invoices are due soon and what automated tasks the system has scheduled for today. Never miss a follow-up opportunity with your daily task overview.",
                 layout: "right",
                 image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
+            },
+            {
+                title: "Cash Flow Forecasting",
+                content: "Predict your financial future. Our AI analyzes payment patterns to forecast upcoming cash flow, helping you make better business decisions and plan for expenses.",
+                layout: "center"
+            },
+            {
+                title: "Client Payment Patterns",
+                content: "Understand your clients better. See who pays on time, who needs reminders, and seasonal payment trends. Use this data to optimize your billing strategy and client relationships.",
+                layout: "left",
+                image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop"
             }
         ],
         stats: [
             { value: "Real-time", label: "Updates" },
             { value: "360°", label: "Financial View" },
-            { value: "< 1 sec", label: "Refresh Time" }
+            { value: "< 1 sec", label: "Refresh Time" },
+            { value: "95%", label: "Accuracy Rate" }
         ]
     },
     "reports": {

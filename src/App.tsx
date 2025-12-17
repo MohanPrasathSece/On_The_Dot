@@ -27,6 +27,7 @@ import Team from "./pages/Team";
 import Settings from "./pages/Settings";
 import Support from "./pages/Support";
 import GenericFeaturePage from "./pages/features/GenericFeaturePage";
+import PricingPage from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -51,6 +52,7 @@ function AppRoutes() {
       <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
       <Route path="/signup" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Signup />} />
       <Route path="/trial" element={isAuthenticated ? <Navigate to="/dashboard" /> : <TrialSignup />} />
+      <Route path="/pricing" element={<PricingPage />} />
 
       {/* Public Pages routed to Generic Landing Template */}
       <Route path="/features/:featureId" element={<GenericFeaturePage />} />

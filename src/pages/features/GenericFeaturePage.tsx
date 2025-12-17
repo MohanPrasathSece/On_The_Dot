@@ -48,7 +48,7 @@ export default function GenericFeaturePage() {
         const baseTitle = data.title || 'Flowryte';
         const baseDescription = data.description || 'Professional invoicing and payment tracking solutions';
         const keywords = generateKeywords(data);
-        
+
         // Generate structured data
         const structuredData: any[] = [
             serviceSchema(baseTitle, baseDescription),
@@ -70,7 +70,7 @@ export default function GenericFeaturePage() {
 
     const generateKeywords = (pageData: any): string[] => {
         const baseKeywords = [
-            'invoicing software', 'invoice management', 'payment tracking', 
+            'invoicing software', 'invoice management', 'payment tracking',
             'cash flow', 'freelance invoicing', 'agency billing', 'Flowryte'
         ];
 
@@ -116,9 +116,9 @@ export default function GenericFeaturePage() {
         return true;
     };
 
-                return (
+    return (
         <>
-            <SEOMeta 
+            <SEOMeta
                 title={seoMetadata.title}
                 description={seoMetadata.description}
                 keywords={seoMetadata.keywords}
@@ -126,7 +126,7 @@ export default function GenericFeaturePage() {
             />
             <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20">
                 <Navbar />
-                
+
                 {/* Breadcrumbs */}
                 <div className="container mx-auto px-6 sm:px-8 lg:px-12 pt-8">
                     <Breadcrumbs />
@@ -172,6 +172,7 @@ export default function GenericFeaturePage() {
 
 // --- HEADERS ---
 
+
 function StandardHeader({ data }: { data: any }) {
     const HeroIcon = data.icon;
     return (
@@ -181,9 +182,11 @@ function StandardHeader({ data }: { data: any }) {
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blob-2 -z-10" />
 
             <div className="max-w-4xl mx-auto text-center relative z-10">
-                <div className="inline-flex items-center justify-center p-4 rounded-2xl bg-primary/10 text-primary mb-8 shadow-sm">
-                    <HeroIcon className="w-10 h-10" />
-                </div>
+                {HeroIcon && (
+                    <div className="inline-flex items-center justify-center p-4 rounded-2xl bg-primary/10 text-primary mb-8 shadow-sm">
+                        <HeroIcon className="w-10 h-10" />
+                    </div>
+                )}
                 <h1 className="text-5xl sm:text-7xl font-bold tracking-tight mb-8">
                     {data.title}
                 </h1>
@@ -213,7 +216,7 @@ function SolutionHeader({ data }: { data: any }) {
             <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
                 <div className="space-y-8">
                     <div className="flex items-center gap-3 text-primary font-bold tracking-wide uppercase text-sm bg-primary/10 w-fit px-4 py-1 rounded-full">
-                        <HeroIcon className="w-4 h-4" />
+                        {HeroIcon && <HeroIcon className="w-4 h-4" />}
                         <span>Solutions for {data.title}</span>
                     </div>
                     <h1 className="text-5xl sm:text-6xl font-extrabold tracking-tight leading-tight">
@@ -268,21 +271,36 @@ function EnterpriseHeader({ data }: { data: any }) {
         <section className="pt-32 pb-20 px-6 sm:px-8 lg:px-12 container mx-auto bg-slate-950 text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/20 via-slate-950 to-slate-950" />
 
+            {/* Abstract Grid Background */}
+            <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+
             <div className="max-w-4xl mx-auto text-center relative z-10">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm font-medium text-primary mb-8">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm font-medium text-primary mb-8 animate-fade-in-up">
                     <ShieldCheck className="w-4 h-4" /> Enterprise Grade Security
                 </div>
-                <h1 className="text-5xl sm:text-7xl font-bold tracking-tight mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">
+                <h1 className="text-5xl sm:text-7xl font-bold tracking-tight mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 animate-fade-in-up delay-100">
                     {data.title}
                 </h1>
-                <p className="text-xl sm:text-2xl text-slate-400 max-w-2xl mx-auto mb-12">
+                <p className="text-xl sm:text-2xl text-slate-400 max-w-2xl mx-auto mb-12 animate-fade-in-up delay-200">
                     {data.description}
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-300">
                     <Link to="/company/com-contact">
                         <Button size="lg" className="text-lg px-8 h-14 bg-white text-slate-950 hover:bg-white/90">Contact Sales</Button>
                     </Link>
                     <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-white/20 text-white hover:bg-white/10">Read Whitepaper</Button>
+                </div>
+
+                <div className="mt-20 pt-10 border-t border-white/10 animate-fade-in-up delay-500">
+                    <p className="text-sm text-slate-500 mb-6 uppercase tracking-widest">Trusted by industry leaders</p>
+                    <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                        {/* Placeholder Logos */}
+                        <div className="h-8 w-24 bg-white/20 rounded" />
+                        <div className="h-8 w-24 bg-white/20 rounded" />
+                        <div className="h-8 w-24 bg-white/20 rounded" />
+                        <div className="h-8 w-24 bg-white/20 rounded" />
+                        <div className="h-8 w-24 bg-white/20 rounded" />
+                    </div>
                 </div>
             </div>
         </section>
@@ -333,9 +351,11 @@ function StandardContent({ data }: { data: any }) {
                                 </ul>
                             )}
 
-                            <Button variant="link" className="text-primary p-0 h-auto font-semibold text-lg hover:gap-2 transition-all">
-                                Learn more <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
+                            <Link to="/signup">
+                                <Button variant="link" className="text-primary p-0 h-auto font-semibold text-lg hover:gap-2 transition-all">
+                                    Learn more <ArrowRight className="w-4 h-4 ml-2" />
+                                </Button>
+                            </Link>
                         </div>
 
                         {/* Visual */}
@@ -346,7 +366,15 @@ function StandardContent({ data }: { data: any }) {
                                         "aspect-[4/3] rounded-3xl bg-muted border border-border/50 shadow-2xl relative overflow-hidden transform transition-all hover:scale-[1.02]",
                                         section.layout === "left" ? "rotate-y-3 hover:rotate-y-0" : "-rotate-y-3 hover:rotate-y-0"
                                     )}>
-                                        <img src={section.image} alt={section.title} className="w-full h-full object-cover" />
+                                        <img
+                                            src={section.image}
+                                            alt={section.title}
+                                            className="w-full h-full object-cover"
+                                            onError={(e) => {
+                                                e.currentTarget.style.display = 'none';
+                                                e.currentTarget.parentElement?.classList.add('bg-gradient-to-br', 'from-primary/5', 'to-primary/10');
+                                            }}
+                                        />
                                     </div>
                                 ) : (
                                     <div className={cn(

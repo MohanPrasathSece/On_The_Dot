@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Check, ArrowRight, X, Star, Zap, Shield, Headphones } from "lucide-react";
+import { Check, ArrowRight, X, Star, Zap, Shield, Headphones, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 
 const plans = [
   {
@@ -89,6 +91,8 @@ const plans = [
 export function Pricing() {
   const [isYearly, setIsYearly] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const [showDemoDialog, setShowDemoDialog] = useState(false);
+  const [demoDate, setDemoDate] = useState<Date | undefined>(new Date());
   const navigate = useNavigate();
 
   const handlePlanSelect = (planId: string) => {
@@ -97,9 +101,18 @@ export function Pricing() {
     navigate(`/trial?plan=${planId}&billing=${isYearly ? 'yearly' : 'monthly'}`);
   };
 
+  const handleScheduleDemo = () => {
+    // In a real app, this would submit the selected date to a backend
+    // For now, we simulate success and redirect to signup
+    setShowDemoDialog(false);
+    navigate("/signup");
+  };
+
   const getDisplayPrice = (plan: any) => {
     if (plan.oneTime) return plan.price;
-    return isYearly ? plan.yearlyPrice / 12 : plan.price;
+    const price = isYearly ? plan.yearlyPrice / 12 : plan.price;
+    // Format to 2 decimal places if necessary, or just pretty print
+    return Number.isInteger(price) ? price : price.toFixed(2);
   };
 
   const getBillingText = (plan: any) => {
@@ -135,25 +148,24 @@ export function Pricing() {
           {plans.map((plan) => (
             <Card
               key={plan.id}
-              className={`relative rounded-3xl p-8 flex flex-col transition-all duration-300 cursor-pointer ${
-                plan.highlight
-                  ? "bg-primary text-primary-foreground shadow-2xl scale-105 z-10 border-2 border-primary/20"
+              className={`relative rounded-3xl p-8 flex flex-col transition-all duration-300 cursor-pointer ${plan.highlight
+                  ? "bg-black text-white shadow-2xl scale-105 z-10 border-2 border-yellow-500/50"
                   : selectedPlan === plan.id
-                  ? "bg-primary/5 border-2 border-primary shadow-lg"
-                  : "bg-background border border-border/50 hover:shadow-lg hover:border-primary/50"
-              }`}
+                    ? "bg-yellow-50 border-2 border-yellow-500 shadow-lg"
+                    : "bg-background border border-border/50 hover:shadow-lg hover:border-yellow-500/50"
+                }`}
               onClick={() => setSelectedPlan(plan.id)}
             >
               {plan.badge && (
                 <div className="absolute top-4 right-4">
-                  <Badge className="bg-primary-foreground text-primary px-3 py-1">
+                  <Badge className="bg-yellow-500 text-black px-3 py-1">
                     {plan.badge}
                   </Badge>
                 </div>
               )}
 
               <div className="flex items-center gap-3 mb-4">
-                <div className={`p-2 rounded-lg ${plan.highlight ? "bg-primary-foreground/20" : "bg-primary/10"}`}>
+                <div className={`p-2 rounded-lg ${plan.highlight ? "bg-yellow-500/20" : "bg-yellow-100"}`}>
                   {plan.icon}
                 </div>
                 <div>
@@ -170,7 +182,7 @@ export function Pricing() {
                   )}
                 </div>
               </div>
-              
+
               <p className={`text-sm mb-6 ${plan.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
                 {plan.description}
               </p>
@@ -192,13 +204,12 @@ export function Pricing() {
               </div>
 
               <Button
-                className={`w-full mb-8 rounded-xl font-semibold h-12 transition-all ${
-                  plan.highlight
-                    ? "bg-black text-white hover:bg-black/90"
+                className={`w-full mb-8 rounded-xl font-semibold h-12 transition-all ${plan.highlight
+                    ? "bg-yellow-500 text-black hover:bg-yellow-400"
                     : selectedPlan === plan.id
-                    ? "bg-black text-white hover:bg-black/90"
-                    : "bg-black text-white hover:bg-black/90"
-                }`}
+                      ? "bg-black text-white hover:bg-black/90"
+                      : "bg-black text-white hover:bg-black/90"
+                  }`}
                 onClick={(e) => {
                   e.stopPropagation();
                   handlePlanSelect(plan.id);
@@ -224,18 +235,16 @@ export function Pricing() {
                 <ul className="space-y-3">
                   {plan.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <Check className={`w-5 h-5 shrink-0 mt-0.5 ${
-                        plan.highlight ? "text-primary-foreground/70" : "text-green-500"
-                      }`} />
-                      <span className={`text-sm ${
-                        plan.highlight ? "text-primary-foreground/90" : "text-muted-foreground"
-                      } ${feature.startsWith("Everything in") ? "font-semibold" : ""}`}>
+                      <Check className={`w-5 h-5 shrink-0 mt-0.5 ${plan.highlight ? "text-primary-foreground/70" : "text-green-500"
+                        }`} />
+                      <span className={`text-sm ${plan.highlight ? "text-primary-foreground/90" : "text-muted-foreground"
+                        } ${feature.startsWith("Everything in") ? "font-semibold" : ""}`}>
                         {feature}
                       </span>
                     </li>
                   ))}
                 </ul>
-                
+
                 {plan.notIncluded && plan.notIncluded.length > 0 && (
                   <div className="pt-4 border-t border-border/50">
                     <p className={`text-sm font-semibold mb-3 ${plan.highlight ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
@@ -244,12 +253,10 @@ export function Pricing() {
                     <ul className="space-y-2">
                       {plan.notIncluded.map((feature, index) => (
                         <li key={index} className="flex items-start gap-3">
-                          <X className={`w-4 h-4 shrink-0 mt-0.5 ${
-                            plan.highlight ? "text-primary-foreground/50" : "text-muted-foreground/50"
-                          }`} />
-                          <span className={`text-sm ${
-                            plan.highlight ? "text-primary-foreground/60" : "text-muted-foreground/60"
-                          }`}>
+                          <X className={`w-4 h-4 shrink-0 mt-0.5 ${plan.highlight ? "text-primary-foreground/50" : "text-muted-foreground/50"
+                            }`} />
+                          <span className={`text-sm ${plan.highlight ? "text-primary-foreground/60" : "text-muted-foreground/60"
+                            }`}>
                             {feature}
                           </span>
                         </li>
@@ -263,7 +270,7 @@ export function Pricing() {
         </div>
 
         {/* Feature Comparison Table */}
-        <div className="max-w-7xl mx-auto mb-20">
+        <div className="max-w-7xl mx-auto mb-20 hidden md:block">
           <h3 className="text-2xl font-bold text-center mb-8">Compare all features</h3>
           <div className="bg-background rounded-2xl border border-border/50 overflow-hidden">
             <div className="grid grid-cols-4 border-b border-border/50">
@@ -321,25 +328,57 @@ export function Pricing() {
         </div>
 
         {/* Enterprise CTA */}
-        <div className="max-w-4xl mx-auto bg-gradient-to-r from-primary/10 to-primary/5 rounded-3xl border border-primary/20 p-8 md:p-12">
+        <div className="max-w-4xl mx-auto bg-black rounded-3xl border border-yellow-500/50 p-8 md:p-12 text-white">
           <div className="text-center max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <Headphones className="w-6 h-6 text-primary" />
+              <Headphones className="w-6 h-6 text-yellow-500" />
               <h3 className="text-2xl font-bold">Need a custom solution?</h3>
             </div>
-            <p className="text-muted-foreground mb-8">
+            <p className="text-white/90 mb-8">
               Contact our sales team for enterprise-grade solutions, custom features, and volume pricing tailored to your organization's needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="outline" className="px-8 border-black text-black hover:bg-black/10">
-                Contact Sales
-              </Button>
-              <Button size="lg" className="px-8 bg-black text-white hover:bg-black/90">
+              <Link to="/company/com-contact">
+                <Button size="lg" variant="outline" className="px-8 border-yellow-500 text-yellow-500 hover:bg-yellow-500/10 w-full sm:w-auto">
+                  Contact Sales
+                </Button>
+              </Link>
+              <Button
+                size="lg"
+                className="px-8 bg-yellow-500 text-black hover:bg-yellow-400 w-full sm:w-auto"
+                onClick={() => setShowDemoDialog(true)}
+              >
                 Schedule Demo
               </Button>
             </div>
           </div>
         </div>
+
+        {/* Schedule Demo Dialog */}
+        <Dialog open={showDemoDialog} onOpenChange={setShowDemoDialog}>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle>Schedule a Demo</DialogTitle>
+              <DialogDescription>
+                Select a date to schedule a live walkthrough with our product team.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="flex flex-col items-center justify-center p-4">
+              <CalendarComponent
+                mode="single"
+                selected={demoDate}
+                onSelect={setDemoDate}
+                className="rounded-md border shadow-sm"
+              />
+            </div>
+            <div className="flex justify-end gap-3 mt-4">
+              <Button variant="outline" onClick={() => setShowDemoDialog(false)}>Cancel</Button>
+              <Button onClick={handleScheduleDemo} disabled={!demoDate}>
+                Confirm & Sign Up
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
 
       </div>
     </section>

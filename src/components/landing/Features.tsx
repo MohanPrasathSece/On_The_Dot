@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { FileText, Bell, BarChart3, Repeat, CreditCard, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -29,9 +30,11 @@ export function Features() {
                 </li>
               ))}
             </ul>
-            <Button variant="link" className="p-0 text-primary h-auto font-semibold group-hover:gap-2 transition-all">
-              Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
+            <Link to="/features/invoicing">
+              <Button variant="link" className="p-0 text-primary h-auto font-semibold group-hover:gap-2 transition-all">
+                Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
           </div>
 
           {/* Smart Reminders */}
@@ -48,9 +51,11 @@ export function Features() {
                 </li>
               ))}
             </ul>
-            <Button variant="link" className="p-0 text-primary h-auto font-semibold group-hover:gap-2 transition-all">
-              Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
+            <Link to="/features/reminders">
+              <Button variant="link" className="p-0 text-primary h-auto font-semibold group-hover:gap-2 transition-all">
+                Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
           </div>
 
           {/* Overdue Dashboard */}
@@ -67,9 +72,11 @@ export function Features() {
                 </li>
               ))}
             </ul>
-            <Button variant="link" className="p-0 text-primary h-auto font-semibold group-hover:gap-2 transition-all">
-              Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
+            <Link to="/features/cash-flow">
+              <Button variant="link" className="p-0 text-primary h-auto font-semibold group-hover:gap-2 transition-all">
+                Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
           </div>
 
           {/* Recurring Invoices */}
@@ -86,6 +93,11 @@ export function Features() {
                 </li>
               ))}
             </ul>
+            <Link to="/features/invoicing">
+              <Button variant="link" className="p-0 text-primary h-auto font-semibold group-hover:gap-2 transition-all">
+                Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
           </div>
 
           {/* Payment Integration */}
@@ -102,6 +114,11 @@ export function Features() {
                 </li>
               ))}
             </ul>
+            <Link to="/features/integrations">
+              <Button variant="link" className="p-0 text-primary h-auto font-semibold group-hover:gap-2 transition-all">
+                Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
           </div>
 
           {/* AI Writer */}
@@ -118,6 +135,11 @@ export function Features() {
                 </li>
               ))}
             </ul>
+            <Link to="/features/invoicing">
+              <Button variant="link" className="p-0 text-primary h-auto font-semibold group-hover:gap-2 transition-all">
+                Explore Feature <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </Link>
           </div>
         </div>
 
