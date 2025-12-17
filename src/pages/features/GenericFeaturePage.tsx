@@ -192,10 +192,10 @@ function StandardHeader({ data }: { data: any }) {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link to="/signup">
-                        <Button size="lg" className="text-lg px-8 h-14 shadow-lg shadow-primary/20 bg-primary hover:bg-primary/90">Start for free</Button>
+                        <Button size="lg" className="text-lg px-8 h-14 shadow-lg shadow-black/20 bg-black text-white hover:bg-black/90">Start Free Trial</Button>
                     </Link>
                     <Link to="/company/com-contact">
-                        <Button size="lg" variant="outline" className="text-lg px-8 h-14">Talk to Sales</Button>
+                        <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-black text-black hover:bg-black/10">Talk to Sales</Button>
                     </Link>
                 </div>
             </div>
@@ -224,10 +224,10 @@ function SolutionHeader({ data }: { data: any }) {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 pt-4">
                         <Link to="/signup">
-                            <Button size="lg" className="text-lg px-8 h-14 shadow-xl bg-primary text-primary-foreground hover:bg-primary/90">Get Started</Button>
+                            <Button size="lg" className="text-lg px-8 h-14 shadow-xl bg-black text-white hover:bg-black/90">Get Started</Button>
                         </Link>
                         <Link to="/resources/res-tour">
-                            <Button size="lg" variant="ghost" className="text-lg px-8 h-14 gap-3 bg-background/50 border border-border/50">
+                            <Button size="lg" variant="outline" className="text-lg px-8 h-14 gap-3 border-black text-black hover:bg-black/10">
                                 <PlayCircle className="w-5 h-5" /> Watch Demo
                             </Button>
                         </Link>
