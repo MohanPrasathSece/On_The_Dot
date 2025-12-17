@@ -18,7 +18,7 @@ export function Hero() {
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
               Professional Invoicing
               <br />
-              <span className="text-primary">Made Simple.</span>
+              <span className="text-yellow-500">Made Simple.</span>
             </h1>
 
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-lg">

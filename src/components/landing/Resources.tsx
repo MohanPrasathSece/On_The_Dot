@@ -1,15 +1,8 @@
 import { Book, FileText, MessageSquare, Users, Code2, Globe, Sparkles, PlayCircle, Calendar, GraduationCap, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { toast } from "@/components/ui/use-toast";
 
 export function Resources() {
-    const handleResourceClick = (resource: string) => {
-        toast({
-            title: "Resource Access",
-            description: `This would navigate to the ${resource} page. In production, this would be a fully functional page.`,
-        });
-    };
 
     return (
         <section id="resources" className="py-24 bg-background">
@@ -23,7 +16,7 @@ export function Resources() {
                             Everything you need to master Flowryte and grow your business.
                         </p>
                     </div>
-                    <Button variant="outline" className="shrink-0 border-black text-black hover:bg-black/10" onClick={() => handleResourceClick('All Resources')}>
+                    <Button variant="outline" className="shrink-0 border-black text-black hover:bg-black/10" onClick={() => window.location.href = '/resources/res-library'}>
                         View All Resources
                     </Button>
                 </div>

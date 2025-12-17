@@ -23,7 +23,7 @@ export function Company() {
                         </div>
                         <h3 className="text-lg font-bold mb-2">About Us</h3>
                         <p className="text-sm text-muted-foreground mb-4">Learn about our mission to help freelancers and small businesses manage cash flow with ease.</p>
-                        <Link to="#" className="text-sm font-semibold text-primary hover:underline">Read Story →</Link>
+                        <Link to="/company/com-about" className="text-sm font-semibold text-primary hover:underline">Read Story →</Link>
                     </div>
 
                     {/* News */}
@@ -33,7 +33,7 @@ export function Company() {
                         </div>
                         <h3 className="text-lg font-bold mb-2">Newsroom</h3>
                         <p className="text-sm text-muted-foreground mb-4">Announcements, press releases, and industry insights.</p>
-                        <Link to="#" className="text-sm font-semibold text-primary hover:underline">Latest News →</Link>
+                        <Link to="/company/com-news" className="text-sm font-semibold text-primary hover:underline">Latest News →</Link>
                     </div>
 
                     {/* Careers */}
@@ -43,7 +43,7 @@ export function Company() {
                         </div>
                         <h3 className="text-lg font-bold mb-2">Careers</h3>
                         <p className="text-sm text-muted-foreground mb-4">Join our team and help us build the future of invoicing.</p>
-                        <Link to="#" className="text-sm font-semibold text-primary hover:underline">View Openings →</Link>
+                        <Link to="/company/com-careers" className="text-sm font-semibold text-primary hover:underline">View Openings →</Link>
                     </div>
 
                     {/* Swag Store */}
@@ -53,7 +53,12 @@ export function Company() {
                         </div>
                         <h3 className="text-lg font-bold mb-2">Swag Store</h3>
                         <p className="text-sm text-muted-foreground mb-4">Merchandise for loyal users and brand ambassadors.</p>
-                        <Link to="#" className="text-sm font-semibold text-primary hover:underline">Shop Now →</Link>
+                        <button 
+    className="text-sm font-semibold text-primary hover:underline" 
+    onClick={() => window.open('https://flowryte.com/store', '_blank')}
+>
+    Shop Now →
+</button>
                     </div>
 
                     {/* Brand Center */}
@@ -63,7 +68,12 @@ export function Company() {
                         </div>
                         <h3 className="text-lg font-bold mb-2">Brand Center</h3>
                         <p className="text-sm text-muted-foreground mb-4">Access to logos, branding guidelines, and media kit.</p>
-                        <Link to="#" className="text-sm font-semibold text-primary hover:underline">Download Assets →</Link>
+                        <button 
+    className="text-sm font-semibold text-primary hover:underline" 
+    onClick={() => window.open('https://flowryte.com/brand', '_blank')}
+>
+    Download Assets →
+</button>
                     </div>
 
                     {/* Engineering Blog */}
@@ -73,7 +83,7 @@ export function Company() {
                         </div>
                         <h3 className="text-lg font-bold mb-2">Engineering Blog</h3>
                         <p className="text-sm text-muted-foreground mb-4">Insights from the product and engineering team.</p>
-                        <Link to="#" className="text-sm font-semibold text-primary hover:underline">Read Tech Blog →</Link>
+                        <Link to="/resources/res-blog" className="text-sm font-semibold text-primary hover:underline">Read Tech Blog →</Link>
                     </div>
 
                     {/* Design Blog */}
@@ -83,7 +93,7 @@ export function Company() {
                         </div>
                         <h3 className="text-lg font-bold mb-2">Design Blog</h3>
                         <p className="text-sm text-muted-foreground mb-4">Thoughts on UX/UI design, best practices, and product design updates.</p>
-                        <Link to="#" className="text-sm font-semibold text-primary hover:underline">Read Design Blog →</Link>
+                        <Link to="/resources/res-blog" className="text-sm font-semibold text-primary hover:underline">Read Design Blog →</Link>
                     </div>
 
                     {/* Contact Us */}
@@ -93,7 +103,7 @@ export function Company() {
                         </div>
                         <h3 className="text-lg font-bold mb-2">Contact Us</h3>
                         <p className="text-sm text-muted-foreground mb-4">Support, inquiries, and feedback forms.</p>
-                        <Link to="#" className="text-sm font-semibold text-primary hover:underline">Get in Touch →</Link>
+                        <Link to="/company/com-contact" className="text-sm font-semibold text-primary hover:underline">Get in Touch →</Link>
                     </div>
                 </div>
             </div>

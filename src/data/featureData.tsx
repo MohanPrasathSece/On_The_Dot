@@ -309,9 +309,86 @@ export const featureData: Record<string, FeatureData> = {
         ]
     },
 
-    // ==========================================
-    // 2. SOLUTIONS SECTION
-    // ==========================================
+    "recurring-invoices": {
+        title: "Recurring Invoices",
+        subtitle: "Automated Billing",
+        description: "Set up recurring invoices for retainers and subscriptions.",
+        icon: Repeat,
+        benefits: ["Auto-recurring", "Flexible Schedules", "Subscription Management"],
+        template: "standard",
+        sections: [
+            {
+                title: "Set It and Forget It",
+                content: "Configure recurring invoices once and let Flowryte handle the rest. Perfect for monthly retainers, subscription services, and ongoing projects.",
+                layout: "center"
+            },
+            {
+                title: "Flexible Scheduling",
+                content: "Choose from daily, weekly, monthly, or custom intervals. Adjust timing to match your business cycles and client preferences.",
+                layout: "left"
+            },
+            {
+                title: "Subscription Management",
+                content: "Track all recurring revenue in one place. Monitor active subscriptions, cancellations, and revenue projections.",
+                layout: "right"
+            },
+            {
+                title: "Smart Invoicing",
+                content: "Automatically adjust invoice amounts based on usage, hours worked, or custom metrics. Dynamic billing for dynamic businesses.",
+                layout: "left"
+            },
+            {
+                title: "Payment Automation",
+                content: "Integrate with payment processors for automatic collection. Reduce manual work and improve cash flow predictability.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "Unlimited", label: "Recurring Plans" },
+            { value: "Custom", label: "Schedules" },
+            { value: "Auto", label: "Billing" }
+        ]
+    },
+    "ai-writer": {
+        title: "AI Writing Assistant",
+        subtitle: "Smart Content",
+        description: "Generate professional invoice descriptions with AI.",
+        icon: Sparkles,
+        benefits: ["AI-Powered", "Professional Tone", "Custom Templates"],
+        template: "standard",
+        sections: [
+            {
+                title: "Intelligent Writing",
+                content: "Our AI understands your business context and generates professional, personalized invoice descriptions that impress clients.",
+                layout: "center"
+            },
+            {
+                title: "Professional Tone",
+                content: "Maintain consistent, professional communication across all invoices. AI ensures the right tone for every client relationship.",
+                layout: "left"
+            },
+            {
+                title: "Custom Templates",
+                content: "Create AI templates for different types of work. Project descriptions, service explanations, and value propositions tailored to your offerings.",
+                layout: "right"
+            },
+            {
+                title: "Multi-Language Support",
+                content: "Generate descriptions in multiple languages. Perfect for international clients and global business expansion.",
+                layout: "left"
+            },
+            {
+                title: "Learning & Improvement",
+                content: "AI learns from your feedback and improves over time. Better descriptions with each use, tailored to your unique business voice.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "10+", label: "Languages" },
+            { value: "Smart", label: "Learning" },
+            { value: "Professional", label: "Quality" }
+        ]
+    },
     // By Department
     "sol-freelancers": {
         title: "Freelancers",
@@ -391,42 +468,968 @@ export const featureData: Record<string, FeatureData> = {
             { value: "99.9%", label: "Uptime" }
         ]
     },
-    "sol-pm": { title: "Project Managers", subtitle: "Track Deliverables", description: "Link payments to project milestones.", icon: List, benefits: ["Milestones", "Budgets"], template: "solution" },
-    "sol-finance": { title: "Financial Teams", subtitle: "Control & Report", description: "Reconciliation and reporting made easy.", icon: FileBarChart, benefits: ["Compliance", "Speed"], template: "solution" },
-    "sol-client-mgr": { title: "Client Managers", subtitle: "Relationship View", description: "Instant access to account status.", icon: Contact, benefits: ["CRM Sync", "History"], template: "solution" },
-    "sol-owners": { title: "Business Owners", subtitle: "Executive View", description: "Master cash flow and runway.", icon: Briefcase, benefits: ["Overview", "Peace of Mind"], template: "solution" },
+    "sol-pm": { 
+        title: "Project Managers", 
+        subtitle: "Track Deliverables", 
+        description: "Link payments to project milestones.", 
+        icon: List, 
+        benefits: ["Milestones", "Budgets"], 
+        template: "solution",
+        sections: [
+            {
+                title: "Milestone-Based Invoicing",
+                content: "Automatically generate invoices when project milestones are completed. Perfect for waterfall and agile project management.",
+                layout: "center"
+            },
+            {
+                title: "Budget Tracking",
+                content: "Track project budgets in real-time. See how much has been billed versus the total project value.",
+                layout: "left"
+            },
+            {
+                title: "Progress Integration",
+                content: "Connect with project management tools to sync progress and automate billing based on completion percentages.",
+                layout: "right"
+            },
+            {
+                title: "Client Visibility",
+                content: "Give clients transparent access to project progress and billing milestones without revealing sensitive financial data.",
+                layout: "left"
+            },
+            {
+                title: "Resource Allocation",
+                content: "Track team hours and resources against project budgets to ensure profitability and accurate forecasting.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "100%", label: "Milestone Tracking" },
+            { value: "Real-time", label: "Budget Updates" },
+            { value: "Integrated", label: "PM Tools" }
+        ]
+    },
+    "sol-finance": { 
+        title: "Financial Teams", 
+        subtitle: "Control & Report", 
+        description: "Reconciliation and reporting made easy.", 
+        icon: FileBarChart, 
+        benefits: ["Compliance", "Speed"], 
+        template: "solution",
+        sections: [
+            {
+                title: "Automated Reconciliation",
+                content: "Match payments to invoices automatically. Reduce manual reconciliation time by 90% with smart matching algorithms.",
+                layout: "center"
+            },
+            {
+                title: "Financial Reporting",
+                content: "Generate comprehensive financial reports with one click. P&L, cash flow, and aging reports ready for board meetings.",
+                layout: "left"
+            },
+            {
+                title: "Compliance Management",
+                content: "Stay compliant with tax regulations and accounting standards. Automatic tax calculations and audit trails.",
+                layout: "right"
+            },
+            {
+                title: "Multi-Entity Support",
+                content: "Manage multiple business entities and departments. Consolidated reporting and inter-entity transactions handled seamlessly.",
+                layout: "left"
+            },
+            {
+                title: "Data Export",
+                content: "Export financial data to your accounting software. QuickBooks, Xero, and CSV formats supported.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "90%", label: "Time Saved" },
+            { value: "100%", label: "Audit Ready" },
+            { value: "Real-time", label: "Reporting" }
+        ]
+    },
+    "sol-client-mgr": { 
+        title: "Client Managers", 
+        subtitle: "Relationship View", 
+        description: "Instant access to account status.", 
+        icon: Contact, 
+        benefits: ["CRM Sync", "History"], 
+        template: "solution",
+        sections: [
+            {
+                title: "360° Client View",
+                content: "See everything about a client in one dashboard. Invoices, payments, communication history, and project status.",
+                layout: "center"
+            },
+            {
+                title: "CRM Integration",
+                content: "Sync with your CRM system automatically. Client data flows seamlessly between sales and finance.",
+                layout: "left"
+            },
+            {
+                title: "Communication Tracking",
+                content: "All client communications automatically logged. Email, calls, and meetings linked to specific invoices and projects.",
+                layout: "right"
+            },
+            {
+                title: "Account Health Scoring",
+                content: "AI-powered scoring shows which clients need attention. Identify at-risk accounts and growth opportunities.",
+                layout: "left"
+            },
+            {
+                title: "Relationship Analytics",
+                content: "Track client lifetime value, payment patterns, and satisfaction metrics to improve retention.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "360°", label: "Client View" },
+            { value: "100%", label: "CRM Sync" },
+            { value: "AI", label: "Insights" }
+        ]
+    },
+    "sol-owners": { 
+        title: "Business Owners", 
+        subtitle: "Executive View", 
+        description: "Master cash flow and runway.", 
+        icon: Briefcase, 
+        benefits: ["Overview", "Peace of Mind"], 
+        template: "solution",
+        sections: [
+            {
+                title: "Executive Dashboard",
+                content: "High-level view of your entire business. Revenue, expenses, cash flow, and profitability in one glance.",
+                layout: "center"
+            },
+            {
+                title: "Cash Flow Forecasting",
+                content: "Predict cash flow 90 days into the future. Make informed decisions about hiring, investments, and expenses.",
+                layout: "left"
+            },
+            {
+                title: "Runway Analysis",
+                content: "Know exactly how long your cash will last. Scenario planning for different growth rates and expense levels.",
+                layout: "right"
+            },
+            {
+                title: "Profitability Insights",
+                content: "Understand which clients, projects, and services drive your profits. Make data-driven strategic decisions.",
+                layout: "left"
+            },
+            {
+                title: "Business Health Score",
+                content: "AI-powered health score based on revenue trends, customer retention, and financial metrics.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "90 days", label: "Cash Forecast" },
+            { value: "Real-time", label: "Insights" },
+            { value: "Strategic", label: "Decisions" }
+        ]
+    },
 
     // By Industry
-    "ind-freelancers": { title: "Content Creators", subtitle: "Consultants & Creators", description: "Simple billing for creative work.", icon: Video, benefits: ["Fast", "Mobile"], template: "solution" },
-    "ind-agencies": { title: "Design & Marketing", subtitle: "Creative Agencies", description: "Beautiful invoices for beautiful work.", icon: PenTool, benefits: ["Branding", "Style"], template: "solution" },
-    "ind-ecommerce": { title: "E-Commerce", subtitle: "Online Retail", description: "Integrate sales data with accounting.", icon: ShoppingBag, benefits: ["Volume", "Auto"], template: "solution" },
-    "ind-education": { title: "Education", subtitle: "Training & Courses", description: "Bill for time and materials effortlessly.", icon: GraduationCap, benefits: ["Recurring", "Students"], template: "solution" },
-    "ind-healthcare": { title: "Healthcare", subtitle: "Life Sciences", description: "Secure, compliant billing solutions.", icon: Stethoscope, benefits: ["HIPAA", "Secure"], template: "solution" },
-    "ind-legal": { title: "Legal & Accounting", subtitle: "Professional Firms", description: "Trust accounting and retainer management.", icon: Scale, benefits: ["Trust", "Retainers"], template: "solution" },
+    "ind-freelancers": { 
+        title: "Content Creators", 
+        subtitle: "Consultants & Creators", 
+        description: "Simple billing for creative work.", 
+        icon: Video, 
+        benefits: ["Fast", "Mobile"], 
+        template: "solution",
+        sections: [
+            {
+                title: "Creator-Focused Invoicing",
+                content: "Designed for YouTubers, podcasters, writers, and consultants. Bill for content creation, sponsorships, and consulting.",
+                layout: "center"
+            },
+            {
+                title: "Mobile-First Design",
+                content: "Create and send invoices from your phone. Perfect for creators who work on the go and need flexibility.",
+                layout: "left"
+            },
+            {
+                title: "Revenue Tracking",
+                content: "Track income from multiple platforms. YouTube, Patreon, sponsorships, and freelance work all in one place.",
+                layout: "right"
+            },
+            {
+                title: "Brand Partnerships",
+                content: "Professional invoices for brand deals and sponsorships. Include deliverables, timelines, and usage rights.",
+                layout: "left"
+            },
+            {
+                title: "Tax Preparation",
+                content: "Automated expense tracking and categorization. Ready-to-export data for tax season and quarterly payments.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "Mobile", label: "Optimized" },
+            { value: "Multi-platform", label: "Tracking" },
+            { value: "Creator", label: "Focused" }
+        ]
+    },
+    "ind-agencies": { 
+        title: "Design & Marketing", 
+        subtitle: "Creative Agencies", 
+        description: "Beautiful invoices for beautiful work.", 
+        icon: PenTool, 
+        benefits: ["Branding", "Style"], 
+        template: "solution",
+        sections: [
+            {
+                title: "Agency-Grade Branding",
+                content: "Fully customizable invoices that match your agency's visual identity. Impress clients with professional billing.",
+                layout: "center"
+            },
+            {
+                title: "Project-Based Billing",
+                content: "Handle complex agency projects with milestone billing, retainers, and performance-based pricing.",
+                layout: "left"
+            },
+            {
+                title: "Client Portals",
+                content: "Give clients access to their own portal. View project progress, invoices, and payment history.",
+                layout: "right"
+            },
+            {
+                title: "Team Collaboration",
+                content: "Multiple team members can collaborate on invoices. Role-based access and approval workflows.",
+                layout: "left"
+            },
+            {
+                title: "Revenue Recognition",
+                content: "Advanced revenue recognition for agency accounting. Match revenue with project completion dates.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "Custom", label: "Branding" },
+            { value: "Project", label: "Based" },
+            { value: "Client", label: "Portals" }
+        ]
+    },
+    "ind-ecommerce": { 
+        title: "E-Commerce", 
+        subtitle: "Online Retail", 
+        description: "Integrate sales data with accounting.", 
+        icon: ShoppingBag, 
+        benefits: ["Volume", "Auto"], 
+        template: "solution",
+        sections: [
+            {
+                title: "Platform Integration",
+                content: "Connect with Shopify, WooCommerce, and other e-commerce platforms. Automatic sales data sync.",
+                layout: "center"
+            },
+            {
+                title: "Multi-Channel Sales",
+                content: "Track sales across multiple channels. Online, marketplace, and retail sales unified in one system.",
+                layout: "left"
+            },
+            {
+                title: "Inventory Billing",
+                content: "Automated invoicing for inventory purchases and supplier payments. Track cost of goods sold.",
+                layout: "right"
+            },
+            {
+                title: "Sales Tax Management",
+                content: "Automatic sales tax calculation and reporting. Multi-state and international tax compliance.",
+                layout: "left"
+            },
+            {
+                title: "Dropshipping Support",
+                content: "Specialized invoicing for dropshipping businesses. Track supplier costs and customer payments separately.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "Multi", label: "Platform" },
+            { value: "Auto", label: "Sync" },
+            { value: "Tax", label: "Compliant" }
+        ]
+    },
+    "ind-education": { 
+        title: "Education", 
+        subtitle: "Training & Courses", 
+        description: "Bill for time and materials effortlessly.", 
+        icon: GraduationCap, 
+        benefits: ["Recurring", "Students"], 
+        template: "solution",
+        sections: [
+            {
+                title: "Course Billing",
+                content: "Automated billing for online courses, workshops, and training programs. Handle one-time and recurring payments.",
+                layout: "center"
+            },
+            {
+                title: "Student Management",
+                content: "Track student enrollment, progress, and payment status. Automatic payment reminders for overdue tuition.",
+                layout: "left"
+            },
+            {
+                title: "Subscription Models",
+                content: "Flexible subscription billing for membership sites and ongoing education programs.",
+                layout: "right"
+            },
+            {
+                title: "Instructor Payments",
+                content: "Split payments automatically between platform and instructors. Handle commission-based revenue sharing.",
+                layout: "left"
+            },
+            {
+                title: "Compliance Reporting",
+                content: "Generate reports for educational accreditation and tax compliance. Student payment histories and revenue tracking.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "Auto", label: "Enrollment" },
+            { value: "Flexible", label: "Billing" },
+            { value: "Compliant", label: "Reporting" }
+        ]
+    },
+    "ind-healthcare": { 
+        title: "Healthcare", 
+        subtitle: "Life Sciences", 
+        description: "Secure, compliant billing solutions.", 
+        icon: Stethoscope, 
+        benefits: ["HIPAA", "Secure"], 
+        template: "solution",
+        sections: [
+            {
+                title: "HIPAA Compliant Billing",
+                content: "Fully HIPAA-compliant invoicing system for healthcare providers. Patient data protection and privacy.",
+                layout: "center"
+            },
+            {
+                title: "Insurance Claims",
+                content: "Streamlined insurance claim processing. Automatic coding and submission for medical services.",
+                layout: "left"
+            },
+            {
+                title: "Patient Billing",
+                content: "Clear, professional patient billing. Co-pays, deductibles, and out-of-pocket expenses tracked accurately.",
+                layout: "right"
+            },
+            {
+                title: "Medical Records Integration",
+                content: "Secure integration with EMR systems. Patient data flows securely between clinical and billing systems.",
+                layout: "left"
+            },
+            {
+                title: "Compliance Reporting",
+                content: "Automated compliance reporting for healthcare regulations. Audit trails and documentation ready.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "HIPAA", label: "Compliant" },
+            { value: "Secure", label: "Data" },
+            { value: "Audit", label: "Ready" }
+        ]
+    },
+    "ind-legal": { 
+        title: "Legal & Accounting", 
+        subtitle: "Professional Firms", 
+        description: "Trust accounting and retainer management.", 
+        icon: Scale, 
+        benefits: ["Trust", "Retainers"], 
+        template: "solution",
+        sections: [
+            {
+                title: "Trust Accounting",
+                content: "Compliant trust accounting for law firms. Client fund management with complete audit trails.",
+                layout: "center"
+            },
+            {
+                title: "Retainer Management",
+                content: "Automated retainer invoicing and tracking. Bill against retainers with detailed time entries.",
+                layout: "left"
+            },
+            {
+                title: "Billable Hours",
+                content: "Precise time tracking and billing. Six-minute increments with detailed task descriptions.",
+                layout: "right"
+            },
+            {
+                title: "Client Matter Billing",
+                content: "Organize billing by client matters and cases. Clear separation of different legal matters.",
+                layout: "left"
+            },
+            {
+                title: "Compliance Reporting",
+                content: "Bar association compliance reporting. IOLTA account management and regulatory compliance.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "IOLTA", label: "Compliant" },
+            { value: "6-min", label: "Increments" },
+            { value: "Audit", label: "Ready" }
+        ]
+    },
 
     // ==========================================
     // 3. PRICING SECTION (Usually handled by Pricing component, but adding data if needed for pages)
     // ==========================================
     // ... logic often in /pricing page directly, but let's add content if they click "Pro Plan" etc
-    "plan-free": { title: "Free Trial", subtitle: "30 Days Free", description: "Experience the full power of Pro.", icon: CheckCircle, benefits: ["Invoicing", "Reports", "10 Team Members"], template: "standard" },
-    "plan-pro": { title: "Pro Plan", subtitle: "$10/month", description: "Perfect for growing freelancers.", icon: Zap, benefits: ["10 Team Members", "1 Integration", "Analytics"], template: "standard" },
-    "plan-premium": { title: "Premium Plan", subtitle: "$20/month", description: "For power users and agencies.", icon: Award, benefits: ["Unlimited Team", "Priority Support", "Multi-Integrations"], template: "standard" },
-    "plan-lifetime": { title: "Lifetime Plan", subtitle: "$200 One-time", description: "Pay once, own it forever.", icon: Lock, benefits: ["All Features", "Early Access", "Exclusive Support"], template: "standard" },
+    "plan-free": { 
+        title: "Free Trial", 
+        subtitle: "30 Days Free", 
+        description: "Experience the full power of Pro.", 
+        icon: CheckCircle, 
+        benefits: ["Invoicing", "Reports", "10 Team Members"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Start Risk-Free",
+                content: "Try every feature of Flowryte Pro for 30 days. No credit card required, no hidden fees.",
+                layout: "center"
+            },
+            {
+                title: "Full Feature Access",
+                content: "During your trial, you'll have access to unlimited invoices, automated reminders, team collaboration, and advanced analytics.",
+                layout: "left"
+            },
+            {
+                title: "Easy Setup",
+                content: "Get started in minutes. Import existing clients, customize your branding, and send your first invoice today.",
+                layout: "right"
+            },
+            {
+                title: "Seamless Transition",
+                content: "When your trial ends, choose the plan that fits your needs. All your data and settings are preserved.",
+                layout: "left"
+            },
+            {
+                title: "Support Included",
+                content: "Get help during your trial with priority email support and access to our comprehensive knowledge base.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "30 days", label: "Free Trial" },
+            { value: "No card", label: "Required" },
+            { value: "Full access", label: "To Features" }
+        ]
+    },
+    "plan-pro": { 
+        title: "Pro Plan", 
+        subtitle: "$10/month", 
+        description: "Perfect for growing freelancers.", 
+        icon: Zap, 
+        benefits: ["10 Team Members", "1 Integration", "Analytics"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Professional Growth",
+                content: "Scale your business with tools designed for growing freelancers and small teams.",
+                layout: "center"
+            },
+            {
+                title: "Advanced Invoicing",
+                content: "Create unlimited custom invoices with recurring billing, partial payments, and multi-currency support.",
+                layout: "left"
+            },
+            {
+                title: "Smart Automation",
+                content: "Automated reminders, late fees, and thank you messages. Set it up once and let it run.",
+                layout: "right"
+            },
+            {
+                title: "Team Collaboration",
+                content: "Add up to 10 team members with role-based access. Collaborate on invoices and track performance.",
+                layout: "left"
+            },
+            {
+                title: "Payment Integration",
+                content: "Connect one payment processor (Stripe or PayPal) for seamless online payments and automatic tracking.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "$10", label: "Per Month" },
+            { value: "10", label: "Team Members" },
+            { value: "Unlimited", label: "Invoices" }
+        ]
+    },
+    "plan-premium": { 
+        title: "Premium Plan", 
+        subtitle: "$20/month", 
+        description: "For power users and agencies.", 
+        icon: Award, 
+        benefits: ["Unlimited Team", "Priority Support", "Multi-Integrations"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Enterprise Power",
+                content: "Everything you need to run a successful agency or growing business at scale.",
+                layout: "center"
+            },
+            {
+                title: "Unlimited Everything",
+                content: "Unlimited team members, invoices, clients, and storage. Grow without limits or additional costs.",
+                layout: "left"
+            },
+            {
+                title: "Priority Support",
+                content: "Get priority email and chat support with guaranteed response times. Access to dedicated account manager.",
+                layout: "right"
+            },
+            {
+                title: "Advanced Integrations",
+                content: "Connect multiple payment processors, accounting software, and custom API integrations for complete workflow automation.",
+                layout: "left"
+            },
+            {
+                title: "Custom Branding",
+                content: "Advanced customization options including custom domains, white-labeling options, and personalized invoice templates.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "$20", label: "Per Month" },
+            { value: "Unlimited", label: "Team Members" },
+            { value: "Priority", label: "Support" }
+        ]
+    },
+    "plan-lifetime": { 
+        title: "Lifetime Plan", 
+        subtitle: "$200 One-time", 
+        description: "Pay once, own it forever.", 
+        icon: Lock, 
+        benefits: ["All Features", "Early Access", "Exclusive Support"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Own Forever",
+                content: "Pay once and use Flowryte forever. No monthly fees, no subscriptions, just lifetime access to all features.",
+                layout: "center"
+            },
+            {
+                title: "All Future Updates",
+                content: "Get every new feature, update, and improvement we release. Your lifetime plan includes all future enhancements.",
+                layout: "left"
+            },
+            {
+                title: "Early Access",
+                content: "Be the first to try new features. Get beta access to upcoming releases and help shape the product's future.",
+                layout: "right"
+            },
+            {
+                title: "Exclusive Support",
+                content: "Dedicated lifetime support with priority queue. Direct access to our founding team for personalized assistance.",
+                layout: "left"
+            },
+            {
+                title: "Best Value",
+                content: "Less than 2 years of Premium pricing for lifetime access. The smartest investment for long-term business growth.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "$200", label: "One Time" },
+            { value: "Lifetime", label: "Access" },
+            { value: "$2400+", label: "Value Saved" }
+        ]
+    },
 
 
     // ==========================================
     // 4. RESOURCES SECTION
     // ==========================================
-    "res-library": { title: "Resource Library", subtitle: "Knowledge Base", description: "Detailed guides and FAQs.", icon: BookOpen, benefits: ["Guides", "Tutorials"], template: "resource" },
-    "res-whats-new": { title: "What's New", subtitle: "Changelog", description: "Latest product updates.", icon: Rss, benefits: ["Features", "Fixes"], template: "standard" },
-    "res-tour": { title: "Product Tour", subtitle: "Walkthrough", description: "Interactive app demo.", icon: PlayCircle, benefits: ["Interactive", "Fast"], template: "standard" },
-    "res-events": { title: "Events", subtitle: "Webinars", description: "Workshops and demos.", icon: Calendar, benefits: ["Live", "Q&A"], template: "resource" },
-    "res-devs": { title: "Developer Resources", subtitle: "Build", description: "API docs and SDKs.", icon: Code2, benefits: ["API", "Webhooks"], template: "standard" },
-    "res-stories": { title: "Customer Stories", subtitle: "Success", description: "Case studies and testimonials.", icon: Heart, benefits: ["Growth", "Results"], template: "resource" },
-    "res-community": { title: "Community", subtitle: "Connect", description: "Slack/Discord groups.", icon: MessageCircle, benefits: ["Network", "Help"], template: "resource" },
-    "res-certified": { title: "Flowryte Certified", subtitle: "Certification", description: "Become a power user.", icon: Award, benefits: ["Badge", "Skills"], template: "standard" },
-    "res-blog": { title: "Blog", subtitle: "Insights", description: "Financial management tips.", icon: Newspaper, benefits: ["Tips", "Trends"], template: "resource" },
-    "res-marketplace": { title: "Marketplace", subtitle: "Add-ons", description: "Third-party integrations.", icon: Box, benefits: ["Apps", "Plugins"], template: "resource" },
+    "res-library": { 
+        title: "Resource Library", 
+        subtitle: "Knowledge Base", 
+        description: "Detailed guides and FAQs.", 
+        icon: BookOpen, 
+        benefits: ["Guides", "Tutorials"], 
+        template: "resource",
+        sections: [
+            {
+                title: "Comprehensive Guides",
+                content: "Step-by-step tutorials covering every feature of Flowryte. From basic setup to advanced automation.",
+                layout: "center"
+            },
+            {
+                title: "Video Tutorials",
+                content: "Watch and learn with our comprehensive video library. See exactly how to use each feature with real examples.",
+                layout: "left"
+            },
+            {
+                title: "FAQ Center",
+                content: "Quick answers to common questions. Search our database of frequently asked questions and instant solutions.",
+                layout: "right"
+            },
+            {
+                title: "Best Practices",
+                content: "Learn proven strategies for invoicing, cash flow management, and client communication from industry experts.",
+                layout: "left"
+            },
+            {
+                title: "Troubleshooting",
+                content: "Solve common issues quickly with our troubleshooting guides and diagnostic tools.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "100+", label: "Guides" },
+            { value: "50+", label: "Videos" },
+            { value: "24/7", label: "Available" }
+        ]
+    },
+    "res-whats-new": { 
+        title: "What's New", 
+        subtitle: "Changelog", 
+        description: "Latest product updates.", 
+        icon: Rss, 
+        benefits: ["Features", "Fixes"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Latest Updates",
+                content: "Stay informed about the newest features, improvements, and bug fixes in Flowryte.",
+                layout: "center"
+            },
+            {
+                title: "Feature Releases",
+                content: "Discover new capabilities and enhancements that make invoicing easier and more powerful.",
+                layout: "left"
+            },
+            {
+                title: "Bug Fixes & Improvements",
+                content: "Learn about recent bug fixes, performance improvements, and stability enhancements.",
+                layout: "right"
+            },
+            {
+                title: "Upcoming Features",
+                content: "Get a sneak peek at what we're working on and features coming in future releases.",
+                layout: "left"
+            },
+            {
+                title: "Release Notes",
+                content: "Detailed technical notes for each release, including API changes and migration guides.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "Weekly", label: "Updates" },
+            { value: "50+", label: "Features" },
+            { value: "100+", label: "Fixes" }
+        ]
+    },
+    "res-tour": { 
+        title: "Product Tour", 
+        subtitle: "Walkthrough", 
+        description: "Interactive app demo.", 
+        icon: PlayCircle, 
+        benefits: ["Interactive", "Fast"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Interactive Demo",
+                content: "Experience Flowryte hands-on with our interactive product tour. No signup required.",
+                layout: "center"
+            },
+            {
+                title: "Dashboard Overview",
+                content: "Explore the main dashboard and see how all your financial information is organized in one place.",
+                layout: "left"
+            },
+            {
+                title: "Invoice Creation",
+                content: "Watch how easy it is to create professional invoices in just two clicks with our smart templates.",
+                layout: "right"
+            },
+            {
+                title: "Automation Features",
+                content: "See automated reminders, payment tracking, and cash flow insights in action.",
+                layout: "left"
+            },
+            {
+                title: "Team Collaboration",
+                content: "Learn how teams work together with role-based access and real-time collaboration tools.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "5 min", label: "Tour Length" },
+            { value: "Interactive", label: "Experience" },
+            { value: "No signup", label: "Required" }
+        ]
+    },
+    "res-events": { 
+        title: "Events", 
+        subtitle: "Webinars", 
+        description: "Workshops and demos.", 
+        icon: Calendar, 
+        benefits: ["Live", "Q&A"], 
+        template: "resource",
+        sections: [
+            {
+                title: "Live Webinars",
+                content: "Join our regular webinars to learn new features, best practices, and industry insights.",
+                layout: "center"
+            },
+            {
+                title: "Product Demos",
+                content: "Live demonstrations of new features and workflows. Ask questions and get real-time answers.",
+                layout: "left"
+            },
+            {
+                title: "Workshop Sessions",
+                content: "Hands-on workshops to help you master specific features and workflows in Flowryte.",
+                layout: "right"
+            },
+            {
+                title: "Expert Panels",
+                content: "Industry experts discuss invoicing trends, cash flow management, and business growth strategies.",
+                layout: "left"
+            },
+            {
+                title: "Community Meetups",
+                content: "Connect with other Flowryte users, share experiences, and learn from the community.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "Weekly", label: "Webinars" },
+            { value: "Live", label: "Q&A" },
+            { value: "Free", label: "To Attend" }
+        ]
+    },
+    "res-devs": { 
+        title: "Developer Resources", 
+        subtitle: "Build", 
+        description: "API docs and SDKs.", 
+        icon: Code2, 
+        benefits: ["API", "Webhooks"], 
+        template: "standard",
+        sections: [
+            {
+                title: "API Documentation",
+                content: "Comprehensive API documentation with endpoints, authentication, and code examples.",
+                layout: "center"
+            },
+            {
+                title: "SDKs & Libraries",
+                content: "Official SDKs for popular programming languages. Integrations made simple with ready-to-use libraries.",
+                layout: "left"
+            },
+            {
+                title: "Webhooks Guide",
+                content: "Set up webhooks to receive real-time notifications about invoices, payments, and events.",
+                layout: "right"
+            },
+            {
+                title: "Code Examples",
+                content: "Ready-to-use code snippets and sample applications to accelerate your development.",
+                layout: "left"
+            },
+            {
+                title: "Developer Community",
+                content: "Join our developer community, ask questions, and share your integrations with other developers.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "RESTful", label: "API" },
+            { value: "5+", label: "SDKs" },
+            { value: "100%", label: "Documented" }
+        ]
+    },
+    "res-stories": { 
+        title: "Customer Stories", 
+        subtitle: "Success", 
+        description: "Case studies and testimonials from users.", 
+        icon: Heart, 
+        benefits: ["Growth", "Results"], 
+        template: "resource",
+        sections: [
+            {
+                title: "Success Stories",
+                content: "Real stories from real customers who transformed their business with Flowryte.",
+                layout: "center"
+            },
+            {
+                title: "Sarah's Design Studio",
+                content: "Sarah reduced her invoice creation time by 80% and gets paid 3x faster. 'I used to spend hours every month on invoicing. Now it's literally 2 clicks.'",
+                layout: "left"
+            },
+            {
+                title: "Mike's Consulting Firm",
+                content: "Mike's team of 5 consultants now handles 100+ clients seamlessly. 'Flowryte scaled with us. The automated reminders alone saved us thousands in late payments.'",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "10,000+", label: "Happy Customers" },
+            { value: "95%", label: "Satisfaction Rate" },
+            { value: "3x", label: "Faster Payments" }
+        ]
+    },
+    "res-community": { 
+        title: "Community", 
+        subtitle: "Connect", 
+        description: "Slack/Discord groups.", 
+        icon: MessageCircle, 
+        benefits: ["Network", "Help"], 
+        template: "resource",
+        sections: [
+            {
+                title: "Join the Conversation",
+                content: "Connect with thousands of Flowryte users in our active Slack and Discord communities.",
+                layout: "center"
+            },
+            {
+                title: "Get Help Fast",
+                content: "Quick answers from experienced users. Our community is always ready to help with questions and tips.",
+                layout: "left"
+            },
+            {
+                title: "Share Your Ideas",
+                content: "Suggest features, share workflows, and help shape the future of Flowryte with other power users.",
+                layout: "right"
+            },
+            {
+                title: "Learn from Peers",
+                content: "Discover how other freelancers and agencies use Flowryte to solve real business challenges.",
+                layout: "left"
+            },
+            {
+                title: "Exclusive Events",
+                content: "Community-only webinars, AMAs with the product team, and virtual meetups.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "5000+", label: "Members" },
+            { value: "24/7", label: "Active" },
+            { value: "Free", label: "To Join" }
+        ]
+    },
+    "res-certified": { 
+        title: "Flowryte Certified", 
+        subtitle: "Certification", 
+        description: "Become a power user.", 
+        icon: Award, 
+        benefits: ["Badge", "Skills"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Master Flowryte",
+                content: "Become a certified Flowryte expert and demonstrate your proficiency in invoicing automation.",
+                layout: "center"
+            },
+            {
+                title: "Comprehensive Training",
+                content: "In-depth training covering all features, best practices, and advanced workflows.",
+                layout: "left"
+            },
+            {
+                title: "Hands-on Assessment",
+                content: "Practical exams and real-world scenarios to test your knowledge and skills.",
+                layout: "right"
+            },
+            {
+                title: "Certification Benefits",
+                content: "Exclusive access to beta features, priority support, and a listing in our certified professionals directory.",
+                layout: "left"
+            },
+            {
+                title: "Community Recognition",
+                content: "Join an elite group of Flowryte experts and get recognized for your expertise.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "Expert", label: "Level" },
+            { value: "Lifetime", label: "Valid" },
+            { value: "Premium", label: "Benefits" }
+        ]
+    },
+    "res-blog": { 
+        title: "Blog", 
+        subtitle: "Insights", 
+        description: "Financial management tips.", 
+        icon: Newspaper, 
+        benefits: ["Tips", "Trends"], 
+        template: "resource",
+        sections: [
+            {
+                title: "Expert Insights",
+                content: "Financial management tips, invoicing strategies, and business growth advice from industry experts.",
+                layout: "center"
+            },
+            {
+                title: "Case Studies",
+                content: "Deep dives into how successful businesses use Flowryte to streamline their financial operations.",
+                layout: "left"
+            },
+            {
+                title: "Industry Trends",
+                content: "Stay updated on the latest trends in freelancing, small business finance, and fintech innovations.",
+                layout: "right"
+            },
+            {
+                title: "Product Updates",
+                content: "Behind-the-scenes looks at new features, development insights, and product roadmap updates.",
+                layout: "left"
+            },
+            {
+                title: "Guest Contributors",
+                content: "Thought leadership from successful entrepreneurs, accountants, and business consultants.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "Weekly", label: "Posts" },
+            { value: "100+", label: "Articles" },
+            { value: "Expert", label: "Authors" }
+        ]
+    },
+    "res-marketplace": { 
+        title: "Marketplace", 
+        subtitle: "Add-ons", 
+        description: "Third-party integrations.", 
+        icon: Box, 
+        benefits: ["Apps", "Plugins"], 
+        template: "resource",
+        sections: [
+            {
+                title: "Extend Flowryte",
+                content: "Discover apps and integrations that extend Flowryte's capabilities and connect with your favorite tools.",
+                layout: "center"
+            },
+            {
+                title: "Accounting Integrations",
+                content: "Connect with QuickBooks, Xero, and other accounting software for seamless data synchronization.",
+                layout: "left"
+            },
+            {
+                title: "Payment Processors",
+                content: "Integrate with additional payment processors beyond our built-in Stripe and PayPal support.",
+                layout: "right"
+            },
+            {
+                title: "CRM & Project Management",
+                content: "Connect with tools like HubSpot, Asana, and Trello to keep your workflows connected.",
+                layout: "left"
+            },
+            {
+                title: "Custom Solutions",
+                content: "Build and sell your own Flowryte integrations or hire certified developers for custom solutions.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "50+", label: "Integrations" },
+            { value: "Growing", label: "Ecosystem" },
+            { value: "Verified", label: "Apps" }
+        ]
+    },
 
     // ==========================================
     // 5. PRODUCT SECTION
@@ -439,7 +1442,16 @@ export const featureData: Record<string, FeatureData> = {
         benefits: ["Simplicity", "Design", "Efficiency"],
         template: "standard",
         sections: [
-            { title: "Simplicity First", content: "We focus on removing friction. No clunky menus, just the tools you need.", layout: "center" }
+            { title: "Simplicity First", content: "We focus on removing friction. No clunky menus, just the tools you need.", layout: "center" },
+            { title: "Built for Freelancers", content: "Designed by freelancers who understand the pain points of running a small business.", layout: "left" },
+            { title: "Automation at Core", content: "Every feature is designed to save you time and reduce manual work.", layout: "right" },
+            { title: "Beautiful Design", content: "Software that's actually pleasant to use. Clean, intuitive, and professional.", layout: "left" },
+            { title: "Powerful Insights", content: "Understand your business better with smart analytics and cash flow forecasting.", layout: "right" }
+        ],
+        stats: [
+            { value: "2 clicks", label: "Invoice Creation" },
+            { value: "90%", label: "Time Saved" },
+            { value: "10,000+", label: "Happy Users" }
         ]
     },
     "prod-vs-manual": {
@@ -451,7 +1463,15 @@ export const featureData: Record<string, FeatureData> = {
         template: "standard",
         sections: [
             { title: "Time-saving automation", content: "Stop copying and pasting into Word docs. Generate invoices in seconds.", layout: "right" },
-            { title: "Automated Follow-ups", content: "Manual chasing is awkward. Let our AI do the polite nudging for you.", layout: "left" }
+            { title: "Automated Follow-ups", content: "Manual chasing is awkward. Let our AI do the polite nudging for you.", layout: "left" },
+            { title: "Professional Templates", content: "No more design struggles. Access beautiful, professional templates that impress clients.", layout: "right" },
+            { title: "Error Reduction", content: "Eliminate calculation errors and typos. Automated calculations ensure accuracy every time.", layout: "left" },
+            { title: "Cash Flow Insights", content: "Manual tracking misses patterns. Get instant insights into your payment trends and cash flow.", layout: "right" }
+        ],
+        stats: [
+            { value: "10 hours", label: "Saved Weekly" },
+            { value: "95%", label: "Fewer Errors" },
+            { value: "3x", label: "Faster Payments" }
         ]
     },
     "prod-vs-tools": {
@@ -463,7 +1483,15 @@ export const featureData: Record<string, FeatureData> = {
         template: "standard",
         sections: [
             { title: "Streamlined for small teams", content: "Big tools are bloated. We built this specifically for freelancers and small agencies.", layout: "left" },
-            { title: "Minimalist Design", content: "Enjoy software that actually looks good and feels great to use.", layout: "right" }
+            { title: "Minimalist Design", content: "Enjoy software that actually looks good and feels great to use.", layout: "right" },
+            { title: "No Hidden Fees", content: "Transparent pricing with no surprise charges. What you see is what you pay.", layout: "left" },
+            { title: "Modern Technology", content: "Built with the latest tech for faster performance and better reliability.", layout: "right" },
+            { title: "Focused Features", content: "No overwhelming feature bloat. Just the tools you actually need to run your business.", layout: "left" }
+        ],
+        stats: [
+            { value: "50%", label: "Lower Cost" },
+            { value: "10x", label: "Faster Setup" },
+            { value: "Modern", label: "Design" }
         ]
     },
     "prod-productivity": {
@@ -550,30 +1578,349 @@ export const featureData: Record<string, FeatureData> = {
     // ==========================================
     // 6. COMPANY SECTION
     // ==========================================
-    "com-about": { title: "About Us", subtitle: "Our Mission", description: "Helping freelancers and small businesses win.", icon: Info, benefits: ["Mission", "Vision"], template: "standard", sections: [{ title: "Our Vision", content: "Simplify invoicing so you can focus on what you do best.", layout: "center" }] },
-    "com-news": { title: "News", subtitle: "Press Room", description: "Announcements and updates.", icon: Newspaper, benefits: [], template: "resource" },
-    "com-careers": { title: "Careers", subtitle: "Join Us", description: "Help us build the future of work.", icon: UserPlus, benefits: ["Remote", "Equity"], template: "standard" },
-    "com-swag": { title: "Swag Store", subtitle: "Merch", description: "Rep the brand.", icon: ShoppingBag, benefits: ["Hoodies", "Stickers"], template: "standard" },
-    "com-brand": { title: "Brand Center", subtitle: "Assets", description: "Logos and guidelines.", icon: Image, benefits: ["Logos", "Colors"], template: "standard" },
-    "com-eng-blog": { title: "Engineering Blog", subtitle: "Under the Hood", description: "Tech stack and challenges.", icon: Code2, benefits: [], template: "resource" },
-    "com-design-blog": { title: "Design Blog", subtitle: "UX/UI", description: "Crafting the experience.", icon: PenTool, benefits: [], template: "resource" },
-    "com-contact": { title: "Contact Us", subtitle: "Get in Touch", description: "Feedback and inquiries.", icon: Contact, benefits: [], template: "standard" },
+    "com-about": { 
+        title: "About Us", 
+        subtitle: "Our Mission", 
+        description: "Helping freelancers and small businesses win.", 
+        icon: Info, 
+        benefits: ["Mission", "Vision"], 
+        template: "standard", 
+        sections: [
+            { title: "Our Vision", content: "Simplify invoicing so you can focus on what you do best.", layout: "center" },
+            { title: "Our Story", content: "Founded by freelancers who experienced the pain of manual invoicing firsthand. We built the solution we wished existed.", layout: "left" },
+            { title: "Core Values", content: "Simplicity, automation, and customer success guide every decision we make.", layout: "right" },
+            { title: "Our Team", content: "A diverse group of designers, developers, and finance experts passionate about helping small businesses thrive.", layout: "left" },
+            { title: "Our Commitment", content: "We're dedicated to continuously improving Flowryte based on your feedback and evolving business needs.", layout: "right" }
+        ],
+        stats: [
+            { value: "2019", label: "Founded" },
+            { value: "10,000+", label: "Users" },
+            { value: "Global", label: "Reach" }
+        ]
+    },
+    "com-news": { 
+        title: "News", 
+        subtitle: "Press Room", 
+        description: "Announcements and updates.", 
+        icon: Newspaper, 
+        benefits: ["Latest", "Updates"], 
+        template: "resource",
+        sections: [
+            {
+                title: "Latest Announcements",
+                content: "Stay up to date with Flowryte's latest features, partnerships, and company milestones.",
+                layout: "center"
+            },
+            {
+                title: "Press Coverage",
+                content: "See what industry leaders are saying about Flowryte's innovative approach to invoicing automation.",
+                layout: "left"
+            }
+        ]
+    },
+    "com-careers": { 
+        title: "Careers", 
+        subtitle: "Join Us", 
+        description: "Help us build the future of work.", 
+        icon: UserPlus, 
+        benefits: ["Remote", "Equity"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Work With Us",
+                content: "Join a team that's passionate about simplifying financial operations for freelancers and small businesses.",
+                layout: "center"
+            },
+            {
+                title: "Open Positions",
+                content: "We're always looking for talented individuals who share our vision. Check our current openings and see if you're a fit.",
+                layout: "left"
+            },
+            {
+                title: "Our Culture",
+                content: "Remote-first, collaborative, and focused on impact. We believe in work-life balance and continuous learning.",
+                layout: "right"
+            }
+        ],
+        stats: [
+            { value: "100%", label: "Remote" },
+            { value: "Unlimited", label: "PTO" },
+            { value: "Competitive", label: "Equity" }
+        ]
+    },
+    "com-swag": { 
+        title: "Swag Store", 
+        subtitle: "Merch", 
+        description: "Rep the brand.", 
+        icon: ShoppingBag, 
+        benefits: ["Hoodies", "Stickers"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Flowryte Merchandise",
+                content: "Show your love for Flowryte with our exclusive merchandise collection.",
+                layout: "center"
+            },
+            {
+                title: "Available Items",
+                content: "From premium hoodies to sleek laptop stickers, we have something for every Flowryte fan.",
+                layout: "left"
+            }
+        ]
+    },
+    "com-brand": { 
+        title: "Brand Center", 
+        subtitle: "Assets", 
+        description: "Logos and guidelines.", 
+        icon: Image, 
+        benefits: ["Logos", "Colors"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Brand Guidelines",
+                content: "Download our official logos, color palettes, and brand guidelines.",
+                layout: "center"
+            },
+            {
+                title: "Media Kit",
+                content: "Everything you need to represent Flowryte consistently across all platforms.",
+                layout: "left"
+            }
+        ]
+    },
+    "com-eng-blog": { 
+        title: "Engineering Blog", 
+        subtitle: "Under the Hood", 
+        description: "Tech stack and challenges.", 
+        icon: Code2, 
+        benefits: ["Tech", "Challenges"], 
+        template: "resource",
+        sections: [
+            {
+                title: "Technical Insights",
+                content: "Deep dives into our architecture, challenges, and solutions.",
+                layout: "center"
+            },
+            {
+                title: "Open Source Contributions",
+                content: "Learn about our open source projects and how we give back to the community.",
+                layout: "left"
+            }
+        ]
+    },
+    "com-design-blog": { 
+        title: "Design Blog", 
+        subtitle: "UX/UI", 
+        description: "Crafting the experience.", 
+        icon: PenTool, 
+        benefits: ["Design", "UX"], 
+        template: "resource",
+        sections: [
+            {
+                title: "Design Philosophy",
+                content: "Our approach to creating intuitive and beautiful user experiences.",
+                layout: "center"
+            },
+            {
+                title: "Case Studies",
+                content: "Behind the scenes of our design process and decision making.",
+                layout: "left"
+            }
+        ]
+    },
+    "com-contact": { 
+        title: "Contact Us", 
+        subtitle: "Get in Touch", 
+        description: "Feedback and inquiries.", 
+        icon: Contact, 
+        benefits: ["Support", "Sales"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Get in Touch",
+                content: "We're here to help. Reach out with questions, feedback, or partnership opportunities.",
+                layout: "center"
+            },
+            {
+                title: "Contact Methods",
+                content: "Multiple ways to reach us - email, phone, or through our support portal.",
+                layout: "left"
+            }
+        ]
+    },
 
     // ==========================================
     // 7. SUPPORT SECTION
     // ==========================================
-    "sup-chat": { title: "Live Chat", subtitle: "Instant Support", description: "Chat with our team.", icon: MessageCircle, benefits: ["24/7", "Human"], template: "standard" },
-    "sup-help": { title: "Help Center", subtitle: "Knowledge Base", description: "Search for answers.", icon: Search, benefits: ["FAQs", "Guides"], template: "resource" },
-    "sup-ticket": { title: "Ticketing System", subtitle: "Submit Issue", description: "For complex problems.", icon: Ticket, benefits: ["Tracking", "Detail"], template: "standard" },
-    "sup-request": { title: "Feature Request", subtitle: "Ideas", description: "Tell us what to build next.", icon: Lightbulb, benefits: ["Vote", "Suggest"], template: "standard" },
-    "sup-status": { title: "Status Page", subtitle: "System Uptime", description: "Monitor platform health.", icon: Activity, benefits: ["Live", "History"], template: "standard" },
+    "sup-chat": { 
+        title: "Live Chat", 
+        subtitle: "Instant Support", 
+        description: "Chat with our team.", 
+        icon: MessageCircle, 
+        benefits: ["24/7", "Human"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Real-Time Support",
+                content: "Get instant help from our support team through live chat.",
+                layout: "center"
+            },
+            {
+                title: "Available 24/7",
+                content: "Our support team is always here to help you with any questions or issues.",
+                layout: "left"
+            }
+        ]
+    },
+    "sup-help": { 
+        title: "Help Center", 
+        subtitle: "Knowledge Base", 
+        description: "Search for answers.", 
+        icon: Search, 
+        benefits: ["FAQs", "Guides"], 
+        template: "resource",
+        sections: [
+            {
+                title: "Self-Service Support",
+                content: "Find answers to common questions and learn how to use Flowryte effectively.",
+                layout: "center"
+            },
+            {
+                title: "Comprehensive Guides",
+                content: "Step-by-step tutorials and detailed documentation for all features.",
+                layout: "left"
+            }
+        ]
+    },
+    "sup-ticket": { 
+        title: "Ticketing System", 
+        subtitle: "Submit Issue", 
+        description: "For complex problems.", 
+        icon: Ticket, 
+        benefits: ["Tracking", "Detail"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Track Your Issues",
+                content: "Submit and track support tickets for complex technical issues.",
+                layout: "center"
+            },
+            {
+                title: "Priority Support",
+                content: "Get dedicated support for critical issues with guaranteed response times.",
+                layout: "left"
+            }
+        ]
+    },
+    "sup-request": { 
+        title: "Feature Request", 
+        subtitle: "Ideas", 
+        description: "Tell us what to build next.", 
+        icon: Lightbulb, 
+        benefits: ["Vote", "Suggest"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Shape Our Future",
+                content: "Help us prioritize features by voting and suggesting new ideas.",
+                layout: "center"
+            },
+            {
+                title: "Community Driven",
+                content: "See what others are requesting and join the conversation.",
+                layout: "left"
+            }
+        ]
+    },
+    "sup-status": { 
+        title: "Status Page", 
+        subtitle: "System Uptime", 
+        description: "Monitor platform health.", 
+        icon: Activity, 
+        benefits: ["Live", "History"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Real-Time Monitoring",
+                content: "Check the current status of all Flowryte services and systems.",
+                layout: "center"
+            },
+            {
+                title: "Historical Data",
+                content: "View uptime history and past incidents with detailed reports.",
+                layout: "left"
+            }
+        ],
+        stats: [
+            { value: "99.9%", label: "Uptime" },
+            { value: "< 1min", label: "Response Time" },
+            { value: "24/7", label: "Monitoring" }
+        ]
+    },
 
     // ==========================================
     // 8. LEGAL SECTION
     // ==========================================
-    "leg-terms": { title: "Terms of Service", subtitle: "Rules", description: "Guidelines governing use.", icon: FileText, benefits: [], template: "standard" },
-    "leg-privacy": { title: "Privacy Policy", subtitle: "Data", description: "How we handle your data.", icon: Lock, benefits: [], template: "standard" },
-    "leg-cookie": { title: "Cookie Policy", subtitle: "Tracking", description: "Details on cookies used.", icon: AlertTriangle, benefits: [], template: "standard" },
+    "leg-terms": { 
+        title: "Terms of Service", 
+        subtitle: "Rules", 
+        description: "Guidelines governing use.", 
+        icon: FileText, 
+        benefits: ["Legal", "Compliance"], 
+        template: "standard",
+        sections: [
+            {
+                title: "User Agreement",
+                content: "Terms and conditions for using Flowryte's services and platform.",
+                layout: "center"
+            },
+            {
+                title: "Service Terms",
+                content: "Detailed terms regarding account usage, payments, and service levels.",
+                layout: "left"
+            }
+        ]
+    },
+    "leg-privacy": { 
+        title: "Privacy Policy", 
+        subtitle: "Data", 
+        description: "How we handle your data.", 
+        icon: Lock, 
+        benefits: ["Security", "Privacy"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Data Protection",
+                content: "How we collect, use, and protect your personal information.",
+                layout: "center"
+            },
+            {
+                title: "Your Rights",
+                content: "Information about your data rights and how to exercise them.",
+                layout: "left"
+            }
+        ]
+    },
+    "leg-cookie": { 
+        title: "Cookie Policy", 
+        subtitle: "Tracking", 
+        description: "Details on cookies used.", 
+        icon: AlertTriangle, 
+        benefits: ["Transparency", "Control"], 
+        template: "standard",
+        sections: [
+            {
+                title: "Cookie Usage",
+                content: "Information about cookies we use and why we use them.",
+                layout: "center"
+            },
+            {
+                title: "Managing Cookies",
+                content: "How to control and manage your cookie preferences.",
+                layout: "left"
+            }
+        ]
+    },
 
     // Special
     "enterprise": { title: "Enterprise", subtitle: "Custom Solutions", description: "For large organizations.", icon: Building2, benefits: ["SLA", "Support"], template: "enterprise" }

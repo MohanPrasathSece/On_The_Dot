@@ -372,7 +372,12 @@ function StandardContent({ data }: { data: any }) {
                                             className="w-full h-full object-cover"
                                             onError={(e) => {
                                                 e.currentTarget.style.display = 'none';
-                                                e.currentTarget.parentElement?.classList.add('bg-gradient-to-br', 'from-primary/5', 'to-primary/10');
+                                                e.currentTarget.parentElement?.classList.add('bg-gradient-to-br', 'from-yellow-500/10', 'to-black/10', 'border-yellow-500/20');
+                                                // Add a placeholder icon or text
+                                                const placeholder = document.createElement('div');
+                                                placeholder.className = 'absolute inset-0 flex items-center justify-center text-yellow-500/30';
+                                                placeholder.innerHTML = '<svg class="w-16 h-16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" /></svg>';
+                                                e.currentTarget.parentElement?.appendChild(placeholder);
                                             }}
                                         />
                                     </div>

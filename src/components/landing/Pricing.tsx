@@ -111,8 +111,8 @@ export function Pricing() {
   const getDisplayPrice = (plan: any) => {
     if (plan.oneTime) return plan.price;
     const price = isYearly ? plan.yearlyPrice / 12 : plan.price;
-    // Format to 2 decimal places if necessary, or just pretty print
-    return Number.isInteger(price) ? price : price.toFixed(2);
+    // Always show 2 decimal places for consistency
+    return price.toFixed(2);
   };
 
   const getBillingText = (plan: any) => {
@@ -356,24 +356,64 @@ export function Pricing() {
 
         {/* Schedule Demo Dialog */}
         <Dialog open={showDemoDialog} onOpenChange={setShowDemoDialog}>
-          <DialogContent className="sm:max-w-md">
+          <DialogContent className="sm:max-w-lg">
             <DialogHeader>
               <DialogTitle>Schedule a Demo</DialogTitle>
               <DialogDescription>
-                Select a date to schedule a live walkthrough with our product team.
+                Select a date and time to schedule a live walkthrough with our product team.
               </DialogDescription>
             </DialogHeader>
-            <div className="flex flex-col items-center justify-center p-4">
-              <CalendarComponent
-                mode="single"
-                selected={demoDate}
-                onSelect={setDemoDate}
-                className="rounded-md border shadow-sm"
-              />
+            
+            <div className="space-y-6">
+              {/* Calendar */}
+              <div className="flex flex-col items-center justify-center p-4">
+                <CalendarComponent
+                  mode="single"
+                  selected={demoDate}
+                  onSelect={setDemoDate}
+                  className="rounded-md border shadow-sm"
+                  disabled={(date) => 
+                    date < new Date() || 
+                    date.getDay() === 0 || 
+                    date.getDay() === 6
+                  }
+                />
+                <p className="text-xs text-muted-foreground mt-2">
+                  Weekdays only. Demo times: 9AM - 5PM EST
+                </p>
+              </div>
+
+              {/* Time Slots */}
+              {demoDate && (
+                <div className="space-y-2">
+                  <p className="text-sm font-medium">Available Time Slots:</p>
+                  <div className="grid grid-cols-3 gap-2">
+                    {["9:00 AM", "10:00 AM", "11:00 AM", "2:00 PM", "3:00 PM", "4:00 PM"].map((time) => (
+                      <Button
+                        key={time}
+                        variant="outline"
+                        size="sm"
+                        className="text-xs"
+                        onClick={() => {
+                          // Store selected time
+                          setDemoDate(demoDate);
+                        }}
+                      >
+                        {time}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-            <div className="flex justify-end gap-3 mt-4">
+
+            <div className="flex justify-end gap-3 mt-6">
               <Button variant="outline" onClick={() => setShowDemoDialog(false)}>Cancel</Button>
-              <Button onClick={handleScheduleDemo} disabled={!demoDate}>
+              <Button 
+                onClick={handleScheduleDemo} 
+                disabled={!demoDate}
+                className="bg-yellow-500 text-black hover:bg-yellow-400"
+              >
                 Confirm & Sign Up
               </Button>
             </div>

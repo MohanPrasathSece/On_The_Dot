@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const faqs = [
   {
@@ -72,7 +73,9 @@ export function FAQ() {
         <div className="text-center bg-muted/30 p-8 rounded-2xl max-w-2xl mx-auto">
           <h4 className="font-bold text-lg mb-2">Still have questions?</h4>
           <p className="text-muted-foreground mb-6">Can't find the answer you're looking for? Please chat to our friendly team.</p>
+          <Link to="/support/sup-contact">
           <Button variant="default">Contact Support</Button>
+        </Link>
         </div>
       </div>
     </section>

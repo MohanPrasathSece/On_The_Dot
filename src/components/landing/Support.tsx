@@ -23,7 +23,7 @@ export function Support() {
                         </div>
                         <h3 className="text-xl font-bold mb-3">Live Chat Support</h3>
                         <p className="text-muted-foreground mb-6">Chat directly with our support team for quick answers.</p>
-                        <Button variant="outline" className="w-full">Start Chat</Button>
+                        <Button variant="outline" className="w-full" onClick={() => window.open('https://flowryte.com/chat', '_blank')}>Start Chat</Button>
                     </div>
 
                     {/* Help Center */}
@@ -33,7 +33,7 @@ export function Support() {
                         </div>
                         <h3 className="text-xl font-bold mb-3">Help Center</h3>
                         <p className="text-muted-foreground mb-6">Search our knowledge base for self-help guides and FAQs.</p>
-                        <Button variant="outline" className="w-full">Visit Help Center</Button>
+                        <Button variant="outline" className="w-full" onClick={() => window.location.href = '/resources/res-library'}>Visit Help Center</Button>
                     </div>
 
                     {/* Ticketing System */}
@@ -43,7 +43,7 @@ export function Support() {
                         </div>
                         <h3 className="text-xl font-bold mb-3">Submit a Ticket</h3>
                         <p className="text-muted-foreground mb-6">For complex issues, submit a detailed support ticket.</p>
-                        <Button variant="outline" className="w-full">Open Ticket</Button>
+                        <Button variant="outline" className="w-full" onClick={() => window.location.href = '/support/sup-contact'}>Open Ticket</Button>
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@ export function Support() {
                         <div>
                             <h4 className="font-bold text-lg">Have an idea?</h4>
                             <p className="text-sm text-muted-foreground mb-2">Submit new feature ideas or improvements.</p>
-                            <Link to="#" className="text-sm font-semibold text-primary hover:underline">Submit Request →</Link>
+                            <Link to="/support/sup-contact" className="text-sm font-semibold text-primary hover:underline">Submit Request →</Link>
                         </div>
                     </div>
 
@@ -68,7 +68,7 @@ export function Support() {
                         <div>
                             <h4 className="font-bold text-lg">System Status</h4>
                             <p className="text-sm text-muted-foreground mb-2">Monitor uptime and current platform status.</p>
-                            <Link to="#" className="text-sm font-semibold text-primary hover:underline">Check Status →</Link>
+                            <Link to="/support/sup-status" className="text-sm font-semibold text-primary hover:underline">Check Status →</Link>
                         </div>
                     </div>
                 </div>

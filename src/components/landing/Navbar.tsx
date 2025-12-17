@@ -84,7 +84,7 @@ export function Navbar() {
               Log In
             </Link>
             <Link to="/signup">
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg px-6">
+              <Button className="bg-yellow-500 hover:bg-yellow-400 text-black font-semibold rounded-lg px-6">
                 Start Free Trial
               </Button>
             </Link>
@@ -130,7 +130,7 @@ export function Navbar() {
                   <Button variant="outline" className="w-full h-12 text-lg">Log In</Button>
                 </Link>
                 <Link to="/signup" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button className="w-full h-12 text-lg bg-primary hover:bg-primary/90 text-primary-foreground">Start Free Trial</Button>
+                  <Button className="w-full h-12 text-lg bg-yellow-500 hover:bg-yellow-400 text-black">Start Free Trial</Button>
                 </Link>
               </div>
             </div>
