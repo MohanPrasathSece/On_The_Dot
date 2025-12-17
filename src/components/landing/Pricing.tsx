@@ -211,8 +211,8 @@ export function Pricing() {
                 className={`w-full mb-8 rounded-xl font-semibold h-12 transition-all ${plan.highlight
                     ? "bg-yellow-500 text-black hover:bg-yellow-400"
                     : selectedPlan === plan.id
-                      ? "bg-black text-white hover:bg-black/90"
-                      : "bg-black text-white hover:bg-black/90"
+                      ? "bg-yellow-500 text-black hover:bg-yellow-400"
+                      : "bg-background text-foreground border border-border hover:bg-yellow-500 hover:text-black"
                   }`}
                 onClick={(e) => {
                   e.stopPropagation();

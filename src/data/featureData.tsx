@@ -54,7 +54,8 @@ export const featureData: Record<string, FeatureData> = {
             {
                 title: "Custom Branding",
                 content: "Make it yours. Upload your logo, choose your brand color scheme, and customize fonts to ensure every invoice reflects your professional identity. Stand out with personalized templates that impress clients and reinforce your brand every time you bill.",
-                layout: "center"
+                layout: "center",
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Custom+Branding"
             },
             {
                 title: "GPT-Powered Messaging",
@@ -71,7 +72,8 @@ export const featureData: Record<string, FeatureData> = {
             {
                 title: "Advanced Line Items",
                 content: "Handle complex billing with ease. Add hourly rates, fixed fees, quantity-based items, and discounts automatically. Calculate taxes, apply late fees, and include payment terms - all done for you. Perfect for projects with multiple deliverables.",
-                layout: "center"
+                layout: "center",
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Advanced+Line+Items"
             },
             {
                 title: "Client Management",
@@ -115,7 +117,8 @@ export const featureData: Record<string, FeatureData> = {
             {
                 title: "Multi-Channel Delivery",
                 content: "Reach clients where they are. Send reminders via email, SMS, or both automatically. Track what works best for each client.",
-                layout: "center"
+                layout: "center",
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Multi+Channel+Delivery"
             },
             {
                 title: "Reminder Logs & Analytics",
@@ -160,7 +163,8 @@ export const featureData: Record<string, FeatureData> = {
             {
                 title: "Cash Flow Forecasting",
                 content: "Predict your financial future. Our AI analyzes payment patterns to forecast upcoming cash flow, helping you make better business decisions and plan for expenses.",
-                layout: "center"
+                layout: "center",
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Cash+Flow+Forecasting"
             },
             {
                 title: "Client Payment Patterns",
@@ -318,29 +322,34 @@ export const featureData: Record<string, FeatureData> = {
         template: "standard",
         sections: [
             {
-                title: "Set It and Forget It",
+                title: "Configure Recurring Invoices",
                 content: "Configure recurring invoices once and let Flowryte handle the rest. Perfect for monthly retainers, subscription services, and ongoing projects.",
-                layout: "center"
+                layout: "center",
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Recurring+Setup"
             },
             {
                 title: "Flexible Scheduling",
-                content: "Choose from daily, weekly, monthly, or custom intervals. Adjust timing to match your business cycles and client preferences.",
-                layout: "left"
+                content: "Set up weekly, monthly, quarterly, or custom billing cycles. Automatic invoice generation with personalized messages.",
+                layout: "center",
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Flexible+Scheduling"
             },
             {
                 title: "Subscription Management",
                 content: "Track all recurring revenue in one place. Monitor active subscriptions, cancellations, and revenue projections.",
-                layout: "right"
+                layout: "center",
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Subscription+Management"
             },
             {
                 title: "Smart Invoicing",
                 content: "Automatically adjust invoice amounts based on usage, hours worked, or custom metrics. Dynamic billing for dynamic businesses.",
-                layout: "left"
+                layout: "left",
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Smart+Invoicing"
             },
             {
                 title: "Payment Automation",
                 content: "Integrate with payment processors for automatic collection. Reduce manual work and improve cash flow predictability.",
-                layout: "right"
+                layout: "right",
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Payment+Automation"
             }
         ],
         stats: [
@@ -358,29 +367,34 @@ export const featureData: Record<string, FeatureData> = {
         template: "standard",
         sections: [
             {
-                title: "Intelligent Writing",
+                title: "AI-Powered Content",
                 content: "Our AI understands your business context and generates professional, personalized invoice descriptions that impress clients.",
-                layout: "center"
+                layout: "center",
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=AI+Content"
             },
             {
                 title: "Professional Tone",
                 content: "Maintain consistent, professional communication across all invoices. AI ensures the right tone for every client relationship.",
-                layout: "left"
+                layout: "left",
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Professional+Tone"
             },
             {
                 title: "Custom Templates",
                 content: "Create AI templates for different types of work. Project descriptions, service explanations, and value propositions tailored to your offerings.",
-                layout: "right"
+                layout: "right",
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Custom+Templates"
             },
             {
                 title: "Multi-Language Support",
                 content: "Generate descriptions in multiple languages. Perfect for international clients and global business expansion.",
-                layout: "left"
+                layout: "left",
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=Multi+Language"
             },
             {
                 title: "Learning & Improvement",
                 content: "AI learns from your feedback and improves over time. Better descriptions with each use, tailored to your unique business voice.",
-                layout: "right"
+                layout: "right",
+                image: "https://via.placeholder.com/800x600/ffffff/000000?text=AI+Learning"
             }
         ],
         stats: [

@@ -16,7 +16,7 @@ export function Resources() {
                             Everything you need to master Flowryte and grow your business.
                         </p>
                     </div>
-                    <Button variant="outline" className="shrink-0 border-black text-black hover:bg-black/10" onClick={() => window.location.href = '/resources/res-library'}>
+                    <Button variant="outline" className="shrink-0 border-border text-foreground hover:bg-muted" onClick={() => window.location.href = '/resources/res-library'}>
                         View All Resources
                     </Button>
                 </div>
