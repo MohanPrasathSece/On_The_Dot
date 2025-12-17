@@ -23,7 +23,7 @@ export function Resources() {
                             Everything you need to master Flowryte and grow your business.
                         </p>
                     </div>
-                    <Button variant="outline" className="shrink-0" onClick={() => handleResourceClick('All Resources')}>
+                    <Button variant="outline" className="shrink-0 border-black text-black hover:bg-black/10" onClick={() => handleResourceClick('All Resources')}>
                         View All Resources
                     </Button>
                 </div>

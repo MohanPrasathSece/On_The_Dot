@@ -35,13 +35,13 @@ export function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Link to="/trial">
-                <Button size="lg" className="h-14 px-8 text-lg bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto">
+                <Button size="lg" className="h-14 px-8 text-lg bg-black text-white hover:bg-black/90 w-full sm:w-auto">
                   <CheckCircle2 className="w-4 h-4 mr-2" />
                   Start Free Trial
                 </Button>
               </Link>
               <Link to="/resources/res-tour">
-                <Button size="lg" variant="outline" className="h-14 px-8 text-lg w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-black text-black hover:bg-black/10 w-full sm:w-auto">
                   <Play className="w-4 h-4 mr-2" />
                   Watch Demo
                 </Button>

@@ -194,10 +194,10 @@ export function Pricing() {
               <Button
                 className={`w-full mb-8 rounded-xl font-semibold h-12 transition-all ${
                   plan.highlight
-                    ? "bg-background text-primary hover:bg-background/90"
+                    ? "bg-black text-white hover:bg-black/90"
                     : selectedPlan === plan.id
-                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                    : "bg-primary text-primary-foreground hover:bg-primary/90"
+                    ? "bg-black text-white hover:bg-black/90"
+                    : "bg-black text-white hover:bg-black/90"
                 }`}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -331,10 +331,10 @@ export function Pricing() {
               Contact our sales team for enterprise-grade solutions, custom features, and volume pricing tailored to your organization's needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="outline" className="px-8">
+              <Button size="lg" variant="outline" className="px-8 border-black text-black hover:bg-black/10">
                 Contact Sales
               </Button>
-              <Button size="lg" className="px-8">
+              <Button size="lg" className="px-8 bg-black text-white hover:bg-black/90">
                 Schedule Demo
               </Button>
             </div>
