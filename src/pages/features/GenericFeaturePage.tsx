@@ -1,5 +1,5 @@
 
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { featureData, TemplateType } from "@/data/featureData";
@@ -16,11 +16,12 @@ import { serviceSchema, breadcrumbSchema, faqSchema } from "@/components/seo/Str
 export default function GenericFeaturePage() {
     const { isAuthenticated } = useAuth();
     const params = useParams<{ featureId: string }>();
-    const location = window.location.pathname;
+    const location = useLocation();
+    const pathname = location?.pathname || '';
 
     // Determine featureId based on route
     let featureId = params.featureId;
-    if (location === "/enterprise") featureId = "enterprise";
+    if (pathname === "/enterprise") featureId = "enterprise";
 
     const data = featureId ? featureData[featureId] : null;
 
@@ -49,14 +50,14 @@ export default function GenericFeaturePage() {
         const keywords = generateKeywords(data);
         
         // Generate structured data
-        const structuredData = [
+        const structuredData: any[] = [
             serviceSchema(baseTitle, baseDescription),
             breadcrumbSchema(generateBreadcrumbItems())
         ];
 
         // Add FAQ schema if FAQs exist
-        if (data.faqs && data.faqs.length > 0) {
-            structuredData.push(faqSchema(data.faqs));
+        if ((data as any).faqs && (data as any).faqs.length > 0) {
+            structuredData.push(faqSchema((data as any).faqs));
         }
 
         return {
@@ -85,7 +86,7 @@ export default function GenericFeaturePage() {
     };
 
     const generateBreadcrumbItems = () => {
-        const pathSegments = location.pathname.split('/').filter(Boolean);
+        const pathSegments = pathname.split('/').filter(Boolean);
         const items = [
             { name: 'Home', url: 'https://flowryte.io/' }
         ];

@@ -17,6 +17,10 @@ const Breadcrumbs = ({ items, className }: BreadcrumbsProps) => {
   
   // Generate breadcrumbs from current path if not provided
   const generateBreadcrumbs = (): BreadcrumbItem[] => {
+    if (!location?.pathname) {
+      return [{ name: 'Home', href: '/' }];
+    }
+    
     const pathSegments = location.pathname.split('/').filter(Boolean);
     const breadcrumbs: BreadcrumbItem[] = [
       { name: 'Home', href: '/' }

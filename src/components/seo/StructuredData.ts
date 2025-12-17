@@ -100,6 +100,12 @@ export const breadcrumbSchema = (breadcrumbs: Array<{name: string, url: string}>
   }))
 });
 
+export const structuredDataUnion = (
+  data: any
+): any => {
+  return data;
+};
+
 export const serviceSchema = (serviceName: string, description: string) => ({
   "@context": "https://schema.org",
   "@type": "Service",

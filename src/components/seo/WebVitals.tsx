@@ -9,27 +9,27 @@ const WebVitals = ({ onReport }: WebVitalsProps) => {
     // Report Web Vitals
     const reportWebVitals = (onPerfEntry?: (metric: any) => void) => {
       if (onPerfEntry && onPerfEntry instanceof Function) {
-        import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-          getCLS(onPerfEntry);
-          getFID(onPerfEntry);
-          getFCP(onPerfEntry);
-          getLCP(onPerfEntry);
-          getTTFB(onPerfEntry);
+        import('web-vitals').then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
+          onCLS(onPerfEntry);
+          onINP(onPerfEntry);
+          onFCP(onPerfEntry);
+          onLCP(onPerfEntry);
+          onTTFB(onPerfEntry);
         });
       }
     };
 
     reportWebVitals((metric) => {
       // Log to console in development
-      if (process.env.NODE_ENV === 'development') {
+      if (import.meta.env.DEV) {
         console.log('Web Vital:', metric);
       }
-      
+
       // Send to analytics service in production
       if (onReport) {
         onReport(metric);
       }
-      
+
       // Send to Google Analytics
       if (window.gtag) {
         window.gtag('event', metric.name, {

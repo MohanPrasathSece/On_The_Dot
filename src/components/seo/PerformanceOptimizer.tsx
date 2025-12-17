@@ -64,8 +64,8 @@ const PerformanceOptimizer = () => {
         const fidObserver = new PerformanceObserver((list) => {
           const entries = list.getEntries();
           const fid = entries[0];
-          if (fid && 'processingStart' in fid) {
-            setMetrics(prev => ({ ...prev, fid: fid.processingStart - fid.startTime }));
+          if ('processingStart' in fid && 'startTime' in fid) {
+            setMetrics(prev => ({ ...prev, fid: (fid as any).processingStart - (fid as any).startTime }));
           }
         });
         fidObserver.observe({ entryTypes: ['first-input'] });
@@ -103,9 +103,9 @@ const PerformanceOptimizer = () => {
 
   // Log metrics in development
   useEffect(() => {
-    if (process.env.NODE_ENV === 'development' && metrics.fcp > 0) {
+    if (import.meta.env.DEV && metrics.fcp > 0) {
       console.log('Performance Metrics:', metrics);
-      
+
       // Performance recommendations
       if (metrics.fcp > 1800) {
         console.warn('FCP is slow (>1.8s). Consider optimizing critical resources.');
