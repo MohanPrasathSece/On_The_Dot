@@ -6,21 +6,21 @@ const testimonials = [
         author: "Sarah Chen",
         role: "Freelance Designer",
         company: "Design Studio",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"
+        image: "/images/pexels-vlada-karpovich-7433879.jpg"
     },
     {
         quote: "The automated reminder system is a game-changer. Our cash flow improved dramatically, and we spend zero time chasing payments. The branded invoices look incredibly professional.",
         author: "Marcus Rodriguez",
         role: "Digital Marketing Agency Owner",
         company: "Growth Labs",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150"
+        image: "/images/pexels-mikhail-nilov-6963017.jpg"
     },
     {
         quote: "I love how Flowryte integrates with my payment processors. Clients can pay immediately, and I get notified instantly. The dashboard gives me complete visibility into my finances.",
         author: "Emma Thompson",
         role: "Consultant",
         company: "Thompson Consulting",
-        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
+        image: "/images/pexels-mikhail-nilov-6963857.jpg"
     }
 ];
 

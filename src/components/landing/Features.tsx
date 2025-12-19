@@ -16,8 +16,7 @@ export function Features() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* 2-Click Invoices */}
-          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
+          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-2xl hover:shadow-yellow-500/5 hover:-translate-y-1 transition-all duration-500">
             <div className="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-500 flex items-center justify-center mb-6">
               <FileText className="w-6 h-6" />
             </div>
@@ -38,7 +37,7 @@ export function Features() {
           </div>
 
           {/* Smart Reminders */}
-          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
+          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-2xl hover:shadow-yellow-500/5 hover:-translate-y-1 transition-all duration-500">
             <div className="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-500 flex items-center justify-center mb-6">
               <Bell className="w-6 h-6" />
             </div>
@@ -59,7 +58,7 @@ export function Features() {
           </div>
 
           {/* Overdue Dashboard */}
-          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
+          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-2xl hover:shadow-yellow-500/5 hover:-translate-y-1 transition-all duration-500">
             <div className="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-500 flex items-center justify-center mb-6">
               <BarChart3 className="w-6 h-6" />
             </div>
@@ -80,7 +79,7 @@ export function Features() {
           </div>
 
           {/* Recurring Invoices */}
-          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
+          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-2xl hover:shadow-yellow-500/5 hover:-translate-y-1 transition-all duration-500">
             <div className="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-500 flex items-center justify-center mb-6">
               <Repeat className="w-6 h-6" />
             </div>
@@ -101,7 +100,7 @@ export function Features() {
           </div>
 
           {/* Payment Integration */}
-          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
+          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-2xl hover:shadow-yellow-500/5 hover:-translate-y-1 transition-all duration-500">
             <div className="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-500 flex items-center justify-center mb-6">
               <CreditCard className="w-6 h-6" />
             </div>
@@ -122,7 +121,7 @@ export function Features() {
           </div>
 
           {/* AI Writer */}
-          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-xl transition-all duration-300">
+          <div className="group p-8 rounded-3xl border border-border/50 bg-card hover:shadow-2xl hover:shadow-yellow-500/5 hover:-translate-y-1 transition-all duration-500">
             <div className="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-500 flex items-center justify-center mb-6">
               <Sparkles className="w-6 h-6" />
             </div>

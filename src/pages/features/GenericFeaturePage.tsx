@@ -199,7 +199,7 @@ function StandardHeader({ data }: { data: any }) {
                             <Button size="lg" className="text-lg px-8 h-14 shadow-lg shadow-black/20 bg-black text-white hover:bg-black/90">Start Free Trial</Button>
                         </Link>
                         <Link to="/signup">
-                            <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-black text-black hover:bg-black/10">Talk to Sales</Button>
+                            <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-black text-black hover:bg-black hover:text-white">Talk to Sales</Button>
                         </Link>
                     </div>
                 </div>
@@ -255,28 +255,15 @@ function SolutionHeader({ data }: { data: any }) {
                             <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
                         </div>
                     ) : (
-                        <div className="w-full h-full bg-muted/20 rounded-xl overflow-hidden relative">
-                            {/* Mock UI Composition */}
-                            <div className="absolute top-0 w-full h-12 border-b border-border/50 bg-background/80 backdrop-blur-sm flex items-center px-4 gap-2">
-                                <div className="w-3 h-3 rounded-full bg-red-400" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                                <div className="w-3 h-3 rounded-full bg-green-400" />
-                            </div>
-                            <div className="absolute top-16 left-4 right-4 bottom-4 grid grid-cols-3 gap-4">
-                                <div className="col-span-1 bg-background rounded-lg border border-border/50 p-4 space-y-3">
-                                    <div className="w-12 h-12 rounded-full bg-primary/20" />
-                                    <div className="w-full h-2 rounded bg-muted-foreground/20" />
-                                    <div className="w-2/3 h-2 rounded bg-muted-foreground/20" />
-                                </div>
-                                <div className="col-span-2 bg-background rounded-lg border border-border/50 p-4 space-y-4">
-                                    <div className="flex justify-between">
-                                        <div className="w-1/3 h-4 rounded bg-muted-foreground/20" />
-                                        <div className="w-1/4 h-8 rounded bg-primary text-primary-foreground flex items-center justify-center text-xs">Action</div>
-                                    </div>
-                                    <div className="h-24 bg-muted/20 rounded border border-border/30" />
-                                    <div className="h-24 bg-muted/20 rounded border border-border/30" />
-                                </div>
-                            </div>
+                        <div className="w-full h-full rounded-xl overflow-hidden">
+                            <img 
+                                src="/images/dashboard-preview.png" 
+                                alt="Dashboard Preview" 
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                    e.currentTarget.src = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800";
+                                }}
+                            />
                         </div>
                     )}
                 </div>
@@ -287,38 +274,38 @@ function SolutionHeader({ data }: { data: any }) {
 
 function EnterpriseHeader({ data }: { data: any }) {
     return (
-        <section className="pt-32 pb-20 px-6 sm:px-8 lg:px-12 container mx-auto bg-slate-950 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/20 via-slate-950 to-slate-950" />
+        <section className="pt-32 pb-20 px-6 sm:px-8 lg:px-12 container mx-auto bg-background text-foreground relative overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-background to-background" />
 
             {/* Abstract Grid Background */}
-            <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+            <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02] bg-[size:50px_50px]" />
 
             <div className="max-w-4xl mx-auto text-center relative z-10">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm font-medium text-primary mb-8 animate-fade-in-up">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-muted/50 text-sm font-medium text-primary mb-8 animate-fade-in-up">
                     <ShieldCheck className="w-4 h-4" /> Enterprise Grade Security
                 </div>
-                <h1 className="text-5xl sm:text-7xl font-bold tracking-tight mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 animate-fade-in-up delay-100">
+                <h1 className="text-5xl sm:text-7xl font-bold tracking-tight mb-8 text-foreground animate-fade-in-up delay-100">
                     {data.title}
                 </h1>
-                <p className="text-xl sm:text-2xl text-slate-400 max-w-2xl mx-auto mb-12 animate-fade-in-up delay-200">
+                <p className="text-xl sm:text-2xl text-muted-foreground max-w-2xl mx-auto mb-12 animate-fade-in-up delay-200">
                     {data.description}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-300">
                     <Link to="/company/com-contact">
-                        <Button size="lg" className="text-lg px-8 h-14 bg-white text-slate-950 hover:bg-white/90">Contact Sales</Button>
+                        <Button size="lg" className="text-lg px-8 h-14 bg-black text-white hover:bg-black/90">Contact Sales</Button>
                     </Link>
-                    <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-white/20 text-white hover:bg-white/10">Read Whitepaper</Button>
+                    <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-border text-foreground hover:bg-muted">Read Whitepaper</Button>
                 </div>
 
-                <div className="mt-20 pt-10 border-t border-white/10 animate-fade-in-up delay-500">
-                    <p className="text-sm text-slate-500 mb-6 uppercase tracking-widest">Trusted by industry leaders</p>
+                <div className="mt-20 pt-10 border-t border-border animate-fade-in-up delay-500">
+                    <p className="text-sm text-muted-foreground mb-6 uppercase tracking-widest">Trusted by industry leaders</p>
                     <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
                         {/* Realistic Brand Logos */}
-                        <div className="text-xl font-black tracking-tighter text-white">TECHSTREAM</div>
-                        <div className="text-xl font-bold tracking-tight text-white italic">QUANTUM</div>
-                        <div className="text-xl font-extrabold tracking-widest text-white uppercase">Nexus</div>
-                        <div className="text-xl font-semibold tracking-normal text-white">Cloudly</div>
-                        <div className="text-xl font-medium tracking-tight text-white border-2 border-white px-2 py-0.5">APEX</div>
+                        <div className="text-xl font-black tracking-tighter">TECHSTREAM</div>
+                        <div className="text-xl font-bold tracking-tight italic">QUANTUM</div>
+                        <div className="text-xl font-extrabold tracking-widest uppercase">Nexus</div>
+                        <div className="text-xl font-semibold tracking-normal">Cloudly</div>
+                        <div className="text-xl font-medium tracking-tight border-2 border-foreground px-2 py-0.5">APEX</div>
                     </div>
                 </div>
             </div>
@@ -414,27 +401,14 @@ function StandardContent({ data }: { data: any }) {
                                         "aspect-[4/3] rounded-3xl bg-gradient-to-br from-background to-muted border border-border/50 shadow-2xl relative overflow-hidden transform transition-all hover:scale-[1.02]",
                                         section.layout === "left" ? "rotate-y-3 hover:rotate-y-0" : "-rotate-y-3 hover:rotate-y-0"
                                     )}>
-                                        <div className="absolute inset-0 bg-grid-slate-500/[0.05]" />
-                                        {/* Abstract UI Elements */}
-                                        <div className="absolute top-10 left-10 right-10 bottom-0 bg-background rounded-t-xl shadow-lg border border-border/50 p-6">
-                                            <div className="flex gap-4 mb-6">
-                                                <div className="w-12 h-12 rounded-full bg-primary/10" />
-                                                <div className="space-y-2">
-                                                    <div className="w-32 h-4 rounded bg-muted" />
-                                                    <div className="w-20 h-3 rounded bg-muted/50" />
-                                                </div>
-                                            </div>
-                                            <div className="space-y-3">
-                                                <div className="w-full h-3 rounded bg-muted/30" />
-                                                <div className="w-full h-3 rounded bg-muted/30" />
-                                                <div className="w-3/4 h-3 rounded bg-muted/30" />
-                                            </div>
-
-                                            <div className="mt-8 grid grid-cols-2 gap-4">
-                                                <div className="h-24 rounded-lg bg-primary/5 border border-primary/10" />
-                                                <div className="h-24 rounded-lg bg-muted/20" />
-                                            </div>
-                                        </div>
+                                        <img 
+                                            src="/images/feature-preview.png" 
+                                            alt={section.title}
+                                            className="w-full h-full object-cover"
+                                            onError={(e) => {
+                                                e.currentTarget.src = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800";
+                                            }}
+                                        />
                                     </div>
                                 )
                             )}
@@ -517,7 +491,7 @@ function ResourceContent({ data }: { data: any }) {
                 <div className="bg-background rounded-2xl border border-border p-8 mb-16 shadow-sm flex flex-col md:flex-row items-center gap-8">
                     <div className="w-full md:w-1/3 aspect-video bg-primary/10 rounded-xl overflow-hidden">
                         <img
-                            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                            src="/images/pexels-rdne-7947999.jpg"
                             alt="Featured Report"
                             className="w-full h-full object-cover opacity-80"
                         />
@@ -537,37 +511,37 @@ function ResourceContent({ data }: { data: any }) {
                             title: "Improving Team Collaboration in Hybrid Environments",
                             description: "Discover actionable strategies to keep your distributed team aligned and productive...",
                             type: "Guide",
-                            image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=600"
+                            image: "/images/pexels-fauxels-3184170.jpg"
                         },
                         {
                             title: "Advanced Financial Planning for Startups",
                             description: "Learn how to manage cash flow and create sustainable financial models for growth...",
                             type: "Finance",
-                            image: "https://images.unsplash.com/photo-1554224155-1696413575b9?auto=format&fit=crop&q=80&w=600"
+                            image: "/images/pexels-goumbik-590016.jpg"
                         },
                         {
                             title: "Building Scalable Invoice Systems",
                             description: "Best practices for creating invoice management systems that grow with your business...",
                             type: "Technical",
-                            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600"
+                            image: "/images/pexels-mikhail-nilov-6964335.jpg"
                         },
                         {
                             title: "Customer Success Stories: Q4 2024",
                             description: "How leading companies transformed their billing processes with Flowryte...",
                             type: "Case Study",
-                            image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600"
+                            image: "/images/pexels-shkrabaanthony-5466250.jpg"
                         },
                         {
                             title: "Security Best Practices for SaaS Platforms",
                             description: "Essential security measures every SaaS company should implement...",
                             type: "Security",
-                            image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=600"
+                            image: "/images/pexels-mikhail-nilov-6963017.jpg"
                         },
                         {
                             title: "The Future of Remote Work Tools",
                             description: "Exploring emerging trends in remote collaboration and productivity tools...",
                             type: "Trends",
-                            image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=600"
+                            image: "/images/pexels-tima-miroshnichenko-6694570.jpg"
                         }
                     ].map((article, i) => (
                         <div key={i} className="group bg-background rounded-xl border border-border overflow-hidden hover:shadow-xl transition-all cursor-pointer" onClick={() => handleArticleClick(article.title)}>

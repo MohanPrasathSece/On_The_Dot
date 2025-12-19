@@ -44,37 +44,37 @@ export const featureData: Record<string, FeatureData> = {
                 title: "2-click Branded Invoices",
                 content: "Generate professional invoices instantly. Save your line items and client details to create invoices with just two clicks. Our intelligent system remembers your preferences and auto-fills common fields. Perfect for busy freelancers who need to focus on their work, not paperwork.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1554224155-1696413575b9?auto=format&fit=crop&q=80&w=800"
+                image: "/images/invoicing.png"
             },
             {
                 title: "Recurring Invoices",
                 content: "Set up retainers and subscriptions once. We'll automatically generate and send invoices on your schedule (weekly, monthly, annually). Perfect for subscription businesses and retainer clients. Never miss a billing cycle again - our system handles it all automatically.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1586762524442-45e07662991a?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-mikhail-nilov-6894066.jpg"
             },
             {
                 title: "Custom Branding",
                 content: "Make it yours. Upload your logo, choose your brand color scheme, and customize fonts to ensure every invoice reflects your professional identity. Stand out with personalized templates that impress clients and reinforce your brand every time you bill.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1586762524442-45e07662991a?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-mikhail-nilov-6894066.jpg"
             },
             {
                 title: "GPT-Powered Messaging",
                 content: "Stop stressing about what to write. Our AI generates polite initial emails, firm follow-ups, and urgent overdue notices automatically. Maintain professional tone without the mental effort. The AI adapts based on payment history and client behavior.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-shkrabaanthony-5816299.jpg"
             },
             {
                 title: "Universal Export",
                 content: "Send it your way. Email directly from the platform, download as PDF, or send via SMS link for faster mobile payments. Multiple export formats ensure compatibility with any workflow. Clients can pay directly from their email or SMS.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-590016.jpg"
             },
             {
                 title: "Advanced Line Items",
                 content: "Handle complex billing with ease. Add hourly rates, fixed fees, quantity-based items, and discounts automatically. Calculate taxes, apply late fees, and include payment terms - all done for you. Perfect for projects with multiple deliverables.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-artempodrez-5716001 (1).jpg"
             },
             {
                 title: "Client Management",
@@ -101,25 +101,25 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Smart Auto-Reminders",
                 content: "Never chase a client manually again. Our system detects unpaid invoices and initiates a follow-up sequence automatically. The system learns from payment patterns to optimize timing.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&q=80&w=800"
+                image: "/images/reminders.png"
             },
             {
                 title: "Custom Reminder Cadence",
                 content: "You're in control. Set reminders for 3 days before due, on due date, and 3, 7, or 14 days overdue. Different cadences for different client types.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1579389083078-4e7018379f7e?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-mikhail-nilov-6930542.jpg"
             },
             {
                 title: "AI-Generated Messages",
                 content: "Context-aware messaging that evolves from helpful reminders to firm requests based on how late the payment is. Messages adapt based on client history.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-tima-miroshnichenko-6694485.jpg"
             },
             {
                 title: "Multi-Channel Delivery",
                 content: "Reach clients where they are. Send reminders via email, SMS, or both automatically. Track what works best for each client.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1574634534894-89d7576c8259?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-tima-miroshnichenko-6694485.jpg"
             },
             {
                 title: "Reminder Logs & Analytics",
@@ -147,19 +147,19 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Real-Time Income Summaries",
                 content: "Know exactly how much you've made this month, quarter, and year with live updating dashboards. Track your financial health at a glance with intuitive visualizations that update as payments come in.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1633158829585-23ba8f7c8caf?auto=format&fit=crop&q=80&w=800"
+                image: "/images/cashflow.png"
             },
             {
                 title: "Overdue Invoice Indicators",
                 content: "Spot trouble fast. Red indicators highlight late payments so you can take action immediately. Prevent cash flow issues before they become problems with early warning system.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1543286386-2e659306cd6c?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-577195.jpg"
             },
             {
                 title: "Upcoming Reminders & Tasks",
                 content: "Stay ahead of your workload. See which invoices are due soon and what automated tasks the system has scheduled for today. Never miss a follow-up opportunity with your daily task overview.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-rdne-7947999.jpg"
             },
             {
                 title: "Cash Flow Forecasting",
@@ -226,7 +226,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Payment Sync",
                 content: "Connect Stripe, PayPal, and Plaid directly. Payments made through these platforms automatically mark invoices as paid. Real-time synchronization keeps everything up-to-date.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1556742049-13473568652c?auto=format&fit=crop&q=80&w=800"
+                image: "/images/payment-sync-dashboard.png"
             },
             {
                 title: "Real-Time Tracking",
@@ -265,7 +265,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Real-Time Sync",
                 content: "Collaborate without stepping on toes. Updates happen instantly across all devices via WebSockets. See changes as they happen, no refresh needed.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=800"
+                image: "/images/team.png"
             },
             {
                 title: "Full Audit Logs",
@@ -292,13 +292,13 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Data Encryption",
                 content: "All data is encrypted in transit and at rest using industry-standard SSL/TLS protocols with 256-bit encryption. Military-grade security for your financial data.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-shkrabaanthony-5816291.jpg"
             },
             {
                 title: "Role-Based Access Control",
                 content: "Granular permissions ensure employees only access the data necessary for their role. Configurable security policies protect sensitive information.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1586762524442-45e07662991a?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-mikhail-nilov-6894066.jpg"
             },
             {
                 title: "Global Compliance",
@@ -326,25 +326,25 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Configure Recurring Invoices",
                 content: "Configure recurring invoices once and let Flowryte handle the rest. Perfect for monthly retainers, subscription services, and ongoing projects.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1554224155-1696413575b9?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-577195.jpg"
             },
             {
                 title: "Flexible Scheduling",
                 content: "Set up weekly, monthly, quarterly, or custom billing cycles. Automatic invoice generation with personalized messages.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1586762524442-45e07662991a?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-mikhail-nilov-6894066.jpg"
             },
             {
                 title: "Subscription Management",
                 content: "Track all recurring revenue in one place. Monitor active subscriptions, cancellations, and revenue projections.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-shkrabaanthony-5816299.jpg"
             },
             {
                 title: "Smart Invoicing",
                 content: "Automatically adjust invoice amounts based on usage, hours worked, or custom metrics. Dynamic billing for dynamic businesses.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-590016.jpg"
             },
             {
                 title: "Payment Automation",
@@ -389,7 +389,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Multi-Language Support",
                 content: "Generate descriptions in multiple languages. Perfect for international clients and global business expansion.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1586762524442-45e07662991a?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-mikhail-nilov-6894066.jpg"
             },
             {
                 title: "Learning & Improvement",
@@ -417,13 +417,13 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Designed for Solo Professionals",
                 content: "Built specifically for freelancers who need to focus on their craft, not paperwork. Every feature is optimized for solo workflows.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-cottonbro-6862442.jpg"
             },
             {
                 title: "Professional Branding",
                 content: "Create stunning, branded invoices that reflect your professional quality. Custom templates, logos, and colors make every document impressive.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1554224155-1696413575b9?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-577195.jpg"
             },
             {
                 title: "Client Relationship Management",
@@ -456,7 +456,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Built for Team Collaboration",
                 content: "Perfect for agencies with 2-50 team members. Role-based access, real-time sync, and collaborative workflows keep everyone aligned.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=800"
+                image: "/images/team.png"
             },
             {
                 title: "Multi-Client Management",
@@ -495,13 +495,13 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Milestone-Based Invoicing",
                 content: "Automatically generate invoices when project milestones are completed. Perfect for waterfall and agile project management.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-rdne-7947999.jpg"
             },
             {
                 title: "Budget Tracking",
                 content: "Track project budgets in real-time. See how much has been billed versus the total project value.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-590016.jpg"
             },
             {
                 title: "Progress Integration",
@@ -513,7 +513,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Client Visibility",
                 content: "Give clients transparent access to project progress and billing milestones without revealing sensitive financial data.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-shkrabaanthony-5816299.jpg"
             },
             {
                 title: "Resource Allocation",
@@ -552,13 +552,13 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Compliance Management",
                 content: "Stay compliant with tax regulations and accounting standards. Automatic tax calculations and audit trails.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-artempodrez-5716001 (1).jpg"
             },
             {
                 title: "Multi-Entity Support",
                 content: "Manage multiple business entities and departments. Consolidated reporting and inter-entity transactions handled seamlessly.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=800"
+                image: "/images/team.png"
             },
             {
                 title: "Data Export",
@@ -585,7 +585,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "360° Client View",
                 content: "See everything about a client in one dashboard. Invoices, payments, communication history, and project status.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-yankrukov-7693710.jpg"
             },
             {
                 title: "CRM Integration",
@@ -597,13 +597,13 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Communication Tracking",
                 content: "All client communications automatically logged. Email, calls, and meetings linked to specific invoices and projects.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-tima-miroshnichenko-6694485.jpg"
             },
             {
                 title: "Account Health Scoring",
                 content: "AI-powered scoring shows which clients need attention. Identify at-risk accounts and growth opportunities.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1543286386-2e659306cd6c?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-577195.jpg"
             },
             {
                 title: "Relationship Analytics",
@@ -677,19 +677,19 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Creator-Focused Invoicing",
                 content: "Designed for YouTubers, podcasters, writers, and consultants. Bill for content creation, sponsorships, and consulting.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-tima-miroshnichenko-6694570.jpg"
             },
             {
                 title: "Mobile-First Design",
                 content: "Create and send invoices from your phone. Perfect for creators who work on the go and need flexibility.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-tima-miroshnichenko-6694485.jpg"
             },
             {
                 title: "Revenue Tracking",
                 content: "Track income from multiple platforms. YouTube, Patreon, sponsorships, and freelance work all in one place.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-yankrukov-7693710.jpg"
             },
             {
                 title: "Brand Partnerships",
@@ -728,7 +728,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Project-Based Billing",
                 content: "Handle complex agency projects with milestone billing, retainers, and performance-based pricing.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=800"
+                image: "/images/team.png"
             },
             {
                 title: "Client Portals",
@@ -740,7 +740,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Team Collaboration",
                 content: "Multiple team members can collaborate on invoices. Role-based access and approval workflows.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=800"
+                image: "/images/team.png"
             },
             {
                 title: "Revenue Recognition",
@@ -773,19 +773,19 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Multi-Channel Sales",
                 content: "Track sales across multiple channels. Online, marketplace, and retail sales unified in one system.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-669610.jpg"
             },
             {
                 title: "Inventory Billing",
                 content: "Automated invoicing for inventory purchases and supplier payments. Track cost of goods sold.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-shkrabaanthony-5816299.jpg"
             },
             {
                 title: "Sales Tax Management",
                 content: "Automatic sales tax calculation and reporting. Multi-state and international tax compliance.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-590016.jpg"
             },
             {
                 title: "Dropshipping Support",
@@ -824,7 +824,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Subscription Models",
                 content: "Flexible subscription billing for membership sites and ongoing education programs.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-tima-miroshnichenko-6694570.jpg"
             },
             {
                 title: "Instructor Payments",
@@ -857,7 +857,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "HIPAA Compliant Billing",
                 content: "Fully HIPAA-compliant invoicing system for healthcare providers. Patient data protection and privacy.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1505751172107-59c35904fc7c?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-leeloothefirst-7887849.jpg"
             },
             {
                 title: "Insurance Claims",
@@ -869,7 +869,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Patient Billing",
                 content: "Clear, professional patient billing. Co-pays, deductibles, and out-of-pocket expenses tracked accurately.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1505751172107-59c35904fc7c?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-leeloothefirst-7887849.jpg"
             },
             {
                 title: "Medical Records Integration",
@@ -902,25 +902,25 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Trust Accounting",
                 content: "Compliant trust accounting for law firms. Client fund management with complete audit trails.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-pavel-danilyuk-7222022.jpg"
             },
             {
                 title: "Retainer Management",
                 content: "Automated retainer invoicing and tracking. Bill against retainers with detailed time entries.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-pavel-danilyuk-7222022.jpg"
             },
             {
                 title: "Billable Hours",
                 content: "Precise time tracking and billing. Six-minute increments with detailed task descriptions.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-pavel-danilyuk-7222022.jpg"
             },
             {
                 title: "Client Matter Billing",
                 content: "Organize billing by client matters and cases. Clear separation of different legal matters.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-pavel-danilyuk-7222022.jpg"
             },
             {
                 title: "Compliance Reporting",
@@ -952,7 +952,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Start Risk-Free",
                 content: "Try every feature of Flowryte Pro for 30 days. No credit card required, no hidden fees.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1554224155-1696413575b9?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-577195.jpg"
             },
             {
                 title: "Full Feature Access",
@@ -1003,19 +1003,19 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Advanced Invoicing",
                 content: "Create unlimited custom invoices with recurring billing, partial payments, and multi-currency support.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-artempodrez-5716001 (1).jpg"
             },
             {
                 title: "Smart Automation",
                 content: "Automated reminders, late fees, and thank you messages. Set it up once and let it run.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-rdne-7947999.jpg"
             },
             {
                 title: "Team Collaboration",
                 content: "Add up to 10 team members with role-based access. Collaborate on invoices and track performance.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=800"
+                image: "/images/team.png"
             },
             {
                 title: "Payment Integration",
@@ -1048,7 +1048,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Unlimited Everything",
                 content: "Unlimited team members, invoices, clients, and storage. Grow without limits or additional costs.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=800"
+                image: "/images/team.png"
             },
             {
                 title: "Priority Support",
@@ -1060,7 +1060,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Advanced Integrations",
                 content: "Connect multiple payment processors, accounting software, and custom API integrations for complete workflow automation.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-mikhail-nilov-6964335.jpg"
             },
             {
                 title: "Custom Branding",
@@ -1087,7 +1087,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Own Forever",
                 content: "Pay once and use Flowryte forever. No monthly fees, no subscriptions, just lifetime access to all features.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1554224155-1696413575b9?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-577195.jpg"
             },
             {
                 title: "All Future Updates",
@@ -1132,13 +1132,13 @@ export const featureData: Record<string, FeatureData> = {
         icon: BookOpen,
         benefits: ["Guides", "Tutorials"],
         template: "resource",
-        image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=1200",
+        image: "/images/pexels-goumbik-669610.jpg",
         sections: [
             {
                 title: "Comprehensive Guides",
                 content: "Step-by-step tutorials covering every feature of Flowryte. From basic setup to advanced automation.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-669610.jpg"
             },
             {
                 title: "Video Tutorials",
@@ -1156,7 +1156,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Best Practices",
                 content: "Learn proven strategies for invoicing, cash flow management, and client communication from industry experts.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-tima-miroshnichenko-6694570.jpg"
             },
             {
                 title: "Troubleshooting",
@@ -1224,13 +1224,13 @@ export const featureData: Record<string, FeatureData> = {
         icon: PlayCircle,
         benefits: ["Interactive", "Fast"],
         template: "standard",
-        image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=1200",
+        image: "/images/pexels-tima-miroshnichenko-6694485.jpg",
         sections: [
             {
                 title: "Interactive Demo",
                 content: "Experience Flowryte hands-on with our interactive product tour. No signup required.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-tima-miroshnichenko-6694485.jpg"
             },
             {
                 title: "Dashboard Overview",
@@ -1248,7 +1248,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Automation Features",
                 content: "See automated reminders, payment tracking, and cash flow insights in action.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-rdne-7947999.jpg"
             },
             {
                 title: "Team Collaboration",
@@ -1288,7 +1288,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Workshop Sessions",
                 content: "Hands-on workshops to help you master specific features and workflows in Flowryte.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=800"
+                image: "/images/team.png"
             },
             {
                 title: "Expert Panels",
@@ -1322,7 +1322,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "API Documentation",
                 content: "Comprehensive API documentation with endpoints, authentication, and code examples.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-mikhail-nilov-6964335.jpg"
             },
             {
                 title: "SDKs & Libraries",
@@ -1368,7 +1368,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Success Stories",
                 content: "Real stories from real customers who transformed their business with Flowryte.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-tima-miroshnichenko-6694570.jpg"
             },
             {
                 title: "Sarah's Design Studio",
@@ -1402,7 +1402,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Join the Conversation",
                 content: "Connect with thousands of Flowryte users in our active Slack and Discord communities.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=800"
+                image: "/images/team.png"
             },
             {
                 title: "Get Help Fast",
@@ -1414,7 +1414,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Share Your Ideas",
                 content: "Suggest features, share workflows, and help shape the future of Flowryte with other power users.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-tima-miroshnichenko-6694570.jpg"
             },
             {
                 title: "Learn from Peers",
@@ -1447,7 +1447,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Master Flowryte",
                 content: "Become a certified Flowryte expert and demonstrate your proficiency in invoicing automation.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-tima-miroshnichenko-6694570.jpg"
             },
             {
                 title: "Comprehensive Training",
@@ -1459,7 +1459,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Hands-on Assessment",
                 content: "Practical exams and real-world scenarios to test your knowledge and skills.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-tima-miroshnichenko-6694570.jpg"
             },
             {
                 title: "Certification Benefits",
@@ -1492,13 +1492,13 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Expert Insights",
                 content: "Financial management tips, invoicing strategies, and business growth advice from industry experts.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-tima-miroshnichenko-6694570.jpg"
             },
             {
                 title: "Case Studies",
                 content: "Deep dives into how successful businesses use Flowryte to streamline their financial operations.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-tima-miroshnichenko-6694570.jpg"
             },
             {
                 title: "Industry Trends",
@@ -1532,7 +1532,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Box,
         benefits: ["Apps", "Plugins"],
         template: "resource",
-        image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=1200",
+        image: "/images/pexels-shkrabaanthony-5816291.jpg",
         sections: [
             {
                 title: "Extend Flowryte",
@@ -1550,7 +1550,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Payment Processors",
                 content: "Integrate with additional payment processors beyond our built-in Stripe and PayPal support.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-shkrabaanthony-5816291.jpg"
             },
             {
                 title: "CRM & Project Management",
@@ -1585,7 +1585,7 @@ export const featureData: Record<string, FeatureData> = {
         sections: [
             {
                 title: "Simplicity First", content: "We focus on removing friction. No clunky menus, just the tools you need.", layout: "center",
-                image: "https://images.unsplash.com/photo-1554224155-1696413575b9?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-577195.jpg"
             },
             {
                 title: "Built for Freelancers", content: "Designed by freelancers who understand the pain points of running a small business.", layout: "left",
@@ -1593,11 +1593,11 @@ export const featureData: Record<string, FeatureData> = {
             },
             {
                 title: "Automation at Core", content: "Every feature is designed to save you time and reduce manual work.", layout: "right",
-                image: "https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-artempodrez-5716001 (1).jpg"
             },
             {
                 title: "Beautiful Design", content: "Software that's actually pleasant to use. Clean, intuitive, and professional.", layout: "left",
-                image: "https://images.unsplash.com/photo-1586762524442-45e07662991a?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-mikhail-nilov-6894066.jpg"
             },
             {
                 title: "Powerful Insights", content: "Understand your business better with smart analytics and cash flow forecasting.", layout: "right",
@@ -1620,7 +1620,7 @@ export const featureData: Record<string, FeatureData> = {
         sections: [
             {
                 title: "Time-saving automation", content: "Stop copying and pasting into Word docs. Generate invoices in seconds.", layout: "right",
-                image: "https://images.unsplash.com/photo-1554224155-1696413575b9?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-577195.jpg"
             },
             {
                 title: "Automated Follow-ups", content: "Manual chasing is awkward. Let our AI do the polite nudging for you.", layout: "left",
@@ -1628,7 +1628,7 @@ export const featureData: Record<string, FeatureData> = {
             },
             {
                 title: "Professional Templates", content: "No more design struggles. Access beautiful, professional templates that impress clients.", layout: "right",
-                image: "https://images.unsplash.com/photo-1586762524442-45e07662991a?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-mikhail-nilov-6894066.jpg"
             },
             {
                 title: "Error Reduction", content: "Eliminate calculation errors and typos. Automated calculations ensure accuracy every time.", layout: "left",
@@ -1655,19 +1655,19 @@ export const featureData: Record<string, FeatureData> = {
         sections: [
             {
                 title: "Streamlined for small teams", content: "Big tools are bloated. We built this specifically for freelancers and small agencies.", layout: "left",
-                image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=800"
+                image: "/images/team.png"
             },
             {
                 title: "Minimalist Design", content: "Enjoy software that actually looks good and feels great to use.", layout: "right",
-                image: "https://images.unsplash.com/photo-1586762524442-45e07662991a?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-mikhail-nilov-6894066.jpg"
             },
             {
                 title: "No Hidden Fees", content: "Transparent pricing with no surprise charges. What you see is what you pay.", layout: "left",
-                image: "https://images.unsplash.com/photo-1554224155-1696413575b9?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-577195.jpg"
             },
             {
                 title: "Modern Technology", content: "Built with the latest tech for faster performance and better reliability.", layout: "right",
-                image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-mikhail-nilov-6964335.jpg"
             },
             {
                 title: "Focused Features", content: "No overwhelming feature bloat. Just the tools you actually need to run your business.", layout: "left",
@@ -1698,7 +1698,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Automated Workflow",
                 content: "Reduce administrative overhead by 80%. From invoice creation to payment collection, every step is automated to save you hours each week.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-artempodrez-5716001 (1).jpg"
             },
             {
                 title: "Focus Mode Integration",
@@ -1710,7 +1710,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Smart Templates",
                 content: "Create invoice templates for different client types and projects. One-click generation means you spend less time on paperwork and more on billable work.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-shkrabaanthony-5816299.jpg"
             },
             {
                 title: "Productivity Analytics",
@@ -1743,13 +1743,13 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Actionable Dashboard",
                 content: "Access all your urgent items directly from the homepage. See at a glance what needs your attention today, this week, and this month.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-rdne-7947999.jpg"
             },
             {
                 title: "Automated Task Creation",
                 content: "Tasks are automatically generated when invoices are created, sent, or become overdue. No manual entry required - just focus on execution.",
                 layout: "right",
-                image: "https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-artempodrez-5716001 (1).jpg"
             },
             {
                 title: "Bulk Actions",
@@ -1831,7 +1831,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Work With Us",
                 content: "Join a team that's passionate about simplifying financial operations for freelancers and small businesses.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=800"
+                image: "/images/team.png"
             },
             {
                 title: "Open Positions",
@@ -1865,7 +1865,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Flowryte Merchandise",
                 content: "Show your love for Flowryte with our exclusive merchandise collection.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-shkrabaanthony-5816299.jpg"
             },
             {
                 title: "Available Items",
@@ -1911,7 +1911,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Technical Insights",
                 content: "Deep dives into our architecture, challenges, and solutions.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-mikhail-nilov-6964335.jpg"
             },
             {
                 title: "Open Source Contributions",
@@ -1934,7 +1934,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Design Philosophy",
                 content: "Our approach to creating intuitive and beautiful user experiences.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1586762524442-45e07662991a?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-mikhail-nilov-6894066.jpg"
             },
             {
                 title: "Case Studies",
@@ -2007,7 +2007,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Self-Service Support",
                 content: "Find answers to common questions and learn how to use Flowryte effectively.",
                 layout: "center",
-                image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=800"
+                image: "/images/pexels-goumbik-669610.jpg"
             },
             {
                 title: "Comprehensive Guides",
@@ -2163,5 +2163,44 @@ export const featureData: Record<string, FeatureData> = {
     },
 
     // Special
-    "enterprise": { title: "Enterprise", subtitle: "Custom Solutions", description: "For large organizations.", icon: Building2, benefits: ["SLA", "Support"], template: "enterprise" }
+    "enterprise": {
+        title: "Enterprise",
+        subtitle: "Built for Success at Scale",
+        description: "Custom solutions, dedicated support, and maximum reliability for large-scale operations.",
+        icon: Building2,
+        benefits: ["99.9% Uptime SLA", "Dedicated Account Manager", "Custom Integrations", "Advanced Security"],
+        template: "enterprise",
+        sections: [
+            {
+                title: "Scale Without Limits",
+                content: "Our infrastructure is designed to handle millions of invoices per month. Automated scaling ensures consistent performance even during your busiest billing cycles. No matter how large your team or client base grows, Flowryte scales with you.",
+                layout: "left",
+                image: "/images/team.png"
+            },
+            {
+                title: "Dedicated Success Team",
+                content: "Every enterprise client is assigned a dedicated success manager and technical lead. We don't just provide support; we partner with you to optimize your workflows and ensure you're getting the most out of our platform.",
+                layout: "right",
+                image: "/images/pexels-cottonbro-6862442.jpg"
+            },
+            {
+                title: "Custom Integrations & API",
+                content: "Need to connect with a legacy ERP or a custom CRM? Our engineering team works with you to build secure, robust integrations. Full access to our prioritized REST API ensures you can build exactly what your business needs.",
+                layout: "center",
+                image: "/images/pexels-mikhail-nilov-6964335.jpg"
+            },
+            {
+                title: "Bank-Grade Security",
+                content: "SSO (SAML), advanced audit logs, and granular role-based access control. We meet the highest security standards to ensure your data and your clients' data is always protected and compliant with global regulations.",
+                layout: "left",
+                image: "/images/pexels-shkrabaanthony-5816291.jpg"
+            }
+        ],
+        stats: [
+            { value: "99.9%", label: "Uptime SLA" },
+            { value: "24/7", label: "Priority Support" },
+            { value: "Unlimited", label: "Team Members" },
+            { value: "Custom", label: "Legal Terms" }
+        ]
+    }
 };

@@ -20,7 +20,7 @@ export default function Index() {
 
   return (
     <>
-      <SEOMeta 
+      <SEOMeta
         title="Flowryte - Professional Invoicing Software for Freelancers & Agencies"
         description="Create stunning invoices, automate payment reminders, and track cash flow with Flowryte. The modern invoicing platform designed for freelancers and agencies in India."
         keywords="invoicing software, invoice template, freelance invoicing, automated reminders, payment tracking, cash flow management, billing software, GST invoice, online payments"
@@ -49,7 +49,6 @@ export default function Index() {
         {/* Product Section: Why + Comparison */}
         <div id="product">
           <Why />
-          <Comparison />
         </div>
 
         <div id="testimonials">

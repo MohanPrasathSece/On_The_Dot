@@ -227,6 +227,10 @@
     animation: bounceSubtle 2s ease-in-out infinite;
   }
 
+  .animate-spin-slow {
+    animation: spinSlow 8s linear infinite;
+  }
+
   /* Decorative Blobs */
   .bg-blob-1 {
     @apply absolute rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float;
@@ -301,5 +305,15 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }

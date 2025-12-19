@@ -152,11 +152,11 @@ export function Pricing() {
           {plans.map((plan) => (
             <Card
               key={plan.id}
-              className={`relative rounded-3xl p-8 flex flex-col transition-all duration-300 cursor-pointer ${plan.highlight
-                ? "bg-[#0A0A0A] text-white shadow-2xl scale-105 z-10 border-2 border-yellow-500"
+              className={`relative rounded-3xl p-8 flex flex-col transition-all duration-500 cursor-pointer ${plan.highlight
+                ? "bg-[#0A0A0A] text-white shadow-2xl shadow-yellow-500/10 scale-105 z-10 border-2 border-yellow-500 hover:scale-[1.07] hover:shadow-yellow-500/20"
                 : selectedPlan === plan.id
-                  ? "bg-background border-2 border-yellow-500 shadow-lg"
-                  : "bg-background border border-border/50 hover:shadow-lg hover:border-yellow-500/50"
+                  ? "bg-background border-2 border-yellow-500 shadow-lg scale-[1.02]"
+                  : "bg-background border border-border/50 hover:shadow-xl hover:border-yellow-500/50 hover:-translate-y-1"
                 }`}
               onClick={() => setSelectedPlan(plan.id)}
             >

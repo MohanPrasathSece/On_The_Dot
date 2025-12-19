@@ -33,6 +33,7 @@ export function Navbar() {
     { name: "Pricing", id: "pricing" },
     { name: "Resources", id: "resources" },
     { name: "Product", id: "product" },
+    { name: "Appointment Setter", path: "/apply-setter" },
     { name: "Company", id: "company" },
     { name: "Support", id: "support" },
   ];
@@ -57,14 +58,8 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center">
             <NavbarMegaMenu />
-            <Link to="/enterprise" className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors">
-              Enterprise
-            </Link>
-            <Link to="/pricing" className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors">
-              Pricing
-            </Link>
           </div>
 
           {/* Actions */}
@@ -119,7 +114,13 @@ export function Navbar() {
               {navLinks.map((link) => (
                 <button
                   key={link.name}
-                  onClick={() => scrollToSection(link.id)}
+                  onClick={() => {
+                    if (link.path) {
+                      window.location.href = link.path;
+                    } else {
+                      scrollToSection(link.id);
+                    }
+                  }}
                   className="text-lg font-medium text-foreground/80 hover:text-foreground text-left"
                 >
                   {link.name}

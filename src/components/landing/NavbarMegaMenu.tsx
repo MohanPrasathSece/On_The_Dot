@@ -6,11 +6,12 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
+    navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import React from "react";
 import { Link } from "react-router-dom";
-import { FileText, Bell, BarChart3, Users, Shield, Zap, Briefcase, GraduationCap, ShoppingBag } from "lucide-react";
+import { FileText, Bell, BarChart3, Users, Shield, Zap, Briefcase, GraduationCap, ShoppingBag, UserPlus } from "lucide-react";
 
 export function NavbarMegaMenu() {
     return (
@@ -98,20 +99,19 @@ export function NavbarMegaMenu() {
                                     <GraduationCap className="w-4 h-4" /> Learn
                                 </h4>
                                 <ListItem href="/resources/res-library" title="Resource Library">Guides & FAQs</ListItem>
-                                <ListItem href="/resources/res-whats-new" title="What's New">Latest updates</ListItem>
-                                <ListItem href="/resources/res-tour" title="Product Tour">Walkthrough</ListItem>
-                                <ListItem href="/resources/res-events" title="Events">Webinars</ListItem>
-                                <ListItem href="/resources/res-blog" title="Blog">Insights</ListItem>
+                                <ListItem href="/resources/res-whats-new" title="What's New">Changelog</ListItem>
+                                <ListItem href="/resources/res-tour" title="Product Tour">Interactive app demo</ListItem>
+                                <ListItem href="/resources/res-events" title="Events">Workshops & Demos</ListItem>
+                                <ListItem href="/resources/res-devs" title="Developers">API & Documentation</ListItem>
                             </div>
                             <div className="p-2 border-l border-border/50 pl-4">
                                 <h4 className="font-bold text-sm mb-3 text-primary flex items-center gap-2">
                                     <ShoppingBag className="w-4 h-4" /> Connect
                                 </h4>
-                                <ListItem href="/signup" title="Community">User groups</ListItem>
-                                <ListItem href="/signup" title="Customer Stories">Case studies</ListItem>
-                                <ListItem href="/signup" title="Developers">API & SDKs</ListItem>
-                                <ListItem href="/signup" title="Marketplace">Integrations</ListItem>
-                                <ListItem href="/signup" title="Certified">Certification</ListItem>
+                                <ListItem href="/resources/res-stories" title="Customer Stories">Case Studies</ListItem>
+                                <ListItem href="/resources/res-community" title="Community">Slack & Discord</ListItem>
+                                <ListItem href="/resources/res-marketplace" title="Marketplace">Add-ons & Plugins</ListItem>
+                                <ListItem href="/resources/res-certified" title="Certification">Become an Expert</ListItem>
                             </div>
                         </ul>
                     </NavigationMenuContent>
@@ -129,8 +129,27 @@ export function NavbarMegaMenu() {
                             <ListItem href="/features/prod-vs-tools" title="Vs Other Tools" />
                             <ListItem href="/features/prod-productivity" title="Productivity" />
                             <ListItem href="/features/prod-tasks" title="Task Management" />
+                            <ListItem href="/apply-setter" title="Appointment Setter" icon={UserPlus} />
                         </ul>
                     </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                    <Link to="/enterprise" className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent text-sm font-semibold text-muted-foreground hover:text-primary transition-colors")}>
+                        Enterprise
+                    </Link>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                    <Link to="/pricing" className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent text-sm font-semibold text-muted-foreground hover:text-primary transition-colors")}>
+                        Pricing
+                    </Link>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                    <Link to="/apply-setter" className={cn(navigationMenuTriggerStyle(), "bg-transparent hover:bg-transparent text-sm font-semibold text-muted-foreground hover:text-primary transition-colors whitespace-nowrap")}>
+                        Appointment Setter
+                    </Link>
                 </NavigationMenuItem>
             </NavigationMenuList>
         </NavigationMenu>
