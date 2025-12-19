@@ -147,7 +147,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Real-Time Income Summaries",
                 content: "Know exactly how much you've made this month, quarter, and year with live updating dashboards. Track your financial health at a glance with intuitive visualizations that update as payments come in.",
                 layout: "center",
-                image: "/images/cashflow.png"
+                image: "/images/cashflow-dashboard.png"
             },
             {
                 title: "Overdue Invoice Indicators",
@@ -259,7 +259,7 @@ export const featureData: Record<string, FeatureData> = {
                 title: "Invite Team Members",
                 content: "Scale securely. Add Admin, Editor, or Viewer roles to control who can see and do what. Granular permissions ensure the right people have the right access.",
                 layout: "left",
-                image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=800"
+                image: "/images/team-invite-dashboard.png"
             },
             {
                 title: "Real-Time Sync",
