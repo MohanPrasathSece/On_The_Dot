@@ -5,19 +5,22 @@ const testimonials = [
         quote: "Flowryte has completely transformed how I handle invoicing. What used to take me hours now takes minutes, and I get paid 50% faster thanks to their smart reminders.",
         author: "Sarah Chen",
         role: "Freelance Designer",
-        company: "Design Studio"
+        company: "Design Studio",
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"
     },
     {
         quote: "The automated reminder system is a game-changer. Our cash flow improved dramatically, and we spend zero time chasing payments. The branded invoices look incredibly professional.",
         author: "Marcus Rodriguez",
         role: "Digital Marketing Agency Owner",
-        company: "Growth Labs"
+        company: "Growth Labs",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150"
     },
     {
         quote: "I love how Flowryte integrates with my payment processors. Clients can pay immediately, and I get notified instantly. The dashboard gives me complete visibility into my finances.",
         author: "Emma Thompson",
         role: "Consultant",
-        company: "Thompson Consulting"
+        company: "Thompson Consulting",
+        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
     }
 ];
 
@@ -45,8 +48,12 @@ export function Testimonials() {
                             </div>
                             <div>
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center font-bold text-primary text-lg">
-                                        {t.author[0]}
+                                    <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center font-bold text-primary text-lg overflow-hidden">
+                                        {t.image ? (
+                                            <img src={t.image} alt={t.author} className="w-full h-full object-cover" />
+                                        ) : (
+                                            t.author[0]
+                                        )}
                                     </div>
                                     <div>
                                         <div className="font-bold">{t.author}</div>

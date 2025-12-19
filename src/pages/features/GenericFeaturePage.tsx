@@ -293,13 +293,13 @@ function EnterpriseHeader({ data }: { data: any }) {
 
                 <div className="mt-20 pt-10 border-t border-white/10 animate-fade-in-up delay-500">
                     <p className="text-sm text-slate-500 mb-6 uppercase tracking-widest">Trusted by industry leaders</p>
-                    <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                        {/* Placeholder Logos */}
-                        <div className="h-8 w-24 bg-white/20 rounded" />
-                        <div className="h-8 w-24 bg-white/20 rounded" />
-                        <div className="h-8 w-24 bg-white/20 rounded" />
-                        <div className="h-8 w-24 bg-white/20 rounded" />
-                        <div className="h-8 w-24 bg-white/20 rounded" />
+                    <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                        {/* Realistic Brand Logos */}
+                        <div className="text-xl font-black tracking-tighter text-white">TECHSTREAM</div>
+                        <div className="text-xl font-bold tracking-tight text-white italic">QUANTUM</div>
+                        <div className="text-xl font-extrabold tracking-widest text-white uppercase">Nexus</div>
+                        <div className="text-xl font-semibold tracking-normal text-white">Cloudly</div>
+                        <div className="text-xl font-medium tracking-tight text-white border-2 border-white px-2 py-0.5">APEX</div>
                     </div>
                 </div>
             </div>

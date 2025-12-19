@@ -181,13 +181,13 @@ export function Pricing() {
                           <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                         ))}
                       </div>
-                      <span className={`text-xs ml-1 ${plan.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>4.9/5</span>
+                      <span className={`text-xs ml-1 ${plan.highlight ? "text-white/60" : "text-muted-foreground"}`}>4.9/5</span>
                     </div>
                   )}
                 </div>
               </div>
 
-              <p className={`text-sm mb-6 ${plan.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+              <p className={`text-sm mb-6 ${plan.highlight ? "text-white/70" : "text-muted-foreground"}`}>
                 {plan.description}
               </p>
 
@@ -196,12 +196,12 @@ export function Pricing() {
                   <span className={`text-4xl font-bold ${plan.highlight ? "text-white" : "text-foreground"}`}>
                     ${getDisplayPrice(plan)}
                   </span>
-                  <span className={`text-sm ${plan.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+                  <span className={`text-sm ${plan.highlight ? "text-white/60" : "text-muted-foreground"}`}>
                     {getBillingText(plan)}
                   </span>
                 </div>
                 {isYearly && !plan.oneTime && (
-                  <p className={`text-xs mt-1 ${plan.highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+                  <p className={`text-xs mt-1 ${plan.highlight ? "text-white/60" : "text-muted-foreground"}`}>
                     Save ${(plan.price * 12 - plan.yearlyPrice)} per year
                   </p>
                 )}
@@ -233,13 +233,13 @@ export function Pricing() {
               </Button>
 
               <div className="space-y-4 flex-1">
-                <p className={`text-sm font-semibold ${plan.highlight ? "text-primary-foreground" : "text-foreground"}`}>
+                <p className={`text-sm font-semibold ${plan.highlight ? "text-yellow-500" : "text-foreground"}`}>
                   What's included:
                 </p>
                 <ul className="space-y-3">
                   {plan.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <Check className={`w-5 h-5 shrink-0 mt-0.5 ${plan.highlight ? "text-primary-foreground/70" : "text-green-500"
+                      <Check className={`w-5 h-5 shrink-0 mt-0.5 ${plan.highlight ? "text-yellow-500" : "text-green-500"
                         }`} />
                       <span className={`text-sm ${plan.highlight ? "text-white/90" : "text-muted-foreground"
                         } ${feature.startsWith("Everything in") ? "font-semibold" : ""}`}>
@@ -251,15 +251,15 @@ export function Pricing() {
 
                 {plan.notIncluded && plan.notIncluded.length > 0 && (
                   <div className="pt-4 border-t border-border/50">
-                    <p className={`text-sm font-semibold mb-3 ${plan.highlight ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                    <p className={`text-sm font-semibold mb-3 ${plan.highlight ? "text-white/50" : "text-muted-foreground"}`}>
                       Not included:
                     </p>
                     <ul className="space-y-2">
                       {plan.notIncluded.map((feature, index) => (
                         <li key={index} className="flex items-start gap-3">
-                          <X className={`w-4 h-4 shrink-0 mt-0.5 ${plan.highlight ? "text-primary-foreground/50" : "text-muted-foreground/50"
+                          <X className={`w-4 h-4 shrink-0 mt-0.5 ${plan.highlight ? "text-white/30" : "text-muted-foreground/50"
                             }`} />
-                          <span className={`text-sm ${plan.highlight ? "text-primary-foreground/60" : "text-muted-foreground/60"
+                          <span className={`text-sm ${plan.highlight ? "text-white/40" : "text-muted-foreground/60"
                             }`}>
                             {feature}
                           </span>
