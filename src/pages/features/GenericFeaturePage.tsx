@@ -178,29 +178,42 @@ function StandardHeader({ data }: { data: any }) {
     return (
         <section className="pt-32 pb-20 px-6 sm:px-8 lg:px-12 container mx-auto relative overflow-hidden">
             {/* Background Blobs */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blob-1 -z-10" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blob-2 -z-10" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blob-1 -z-10 opacity-50" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blob-2 -z-10 opacity-50" />
 
-            <div className="max-w-4xl mx-auto text-center relative z-10">
-                {HeroIcon && (
-                    <div className="inline-flex items-center justify-center p-4 rounded-2xl bg-primary/10 text-primary mb-8 shadow-sm">
-                        <HeroIcon className="w-10 h-10" />
+            <div className="flex flex-col lg:flex-row items-center gap-16 relative z-10">
+                <div className="flex-1 text-left">
+                    {HeroIcon && (
+                        <div className="inline-flex items-center justify-center p-4 rounded-2xl bg-primary/10 text-primary mb-8 shadow-sm">
+                            <HeroIcon className="w-10 h-10" />
+                        </div>
+                    )}
+                    <h1 className="text-5xl sm:text-7xl font-bold tracking-tight mb-8">
+                        {data.title}
+                    </h1>
+                    <p className="text-xl sm:text-2xl text-muted-foreground max-w-2xl mb-12 leading-relaxed">
+                        {data.description}
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                        <Link to="/signup">
+                            <Button size="lg" className="text-lg px-8 h-14 shadow-lg shadow-black/20 bg-black text-white hover:bg-black/90">Start Free Trial</Button>
+                        </Link>
+                        <Link to="/signup">
+                            <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-black text-black hover:bg-black/10">Talk to Sales</Button>
+                        </Link>
+                    </div>
+                </div>
+
+                {data.image && (
+                    <div className="flex-1 w-full relative">
+                        <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-border shadow-2xl rotate-2 hover:rotate-0 transition-all duration-500">
+                            <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
+                        </div>
+                        {/* Decorative elements */}
+                        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl -z-10" />
+                        <div className="absolute -top-6 -left-6 w-32 h-32 bg-yellow-500/20 rounded-full blur-3xl -z-10" />
                     </div>
                 )}
-                <h1 className="text-5xl sm:text-7xl font-bold tracking-tight mb-8">
-                    {data.title}
-                </h1>
-                <p className="text-xl sm:text-2xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-                    {data.description}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link to="/signup">
-                        <Button size="lg" className="text-lg px-8 h-14 shadow-lg shadow-black/20 bg-black text-white hover:bg-black/90">Start Free Trial</Button>
-                    </Link>
-                    <Link to="/signup">
-                        <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-black text-black hover:bg-black/10">Talk to Sales</Button>
-                    </Link>
-                </div>
             </div>
         </section>
     )
@@ -236,30 +249,36 @@ function SolutionHeader({ data }: { data: any }) {
                         </Link>
                     </div>
                 </div>
-                <div className="relative aspect-square lg:aspect-[4/3] rounded-2xl bg-background shadow-2xl border border-border p-2 rotate-2 hover:rotate-0 transition-transform duration-500">
-                    <div className="w-full h-full bg-muted/20 rounded-xl overflow-hidden relative">
-                        {/* Mock UI Composition */}
-                        <div className="absolute top-0 w-full h-12 border-b border-border/50 bg-background/80 backdrop-blur-sm flex items-center px-4 gap-2">
-                            <div className="w-3 h-3 rounded-full bg-red-400" />
-                            <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                            <div className="w-3 h-3 rounded-full bg-green-400" />
+                <div className="relative aspect-square lg:aspect-[4/3] rounded-2xl bg-background shadow-2xl border border-border p-2 rotate-2 hover:rotate-0 transition-transform duration-500 overflow-hidden">
+                    {data.image ? (
+                        <div className="w-full h-full rounded-xl overflow-hidden">
+                            <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
                         </div>
-                        <div className="absolute top-16 left-4 right-4 bottom-4 grid grid-cols-3 gap-4">
-                            <div className="col-span-1 bg-background rounded-lg border border-border/50 p-4 space-y-3">
-                                <div className="w-12 h-12 rounded-full bg-primary/20" />
-                                <div className="w-full h-2 rounded bg-muted-foreground/20" />
-                                <div className="w-2/3 h-2 rounded bg-muted-foreground/20" />
+                    ) : (
+                        <div className="w-full h-full bg-muted/20 rounded-xl overflow-hidden relative">
+                            {/* Mock UI Composition */}
+                            <div className="absolute top-0 w-full h-12 border-b border-border/50 bg-background/80 backdrop-blur-sm flex items-center px-4 gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-400" />
+                                <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                                <div className="w-3 h-3 rounded-full bg-green-400" />
                             </div>
-                            <div className="col-span-2 bg-background rounded-lg border border-border/50 p-4 space-y-4">
-                                <div className="flex justify-between">
-                                    <div className="w-1/3 h-4 rounded bg-muted-foreground/20" />
-                                    <div className="w-1/4 h-8 rounded bg-primary text-primary-foreground flex items-center justify-center text-xs">Action</div>
+                            <div className="absolute top-16 left-4 right-4 bottom-4 grid grid-cols-3 gap-4">
+                                <div className="col-span-1 bg-background rounded-lg border border-border/50 p-4 space-y-3">
+                                    <div className="w-12 h-12 rounded-full bg-primary/20" />
+                                    <div className="w-full h-2 rounded bg-muted-foreground/20" />
+                                    <div className="w-2/3 h-2 rounded bg-muted-foreground/20" />
                                 </div>
-                                <div className="h-24 bg-muted/20 rounded border border-border/30" />
-                                <div className="h-24 bg-muted/20 rounded border border-border/30" />
+                                <div className="col-span-2 bg-background rounded-lg border border-border/50 p-4 space-y-4">
+                                    <div className="flex justify-between">
+                                        <div className="w-1/3 h-4 rounded bg-muted-foreground/20" />
+                                        <div className="w-1/4 h-8 rounded bg-primary text-primary-foreground flex items-center justify-center text-xs">Action</div>
+                                    </div>
+                                    <div className="h-24 bg-muted/20 rounded border border-border/30" />
+                                    <div className="h-24 bg-muted/20 rounded border border-border/30" />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </section>
@@ -309,14 +328,20 @@ function EnterpriseHeader({ data }: { data: any }) {
 
 function ResourceHeader({ data }: { data: any }) {
     return (
-        <section className="pt-32 pb-16 px-6 sm:px-8 lg:px-12 container mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">{data.title}</h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{data.description}</p>
+        <section className="pt-32 pb-16 px-6 sm:px-8 lg:px-12 container mx-auto text-center relative max-w-5xl">
+            <h1 className="text-4xl sm:text-6xl font-bold mb-6">{data.title}</h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">{data.description}</p>
+
+            {data.image && (
+                <div className="max-w-4xl mx-auto mb-16 aspect-[21/9] rounded-3xl overflow-hidden border border-border shadow-2xl">
+                    <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
+                </div>
+            )}
 
             {/* Search Bar Visual */}
-            <div className="max-w-md mx-auto mt-10 relative">
+            <div className="max-w-md mx-auto relative">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                <input type="text" placeholder="Search..." className="w-full pl-12 pr-4 py-4 rounded-full border border-border shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20" />
+                <input type="text" placeholder="Search resources..." className="w-full pl-12 pr-4 py-4 rounded-full border border-border shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/20" />
             </div>
         </section>
     )
@@ -458,34 +483,100 @@ function ResourceContent({ data }: { data: any }) {
     return (
         <div className="py-20 bg-muted/10 min-h-screen">
             <div className="container mx-auto px-6 sm:px-8 lg:px-12">
+
+                {/* Dynamically render sections from data if they exist */}
+                {data.sections && data.sections.length > 0 && (
+                    <div className="space-y-32 mb-32">
+                        {data.sections.map((section: any, i: number) => (
+                            <section key={i} className="flex flex-col lg:flex-row gap-16 items-center">
+                                <div className={cn(
+                                    "flex-1 space-y-6",
+                                    section.layout === "right" ? "lg:order-2" : "",
+                                    section.layout === "center" ? "text-center max-w-3xl mx-auto" : ""
+                                )}>
+                                    <h2 className="text-3xl font-bold">{section.title}</h2>
+                                    <p className="text-lg text-muted-foreground leading-relaxed">{section.content}</p>
+                                    <Button variant="link" className="p-0 text-primary h-auto font-semibold" onClick={() => handleArticleClick(section.title)}>
+                                        Read more <ArrowRight className="w-4 h-4 ml-2" />
+                                    </Button>
+                                </div>
+                                {section.image && (
+                                    <div className={cn(
+                                        "flex-1 w-full aspect-video rounded-2xl overflow-hidden border border-border shadow-xl transform transition-all hover:scale-[1.02]",
+                                        section.layout === "right" ? "lg:order-1" : "",
+                                        section.layout === "center" ? "order-last w-full mt-8" : ""
+                                    )}>
+                                        <img src={section.image} alt={section.title} className="w-full h-full object-cover" />
+                                    </div>
+                                )}
+                            </section>
+                        ))}
+                    </div>
+                )}
+
                 <div className="bg-background rounded-2xl border border-border p-8 mb-16 shadow-sm flex flex-col md:flex-row items-center gap-8">
-                    <div className="w-full md:w-1/3 aspect-video bg-primary/10 rounded-xl flex items-center justify-center">
-                        <BookOpen className="w-16 h-16 text-primary/40" />
+                    <div className="w-full md:w-1/3 aspect-video bg-primary/10 rounded-xl overflow-hidden">
+                        <img
+                            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                            alt="Featured Report"
+                            className="w-full h-full object-cover opacity-80"
+                        />
                     </div>
                     <div className="flex-1 space-y-4">
                         <div className="text-sm font-bold text-primary uppercase tracking-wider">Featured</div>
-                        <h2 className="text-3xl font-bold">The State of Work 2025</h2>
-                        <p className="text-muted-foreground text-lg">New research reveals how AI and automation are reshaping the modern workplace.</p>
-                        <Button onClick={() => handleArticleClick("The State of Work 2025")}>Read Report</Button>
+                        <h2 className="text-3xl font-bold">The State of Invoicing 2025</h2>
+                        <p className="text-muted-foreground text-lg">Our annual research report on how freelancers and small agencies are managing their cash flow in an increasingly automated world.</p>
+                        <Button onClick={() => handleArticleClick("The State of Invoicing 2025")}>Read Whitepaper</Button>
                     </div>
                 </div>
 
                 <h3 className="text-2xl font-bold mb-8">Latest Articles</h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {[
-                        { title: "Improving Team Collaboration in Hybrid Environments", description: "Discover actionable strategies to keep your distributed team aligned and productive...", type: "Guide" },
-                        { title: "Advanced Financial Planning for Startups", description: "Learn how to manage cash flow and create sustainable financial models for growth...", type: "Finance" },
-                        { title: "Building Scalable Invoice Systems", description: "Best practices for creating invoice management systems that grow with your business...", type: "Technical" },
-                        { title: "Customer Success Stories: Q4 2024", description: "How leading companies transformed their billing processes with Flowryte...", type: "Case Study" },
-                        { title: "Security Best Practices for SaaS Platforms", description: "Essential security measures every SaaS company should implement...", type: "Security" },
-                        { title: "The Future of Remote Work Tools", description: "Exploring emerging trends in remote collaboration and productivity tools...", type: "Trends" }
+                        {
+                            title: "Improving Team Collaboration in Hybrid Environments",
+                            description: "Discover actionable strategies to keep your distributed team aligned and productive...",
+                            type: "Guide",
+                            image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=600"
+                        },
+                        {
+                            title: "Advanced Financial Planning for Startups",
+                            description: "Learn how to manage cash flow and create sustainable financial models for growth...",
+                            type: "Finance",
+                            image: "https://images.unsplash.com/photo-1554224155-1696413575b9?auto=format&fit=crop&q=80&w=600"
+                        },
+                        {
+                            title: "Building Scalable Invoice Systems",
+                            description: "Best practices for creating invoice management systems that grow with your business...",
+                            type: "Technical",
+                            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600"
+                        },
+                        {
+                            title: "Customer Success Stories: Q4 2024",
+                            description: "How leading companies transformed their billing processes with Flowryte...",
+                            type: "Case Study",
+                            image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600"
+                        },
+                        {
+                            title: "Security Best Practices for SaaS Platforms",
+                            description: "Essential security measures every SaaS company should implement...",
+                            type: "Security",
+                            image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=600"
+                        },
+                        {
+                            title: "The Future of Remote Work Tools",
+                            description: "Exploring emerging trends in remote collaboration and productivity tools...",
+                            type: "Trends",
+                            image: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=600"
+                        }
                     ].map((article, i) => (
                         <div key={i} className="group bg-background rounded-xl border border-border overflow-hidden hover:shadow-xl transition-all cursor-pointer" onClick={() => handleArticleClick(article.title)}>
-                            <div className="h-48 bg-muted relative">
+                            <div className="h-48 bg-muted relative overflow-hidden">
+                                <img src={article.image} alt={article.title} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
                                 <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors" />
                                 {!isAuthenticated && (
                                     <div className="absolute top-4 right-4">
-                                        <div className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                                        <div className="bg-black/60 backdrop-blur-md text-white px-2 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
                                             <Lock className="w-3 h-3" />
                                             Premium
                                         </div>

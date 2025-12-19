@@ -20,6 +20,7 @@ export interface FeatureData {
     subtitle: string;
     description: string;
     icon: LucideIcon;
+    image?: string;
     heroImage?: string;
     benefits: string[];
     template?: TemplateType;
@@ -1131,6 +1132,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: BookOpen,
         benefits: ["Guides", "Tutorials"],
         template: "resource",
+        image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Comprehensive Guides",
@@ -1176,6 +1178,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Rss,
         benefits: ["Features", "Fixes"],
         template: "standard",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Latest Updates",
@@ -1221,6 +1224,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: PlayCircle,
         benefits: ["Interactive", "Fast"],
         template: "standard",
+        image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Interactive Demo",
@@ -1266,6 +1270,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Calendar,
         benefits: ["Live", "Q&A"],
         template: "resource",
+        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Live Webinars",
@@ -1311,6 +1316,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Code2,
         benefits: ["API", "Webhooks"],
         template: "standard",
+        image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "API Documentation",
@@ -1356,6 +1362,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Heart,
         benefits: ["Growth", "Results"],
         template: "resource",
+        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Success Stories",
@@ -1389,6 +1396,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: MessageCircle,
         benefits: ["Network", "Help"],
         template: "resource",
+        image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Join the Conversation",
@@ -1524,6 +1532,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Box,
         benefits: ["Apps", "Plugins"],
         template: "resource",
+        image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Extend Flowryte",
@@ -1772,6 +1781,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Info,
         benefits: ["Mission", "Vision"],
         template: "standard",
+        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200",
         sections: [
             { title: "Our Vision", content: "Simplify invoicing so you can focus on what you do best.", layout: "center", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" },
             { title: "Our Story", content: "Founded by freelancers who experienced the pain of manual invoicing firsthand. We built the solution we wished existed.", layout: "left", image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800" },
@@ -1792,6 +1802,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Newspaper,
         benefits: ["Latest", "Updates"],
         template: "resource",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Latest Announcements",
@@ -1814,6 +1825,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: UserPlus,
         benefits: ["Remote", "Equity"],
         template: "standard",
+        image: "https://images.unsplash.com/photo-1522071823991-b9671f3d47ce?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Work With Us",
@@ -1847,6 +1859,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: ShoppingBag,
         benefits: ["Hoodies", "Stickers"],
         template: "standard",
+        image: "https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Flowryte Merchandise",
@@ -1869,6 +1882,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Image,
         benefits: ["Logos", "Colors"],
         template: "standard",
+        image: "https://images.unsplash.com/photo-1558403191-2244b6716fd0?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Brand Guidelines",
@@ -1891,6 +1905,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Code2,
         benefits: ["Tech", "Challenges"],
         template: "resource",
+        image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Technical Insights",
@@ -1913,6 +1928,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: PenTool,
         benefits: ["Design", "UX"],
         template: "resource",
+        image: "https://images.unsplash.com/photo-1586762524442-45e07662991a?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Design Philosophy",
@@ -1935,6 +1951,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Contact,
         benefits: ["Support", "Sales"],
         template: "standard",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Get in Touch",
@@ -1961,6 +1978,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: MessageCircle,
         benefits: ["24/7", "Human"],
         template: "standard",
+        image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Real-Time Support",
@@ -1983,6 +2001,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Search,
         benefits: ["FAQs", "Guides"],
         template: "resource",
+        image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Self-Service Support",
@@ -2005,6 +2024,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Ticket,
         benefits: ["Tracking", "Detail"],
         template: "standard",
+        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Track Your Issues",
@@ -2027,6 +2047,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Lightbulb,
         benefits: ["Vote", "Suggest"],
         template: "standard",
+        image: "https://images.unsplash.com/photo-1586762524442-45e07662991a?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Shape Our Future",
@@ -2049,6 +2070,7 @@ export const featureData: Record<string, FeatureData> = {
         icon: Activity,
         benefits: ["Live", "History"],
         template: "standard",
+        image: "https://images.unsplash.com/photo-1551288569-ee513d61f123?auto=format&fit=crop&q=80&w=1200",
         sections: [
             {
                 title: "Real-Time Monitoring",
