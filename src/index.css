@@ -223,6 +223,10 @@
     animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
+  .animate-bounce-subtle {
+    animation: bounceSubtle 2s ease-in-out infinite;
+  }
+
   /* Decorative Blobs */
   .bg-blob-1 {
     @apply absolute rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float;
@@ -237,6 +241,18 @@
   .bg-blob-3 {
     @apply absolute rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-float animation-delay-400;
     background-color: hsl(var(--tertiary));
+  }
+}
+
+@keyframes bounceSubtle {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
   }
 }
 

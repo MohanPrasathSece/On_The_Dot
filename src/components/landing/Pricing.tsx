@@ -153,10 +153,10 @@ export function Pricing() {
             <Card
               key={plan.id}
               className={`relative rounded-3xl p-8 flex flex-col transition-all duration-300 cursor-pointer ${plan.highlight
-                  ? "bg-black text-white shadow-2xl scale-105 z-10 border-2 border-yellow-500/50"
-                  : selectedPlan === plan.id
-                    ? "bg-background border-2 border-yellow-500 shadow-lg"
-                    : "bg-background border border-border/50 hover:shadow-lg hover:border-yellow-500/50"
+                ? "bg-[#0A0A0A] text-white shadow-2xl scale-105 z-10 border-2 border-yellow-500"
+                : selectedPlan === plan.id
+                  ? "bg-background border-2 border-yellow-500 shadow-lg"
+                  : "bg-background border border-border/50 hover:shadow-lg hover:border-yellow-500/50"
                 }`}
               onClick={() => setSelectedPlan(plan.id)}
             >
@@ -209,10 +209,10 @@ export function Pricing() {
 
               <Button
                 className={`w-full mb-8 rounded-xl font-semibold h-12 transition-all ${plan.highlight
+                  ? "bg-yellow-500 text-black hover:bg-yellow-400"
+                  : selectedPlan === plan.id
                     ? "bg-yellow-500 text-black hover:bg-yellow-400"
-                    : selectedPlan === plan.id
-                      ? "bg-yellow-500 text-black hover:bg-yellow-400"
-                      : "bg-background text-foreground border border-border hover:bg-yellow-500 hover:text-black"
+                    : "bg-background text-foreground border border-border hover:bg-yellow-500 hover:text-black"
                   }`}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -241,7 +241,7 @@ export function Pricing() {
                     <li key={index} className="flex items-start gap-3">
                       <Check className={`w-5 h-5 shrink-0 mt-0.5 ${plan.highlight ? "text-primary-foreground/70" : "text-green-500"
                         }`} />
-                      <span className={`text-sm ${plan.highlight ? "text-primary-foreground/90" : "text-muted-foreground"
+                      <span className={`text-sm ${plan.highlight ? "text-white/90" : "text-muted-foreground"
                         } ${feature.startsWith("Everything in") ? "font-semibold" : ""}`}>
                         {feature}
                       </span>
@@ -342,7 +342,7 @@ export function Pricing() {
               Contact our sales team for enterprise-grade solutions, custom features, and volume pricing tailored to your organization's needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/company/com-contact">
+              <Link to="/signup">
                 <Button size="lg" variant="outline" className="px-8 border-yellow-500 text-yellow-500 hover:bg-yellow-500/10 w-full sm:w-auto">
                   Contact Sales
                 </Button>
@@ -367,7 +367,7 @@ export function Pricing() {
                 Select a date and time to schedule a live walkthrough with our product team.
               </DialogDescription>
             </DialogHeader>
-            
+
             <div className="space-y-6">
               {/* Calendar */}
               <div className="flex flex-col items-center justify-center p-4">
@@ -376,9 +376,9 @@ export function Pricing() {
                   selected={demoDate}
                   onSelect={setDemoDate}
                   className="rounded-md border shadow-sm"
-                  disabled={(date) => 
-                    date < new Date() || 
-                    date.getDay() === 0 || 
+                  disabled={(date) =>
+                    date < new Date() ||
+                    date.getDay() === 0 ||
                     date.getDay() === 6
                   }
                 />
@@ -410,8 +410,8 @@ export function Pricing() {
 
             <div className="flex justify-end gap-3 mt-6">
               <Button variant="outline" onClick={() => setShowDemoDialog(false)}>Cancel</Button>
-              <Button 
-                onClick={handleScheduleDemo} 
+              <Button
+                onClick={handleScheduleDemo}
                 disabled={!demoDate || !selectedTime}
                 className="bg-yellow-500 text-black hover:bg-yellow-400"
               >

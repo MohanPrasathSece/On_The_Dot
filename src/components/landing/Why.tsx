@@ -46,7 +46,7 @@ export function Why() {
                                     <div className="w-6 h-6 rounded-full bg-yellow-500/20 flex items-center justify-center shrink-0">
                                         <span className="w-2 h-2 rounded-full bg-yellow-500" />
                                     </div>
-                                    <span className="text-white/90 font-medium">{item}</span>
+                                    <span className="text-foreground/90 font-medium">{item}</span>
                                 </li>
                             ))}
                         </ul>
@@ -55,7 +55,7 @@ export function Why() {
                         <div className="aspect-square rounded-2xl bg-yellow-500/10 border border-yellow-500/20 p-8 flex items-center justify-center">
                             <div className="text-center">
                                 <p className="text-6xl font-bold mb-2 text-yellow-500">10hrs+</p>
-                                <p className="text-white/60">Saved weekly per user</p>
+                                <p className="text-foreground/70">Saved weekly per user</p>
                             </div>
                         </div>
                     </div>

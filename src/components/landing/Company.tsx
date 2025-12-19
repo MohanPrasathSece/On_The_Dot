@@ -43,7 +43,7 @@ export function Company() {
                         </div>
                         <h3 className="text-lg font-bold mb-2">Careers</h3>
                         <p className="text-sm text-muted-foreground mb-4">Join our team and help us build the future of invoicing.</p>
-                        <Link to="/company/com-careers" className="text-sm font-semibold text-primary hover:underline">View Openings →</Link>
+                        <Link to="/apply-setter" className="text-sm font-semibold text-primary hover:underline">View Openings →</Link>
                     </div>
 
                     {/* Swag Store */}
@@ -53,12 +53,12 @@ export function Company() {
                         </div>
                         <h3 className="text-lg font-bold mb-2">Swag Store</h3>
                         <p className="text-sm text-muted-foreground mb-4">Merchandise for loyal users and brand ambassadors.</p>
-                        <button 
-    className="text-sm font-semibold text-primary hover:underline" 
-    onClick={() => window.open('https://flowryte.com/store', '_blank')}
->
-    Shop Now →
-</button>
+                        <button
+                            className="text-sm font-semibold text-primary hover:underline"
+                            onClick={() => window.open('https://flowryte.com/store', '_blank')}
+                        >
+                            Shop Now →
+                        </button>
                     </div>
 
                     {/* Brand Center */}
@@ -68,12 +68,12 @@ export function Company() {
                         </div>
                         <h3 className="text-lg font-bold mb-2">Brand Center</h3>
                         <p className="text-sm text-muted-foreground mb-4">Access to logos, branding guidelines, and media kit.</p>
-                        <button 
-    className="text-sm font-semibold text-primary hover:underline" 
-    onClick={() => window.open('https://flowryte.com/brand', '_blank')}
->
-    Download Assets →
-</button>
+                        <button
+                            className="text-sm font-semibold text-primary hover:underline"
+                            onClick={() => window.open('https://flowryte.com/brand', '_blank')}
+                        >
+                            Download Assets →
+                        </button>
                     </div>
 
                     {/* Engineering Blog */}

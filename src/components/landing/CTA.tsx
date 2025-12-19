@@ -18,7 +18,7 @@ export function CTA() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
-          <Link to="/company/com-contact">
+          <Link to="/signup">
             <Button size="lg" className="h-14 px-8 text-lg bg-yellow-500 text-black hover:bg-yellow-400 font-bold w-full sm:w-auto">
               Contact Sales
             </Button>

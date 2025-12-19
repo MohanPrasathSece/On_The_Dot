@@ -197,7 +197,7 @@ function StandardHeader({ data }: { data: any }) {
                     <Link to="/signup">
                         <Button size="lg" className="text-lg px-8 h-14 shadow-lg shadow-black/20 bg-black text-white hover:bg-black/90">Start Free Trial</Button>
                     </Link>
-                    <Link to="/company/com-contact">
+                    <Link to="/signup">
                         <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-black text-black hover:bg-black/10">Talk to Sales</Button>
                     </Link>
                 </div>
@@ -359,29 +359,32 @@ function StandardContent({ data }: { data: any }) {
                         </div>
 
                         {/* Visual */}
-                        {section.layout !== "center" && (
-                            <div className="flex-1 w-full perspective-1000">
-                                {section.image ? (
-                                    <div className={cn(
-                                        "aspect-[4/3] rounded-3xl bg-muted border border-border/50 shadow-2xl relative overflow-hidden transform transition-all hover:scale-[1.02]",
-                                        section.layout === "left" ? "rotate-y-3 hover:rotate-y-0" : "-rotate-y-3 hover:rotate-y-0"
-                                    )}>
-                                        <img
-                                            src={section.image}
-                                            alt={section.title}
-                                            className="w-full h-full object-cover"
-                                            onError={(e) => {
-                                                e.currentTarget.style.display = 'none';
-                                                e.currentTarget.parentElement?.classList.add('bg-gradient-to-br', 'from-yellow-500/10', 'to-black/10', 'border-yellow-500/20');
-                                                // Add a placeholder icon or text
-                                                const placeholder = document.createElement('div');
-                                                placeholder.className = 'absolute inset-0 flex items-center justify-center text-yellow-500/30';
-                                                placeholder.innerHTML = '<svg class="w-16 h-16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" /></svg>';
-                                                e.currentTarget.parentElement?.appendChild(placeholder);
-                                            }}
-                                        />
-                                    </div>
-                                ) : (
+                        <div className={cn(
+                            "flex-1 w-full perspective-1000",
+                            section.layout === "center" ? "max-w-4xl mx-auto" : ""
+                        )}>
+                            {section.image ? (
+                                <div className={cn(
+                                    "aspect-[16/9] rounded-3xl bg-muted border border-border/50 shadow-2xl relative overflow-hidden transform transition-all hover:scale-[1.01]",
+                                    section.layout === "center" ? "" : (section.layout === "left" ? "rotate-y-3 hover:rotate-y-0" : "-rotate-y-3 hover:rotate-y-0")
+                                )}>
+                                    <img
+                                        src={section.image}
+                                        alt={section.title}
+                                        className="w-full h-full object-cover"
+                                        onError={(e) => {
+                                            e.currentTarget.style.display = 'none';
+                                            e.currentTarget.parentElement?.classList.add('bg-gradient-to-br', 'from-yellow-500/10', 'to-black/10', 'border-yellow-500/20');
+                                            // Add a placeholder icon or text
+                                            const placeholder = document.createElement('div');
+                                            placeholder.className = 'absolute inset-0 flex items-center justify-center text-yellow-500/30';
+                                            placeholder.innerHTML = '<svg class="w-16 h-16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" /></svg>';
+                                            e.currentTarget.parentElement?.appendChild(placeholder);
+                                        }}
+                                    />
+                                </div>
+                            ) : (
+                                section.layout !== "center" && (
                                     <div className={cn(
                                         "aspect-[4/3] rounded-3xl bg-gradient-to-br from-background to-muted border border-border/50 shadow-2xl relative overflow-hidden transform transition-all hover:scale-[1.02]",
                                         section.layout === "left" ? "rotate-y-3 hover:rotate-y-0" : "-rotate-y-3 hover:rotate-y-0"
@@ -408,9 +411,9 @@ function StandardContent({ data }: { data: any }) {
                                             </div>
                                         </div>
                                     </div>
-                                )}
-                            </div>
-                        )}
+                                )
+                            )}
+                        </div>
                     </div>
                 </section>
             ))}

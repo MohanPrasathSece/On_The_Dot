@@ -110,8 +110,6 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-4">
               {[
-                { icon: Twitter, label: 'Twitter' },
-                { icon: Facebook, label: 'Facebook' },
                 { icon: Linkedin, label: 'LinkedIn' },
                 { icon: Mail, label: 'Email' }
               ].map((social) => (

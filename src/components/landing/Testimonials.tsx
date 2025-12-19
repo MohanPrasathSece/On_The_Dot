@@ -27,7 +27,7 @@ export function Testimonials() {
             <div className="container mx-auto px-6 sm:px-8 lg:px-12">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-                        Loved by thousands of professionals
+                        Loved by professionals
                     </h2>
                     <p className="text-lg text-muted-foreground">
                         See what our users say about how Flowryte has transformed their business operations.

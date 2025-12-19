@@ -100,6 +100,11 @@ export function Hero() {
                   2 min
                 </p>
               </div>
+
+              {/* Cute Mascot */}
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 z-30 animate-bounce-subtle hidden lg:block">
+                <img src="/images/mascot.png" alt="Flowryte Mascot" className="w-full h-full object-contain" />
+              </div>
             </div>
           </div>
         </div>

@@ -144,21 +144,32 @@ export function Features() {
         </div>
 
         {/* Stats Bar */}
-        <div className="mt-24 grid md:grid-cols-3 gap-8 py-12 border-y border-border/50 divide-y md:divide-y-0 md:divide-x divide-border/50">
-          <div className="text-center px-4">
-            <div className="text-4xl font-bold text-yellow-500 mb-2">Save 10+ Hours</div>
-            <p className="text-muted-foreground text-sm uppercase tracking-wide">Weekly</p>
-            <p className="text-sm text-muted-foreground mt-2">Automate your entire invoicing workflow</p>
+        <div className="mt-28 grid md:grid-cols-3 gap-8">
+          <div className="relative group overflow-hidden bg-gradient-to-br from-yellow-500/5 to-transparent p-10 rounded-[2.5rem] border border-yellow-500/10 hover:border-yellow-500/30 transition-all duration-500">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-yellow-500/10 transition-colors" />
+            <div className="relative z-10">
+              <div className="text-5xl font-extrabold text-yellow-500 mb-2 tabular-nums">10h+</div>
+              <p className="text-foreground font-bold text-lg mb-2">Save Hours Weekly</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">Automate your entire invoicing workflow and recapture your time.</p>
+            </div>
           </div>
-          <div className="text-center px-4 pt-8 md:pt-0">
-            <div className="text-4xl font-bold text-yellow-500 mb-2">Get Paid 60%</div>
-            <p className="text-muted-foreground text-sm uppercase tracking-wide">Faster</p>
-            <p className="text-sm text-muted-foreground mt-2">Smart reminders accelerate payments</p>
+
+          <div className="relative group overflow-hidden bg-gradient-to-br from-emerald-500/5 to-transparent p-10 rounded-[2.5rem] border border-emerald-500/10 hover:border-emerald-500/30 transition-all duration-500">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-emerald-500/10 transition-colors" />
+            <div className="relative z-10">
+              <div className="text-5xl font-extrabold text-emerald-500 mb-2 tabular-nums">60%</div>
+              <p className="text-foreground font-bold text-lg mb-2">Get Paid Faster</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">Smart reminders accelerate payments and improve your cash flow.</p>
+            </div>
           </div>
-          <div className="text-center px-4 pt-8 md:pt-0">
-            <div className="text-4xl font-bold text-yellow-500 mb-2">99.9%</div>
-            <p className="text-muted-foreground text-sm uppercase tracking-wide">Uptime</p>
-            <p className="text-sm text-muted-foreground mt-2">Reliable, secure, always available</p>
+
+          <div className="relative group overflow-hidden bg-gradient-to-br from-blue-500/5 to-transparent p-10 rounded-[2.5rem] border border-blue-500/10 hover:border-blue-500/30 transition-all duration-500">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-blue-500/10 transition-colors" />
+            <div className="relative z-10">
+              <div className="text-5xl font-extrabold text-blue-500 mb-2 tabular-nums">99.9%</div>
+              <p className="text-foreground font-bold text-lg mb-2">Maximum Uptime</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">Reliable, secure, and always available when you need to bill.</p>
+            </div>
           </div>
         </div>
       </div>

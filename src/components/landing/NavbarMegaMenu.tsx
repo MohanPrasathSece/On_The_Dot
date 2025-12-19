@@ -107,11 +107,11 @@ export function NavbarMegaMenu() {
                                 <h4 className="font-bold text-sm mb-3 text-primary flex items-center gap-2">
                                     <ShoppingBag className="w-4 h-4" /> Connect
                                 </h4>
-                                <ListItem href="/resources/res-community" title="Community">User groups</ListItem>
-                                <ListItem href="/resources/res-stories" title="Customer Stories">Case studies</ListItem>
-                                <ListItem href="/resources/res-devs" title="Developers">API & SDKs</ListItem>
-                                <ListItem href="/resources/res-marketplace" title="Marketplace">Integrations</ListItem>
-                                <ListItem href="/resources/res-certified" title="Certified">Certification</ListItem>
+                                <ListItem href="/signup" title="Community">User groups</ListItem>
+                                <ListItem href="/signup" title="Customer Stories">Case studies</ListItem>
+                                <ListItem href="/signup" title="Developers">API & SDKs</ListItem>
+                                <ListItem href="/signup" title="Marketplace">Integrations</ListItem>
+                                <ListItem href="/signup" title="Certified">Certification</ListItem>
                             </div>
                         </ul>
                     </NavigationMenuContent>
