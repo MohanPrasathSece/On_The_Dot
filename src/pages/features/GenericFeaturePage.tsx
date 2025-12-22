@@ -1,5 +1,5 @@
 
-import { useParams, Link, useLocation } from "react-router-dom";
+import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { featureData, TemplateType } from "@/data/featureData";
@@ -17,6 +17,7 @@ export default function GenericFeaturePage() {
     const { isAuthenticated } = useAuth();
     const params = useParams<{ featureId: string }>();
     const location = useLocation();
+    const navigate = useNavigate();
     const pathname = location?.pathname || '';
 
     // Determine featureId based on route
@@ -111,6 +112,7 @@ export default function GenericFeaturePage() {
                 title: "Authentication Required",
                 description: "Please sign in to access this premium content.",
             });
+            navigate("/pricing");
             return false;
         }
         return true;
@@ -207,7 +209,7 @@ function StandardHeader({ data }: { data: any }) {
                 {data.image && (
                     <div className="flex-1 w-full relative">
                         <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-border shadow-2xl rotate-2 hover:rotate-0 transition-all duration-500">
-                            <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
+                            <img src={data.image} alt={data.title} className="w-full h-full object-cover" loading="eager" />
                         </div>
                         {/* Decorative elements */}
                         <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 rounded-full blur-3xl -z-10" />
@@ -252,17 +254,18 @@ function SolutionHeader({ data }: { data: any }) {
                 <div className="relative aspect-square lg:aspect-[4/3] rounded-2xl bg-background shadow-2xl border border-border p-2 rotate-2 hover:rotate-0 transition-transform duration-500 overflow-hidden">
                     {data.image ? (
                         <div className="w-full h-full rounded-xl overflow-hidden">
-                            <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
+                            <img src={data.image} alt={data.title} className="w-full h-full object-cover" loading="eager" />
                         </div>
                     ) : (
                         <div className="w-full h-full rounded-xl overflow-hidden">
-                            <img 
-                                src="/images/dashboard-preview.png" 
-                                alt="Dashboard Preview" 
+                            <img
+                                src="/images/dashboard-preview.png"
+                                alt="Dashboard Preview"
                                 className="w-full h-full object-cover"
                                 onError={(e) => {
-                                    e.currentTarget.src = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800";
+                                    e.currentTarget.src = "/images/pexels-goumbik-577195.jpg";
                                 }}
+                                loading="eager"
                             />
                         </div>
                     )}
@@ -321,7 +324,7 @@ function ResourceHeader({ data }: { data: any }) {
 
             {data.image && (
                 <div className="max-w-4xl mx-auto mb-16 aspect-[21/9] rounded-3xl overflow-hidden border border-border shadow-2xl">
-                    <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
+                    <img src={data.image} alt={data.title} className="w-full h-full object-cover" loading="eager" />
                 </div>
             )}
 
@@ -393,6 +396,7 @@ function StandardContent({ data }: { data: any }) {
                                             placeholder.innerHTML = '<svg class="w-16 h-16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" /></svg>';
                                             e.currentTarget.parentElement?.appendChild(placeholder);
                                         }}
+                                        loading="lazy"
                                     />
                                 </div>
                             ) : (
@@ -401,13 +405,14 @@ function StandardContent({ data }: { data: any }) {
                                         "aspect-[4/3] rounded-3xl bg-gradient-to-br from-background to-muted border border-border/50 shadow-2xl relative overflow-hidden transform transition-all hover:scale-[1.02]",
                                         section.layout === "left" ? "rotate-y-3 hover:rotate-y-0" : "-rotate-y-3 hover:rotate-y-0"
                                     )}>
-                                        <img 
-                                            src="/images/feature-preview.png" 
+                                        <img
+                                            src="/images/feature-preview.png"
                                             alt={section.title}
                                             className="w-full h-full object-cover"
                                             onError={(e) => {
-                                                e.currentTarget.src = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800";
+                                                e.currentTarget.src = "/images/pexels-goumbik-577195.jpg";
                                             }}
+                                            loading="lazy"
                                         />
                                     </div>
                                 )
@@ -437,14 +442,18 @@ function StandardContent({ data }: { data: any }) {
 }
 
 function ResourceContent({ data }: { data: any }) {
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, user } = useAuth();
+    const navigate = useNavigate();
 
     const handleArticleClick = (articleTitle: string) => {
-        if (!isAuthenticated) {
+        // Check if user is authenticated and has a paid plan (pro or premium)
+        // If not authenticated or on free plan, redirect to pricing
+        if (!isAuthenticated || user?.plan === 'free') {
             toast({
-                title: "Authentication Required",
-                description: "Please sign in to read premium articles.",
+                title: "Premium Content",
+                description: "Please upgrade to a paid plan to read premium articles.",
             });
+            navigate("/pricing");
             return;
         }
         // In a real app, this would navigate to the article
@@ -480,7 +489,7 @@ function ResourceContent({ data }: { data: any }) {
                                         section.layout === "right" ? "lg:order-1" : "",
                                         section.layout === "center" ? "order-last w-full mt-8" : ""
                                     )}>
-                                        <img src={section.image} alt={section.title} className="w-full h-full object-cover" />
+                                        <img src={section.image} alt={section.title} className="w-full h-full object-cover" loading="lazy" />
                                     </div>
                                 )}
                             </section>
@@ -494,6 +503,7 @@ function ResourceContent({ data }: { data: any }) {
                             src="/images/pexels-rdne-7947999.jpg"
                             alt="Featured Report"
                             className="w-full h-full object-cover opacity-80"
+                            loading="lazy"
                         />
                     </div>
                     <div className="flex-1 space-y-4">
@@ -546,7 +556,7 @@ function ResourceContent({ data }: { data: any }) {
                     ].map((article, i) => (
                         <div key={i} className="group bg-background rounded-xl border border-border overflow-hidden hover:shadow-xl transition-all cursor-pointer" onClick={() => handleArticleClick(article.title)}>
                             <div className="h-48 bg-muted relative overflow-hidden">
-                                <img src={article.image} alt={article.title} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
+                                <img src={article.image} alt={article.title} className="w-full h-full object-cover transition-transform group-hover:scale-105" loading="lazy" />
                                 <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors" />
                                 {!isAuthenticated && (
                                     <div className="absolute top-4 right-4">
