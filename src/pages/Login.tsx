@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/contexts/AuthContext";
+import SEOMeta from "@/components/seo/SEOMeta";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -63,6 +64,11 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-background flex flex-col">
+      <SEOMeta
+        title="Log In - Flowryte | Secure Invoicing & Cash Flow Dashboard"
+        description="Access your Flowryte dashboard to manage invoices, track payments, and automate billing. Secure login for freelancers and agencies."
+        keywords="Flowryte login, invoice dashboard, SaaS login, freelancer billing portal"
+      />
       {/* Header */}
       <header className="p-6">
         <div className="flex items-center gap-2">

@@ -7,7 +7,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-const faqs = [
+export const faqs = [
   {
     question: "How does the 14-day free trial work?",
     answer: "You get full access to the plan you choose for 14 days. No credit card is required to sign up. Detailed features are available for testing immediately."
@@ -74,8 +74,8 @@ export function FAQ() {
           <h4 className="font-bold text-lg mb-2">Still have questions?</h4>
           <p className="text-muted-foreground mb-6">Can't find the answer you're looking for? Please chat to our friendly team.</p>
           <Link to="/support/sup-contact">
-          <Button variant="default">Contact Support</Button>
-        </Link>
+            <Button variant="default">Contact Support</Button>
+          </Link>
         </div>
       </div>
     </section>

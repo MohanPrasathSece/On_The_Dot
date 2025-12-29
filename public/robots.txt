@@ -24,4 +24,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://flowryte.io/sitemap.xml
+Sitemap: https://www.flowryte.online/sitemap.xml

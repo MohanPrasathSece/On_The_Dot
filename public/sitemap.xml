@@ -2,121 +2,121 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <!-- Homepage -->
   <url>
-    <loc>https://flowryte.io/</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://www.flowryte.online/</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   
   <!-- Authentication Pages -->
   <url>
-    <loc>https://flowryte.io/login</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://flowryte.io/signup</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://flowryte.io/trial</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.flowryte.online/login</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.flowryte.online/signup</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.flowryte.online/trial</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   
   <!-- Feature Pages -->
   <url>
-    <loc>https://flowryte.io/features/invoicing</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.flowryte.online/features/invoicing</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://flowryte.io/features/automated-reminders</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.flowryte.online/features/automated-reminders</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://flowryte.io/features/payment-tracking</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.flowryte.online/features/payment-tracking</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <!-- Solution Pages -->
   <url>
-    <loc>https://flowryte.io/solutions/freelancers</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.flowryte.online/solutions/freelancers</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://flowryte.io/solutions/agencies</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.flowryte.online/solutions/agencies</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://flowryte.io/solutions/small-business</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.flowryte.online/solutions/small-business</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <!-- Enterprise -->
   <url>
-    <loc>https://flowryte.io/enterprise</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.flowryte.online/enterprise</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   
   <!-- Support Pages -->
   <url>
-    <loc>https://flowryte.io/support/help</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://www.flowryte.online/support/help</loc>
+    <lastmod>2025-12-29</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   
   <!-- Company Pages -->
   <url>
-    <loc>https://flowryte.io/company/about</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://www.flowryte.online/company/about</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.flowryte.online/company/contact</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://www.flowryte.online/legal/privacy</loc>
+    <lastmod>2025-12-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://flowryte.io/company/contact</loc>
-    <lastmod>2025-12-16</lastmod>
+    <loc>https://www.flowryte.online/legal/terms</loc>
+    <lastmod>2025-12-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <!-- Legal Pages -->
-  <url>
-    <loc>https://flowryte.io/legal/privacy</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  
-  <url>
-    <loc>https://flowryte.io/legal/terms</loc>
-    <lastmod>2025-12-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.5</priority>
   </url>
 </urlset>

@@ -11,7 +11,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/components/ui/use-toast";
 import SEOMeta from "@/components/seo/SEOMeta";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
-import { serviceSchema, breadcrumbSchema, faqSchema } from "@/components/seo/StructuredData";
+import { serviceSchema, breadcrumbSchema, faqSchema, articleSchema } from "@/components/seo/StructuredData";
 
 export default function GenericFeaturePage() {
     const { isAuthenticated } = useAuth();
@@ -51,8 +51,17 @@ export default function GenericFeaturePage() {
         const keywords = generateKeywords(data);
 
         // Generate structured data
+        // Generate structured data primary schema based on content type
+        let primarySchema: any = serviceSchema(baseTitle, baseDescription);
+
+        // Use Article schema for 'resource' pages for better content indexing
+        if (data.template === 'resource') {
+            const articleImage = data.image || "https://www.flowryte.online/images/cashflow-dashboard.png";
+            primarySchema = articleSchema(baseTitle, baseDescription, articleImage);
+        }
+
         const structuredData: any[] = [
-            serviceSchema(baseTitle, baseDescription),
+            primarySchema,
             breadcrumbSchema(generateBreadcrumbItems())
         ];
 
@@ -62,7 +71,7 @@ export default function GenericFeaturePage() {
         }
 
         return {
-            title: `${baseTitle} | Flowryte`,
+            title: `${baseTitle} | Flowryte - SaaS Invoicing & Billing Automation`,
             description: baseDescription,
             keywords: keywords.join(', '),
             structuredData: structuredData
@@ -76,11 +85,11 @@ export default function GenericFeaturePage() {
         ];
 
         if (pageData.template === 'solution') {
-            baseKeywords.push('business solutions', 'workflow automation', 'enterprise invoicing');
+            baseKeywords.push('business solutions', 'workflow automation', 'enterprise invoicing', 'SaaS billing system', 'cash flow automation');
         } else if (pageData.template === 'resource') {
-            baseKeywords.push('invoice templates', 'billing guides', 'payment tutorials');
+            baseKeywords.push('invoice templates', 'billing guides', 'payment tutorials', 'freelancer finance tips');
         } else if (pageData.template === 'enterprise') {
-            baseKeywords.push('enterprise invoicing', 'scale billing', 'corporate payments');
+            baseKeywords.push('enterprise invoicing', 'scale billing', 'corporate payments', 'automated billing platform');
         }
 
         return baseKeywords;
@@ -89,14 +98,14 @@ export default function GenericFeaturePage() {
     const generateBreadcrumbItems = () => {
         const pathSegments = pathname.split('/').filter(Boolean);
         const items = [
-            { name: 'Home', url: 'https://flowryte.io/' }
+            { name: 'Home', url: 'https://www.flowryte.online/' }
         ];
 
         let currentPath = '';
         pathSegments.forEach((segment) => {
             currentPath += `/${segment}`;
             const name = segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' ');
-            items.push({ name, url: `https://flowryte.io${currentPath}` });
+            items.push({ name, url: `https://www.flowryte.online${currentPath}` });
         });
 
         return items;

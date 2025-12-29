@@ -13,17 +13,24 @@ import { FAQ } from "@/components/landing/FAQ";
 import { CTA } from "@/components/landing/CTA";
 import { Footer } from "@/components/landing/Footer";
 import SEOMeta from "@/components/seo/SEOMeta";
-import { organizationSchema, softwareApplicationSchema } from "@/components/seo/StructuredData";
+import { organizationSchema, softwareApplicationSchema, webSiteSchema, faqSchema } from "@/components/seo/StructuredData";
+import { info } from "autoprefixer"; // Unused, removing if present or ignoring
+import { faqs } from "@/components/landing/FAQ";
 
 export default function Index() {
-  const structuredData = [organizationSchema, softwareApplicationSchema];
+  const structuredData = [
+    organizationSchema,
+    softwareApplicationSchema,
+    webSiteSchema,
+    faqSchema(faqs)
+  ];
 
   return (
     <>
       <SEOMeta
-        title="Flowryte - Professional Invoicing Software for Freelancers & Agencies"
-        description="Create stunning invoices, automate payment reminders, and track cash flow with Flowryte. The modern invoicing platform designed for freelancers and agencies in India."
-        keywords="invoicing software, invoice template, freelance invoicing, automated reminders, payment tracking, cash flow management, billing software, GST invoice, online payments"
+        title="Flowryte - Professional SaaS Invoicing & Billing Automation Software"
+        description="Flowryte is the ultimate SaaS platform for invoicing, billing automation, and cash flow management. Trusted by freelancers and agencies for professional financial tools."
+        keywords="Flowryte, SaaS invoicing, billing automation, invoicing software, cash flow management, freelancer tools, agency billing, online payments, Flowrite, Flowryte app"
         structuredData={structuredData}
       />
       <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/20">

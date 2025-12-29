@@ -25,7 +25,7 @@ export function Hero() {
           <div className="max-w-2xl lg:w-1/2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-500 text-sm font-medium mb-6">
               <span className="flex h-2 w-2 rounded-full bg-yellow-500" />
-              The future of invoicing is here
+              Meet Flowryte: The future of invoicing
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">

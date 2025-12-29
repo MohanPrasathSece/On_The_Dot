@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/contexts/AuthContext";
+import SEOMeta from "@/components/seo/SEOMeta";
 
 export default function Signup() {
     const navigate = useNavigate();
@@ -109,6 +110,11 @@ export default function Signup() {
 
     return (
         <div className="min-h-screen bg-white dark:bg-background flex flex-col">
+            <SEOMeta
+                title="Sign Up - Flowryte | Start Your Free Invoicing Trial"
+                description="Create a Flowryte account today. 30-day free trial, no credit card required. Join thousands of freelancers managing cash flow better."
+                keywords="sign up Flowryte, free invoicing trial, create invoice account, freelancer signup"
+            />
             {/* Header */}
             <header className="p-6">
                 <div className="flex items-center gap-2">

@@ -2,9 +2,9 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Flowryte",
-  "url": "https://flowryte.io",
-  "logo": "https://flowryte.io/logo.png",
-  "description": "The modern invoicing platform for freelancers and agencies. Create beautiful invoices, automate reminders, and get paid faster.",
+  "url": "https://www.flowryte.online",
+  "logo": "https://www.flowryte.online/logo.png",
+  "description": "Flowryte is a leading SaaS invoicing and billing automation platform for freelancers, agencies, and small businesses. We provide cloud-based cash flow management, automated reminders, and professional digital finance tools.",
   "sameAs": [
     "https://twitter.com/flowryte",
     "https://linkedin.com/company/flowryte",
@@ -22,13 +22,20 @@ export const organizationSchema = {
     "addressRegion": "TN",
     "addressLocality": "Chennai",
     "postalCode": "600001"
-  }
+  },
+  "knowsAbout": [
+    "SaaS Invoicing",
+    "Financial Technology",
+    "Billing Automation",
+    "Cash Flow Management"
+  ]
 };
 
 export const softwareApplicationSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Flowryte - Invoicing Platform",
+  "name": "Flowryte",
+  "url": "https://www.flowryte.online",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web Browser",
   "offers": {
@@ -39,44 +46,44 @@ export const softwareApplicationSchema = {
   },
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "4.8",
+    "ratingValue": "4.9",
     "ratingCount": "1250"
   },
+  "description": "Flowryte is a comprehensive SaaS invoicing and billing automation solution. Designed for freelancers and agencies, it streamlines cash flow management with automated reminders, online payments, and professional financial reporting.",
   "featureList": [
-    "Invoice Creation",
-    "Automated Reminders", 
-    "Payment Tracking",
+    "SaaS Invoicing",
+    "Billing Automation",
     "Cash Flow Management",
-    "Client Management",
-    "Reporting & Analytics"
-  ]
+    "Automated Payment Reminders",
+    "Freelancer Productivity Tools",
+    "Agency Billing System",
+    "Online One-Click Payments",
+    "Financial Reporting"
+  ],
+  "brand": {
+    "@type": "Brand",
+    "name": "Flowryte"
+  }
 };
 
 export const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": "Organization",
   "name": "Flowryte",
-  "description": "Professional invoicing and payment tracking solutions for freelancers and agencies",
-  "url": "https://flowryte.io",
+  "description": "Professional SaaS invoicing and payment tracking solutions for freelancers and agencies",
+  "url": "https://www.flowryte.online",
   "telephone": "+91-9876543210",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "IN",
-    "addressRegion": "TN", 
+    "addressRegion": "TN",
     "addressLocality": "Chennai",
     "postalCode": "600001",
     "streetAddress": "123 Business Park, Chennai"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "13.0827",
-    "longitude": "80.2707"
-  },
-  "openingHours": "Mo-Fr 09:00-18:00",
-  "priceRange": "$$"
+  }
 };
 
-export const faqSchema = (faqs: Array<{question: string, answer: string}>) => ({
+export const faqSchema = (faqs: Array<{ question: string, answer: string }>) => ({
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": faqs.map(faq => ({
@@ -89,14 +96,14 @@ export const faqSchema = (faqs: Array<{question: string, answer: string}>) => ({
   }))
 });
 
-export const breadcrumbSchema = (breadcrumbs: Array<{name: string, url: string}>) => ({
+export const breadcrumbSchema = (breadcrumbs: Array<{ name: string, url: string }>) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": breadcrumbs.map((crumb, index) => ({
     "@type": "ListItem",
     "position": index + 1,
     "name": crumb.name,
-    "item": crumb.url
+    "item": `https://www.flowryte.online${crumb.url}`
   }))
 });
 
@@ -114,7 +121,69 @@ export const serviceSchema = (serviceName: string, description: string) => ({
   "provider": {
     "@type": "Organization",
     "name": "Flowryte",
-    "url": "https://flowryte.io"
+    "url": "https://www.flowryte.online"
   },
-  "serviceType": "Professional Service"
+  "serviceType": "SaaS Platform"
+});
+
+export const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Flowryte",
+  "url": "https://www.flowryte.online",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.flowryte.online/search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
+
+export const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Flowryte Pro",
+  "image": "https://www.flowryte.online/images/cashflow-dashboard.png",
+  "description": "Professional invoicing and automation for power users. Save 10+ hours a week.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Flowryte"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "url": "https://www.flowryte.online/pricing",
+    "priceCurrency": "USD",
+    "lowPrice": "0",
+    "highPrice": "20",
+    "offerCount": "3"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "1250"
+  }
+};
+
+export const articleSchema = (headline: string, description: string, image: string, datePublished?: string) => ({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": headline,
+  "description": description,
+  "image": image,
+  "author": {
+    "@type": "Organization",
+    "name": "Flowryte",
+    "url": "https://www.flowryte.online"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Flowryte",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.flowryte.online/logo.png"
+    }
+  },
+  "datePublished": datePublished || new Date().toISOString()
 });

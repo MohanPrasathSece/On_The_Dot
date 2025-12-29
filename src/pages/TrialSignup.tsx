@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { toast } from "@/components/ui/use-toast";
+import SEOMeta from "@/components/seo/SEOMeta";
 
 const trialSteps = [
     { id: 1, title: "Email & Account", description: "Create your account" },
@@ -116,6 +117,11 @@ export default function TrialSignup() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
+            <SEOMeta
+                title="Start 30-Day Free Trial - Flowryte SaaS"
+                description="Experience the full power of Flowryte risk-free for 30 days. Unlimited invoices, automated reminders, and cash flow insights."
+                keywords="Flowryte trial, free invoice software trial, SaaS free trial"
+            />
             <div className="w-full max-w-4xl">
                 {/* Header */}
                 <div className="text-center mb-8">
@@ -134,8 +140,8 @@ export default function TrialSignup() {
                     {trialSteps.map((step, index) => (
                         <div key={step.id} className="flex items-center">
                             <div className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${currentStep >= step.id
-                                    ? 'bg-primary border-primary text-primary-foreground'
-                                    : 'border-muted-foreground/30 text-muted-foreground'
+                                ? 'bg-primary border-primary text-primary-foreground'
+                                : 'border-muted-foreground/30 text-muted-foreground'
                                 }`}>
                                 {currentStep > step.id ? <Check className="w-5 h-5" /> : step.id}
                             </div>
