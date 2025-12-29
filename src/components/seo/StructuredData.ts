@@ -187,3 +187,36 @@ export const articleSchema = (headline: string, description: string, image: stri
   },
   "datePublished": datePublished || new Date().toISOString()
 });
+
+export const jobPostingSchema = {
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  "title": "High-Ticket Appointment Setter",
+  "description": "We are seeking a motivated Appointment Setter to join our remote team. You will be responsible for connecting with freelancers and agencies to introduce Flowryte's invoicing solution. High commission structure.",
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": "Flowryte",
+    "sameAs": "https://www.flowryte.online",
+    "logo": "https://www.flowryte.online/logo.png"
+  },
+  "employmentType": "CONTRACTOR",
+  "datePosted": new Date().toISOString().split('T')[0],
+  "validThrough": "2026-12-31",
+  "jobLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IN"
+    }
+  },
+  "jobLocationType": "TELECOMMUTE",
+  "baseSalary": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": {
+      "@type": "QuantitativeValue",
+      "value": 2000,
+      "unitText": "MONTH"
+    }
+  }
+};

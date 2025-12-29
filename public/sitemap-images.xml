@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.flowryte.online/</loc>
+    <image:image>
+      <image:loc>https://www.flowryte.online/images/cashflow-dashboard.png</image:loc>
+      <image:title>Flowryte Cashflow Dashboard</image:title>
+      <image:caption>Real-time cash flow overview for freelancers and agencies.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.flowryte.online/images/freelancer-workspace.png</image:loc>
+      <image:title>Freelancer Workspace</image:title>
+      <image:caption>Complete invoicing and billing workspace.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.flowryte.online/images/mascot.png</image:loc>
+      <image:title>Flowryte Mascot</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.flowryte.online/features/invoicing</loc>
+    <image:image>
+      <image:loc>https://www.flowryte.online/images/invoicing.png</image:loc>
+      <image:title>Smart Invoicing Automation</image:title>
+      <image:caption>Create professional invoices in seconds.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.flowryte.online/features/automated-reminders</loc>
+    <image:image>
+      <image:loc>https://www.flowryte.online/images/reminders.png</image:loc>
+      <image:title>Automated Payment Reminders</image:title>
+      <image:caption>Never chase a payment again with automated email reminders.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.flowryte.online/features/payment-tracking</loc>
+    <image:image>
+      <image:loc>https://www.flowryte.online/images/payment-sync-dashboard.png</image:loc>
+      <image:title>Real-time Payment Tracking</image:title>
+      <image:caption>Sync payments instantly with your bank account.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.flowryte.online/images/realtime-sync.png</image:loc>
+      <image:title>Real-time Sync Technology</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.flowryte.online/solutions/agencies</loc>
+    <image:image>
+      <image:loc>https://www.flowryte.online/images/team.png</image:loc>
+      <image:title>Agency Team Management</image:title>
+      <image:caption>Collaborate with your team on billing and invoicing.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.flowryte.online/images/team-invite-dashboard.png</image:loc>
+      <image:title>Team Invite Dashboard</image:title>
+    </image:image>
+  </url>
+</urlset>

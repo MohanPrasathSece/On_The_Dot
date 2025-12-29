@@ -10,6 +10,8 @@ import { toast } from "@/components/ui/use-toast";
 import { Briefcase, CheckCircle2, Send, ArrowRight } from "lucide-react";
 import SEOMeta from "@/components/seo/SEOMeta";
 
+import { jobPostingSchema } from "@/components/seo/StructuredData";
+
 export default function ApplyAppointmentSetter() {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -26,6 +28,7 @@ export default function ApplyAppointmentSetter() {
     };
 
     if (isSubmitted) {
+        // ... (submission success view remains same)
         return (
             <div className="min-h-screen bg-background flex flex-col">
                 <Navbar />
@@ -50,8 +53,10 @@ export default function ApplyAppointmentSetter() {
     return (
         <div className="min-h-screen bg-background">
             <SEOMeta
-                title="Apply as Appointment Setter | Flowryte"
-                description="Join the Flowryte team as an appointment setter and help us grow."
+                title="Hiring Appointment Setters - Remote | Flowryte Careers"
+                description="Join Flowryte as a Remote Appointment Setter. High commissions, flexible hours, and growth opportunities. Apply now to help freelancers automate their billing."
+                keywords="appointment setter jobs, remote sales job, high ticket sales, flowryte careers, work from home sales"
+                structuredData={jobPostingSchema}
             />
             <Navbar />
 

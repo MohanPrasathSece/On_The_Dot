@@ -23,5 +23,12 @@ Disallow: /
 User-agent: *
 Allow: /
 
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /
+
+Sitemap: https://www.flowryte.online/sitemap.xml
+Sitemap: https://www.flowryte.online/sitemap-images.xml
+
 # Sitemap location
 Sitemap: https://www.flowryte.online/sitemap.xml
