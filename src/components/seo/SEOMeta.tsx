@@ -64,7 +64,7 @@ const SEOMeta = ({
 
       {/* Structured Data */}
       {structuredData && (
-        <script type="application/ld+json">
+        <script type="application/ld+json" id="json-ld-data">
           {JSON.stringify(structuredData)}
         </script>
       )}
