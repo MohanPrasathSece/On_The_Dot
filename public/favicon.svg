@@ -1,8 +1,18 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="32" height="32" rx="8" fill="#000000"/>
-  <circle cx="16" cy="16" r="2" fill="#ffffff"/>
-  <circle cx="10" cy="16" r="1.5" fill="#ffffff" opacity="0.7"/>
-  <circle cx="22" cy="16" r="1.5" fill="#ffffff" opacity="0.7"/>
-  <circle cx="16" cy="10" r="1.5" fill="#ffffff" opacity="0.7"/>
-  <circle cx="16" cy="22" r="1.5" fill="#ffffff" opacity="0.7"/>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: Dark container (matching brand) -->
+  <rect width="512" height="512" rx="120" fill="#18181b"/>
+  
+  <!-- Icon: Abstract Invoice / Document -->
+  <rect x="140" y="100" width="232" height="312" rx="20" fill="#ffffff"/>
+  
+  <!-- Document Lines (Abstract Content) -->
+  <rect x="180" y="160" width="152" height="20" rx="6" fill="#cbd5e1"/>
+  <rect x="180" y="210" width="152" height="20" rx="6" fill="#cbd5e1"/>
+  <rect x="180" y="260" width="100" height="20" rx="6" fill="#cbd5e1"/>
+
+  <!-- Status Indicator: Success/Start Flow (Vibrant Green) -->
+  <circle cx="372" cy="372" r="80" fill="#22c55e" stroke="#18181b" stroke-width="12"/>
+  
+  <!-- Checkmark -->
+  <path d="M338 372 L362 396 L406 348" stroke="white" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
