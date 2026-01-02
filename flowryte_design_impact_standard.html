@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowryte: Project Design & Impact Report</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .report-container {
+            max-width: 21cm;
+            /* A4 Width */
+            margin: 0 auto;
+            background: white;
+            padding: 2cm;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #ca8a04;
+            /* Flowryte Gold Shade */
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid #fef9c3;
+            padding-bottom: 1rem;
+        }
+
+        h2 {
+            color: #1f2937;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        h3 {
+            color: #ca8a04;
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #4b5563;
+        }
+
+        .meta {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .image-container {
+            margin: 1.5rem 0;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .caption {
+            background: #f9fafb;
+            padding: 0.75rem;
+            font-size: 0.85rem;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background-color: #fef9c3;
+            color: #854d0e;
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Impact Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .metric-card {
+            background: #fefce8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #fef08a;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #854d0e;
+        }
+
+        .metric-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #713f12;
+            margin-top: 0.5rem;
+        }
+
+        .metric-context {
+            font-size: 0.85rem;
+            color: #854d0e;
+            margin-top: 0.25rem;
+        }
+
+        blockquote {
+            background: #fffbeb;
+            border-left: 4px solid #eab308;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            font-style: italic;
+            color: #92400e;
+        }
+
+        .chart-container {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+
+        .bar-group {
+            margin-bottom: 15px;
+        }
+
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .bar-bg {
+            background: #f3f4f6;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #facc15, #eab308);
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .bar-fill.baseline {
+            background: #9ca3af;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="report-container">
+        <h1>Flowryte: Impact & Design Report</h1>
+        <div class="meta">
+            <strong>Project:</strong> Flowryte SaaS Operating System |
+            <strong>Date:</strong> January 02, 2026 |
+            <strong>Status:</strong> Live / Production
+        </div>
+
+        <section>
+            <h2>1. Problem Framing</h2>
+            <p>Freelancers and small agencies often face a "Liquidity Friction." Relying on manual invoicing across
+                disparate tools leads to inconsistent branding, forgotten follow-ups, and a chaotic view of cash flow.
+                This administrative burden results in stagnant growth and hidden operational costs.</p>
+
+            <div class="image-container">
+                <img src="flowryte_sketches.png" alt="Problem Framing Sketch">
+                <div class="caption">Figure 1: Initial conceptual mapping - Transitioning from manual silos to a unified
+                    coordination engine.</div>
+            </div>
+
+            <blockquote>
+                "I used to spend hours chasing payments. Now, the system handles it autonomously." - Creative Agency
+                Owner
+            </blockquote>
+        </section>
+
+        <section>
+            <h2>2. Early System Concept</h2>
+            <p>The solution philosophy is "Autonomous Financial Orchestration." We conceptualized a design-first
+                interface that removes administrative clutter, presenting only high-intent data: Pending Capital,
+                Upcoming Deadlines, and Direct Actions.</p>
+
+            <div class="image-container">
+                <img src="public/images/invoicing.png" alt="Early Wireframe"
+                    style="max-height: 500px; object-fit: contain;">
+                <div class="caption">Figure 2: Modular interface logic - Designing for clarity and rapid data entry.
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Data Pipeline & Architecture</h2>
+            <p>The Flowryte Engine is designed to ingest project metadata and transform it into high-fidelity
+                interactive assets. This raw data is processed to generate meaningful business intelligence and
+                automated liquidation paths.</p>
+
+            <div class="image-container">
+                <img src="flowryte_system_flow.png" alt="Data Pipeline">
+                <div class="caption">Figure 3: System Architecture - From raw billable data to reconciled capital flow.
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. UI Design: The Dashboard</h2>
+            <p>The <strong>Financial Pulse Dashboard</strong> provides a real-time view of business health. By utilizing
+                high-contrast data visualization, we ensure that the most critical information is always front and
+                center for immediate action.</p>
+
+            <div class="image-container">
+                <img src="flowryte_analytics.png" alt="Dashboard Interface">
+                <div class="caption">Figure 4: Desktop Interface - Unified Command Center for accounts receivable
+                    management.</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>5. Mobile Utility State</h2>
+            <p>For the mobile-first professional, we designed a zero-latency interface that allows for full financial
+                control on the move. Every desktop feature is mirrored with 100% fidelity on the mobile substrate.</p>
+
+            <div class="image-container">
+                <img src="flowryte_mobile.png" alt="Mobile Experience"
+                    style="max-width: 60%; margin: 0 auto; display: block;">
+                <div class="caption">Figure 5: Mobile Interface for on-field invoicing and payment tracking.</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>6. Performance & Accuracy</h2>
+            <p>Transitioning from manual recovery to Flowryte's autonomous logic significantly improved payment velocity
+                and reduced administrative effort.</p>
+
+            <div class="chart-container">
+                <h3>Time-to-Payment Recovery</h3>
+                <div class="bar-group">
+                    <div class="bar-label"><span>Manual Invoicing Baseline</span> <span>45% Velocity</span></div>
+                    <div class="bar-bg">
+                        <div class="bar-fill baseline" style="width: 45%;">45%</div>
+                    </div>
+                </div>
+                <div class="bar-group">
+                    <div class="bar-label"><span>Flowryte Autonomous Flow</span> <span>95% Velocity</span></div>
+                    <div class="bar-bg">
+                        <div class="bar-fill" style="width: 95%;">95%</div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 30px;">Administrative Efficiency</h3>
+                <div class="bar-group">
+                    <div class="bar-label"><span>Manual Effort Baseline</span> <span>50%</span></div>
+                    <div class="bar-bg">
+                        <div class="bar-fill baseline" style="width: 50%;">50%</div>
+                    </div>
+                </div>
+                <div class="bar-group">
+                    <div class="bar-label"><span>Flowryte Automation</span> <span>88% Effect</span></div>
+                    <div class="bar-bg">
+                        <div class="bar-fill" style="width: 88%;">88%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>7. Project Impact</h2>
+            <p>The ultimate goal of Flowryte is business empowerment through administrative autonomy and capital
+                velocity.</p>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">60%</div>
+                    <div class="metric-label">Faster Payments</div>
+                    <div class="metric-context">Reduction in AR wait times</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">10+hr</div>
+                    <div class="metric-label">Time Saved</div>
+                    <div class="metric-context">Weekly admin labor recovered</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">100%</div>
+                    <div class="metric-label">Consistency</div>
+                    <div class="metric-context">In brand & audit integrity</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">95%</div>
+                    <div class="metric-label">User Trust</div>
+                    <div class="metric-context">Metric: Platform Conversion Score</div>
+                </div>
+            </div>
+        </section>
+
+        <div style="margin-top: 4rem; text-align: center; color: #9ca3af; font-size: 0.875rem;">
+            &copy; 2026 Flowryte Systems inc. All Rights Reserved. <br>
+            Generated for On The Dot Portfolio Analysis.
+        </div>
+    </div>
+
+</body>
+
+</html>
